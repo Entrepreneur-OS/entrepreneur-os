@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AARRR — the pirate-metrics funnel | Entrepreneur-OS</title>
+  <meta name="description" content="Plain English: a five-stage map of a customer's whole journey — find you, get value, come back, tell friends, pay you — so &quot;growth&quot; becomes a set of measurable steps instead of a vibe. Expert phrasing: Dave McClure's **Pirate Metrics** (Acquisition, Activation, Retention, Referral, Revenue) — a funnel where each stage has one metric you can instrument, diagnose, and improve independently.">
+  
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f8f6;
+      --paper: #ffffff;
+      --ink: #17201b;
+      --muted: #5d6b63;
+      --line: #dce4dd;
+      --accent: #0f7b5f;
+      --accent-strong: #075f49;
+      --accent-soft: #e4f4ef;
+      --warning-soft: #fff2cc;
+      --shadow: 0 22px 70px rgba(23, 32, 27, 0.10);
+      --radius: 8px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(120deg, rgba(15, 123, 95, 0.09), transparent 34rem), var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--accent-strong);
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: minmax(13rem, 17rem) minmax(0, 1fr);
+      gap: 2.5rem;
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 4rem;
+      
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 1rem;
+      align-self: start;
+      padding: 1rem 0;
+      
+    }
+
+    main {
+      min-width: 0;
+      
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--ink);
+      font-weight: 850;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 2rem;
+      height: 2rem;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      box-shadow: 0 8px 24px rgba(23, 32, 27, 0.08);
+      font-size: 0.78rem;
+    }
+
+    .toc {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .toc-title {
+      margin: 0 0 0.7rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.09em; text-transform: uppercase;
+    }
+
+    .toc a {
+      display: block;
+      padding: 0.36rem 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .hero, section {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero {
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 14rem;
+      gap: 2rem;
+      padding: clamp(1.4rem, 4vw, 3rem);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 0.75rem;
+      color: var(--accent-strong);
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 13ch;
+      font-size: clamp(2.2rem, 6.5vw, 5.2rem);
+      line-height: 0.96;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 45rem;
+      margin: 1.2rem 0 0;
+      color: var(--muted);
+      font-size: clamp(1.04rem, 1.6vw, 1.28rem);
+    }
+
+    .signal {
+      align-self: stretch;
+      display: grid;
+      align-content: center;
+      gap: 1rem;
+      padding: 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, #ffffff, #f3faf7);
+    }
+
+    .signal-line {
+      height: 0.8rem;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e3eae5;
+    }
+
+    .signal-line::before {
+      content: "";
+      display: block;
+      width: 72%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #b7e4d2, var(--accent));
+    }
+
+    .signal p {
+      margin: 0;
+      color: var(--ink);
+      font-size: 0.98rem;
+      font-weight: 650;
+    }
+
+    .metadata {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .meta-item {
+      min-width: 0;
+      padding: 1rem;
+      background: #fbfcfb;
+    }
+
+    .meta-label {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--muted);
+      font-size: 0.74rem;
+      font-weight: 900;
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+
+    .meta-value {
+      display: block;
+      color: var(--ink);
+      font-weight: 720;
+    }
+
+    .content {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    section {
+      padding: clamp(1.25rem, 3vw, 2rem);
+    }
+
+    section h2 {
+      margin: 0 0 0.9rem;
+      font-size: clamp(1.35rem, 2.2vw, 2rem);
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    section p { margin: 0.75rem 0 0; }
+    section p:first-of-type { margin-top: 0; }
+    strong { font-weight: 900; }
+    code {
+      padding: 0.08rem 0.28rem;
+      border-radius: 5px;
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+
+    ul, ol {
+      margin: 0.8rem 0 0;
+      padding-left: 1.25rem;
+      padding-right: 0;
+    }
+
+    li + li { margin-top: 0.55rem; }
+
+    blockquote, .note {
+      margin: 0;
+      padding: 1rem 1.1rem;
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius);
+      background: var(--accent-soft);
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.2rem;
+      padding: 0.4rem 0.75rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      font-weight: 760;
+      text-decoration: none;
+    }
+
+    @media (max-width: 860px) {
+      .shell {
+        display: block;
+        width: min(100% - 1rem, 46rem);
+        padding-top: 0.75rem;
+      }
+
+      .sidebar {
+        position: static;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.75rem 0 1rem;
+      }
+
+      .toc { display: none; }
+      .hero-top { grid-template-columns: 1fr; }
+      .metadata { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 520px) {
+      .metadata { grid-template-columns: 1fr; }
+      section { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Concept navigation">
+      <a class="brand" href="../README.md" aria-label="Entrepreneur-OS">
+        <span>Entrepreneur-OS</span>
+        <span class="brand-mark" dir="ltr">EOS</span>
+      </a>
+      <nav class="toc" aria-label="Page sections">
+        <p class="toc-title">Concept Map</p>
+        <a href="#what-it-is">What it is</a>
+        <a href="#why-it-exists-the-problem-it-solves">Why it exists / the problem it solves</a>
+        <a href="#how-experts-reason-with-it">How experts reason with it</a>
+        <a href="#when-you-use-it">When you use it</a>
+        <a href="#metrics-how-it-s-measured">Metrics / how it's measured</a>
+        <a href="#common-misconceptions">Common misconceptions</a>
+        <a href="#examples">Examples</a>
+        <a href="#talking-to-an-llm-about-it">Talking to an LLM about it</a>
+        <a href="#my-evolving-understanding">My evolving understanding</a>
+        <a href="#sources">Sources</a>
+      </nav>
+    </aside>
+
+    <main>
+      <header class="hero">
+        <div class="hero-top">
+          <div>
+            <p class="eyebrow">Entrepreneurship concept</p>
+            <h1>AARRR — the pirate-metrics funnel</h1>
+            <p class="subtitle">Plain English: a five-stage map of a customer's whole journey — find you, get value, come back, tell friends, pay you — so &quot;growth&quot; becomes a set of measurable steps instead of a vibe. Expert phrasing: Dave McClure's <strong>Pirate Metrics</strong> (Acquisition, Activation, Retention, Referral, Revenue) — a funnel where each stage has one metric you can instrument, diagnose, and improve independently.</p>
+          </div>
+          <aside class="signal" aria-label="Concept signal">
+            <div class="signal-line" aria-hidden="true"></div>
+            <p>Move past the definition: use this concept to reason, decide, and prompt AI more precisely.</p>
+          </aside>
+        </div>
+        <div class="metadata" aria-label="Concept metadata">
+          <div class="meta-item">
+            <span class="meta-label">Domain</span>
+            <span class="meta-value">marketing</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Stage</span>
+            <span class="meta-value">growth</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Prerequisites</span>
+            <span class="meta-value"><a href="./icp.html">icp</a> (you can't measure a funnel for a customer you can't define)</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Related</span>
+            <span class="meta-value"><a href="./cac.html">cac</a>, <a href="./retention.html">retention</a>, <a href="./churn.html">churn</a>, <a href="./mrr-arr.html">mrr-arr</a> · <strong>Contrast with:</strong> vanity metrics (totals that don't map to a stage)</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        
+        <section id="what-it-is">
+          <h2>What it is</h2>
+          <p>AARRR breaks the customer lifecycle into five sequential stages, each answering one question:</p>
+<p>| Stage | The question it answers | The one metric that matters | |---|---|---| | <strong>Acquisition</strong> | Do people find you / show up? | traffic → signups; cost per signup (feeds <a href="./cac.html">CAC</a>) | | <strong>Activation</strong> | Do they reach first value fast? | % of new users hitting the &quot;aha&quot; / first-value event | | <strong>Retention</strong> | Do they come back and keep getting value? | cohort <a href="./retention.html">retention</a> curve (does it flatten?) | | <strong>Referral</strong> | Do they bring others? | % who refer; viral coefficient / invites sent | | <strong>Revenue</strong> | Do they pay — and expand? | conversion to paid; <a href="./mrr-arr.html">MRR/ARR</a>, NRR |</p>
+<p>The name is the joke: say the initials out loud and you get a pirate's &quot;AARRR.&quot; The substance is that it turns one fuzzy word — <em>growth</em> — into five instrumented steps, each of which can be measured and fixed on its own.</p>
+        </section>
+
+        <section id="why-it-exists-the-problem-it-solves">
+          <h2>Why it exists / the problem it solves</h2>
+          <p>Before the funnel, &quot;grow the business&quot; is a vibe with no handle on it — you can pour effort in and have no idea <em>where</em> it's leaking. McClure's insight was that a startup's growth is a <strong>pipeline</strong>, and a pipeline has a <em>narrowest point</em>. Naming the five stages exists to make that pipeline visible: instead of &quot;get more users,&quot; you can ask &quot;of the 1,000 who signed up, why did only 200 ever come back?&quot; — a question you can actually answer and act on. It converts growth from motivation into diagnosis.</p>
+        </section>
+
+        <section id="how-experts-reason-with-it">
+          <h2>How experts reason with it</h2>
+          <p>The insight a beginner misses: <strong>fix the biggest leak, not the top of the funnel.</strong></p>
+<p>Pouring more traffic into Acquisition feels like progress, but if only 20% of signups activate, every extra visitor mostly leaks straight out the bottom — you're paying <a href="./cac.html">CAC</a> to fill a bucket with a hole in it. The leverage is almost never at the top.</p>
+<ol><li><strong>Multiply, don't add.</strong> The funnel is a <em>product</em> of conversion rates, not a sum.</li></ol>
+<p>1,000 visitors × 40% activate × 50% retain × 20% pay = 40 paying customers. Doubling the <em>worst</em> rate roughly doubles the output; doubling an already-healthy rate barely moves it. So the first job is always <strong>find the stage with the steepest drop-off</strong>, then fix <em>that</em>.</p>
+<ol><li><strong>Activation and <a href="./retention.html">Retention</a> usually beat Acquisition.</strong> A leaky</li></ol>
+<p>funnel makes acquisition spend <em>destroy</em> value — high <a href="./cac.html">CAC</a>, nothing sticking. Get users to first value (Activation) and keep them (Retention) and the same acquisition suddenly compounds. Retention is also the foundation everything else stands on: no retention → no LTV, no referral base, no expansion revenue.</p>
+<ol><li><strong>The funnel is a loop, not a straight line.</strong> Referral feeds <em>back into</em></li></ol>
+<p>Acquisition — retained, activated users invite others, which lowers effective CAC. Revenue funds more acquisition. The stages compound on each other; that's why fixing the middle (Activation/Retention) lifts <em>both</em> ends.</p>
+<ol><li><strong>It ties cost to money.</strong> Acquisition sets <a href="./cac.html">CAC</a>; Revenue sets</li></ol>
+<p><a href="./mrr-arr.html">MRR/ARR</a> and, with Retention, LTV. A funnel where LTV comfortably exceeds CAC is one you're <em>allowed</em> to scale; until then, more acquisition is gambling.</p>
+<ol><li><strong>One owner per stage.</strong> Each stage needs a single metric <em>and</em> a single accountable</li></ol>
+<p>person. A funnel that's &quot;everyone's job&quot; is no one's — the drop-offs go unwatched.</p>
+<p>The founder's takeaway: instrument all five, then <strong>attack the narrowest point first</strong>. Growth is a diagnosis problem before it's an effort problem.</p>
+        </section>
+
+        <section id="when-you-use-it">
+          <h2>When you use it</h2>
+          <ul><li>Diagnosing <em>why</em> growth is stalling — locate the stage with the worst conversion</li></ul>
+<p>before spending a dollar more on ads.</p>
+<ul><li>Deciding where to invest next quarter (usually: shore up Activation/Retention before</li></ul>
+<p>scaling Acquisition).</p>
+<ul><li>Setting up analytics from scratch: define the one event that marks each stage.</li><li>Sanity-checking whether you're <em>ready</em> to scale — a healthy funnel with LTV &gt; CAC is</li></ul>
+<p>the green light (see <a href="./cac.html">cac</a>, <a href="./pmf.html">pmf</a>).</p>
+        </section>
+
+        <section id="metrics-how-it-s-measured">
+          <h2>Metrics / how it's measured</h2>
+          <ul><li><strong>Per-stage conversion rate:</strong> the % that move from each stage to the next. The</li></ul>
+<p>product of all four transitions = overall funnel conversion.</p>
+<ul><li><strong>Acquisition:</strong> signups, cost per signup / <a href="./cac.html">CAC</a> by channel.</li><li><strong>Activation:</strong> % of new users who reach a defined first-value event (pick the action</li></ul>
+<p>that predicts retention).</p>
+<ul><li><strong>Retention:</strong> cohort <a href="./retention.html">retention</a> curve — read the <em>shape</em> (flattening</li></ul>
+<p>= durable), and <a href="./churn.html">churn</a> as its mirror.</p>
+<ul><li><strong>Referral:</strong> % who invite; viral coefficient <em>k</em> (invites × acceptance); if <em>k</em> &gt; 1,</li></ul>
+<p>organic growth is self-sustaining.</p>
+<ul><li><strong>Revenue:</strong> free→paid conversion, <a href="./mrr-arr.html">MRR/ARR</a>, NRR (net revenue</li></ul>
+<p>retention, which counts expansion).</p>
+        </section>
+
+        <section id="common-misconceptions">
+          <h2>Common misconceptions</h2>
+          <ul><li><strong>&quot;Growth = more traffic.&quot;</strong> Top-of-funnel obsession is the classic trap. If the</li></ul>
+<p>middle leaks, more traffic just leaks faster and raises <a href="./cac.html">CAC</a>.</p>
+<ul><li><strong>&quot;Big totals mean it's working.&quot;</strong> Cumulative signups, pageviews, &quot;total users&quot; are</li></ul>
+<p><strong>vanity metrics</strong> — they only go up and map to no stage. Rates and cohorts tell the truth; totals flatter.</p>
+<ul><li><strong>&quot;AARRR is a rigid order.&quot;</strong> It's a diagnostic frame, not a march. You often work</li></ul>
+<p>Retention <em>before</em> pouring into Acquisition, precisely because that's where the leverage is.</p>
+<ul><li><strong>&quot;One dashboard = a funnel.&quot;</strong> Numbers without a <strong>single owner per stage</strong> rot.</li></ul>
+<p>Ownership is what turns a chart into action.</p>
+<ul><li><strong>&quot;Referral is a growth hack you bolt on.&quot;</strong> Referral only works <em>downstream</em> of</li></ul>
+<p>Activation and Retention — people don't refer a product they never got value from.</p>
+        </section>
+
+        <section id="examples">
+          <h2>Examples</h2>
+          <ul><li><strong>Diagnosis by arithmetic.</strong> A SaaS gets 10,000 visitors/month: 30% sign up (3,000),</li></ul>
+<p>25% activate (750), 40% retain to M1 (300), 10% pay (30). The steepest drop is Activation (30% signup → 25% activate is fine; the killer is that only 25% of <em>those</em> ever hit first value, and only 10% pay). Doubling ad spend adds ~30 more paying customers at full CAC; fixing onboarding so activation doubles gets the same result for near-zero marginal cost.</p>
+<ul><li><strong>Referral loop.</strong> Dropbox's &quot;give space, get space&quot; referral turned Retention +</li></ul>
+<p>Referral into an Acquisition engine — retained users pulled in new ones, driving down effective <a href="./cac.html">CAC</a> toward zero for that slice of growth.</p>
+        </section>
+
+        <section id="talking-to-an-llm-about-it">
+          <h2>Talking to an LLM about it</h2>
+          <ul><li><strong>Weak prompt:</strong> &quot;How do I grow my startup?&quot;</li><li><strong>Better prompt:</strong> &quot;How do I use the AARRR funnel to improve my SaaS's growth?&quot;</li><li><strong>Expert prompt:</strong> &quot;For a bootstrapped B2B SaaS at ~$50/mo targeting recruiting</li></ul>
+<p>agencies, here are my AARRR numbers: 10k visitors → 30% signup → 25% activate → 40% M1 retention → 10% paid. Identify the stage with the highest-leverage leak, propose the one first-value event I should define for Activation, and tell me whether to invest in onboarding or acquisition next given a target LTV:CAC of 3:1.&quot;</p>
+<p>The expert version supplies the ICP, pricing, actual per-stage rates, and a unit- economics target — so the model does <em>funnel diagnosis</em> (where's the leak, what to fix first) instead of handing back a generic &quot;do content marketing&quot; list.</p>
+        </section>
+
+        <section id="my-evolving-understanding">
+          <h2>My evolving understanding</h2>
+          <ul><li><strong>v1 (2026-07-03):</strong> First pass. The reframe that landed: I read AARRR as a *checklist</li></ul>
+<p>of things to grow<em>. The expert mental model is that it's a <strong>diagnostic</strong> — the funnel is a </em>product* of conversion rates, so the whole game is finding the <strong>narrowest point and fixing that</strong>, not adding more at the top. Activation and <a href="./retention.html">retention</a> usually out-leverage acquisition because a leaky funnel makes <a href="./cac.html">CAC</a> destroy value, and Referral loops back into Acquisition only once the middle holds. &quot;Fix the biggest leak, not the top&quot; is the whole concept.</p>
+        </section>
+
+        <section id="sources">
+          <h2>Sources</h2>
+          <ul><li>Dave McClure, <em>Startup Metrics for Pirates (AARRR)</em> (2007 talk / slides) — the origin</li></ul>
+<p>of the five-stage pirate funnel.</p>
+<ul><li>Reforge / Andrew Chen writing on growth funnels, activation, and the &quot;leaky bucket&quot;</li></ul>
+<p>framing — for depth on why the middle out-leverages the top (to verify and deepen on revisit).</p>
+<ul><li>See also <a href="./cac.html">cac</a>, <a href="./retention.html">retention</a>, <a href="./churn.html">churn</a>,</li></ul>
+<p><a href="./mrr-arr.html">mrr-arr</a>. &lt;/content&gt; &lt;/invoke&gt;</p>
+        </section>
+
+        <section>
+          <h2>Links</h2>
+          <nav class="footer-nav" aria-label="Page links">
+            <a class="pill" href="./aarrr-funnel-fa.html">Persian version</a>
+            <a class="pill" href="./aarrr-funnel.md">Markdown source</a>
+          </nav>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

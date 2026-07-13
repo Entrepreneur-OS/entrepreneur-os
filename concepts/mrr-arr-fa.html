@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>درآمد تکرارشونده ماهانه و سالانه | Entrepreneur-OS</title>
+  <meta name="description" content="Plain English: the predictable revenue a subscription business earns every month (MRR) or year (ARR), if nothing changed. Expert phrasing: normalized recurring revenue — the run-rate of committed, repeating revenue, tracked as a *flow* whose month-to-month movement (new, expansion, contraction, churn) reveals the true health of the business.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f8f6;
+      --paper: #ffffff;
+      --ink: #17201b;
+      --muted: #5d6b63;
+      --line: #dce4dd;
+      --accent: #0f7b5f;
+      --accent-strong: #075f49;
+      --accent-soft: #e4f4ef;
+      --warning-soft: #fff2cc;
+      --shadow: 0 22px 70px rgba(23, 32, 27, 0.10);
+      --radius: 8px;
+      font-family: "Vazirmatn", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(240deg, rgba(15, 123, 95, 0.09), transparent 34rem), var(--bg);
+      color: var(--ink);
+      line-height: 1.9;
+    }
+
+    a {
+      color: var(--accent-strong);
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(13rem, 17rem);
+      gap: 2.5rem;
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 4rem;
+      direction: ltr;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 1rem;
+      align-self: start;
+      padding: 1rem 0;
+      grid-column: 2; direction: rtl;
+    }
+
+    main {
+      min-width: 0;
+      grid-column: 1; grid-row: 1; direction: rtl;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--ink);
+      font-weight: 850;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 2rem;
+      height: 2rem;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      box-shadow: 0 8px 24px rgba(23, 32, 27, 0.08);
+      font-size: 0.78rem;
+    }
+
+    .toc {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .toc-title {
+      margin: 0 0 0.7rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 900;
+      
+    }
+
+    .toc a {
+      display: block;
+      padding: 0.36rem 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .hero, section {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero {
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 14rem;
+      gap: 2rem;
+      padding: clamp(1.4rem, 4vw, 3rem);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 0.75rem;
+      color: var(--accent-strong);
+      font-size: 0.82rem;
+      font-weight: 900;
+      
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 14ch;
+      font-size: clamp(2.2rem, 6.5vw, 5.2rem);
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 45rem;
+      margin: 1.2rem 0 0;
+      color: var(--muted);
+      font-size: clamp(1.04rem, 1.6vw, 1.28rem);
+    }
+
+    .signal {
+      align-self: stretch;
+      display: grid;
+      align-content: center;
+      gap: 1rem;
+      padding: 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, #ffffff, #f3faf7);
+    }
+
+    .signal-line {
+      height: 0.8rem;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e3eae5;
+    }
+
+    .signal-line::before {
+      content: "";
+      display: block;
+      width: 72%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #b7e4d2, var(--accent));
+    }
+
+    .signal p {
+      margin: 0;
+      color: var(--ink);
+      font-size: 0.98rem;
+      font-weight: 650;
+    }
+
+    .metadata {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .meta-item {
+      min-width: 0;
+      padding: 1rem;
+      background: #fbfcfb;
+    }
+
+    .meta-label {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--muted);
+      font-size: 0.74rem;
+      font-weight: 900;
+      
+    }
+
+    .meta-value {
+      display: block;
+      color: var(--ink);
+      font-weight: 720;
+    }
+
+    .content {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    section {
+      padding: clamp(1.25rem, 3vw, 2rem);
+    }
+
+    section h2 {
+      margin: 0 0 0.9rem;
+      font-size: clamp(1.35rem, 2.2vw, 2rem);
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    section p { margin: 0.75rem 0 0; }
+    section p:first-of-type { margin-top: 0; }
+    strong { font-weight: 900; }
+    code {
+      padding: 0.08rem 0.28rem;
+      border-radius: 5px;
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+
+    ul, ol {
+      margin: 0.8rem 0 0;
+      padding-right: 1.25rem;
+      padding-left: 0;
+    }
+
+    li + li { margin-top: 0.55rem; }
+
+    blockquote, .note {
+      margin: 0;
+      padding: 1rem 1.1rem;
+      border-right: 4px solid var(--accent);
+      border-radius: var(--radius);
+      background: var(--accent-soft);
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.2rem;
+      padding: 0.4rem 0.75rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      font-weight: 760;
+      text-decoration: none;
+    }
+
+    @media (max-width: 860px) {
+      .shell {
+        display: block;
+        width: min(100% - 1rem, 46rem);
+        padding-top: 0.75rem;
+      }
+
+      .sidebar {
+        position: static;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.75rem 0 1rem;
+      }
+
+      .toc { display: none; }
+      .hero-top { grid-template-columns: 1fr; }
+      .metadata { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 520px) {
+      .metadata { grid-template-columns: 1fr; }
+      section { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="ناوبری مفهوم">
+      <a class="brand" href="../README.md" aria-label="Entrepreneur-OS">
+        <span>Entrepreneur-OS</span>
+        <span class="brand-mark" dir="ltr">EOS</span>
+      </a>
+      <nav class="toc" aria-label="بخش‌های صفحه">
+        <p class="toc-title">نقشه مفهوم</p>
+        <a href="#what-it-is">چیست؟</a>
+        <a href="#why-it-exists-the-problem-it-solves">چرا وجود دارد؟</a>
+        <a href="#how-experts-reason-with-it">استدلال متخصص‌ها</a>
+        <a href="#when-you-use-it">زمان استفاده</a>
+        <a href="#metrics-how-it-s-measured">سنجه‌ها و اندازه‌گیری</a>
+        <a href="#common-misconceptions">برداشت‌های غلط رایج</a>
+        <a href="#examples">مثال‌ها</a>
+        <a href="#talking-to-an-llm-about-it">حرف زدن با LLM درباره آن</a>
+        <a href="#my-evolving-understanding">فهم در حال تکامل من</a>
+        <a href="#sources">منابع</a>
+      </nav>
+    </aside>
+
+    <main>
+      <header class="hero">
+        <div class="hero-top">
+          <div>
+            <p class="eyebrow">مفهوم کارآفرینی</p>
+            <h1>درآمد تکرارشونده ماهانه و سالانه</h1>
+            <p class="subtitle">یادداشت: این صفحه نسخه راست‌به‌چپ طراحی‌شده از منبع Markdown است. عنوان‌ها و قاب صفحه فارسی شده‌اند؛ متن تخصصی بدنه از منبع اصلی حفظ شده تا ترجمه مفهومی هر یادداشت جداگانه بازبینی شود.</p>
+          </div>
+          <aside class="signal" aria-label="سیگنال مفهومی">
+            <div class="signal-line" aria-hidden="true"></div>
+            <p>از تعریف عبور کن؛ این صفحه برای فهم عملی، تصمیم‌گیری، و گفتگو با AI ساخته شده است.</p>
+          </aside>
+        </div>
+        <div class="metadata" aria-label="فراداده مفهوم">
+          <div class="meta-item">
+            <span class="meta-label">دامنه</span>
+            <span class="meta-value">finance</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">مرحله</span>
+            <span class="meta-value">growth</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">پیش‌نیازها</span>
+            <span class="meta-value"><a href="./churn-fa.html">churn</a> / <a href="./retention-fa.html">retention</a> (they drive the &quot;leak&quot; side of the flow)</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">مرتبط</span>
+            <span class="meta-value"><a href="./ltv-fa.html">ltv</a>, <a href="./cac-fa.html">cac</a>, nrr, valuation-multiple · <strong>Contrast with:</strong> one-off / non-recurring revenue</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        
+        <section id="what-it-is">
+          <h2>چیست؟</h2>
+          <p><strong>MRR (Monthly Recurring Revenue)</strong> is the sum of all <em>recurring</em> subscription revenue, normalized to a single month. <strong>ARR (Annual Recurring Revenue)</strong> is the same idea on a yearly basis — for a pure-subscription business, <code>ARR = MRR × 12</code>. Both are <em>run-rates</em>: a snapshot of &quot;what we'd earn over the next period if nobody joined, left, upgraded, or downgraded.&quot;</p>
+<p>The word that matters is <strong>recurring</strong>. A one-off setup fee, a consulting engagement, or a hardware sale is real revenue but it is <em>not</em> MRR — it won't repeat next month on its own. MRR/ARR deliberately strip those out to isolate the <em>predictable</em> base.</p>
+<p>The real power isn't the single number — it's decomposing how MRR <em>moves</em> each month:</p>
+<p>``<code> Ending MRR = Starting MRR + New MRR          (revenue from newly acquired customers) + Expansion MRR    (upgrades, more seats, add-ons from existing customers) − Contraction MRR  (downgrades, fewer seats — still customers, less revenue) − Churned MRR      (revenue lost from customers who left entirely) </code>``</p>
+<p>This is the <strong>MRR bridge</strong> (a.k.a. the MRR waterfall / movement) — the single most revealing view a subscription business has of itself.</p>
+        </section>
+
+        <section id="why-it-exists-the-problem-it-solves">
+          <h2>چرا وجود دارد؟</h2>
+          <p>Traditional accounting revenue answers &quot;how much did we bill this period?&quot; — but for a subscription business that lumps together a $12,000 annual prepayment and a $1,000/mo subscription as if they were the same, and it hides the churn happening beneath growth. MRR/ARR exist to answer a sharper question: <em>&quot;what is our predictable, repeating revenue base — and which direction is it moving, and why?&quot;</em></p>
+<p>Because the revenue repeats, it can be <strong>forecast</strong>, <strong>compounded</strong>, and <strong>valued</strong> in a way one-off revenue never can. That predictability is the whole reason the subscription model — and the metric that measures it — took over software.</p>
+        </section>
+
+        <section id="how-experts-reason-with-it">
+          <h2>استدلال متخصص‌ها</h2>
+          <p>The insight a beginner misses: *<em>MRR is a flow, not a balance — and its </em>composition<em> matters more than its size.</em>* Two companies can both add $50k of net new MRR in a month; one did it with $50k of new logos on top of zero churn, the other papered over $80k of churn with $130k of frantic new sales. The first is healthy; the second is a leaking bucket being filled with a firehose.</p>
+<ol><li><strong>Net New MRR = New + Expansion − Contraction − Churn.</strong> This is the number that</li></ol>
+<p>actually grew (or shrank) the business. Positive net-new with <em>low</em> gross churn is the signal of a durable engine.</p>
+<ol><li><strong>Net Revenue Retention (NRR) is the holy grail.</strong> NRR measures what happens to a</li></ol>
+<p>cohort's revenue from <em>existing customers alone</em>, with <strong>zero new logos</strong>: <code>NRR = (Starting + Expansion − Contraction − Churn) / Starting</code>. <strong>NRR &gt; 100%</strong> means your existing base <em>grows on its own</em> — &quot;negative churn.&quot; A business with 120% NRR grows ~20%/year even if it never signs another customer. That's why investors prize it: it's growth that doesn't depend on the <a href="./cac-fa.html">CAC</a> treadmill.</p>
+<ol><li><strong>Recurring revenue earns a higher valuation multiple.</strong> Markets pay far more per</li></ol>
+<p>dollar of <em>recurring</em> revenue than per dollar of one-off sales — often several times more — because it's <strong>predictable</strong> (you can underwrite next year's revenue), <strong>compounding</strong> (expansion stacks on a retained base), and <strong>durable</strong> (switching costs + habit). A services business is valued on ~1× revenue; a healthy SaaS can be valued on ~5–15× ARR. Same dollar, wildly different worth — because of <em>repeatability</em>.</p>
+<ol><li><strong>MRR sits downstream of churn/retention and upstream of LTV.</strong> <a href="./churn-fa.html">Churn</a> and</li></ol>
+<p><a href="./retention-fa.html">retention</a> determine how much MRR leaks each month; MRR × margin ÷ churn feeds <a href="./ltv-fa.html">LTV</a>. Improve retention and you lift MRR <em>and</em> LTV at once.</p>
+<p>The founder's takeaway: don't celebrate top-line MRR growth — <strong>read the bridge.</strong> Chase expansion and kill contraction/churn to push NRR over 100%; that's the difference between a business that compounds and one that runs to stand still.</p>
+        </section>
+
+        <section id="when-you-use-it">
+          <h2>زمان استفاده</h2>
+          <ul><li>Reporting growth to yourself or investors — always as the <em>bridge</em>, not just the total.</li><li>Forecasting: run-rate ARR (<code>MRR × 12</code>) is the standard way to size a subscription business.</li><li>Diagnosing quality of growth: high new MRR masking high churned MRR is a red flag.</li><li>Pricing/packaging decisions aimed at <strong>expansion</strong> (seats, tiers, usage) to lift NRR.</li><li>Valuation and fundraising conversations — ARR and NRR are the headline numbers.</li></ul>
+        </section>
+
+        <section id="metrics-how-it-s-measured">
+          <h2>سنجه‌ها و اندازه‌گیری</h2>
+          <p>The MRR movement (the bridge) is the core formula:</p>
+<p>``` Net New MRR = New MRR + Expansion MRR − Contraction MRR − Churned MRR Ending MRR  = Starting MRR + Net New MRR ARR         = MRR × 12</p>
+<p>Gross Revenue Retention (GRR) = (Starting − Contraction − Churn) / Starting     # ≤ 100% Net  Revenue Retention (NRR)  = (Starting + Expansion − Contraction − Churn) / Starting ```</p>
+<p>Normalization rules that keep MRR honest:</p>
+<ul><li><strong>Annual contract → monthly.</strong> A $12,000/yr deal is <strong>$1,000 MRR</strong>, not $12,000 in the</li></ul>
+<p>signing month. (Cash and revenue-recognition differ from MRR — don't conflate them.)</p>
+<ul><li><strong>Exclude one-off revenue.</strong> Setup fees, professional services, and usage overages that</li></ul>
+<p>don't recur are <em>not</em> MRR.</p>
+<p>Rough benchmarks: best-in-class SaaS runs <strong>NRR ≥ 120%</strong> (enterprise) and <strong>≥ 100%</strong> (SMB); <strong>GRR</strong> above ~90% (enterprise) / ~80% (SMB) is healthy. Compare like segments only.</p>
+        </section>
+
+        <section id="common-misconceptions">
+          <h2>برداشت‌های غلط رایج</h2>
+          <ul><li><strong>&quot;Book the annual contract as one month of MRR.&quot;</strong> A $12k/yr deal is $1k MRR — booking</li></ul>
+<p>it as $12k inflates MRR 12× and destroys the run-rate's meaning.</p>
+<ul><li><strong>&quot;Services/one-off fees are revenue, so count them.&quot;</strong> They're revenue but not</li></ul>
+<p><em>recurring</em> — including them makes MRR unpredictable and un-forecastable.</p>
+<ul><li><strong>&quot;Ignore contraction — they didn't cancel.&quot;</strong> A customer who downgrades from $500 to</li></ul>
+<p>$200 is $300 of lost MRR. Contraction is silent churn; leaving it out overstates health.</p>
+<ul><li><strong>&quot;MRR growth = healthy business.&quot;</strong> Not if churned + contraction MRR is large beneath</li></ul>
+<p>it. Read <em>net</em> new MRR and NRR, not just the top line.</p>
+<ul><li><strong>&quot;ARR = last year's billed revenue.&quot;</strong> ARR is a forward <em>run-rate</em> (<code>MRR × 12</code>), not a</li></ul>
+<p>historical accounting figure.</p>
+        </section>
+
+        <section id="examples">
+          <h2>مثال‌ها</h2>
+          <ul><li>Start month at <strong>$100k MRR</strong>. Add <strong>+$20k New</strong>, <strong>+$8k Expansion</strong>, **−$3k</li></ul>
+<p>Contraction<strong>, </strong>−$5k Churn<strong> → Net New = </strong>+$20k<strong> → Ending MRR = </strong>$120k<strong>, ARR = </strong>$1.44M<strong>. For existing customers alone: NRR = (100 + 8 − 3 − 5) / 100 = </strong>100%** — the base held flat and all real growth came from new logos.</p>
+<ul><li>A SaaS with <strong>8% gross revenue churn</strong> but <strong>15% expansion</strong> → <strong>NRR ≈ 107%</strong>: even with</li></ul>
+<p><em>zero</em> new sales, revenue grows ~7%/yr from the existing base. New logos are pure acceleration on top — this is why the company can be valued on a high ARR multiple.</p>
+        </section>
+
+        <section id="talking-to-an-llm-about-it">
+          <h2>حرف زدن با LLM درباره آن</h2>
+          <ul><li><strong>Weak prompt:</strong> &quot;How is my subscription revenue doing?&quot;</li><li><strong>Better prompt:</strong> &quot;How do I calculate MRR and ARR for my SaaS, and what's a good growth rate?&quot;</li><li><strong>Expert prompt:</strong> &quot;For a B2B SaaS starting the month at $100k MRR with $20k new, $8k</li></ul>
+<p>expansion, $3k contraction, and $5k churned MRR, build the MRR bridge and compute net new MRR, ending ARR, GRR, and NRR. Then tell me whether my growth is retention-driven or acquisition-driven, and whether to prioritize expansion (to push NRR past 100%) or reduce gross churn first — and how each choice affects my valuation multiple.&quot;</p>
+<p>The expert version supplies the full bridge inputs and asks for a <em>diagnosis and decision</em> (retention vs. acquisition, NRR, valuation) — so the model reasons about the quality and worth of growth, not just definitions.</p>
+        </section>
+
+        <section id="my-evolving-understanding">
+          <h2>فهم در حال تکامل من</h2>
+          <ul><li><strong>v1 (2026-07-02):</strong> First pass. The reframe that landed: I thought MRR/ARR were just</li></ul>
+<p>&quot;monthly revenue × 12.&quot; The sharper model is that MRR is a <strong>flow decomposed by the bridge</strong> (new + expansion − contraction − churn), and that the <em>composition</em> — not the headline — tells you if growth is durable. <strong>NRR &gt; 100%</strong> (&quot;negative churn&quot;) reframed growth entirely: a business can compound from its existing base with zero new logos. And the reason recurring revenue is worth several times more per dollar than one-off revenue is simply <strong>predictability + compounding + durability</strong> — which is also why annual contracts must be normalized to monthly and one-off services excluded, or the number loses the very predictability that gives it value.</p>
+        </section>
+
+        <section id="sources">
+          <h2>منابع</h2>
+          <ul><li>David Skok, <em>forEntrepreneurs</em> — SaaS metrics (MRR, the MRR bridge, NRR, unit economics)</li></ul>
+<p>— to verify and deepen on revisit.</p>
+<ul><li>Bessemer Venture Partners, <em>State of the Cloud</em> / &quot;Efficiency is the new growth&quot; — NRR</li></ul>
+<p>benchmarks and why recurring revenue commands premium multiples.</p>
+<ul><li>See also <a href="./ltv-fa.html">ltv</a>, <a href="./churn-fa.html">churn</a>, <a href="./retention-fa.html">retention</a>, <a href="./cac-fa.html">cac</a>.</li></ul>
+<p>&lt;/content&gt; &lt;/invoke&gt;</p>
+        </section>
+
+        <section>
+          <h2>پیوندها</h2>
+          <nav class="footer-nav" aria-label="پیوندهای صفحه">
+            <a class="pill" href="./mrr-arr.html">نسخه انگلیسی</a>
+            <a class="pill" href="./mrr-arr.md">منبع Markdown</a>
+          </nav>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

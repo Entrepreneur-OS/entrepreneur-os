@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>نگهداشت | Entrepreneur-OS</title>
+  <meta name="description" content="Plain English: the share of customers who stick around and keep getting value, period after period. Expert phrasing: the inverse of [churn](./churn.md) — the foundation every durable business and every LTV estimate is built on.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f8f6;
+      --paper: #ffffff;
+      --ink: #17201b;
+      --muted: #5d6b63;
+      --line: #dce4dd;
+      --accent: #0f7b5f;
+      --accent-strong: #075f49;
+      --accent-soft: #e4f4ef;
+      --warning-soft: #fff2cc;
+      --shadow: 0 22px 70px rgba(23, 32, 27, 0.10);
+      --radius: 8px;
+      font-family: "Vazirmatn", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(240deg, rgba(15, 123, 95, 0.09), transparent 34rem), var(--bg);
+      color: var(--ink);
+      line-height: 1.9;
+    }
+
+    a {
+      color: var(--accent-strong);
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(13rem, 17rem);
+      gap: 2.5rem;
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 4rem;
+      direction: ltr;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 1rem;
+      align-self: start;
+      padding: 1rem 0;
+      grid-column: 2; direction: rtl;
+    }
+
+    main {
+      min-width: 0;
+      grid-column: 1; grid-row: 1; direction: rtl;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--ink);
+      font-weight: 850;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 2rem;
+      height: 2rem;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      box-shadow: 0 8px 24px rgba(23, 32, 27, 0.08);
+      font-size: 0.78rem;
+    }
+
+    .toc {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .toc-title {
+      margin: 0 0 0.7rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 900;
+      
+    }
+
+    .toc a {
+      display: block;
+      padding: 0.36rem 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .hero, section {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero {
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 14rem;
+      gap: 2rem;
+      padding: clamp(1.4rem, 4vw, 3rem);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 0.75rem;
+      color: var(--accent-strong);
+      font-size: 0.82rem;
+      font-weight: 900;
+      
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 14ch;
+      font-size: clamp(2.2rem, 6.5vw, 5.2rem);
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 45rem;
+      margin: 1.2rem 0 0;
+      color: var(--muted);
+      font-size: clamp(1.04rem, 1.6vw, 1.28rem);
+    }
+
+    .signal {
+      align-self: stretch;
+      display: grid;
+      align-content: center;
+      gap: 1rem;
+      padding: 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, #ffffff, #f3faf7);
+    }
+
+    .signal-line {
+      height: 0.8rem;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e3eae5;
+    }
+
+    .signal-line::before {
+      content: "";
+      display: block;
+      width: 72%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #b7e4d2, var(--accent));
+    }
+
+    .signal p {
+      margin: 0;
+      color: var(--ink);
+      font-size: 0.98rem;
+      font-weight: 650;
+    }
+
+    .metadata {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .meta-item {
+      min-width: 0;
+      padding: 1rem;
+      background: #fbfcfb;
+    }
+
+    .meta-label {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--muted);
+      font-size: 0.74rem;
+      font-weight: 900;
+      
+    }
+
+    .meta-value {
+      display: block;
+      color: var(--ink);
+      font-weight: 720;
+    }
+
+    .content {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    section {
+      padding: clamp(1.25rem, 3vw, 2rem);
+    }
+
+    section h2 {
+      margin: 0 0 0.9rem;
+      font-size: clamp(1.35rem, 2.2vw, 2rem);
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    section p { margin: 0.75rem 0 0; }
+    section p:first-of-type { margin-top: 0; }
+    strong { font-weight: 900; }
+    code {
+      padding: 0.08rem 0.28rem;
+      border-radius: 5px;
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+
+    ul, ol {
+      margin: 0.8rem 0 0;
+      padding-right: 1.25rem;
+      padding-left: 0;
+    }
+
+    li + li { margin-top: 0.55rem; }
+
+    blockquote, .note {
+      margin: 0;
+      padding: 1rem 1.1rem;
+      border-right: 4px solid var(--accent);
+      border-radius: var(--radius);
+      background: var(--accent-soft);
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.2rem;
+      padding: 0.4rem 0.75rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      font-weight: 760;
+      text-decoration: none;
+    }
+
+    @media (max-width: 860px) {
+      .shell {
+        display: block;
+        width: min(100% - 1rem, 46rem);
+        padding-top: 0.75rem;
+      }
+
+      .sidebar {
+        position: static;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.75rem 0 1rem;
+      }
+
+      .toc { display: none; }
+      .hero-top { grid-template-columns: 1fr; }
+      .metadata { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 520px) {
+      .metadata { grid-template-columns: 1fr; }
+      section { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="ناوبری مفهوم">
+      <a class="brand" href="../README.md" aria-label="Entrepreneur-OS">
+        <span>Entrepreneur-OS</span>
+        <span class="brand-mark" dir="ltr">EOS</span>
+      </a>
+      <nav class="toc" aria-label="بخش‌های صفحه">
+        <p class="toc-title">نقشه مفهوم</p>
+        <a href="#what-it-is">چیست؟</a>
+        <a href="#why-it-exists-the-problem-it-solves">چرا وجود دارد؟</a>
+        <a href="#how-experts-reason-with-it">استدلال متخصص‌ها</a>
+        <a href="#when-you-use-it">زمان استفاده</a>
+        <a href="#metrics-how-it-s-measured">سنجه‌ها و اندازه‌گیری</a>
+        <a href="#common-misconceptions">برداشت‌های غلط رایج</a>
+        <a href="#examples">مثال‌ها</a>
+        <a href="#talking-to-an-llm-about-it">حرف زدن با LLM درباره آن</a>
+        <a href="#my-evolving-understanding">فهم در حال تکامل من</a>
+        <a href="#sources">منابع</a>
+      </nav>
+    </aside>
+
+    <main>
+      <header class="hero">
+        <div class="hero-top">
+          <div>
+            <p class="eyebrow">مفهوم کارآفرینی</p>
+            <h1>نگهداشت</h1>
+            <p class="subtitle">یادداشت: این صفحه نسخه راست‌به‌چپ طراحی‌شده از منبع Markdown است. عنوان‌ها و قاب صفحه فارسی شده‌اند؛ متن تخصصی بدنه از منبع اصلی حفظ شده تا ترجمه مفهومی هر یادداشت جداگانه بازبینی شود.</p>
+          </div>
+          <aside class="signal" aria-label="سیگنال مفهومی">
+            <div class="signal-line" aria-hidden="true"></div>
+            <p>از تعریف عبور کن؛ این صفحه برای فهم عملی، تصمیم‌گیری، و گفتگو با AI ساخته شده است.</p>
+          </aside>
+        </div>
+        <div class="metadata" aria-label="فراداده مفهوم">
+          <div class="meta-item">
+            <span class="meta-label">دامنه</span>
+            <span class="meta-value">product</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">مرحله</span>
+            <span class="meta-value">growth</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">مرتبط</span>
+            <span class="meta-value"><a href="./churn-fa.html">churn</a> (its mirror), <a href="./ltv-fa.html">ltv</a>, <a href="./pmf-fa.html">pmf</a>, cohort-analysis</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        
+        <section id="what-it-is">
+          <h2>چیست؟</h2>
+          <p>Retention is whether customers <em>keep coming back</em>. If 100 people start using your product and 60 are still active (and paying) three months later, that cohort has 60% 3-month retention. It's the same information as <a href="./churn-fa.html">churn</a>, viewed from the optimistic side: retention counts who stays, churn counts who leaves.</p>
+        </section>
+
+        <section id="why-it-exists-the-problem-it-solves">
+          <h2>چرا وجود دارد؟</h2>
+          <p>Acquisition gets all the attention, but a business that acquires well and retains poorly is a leaky bucket — you pour water (and <a href="./cac-fa.html">CAC</a>) in the top and it runs out the bottom. Retention exists as the concept that says: <em>the durability of value is what actually makes a business</em>. Everything compounding — LTV, word-of-mouth, revenue — stands on retention.</p>
+        </section>
+
+        <section id="how-experts-reason-with-it">
+          <h2>استدلال متخصص‌ها</h2>
+          <p>The insight a beginner misses: <strong>the shape of the retention curve is the single truest signal of a real business — and of <a href="./pmf-fa.html">PMF</a>.</strong></p>
+<ol><li><strong>Flattening beats high.</strong> Plot a cohort's activity over time. If the curve</li></ol>
+<p><strong>decays toward zero</strong>, you have no durable value — a leaky bucket no amount of marketing fixes. If it <strong>flattens</strong> at some level, you've found a group for whom the product is a lasting habit. <em>A flattening curve is the classic PMF signal.</em></p>
+<ol><li><strong>Retention is the foundation, not a tactic.</strong> It caps <a href="./ltv-fa.html">LTV</a> (lifetime =</li></ol>
+<p>1/churn), fuels organic growth (retained users refer), and lowers effective CAC. Small retention gains compound across all of them.</p>
+<ol><li><strong>Logo vs. revenue retention.</strong> You can retain <em>revenue</em> (via expansion) even while</li></ol>
+<p>losing some <em>logos</em> — NRR captures this. Track both.</p>
+<ol><li><strong>Leading indicators exist.</strong> Activation, time-to-first-value, and early engagement</li></ol>
+<p>predict later retention — so you can act <em>before</em> customers churn, not after.</p>
+<p>The founder's takeaway: before scaling anything, earn a <strong>flat retention curve</strong> for a real <a href="./icp-fa.html">ICP</a>. Retention is the metric that tells you the foundation is solid.</p>
+        </section>
+
+        <section id="when-you-use-it">
+          <h2>زمان استفاده</h2>
+          <ul><li>As the primary evidence for <a href="./pmf-fa.html">PMF</a> (retention curve shape).</li><li>To estimate <a href="./ltv-fa.html">LTV</a> and set affordable <a href="./cac-fa.html">CAC</a>.</li><li>To prioritize product work — improving activation/onboarding lifts the whole curve.</li><li>To decide readiness to scale: don't pour CAC into a bucket that doesn't hold water.</li></ul>
+        </section>
+
+        <section id="metrics-how-it-s-measured">
+          <h2>سنجه‌ها و اندازه‌گیری</h2>
+          <ul><li><strong>Cohort retention curves:</strong> group users by when they joined, track % still active</li></ul>
+<p>over time; read the <em>shape</em> (decaying vs. flattening), not a single number.</p>
+<ul><li><strong>Logo (customer) retention</strong> vs. <strong>revenue/net retention (NRR)</strong>.</li><li><strong>N-day / N-month retention</strong> (e.g. D30, M3) for the relevant usage cadence.</li><li>Retention = 1 − churn for the same period.</li></ul>
+        </section>
+
+        <section id="common-misconceptions">
+          <h2>برداشت‌های غلط رایج</h2>
+          <ul><li><strong>&quot;Retention is a growth tactic.&quot;</strong> It's the <em>foundation</em> growth compounds on, not a</li></ul>
+<p>campaign you run.</p>
+<ul><li><strong>&quot;High month-1 retention = solid.&quot;</strong> What matters is whether the curve <strong>flattens</strong>,</li></ul>
+<p>not the starting height. A high-but-still-decaying curve still ends at zero.</p>
+<ul><li><strong>&quot;Retention = churn, so why track separately?&quot;</strong> Same math, but the cohort-curve</li></ul>
+<p><em>shape</em> carries information a single churn % hides.</p>
+<ul><li><strong>&quot;You retain with discounts/nags.&quot;</strong> Durable retention comes from real value/habit;</li></ul>
+<p>incentives only delay churn if fit is weak.</p>
+        </section>
+
+        <section id="examples">
+          <h2>مثال‌ها</h2>
+          <ul><li>Two SaaS apps both start cohorts at 100 users. App A decays to ~5% by month 6 (no</li></ul>
+<p>fit). App B flattens at ~45% by month 3 and holds — App B has PMF and a real LTV; App A is a leaky bucket.</p>
+<ul><li>Improving onboarding so more users hit &quot;first value&quot; in week 1 lifts the <em>entire</em></li></ul>
+<p>retention curve and, through it, LTV.</p>
+        </section>
+
+        <section id="talking-to-an-llm-about-it">
+          <h2>حرف زدن با LLM درباره آن</h2>
+          <ul><li><strong>Weak prompt:</strong> &quot;How do I keep users coming back?&quot;</li><li><strong>Better prompt:</strong> &quot;How do I improve retention for my SaaS?&quot;</li><li><strong>Expert prompt:</strong> &quot;For a B2B SaaS targeting recruiting agencies, help me set up</li></ul>
+<p>cohort retention analysis: which activation event to define as 'first value,' how to read whether my curves flatten (PMF) or decay, which leading indicators predict M3 retention, and where to intervene in onboarding to lift the curve.&quot;</p>
+<p>The expert version asks for cohort <em>analysis</em>, an activation definition, leading indicators, and <em>where to act</em> — so the model gives a diagnostic plan, not tips.</p>
+        </section>
+
+        <section id="my-evolving-understanding">
+          <h2>فهم در حال تکامل من</h2>
+          <ul><li><strong>v1 (2026-07-01):</strong> First pass. The reframe that landed: I treated retention as</li></ul>
+<p>&quot;keep users happy so they don't leave.&quot; The sharper model is that the <strong>retention curve's shape is the truest test of a real business</strong> — flat = durable value = PMF, decaying = leaky bucket — and that retention is the <strong>foundation</strong> LTV, organic growth, and effective CAC all compound on. So retention work usually beats acquisition work in leverage.</p>
+        </section>
+
+        <section id="sources">
+          <h2>منابع</h2>
+          <ul><li>Cohort-analysis / retention-curve practice; PMF-via-retention discourse (Andreessen,</li></ul>
+<p>Ellis lineage) — to verify and deepen on revisit.</p>
+<ul><li>See also <a href="./churn-fa.html">churn</a>, <a href="./ltv-fa.html">ltv</a>, <a href="./pmf-fa.html">pmf</a>.</li></ul>
+        </section>
+
+        <section>
+          <h2>پیوندها</h2>
+          <nav class="footer-nav" aria-label="پیوندهای صفحه">
+            <a class="pill" href="./retention.html">نسخه انگلیسی</a>
+            <a class="pill" href="./retention.md">منبع Markdown</a>
+          </nav>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

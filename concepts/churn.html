@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Churn — Customer &amp; Revenue Churn | Entrepreneur-OS</title>
+  <meta name="description" content="Plain English: the rate at which customers (or the revenue they bring) leak out of the business over a period. Expert phrasing: the percentage of customers or recurring revenue lost in a given period — the drain that caps how big you can get.">
+  
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f8f6;
+      --paper: #ffffff;
+      --ink: #17201b;
+      --muted: #5d6b63;
+      --line: #dce4dd;
+      --accent: #0f7b5f;
+      --accent-strong: #075f49;
+      --accent-soft: #e4f4ef;
+      --warning-soft: #fff2cc;
+      --shadow: 0 22px 70px rgba(23, 32, 27, 0.10);
+      --radius: 8px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(120deg, rgba(15, 123, 95, 0.09), transparent 34rem), var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--accent-strong);
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: minmax(13rem, 17rem) minmax(0, 1fr);
+      gap: 2.5rem;
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 4rem;
+      
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 1rem;
+      align-self: start;
+      padding: 1rem 0;
+      
+    }
+
+    main {
+      min-width: 0;
+      
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--ink);
+      font-weight: 850;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 2rem;
+      height: 2rem;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      box-shadow: 0 8px 24px rgba(23, 32, 27, 0.08);
+      font-size: 0.78rem;
+    }
+
+    .toc {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .toc-title {
+      margin: 0 0 0.7rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.09em; text-transform: uppercase;
+    }
+
+    .toc a {
+      display: block;
+      padding: 0.36rem 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .hero, section {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero {
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 14rem;
+      gap: 2rem;
+      padding: clamp(1.4rem, 4vw, 3rem);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 0.75rem;
+      color: var(--accent-strong);
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 13ch;
+      font-size: clamp(2.2rem, 6.5vw, 5.2rem);
+      line-height: 0.96;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 45rem;
+      margin: 1.2rem 0 0;
+      color: var(--muted);
+      font-size: clamp(1.04rem, 1.6vw, 1.28rem);
+    }
+
+    .signal {
+      align-self: stretch;
+      display: grid;
+      align-content: center;
+      gap: 1rem;
+      padding: 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, #ffffff, #f3faf7);
+    }
+
+    .signal-line {
+      height: 0.8rem;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e3eae5;
+    }
+
+    .signal-line::before {
+      content: "";
+      display: block;
+      width: 72%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #b7e4d2, var(--accent));
+    }
+
+    .signal p {
+      margin: 0;
+      color: var(--ink);
+      font-size: 0.98rem;
+      font-weight: 650;
+    }
+
+    .metadata {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .meta-item {
+      min-width: 0;
+      padding: 1rem;
+      background: #fbfcfb;
+    }
+
+    .meta-label {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--muted);
+      font-size: 0.74rem;
+      font-weight: 900;
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+
+    .meta-value {
+      display: block;
+      color: var(--ink);
+      font-weight: 720;
+    }
+
+    .content {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    section {
+      padding: clamp(1.25rem, 3vw, 2rem);
+    }
+
+    section h2 {
+      margin: 0 0 0.9rem;
+      font-size: clamp(1.35rem, 2.2vw, 2rem);
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    section p { margin: 0.75rem 0 0; }
+    section p:first-of-type { margin-top: 0; }
+    strong { font-weight: 900; }
+    code {
+      padding: 0.08rem 0.28rem;
+      border-radius: 5px;
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+
+    ul, ol {
+      margin: 0.8rem 0 0;
+      padding-left: 1.25rem;
+      padding-right: 0;
+    }
+
+    li + li { margin-top: 0.55rem; }
+
+    blockquote, .note {
+      margin: 0;
+      padding: 1rem 1.1rem;
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius);
+      background: var(--accent-soft);
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.2rem;
+      padding: 0.4rem 0.75rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      font-weight: 760;
+      text-decoration: none;
+    }
+
+    @media (max-width: 860px) {
+      .shell {
+        display: block;
+        width: min(100% - 1rem, 46rem);
+        padding-top: 0.75rem;
+      }
+
+      .sidebar {
+        position: static;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.75rem 0 1rem;
+      }
+
+      .toc { display: none; }
+      .hero-top { grid-template-columns: 1fr; }
+      .metadata { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 520px) {
+      .metadata { grid-template-columns: 1fr; }
+      section { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Concept navigation">
+      <a class="brand" href="../README.md" aria-label="Entrepreneur-OS">
+        <span>Entrepreneur-OS</span>
+        <span class="brand-mark" dir="ltr">EOS</span>
+      </a>
+      <nav class="toc" aria-label="Page sections">
+        <p class="toc-title">Concept Map</p>
+        <a href="#what-it-is">What it is</a>
+        <a href="#why-it-exists-the-problem-it-solves">Why it exists / the problem it solves</a>
+        <a href="#how-experts-reason-with-it">How experts reason with it</a>
+        <a href="#when-you-use-it">When you use it</a>
+        <a href="#metrics-how-it-s-measured">Metrics / how it's measured</a>
+        <a href="#common-misconceptions">Common misconceptions</a>
+        <a href="#examples">Examples</a>
+        <a href="#talking-to-an-llm-about-it">Talking to an LLM about it</a>
+        <a href="#my-evolving-understanding">My evolving understanding</a>
+        <a href="#sources">Sources</a>
+      </nav>
+    </aside>
+
+    <main>
+      <header class="hero">
+        <div class="hero-top">
+          <div>
+            <p class="eyebrow">Entrepreneurship concept</p>
+            <h1>Churn — Customer &amp; Revenue Churn</h1>
+            <p class="subtitle">Plain English: the rate at which customers (or the revenue they bring) leak out of the business over a period. Expert phrasing: the percentage of customers or recurring revenue lost in a given period — the drain that caps how big you can get.</p>
+          </div>
+          <aside class="signal" aria-label="Concept signal">
+            <div class="signal-line" aria-hidden="true"></div>
+            <p>Move past the definition: use this concept to reason, decide, and prompt AI more precisely.</p>
+          </aside>
+        </div>
+        <div class="metadata" aria-label="Concept metadata">
+          <div class="meta-item">
+            <span class="meta-label">Domain</span>
+            <span class="meta-value">finance</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Stage</span>
+            <span class="meta-value">growth</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Related</span>
+            <span class="meta-value"><a href="./retention.html">retention</a> (its mirror image), <a href="./ltv.html">ltv</a>, <a href="./pmf.html">pmf</a>, nrr</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        
+        <section id="what-it-is">
+          <h2>What it is</h2>
+          <p>Churn measures loss. If you start a month with 100 customers and 5 leave, that's <strong>5% customer churn</strong>. If you start with $10,000 in monthly recurring revenue and lose $700 of it, that's <strong>7% revenue churn</strong>. Retention and churn are two sides of one coin: retention is who stays, churn is who leaves.</p>
+        </section>
+
+        <section id="why-it-exists-the-problem-it-solves">
+          <h2>Why it exists / the problem it solves</h2>
+          <p>In a recurring business, you're not just adding customers — you're also <em>losing</em> them, continuously. Churn exists to make that loss visible, because it's easy to celebrate new signups while quietly bleeding out the back door. It answers: <em>is the bucket I'm pouring customers into holding water, or leaking?</em></p>
+        </section>
+
+        <section id="how-experts-reason-with-it">
+          <h2>How experts reason with it</h2>
+          <p>The insight a beginner misses: <strong>churn silently sets a ceiling on your maximum size.</strong> If you add a fixed number of customers per month but a <em>percentage</em> churns, growth stalls where new adds equal churned customers. At 5% monthly churn, that ceiling arrives far sooner than founders expect — you can be &quot;growing&quot; and plateauing at once.</p>
+<p>Key models:</p>
+<ol><li><strong>Customer churn vs. revenue churn.</strong> You can lose small customers (high logo churn)</li></ol>
+<p>but keep revenue flat if big accounts stay — or vice versa. Track both.</p>
+<ol><li><strong>Net Revenue Retention (NRR).</strong> Revenue churn <em>offset by expansion</em> from existing</li></ol>
+<p>customers (upgrades, seats). <strong>NRR &gt; 100% = &quot;negative churn&quot;</strong>: your existing base grows revenue even if you add zero new customers. This is the holy grail of SaaS.</p>
+<ol><li><strong>Churn compounds.</strong> It's a <em>rate</em>, so its damage multiplies over time — and it</li></ol>
+<p>quietly crushes <a href="./ltv.html">LTV</a>, since LTV ≈ margin / churn.</p>
+<ol><li><strong>Churn is a lagging symptom.</strong> High churn usually means weak <a href="./pmf.html">PMF</a> or the</li></ol>
+<p>wrong <a href="./icp.html">ICP</a> — customers who never got durable value. Fix the cause, not the symptom.</p>
+<p>The founder's takeaway: reducing churn is often the <strong>highest-leverage</strong> growth work, because it improves LTV, raises the growth ceiling, and compounds — all at once.</p>
+        </section>
+
+        <section id="when-you-use-it">
+          <h2>When you use it</h2>
+          <ul><li>Diagnosing why growth has stalled despite steady signups.</li><li>Estimating <a href="./ltv.html">LTV</a> (churn sets the customer lifetime).</li><li>Judging <a href="./pmf.html">PMF</a> — persistently high churn = you don't have it.</li><li>Deciding whether to fix the product/ICP before spending on acquisition.</li></ul>
+        </section>
+
+        <section id="metrics-how-it-s-measured">
+          <h2>Metrics / how it's measured</h2>
+          <p>``<code> customer churn = customers lost in period / customers at start of period revenue churn  = MRR lost in period / MRR at start of period NRR = (starting MRR + expansion − churn − contraction) / starting MRR </code>``</p>
+<p>Rough benchmarks: <strong>SMB</strong> churns faster (~3–7%/mo is common), <strong>enterprise</strong> much slower (often &lt;1%/mo). Benchmarks vary wildly by segment — compare like with like.</p>
+        </section>
+
+        <section id="common-misconceptions">
+          <h2>Common misconceptions</h2>
+          <ul><li><strong>&quot;A few percent is nothing.&quot;</strong> 5%/month ≈ <strong>46% of customers gone in a year</strong>. Small</li></ul>
+<p>rates compound into big leaks.</p>
+<ul><li><strong>&quot;Churn = customers leaving only.&quot;</strong> Revenue churn (downgrades) matters as much;</li></ul>
+<p>expansion can offset it (NRR).</p>
+<ul><li><strong>&quot;Fix churn with retention tricks.&quot;</strong> Discounts and exit-surveys are band-aids if the</li></ul>
+<p>root cause is weak fit — churn is usually a <em>product/ICP</em> problem.</p>
+<ul><li><strong>Confusing gross vs. net.</strong> Gross churn ignores expansion; net (NRR) includes it.</li></ul>
+        </section>
+
+        <section id="examples">
+          <h2>Examples</h2>
+          <ul><li>Start month with 200 customers, lose 10 → <strong>5% customer churn</strong> → average lifetime</li></ul>
+<p>~20 months → directly caps <a href="./ltv.html">LTV</a>.</p>
+<ul><li>A SaaS with 8% gross revenue churn but 15% expansion → <strong>NRR ≈ 107%</strong>: the existing</li></ul>
+<p>base <em>grows</em> revenue on its own. New sales are pure acceleration on top.</p>
+        </section>
+
+        <section id="talking-to-an-llm-about-it">
+          <h2>Talking to an LLM about it</h2>
+          <ul><li><strong>Weak prompt:</strong> &quot;How do I stop losing customers?&quot;</li><li><strong>Better prompt:</strong> &quot;How do I reduce churn in my SaaS?&quot;</li><li><strong>Expert prompt:</strong> &quot;For a bootstrapped B2B SaaS with ~5% monthly customer churn and</li></ul>
+<p>~7% gross revenue churn, help me separate whether this is a PMF/ICP problem or an onboarding problem: what cohort analysis to run, which leading indicators to watch, and whether to prioritize expansion (to push NRR over 100%) or reducing gross churn first.&quot;</p>
+<p>The expert version distinguishes churn <em>types</em>, asks for diagnosis (root cause) and a <em>prioritization</em> — so the model gives an operating plan, not platitudes.</p>
+        </section>
+
+        <section id="my-evolving-understanding">
+          <h2>My evolving understanding</h2>
+          <ul><li><strong>v1 (2026-07-01):</strong> First pass. The reframe that landed: I saw churn as &quot;some</li></ul>
+<p>customers cancel — annoying but minor.&quot; The sharper model is that churn is a <strong>compounding rate that sets a hard ceiling on company size</strong> and <strong>crushes LTV</strong>, and that high churn is usually a <em>symptom of weak PMF/ICP</em>, not a retention-tactics problem. NRR &gt; 100% (&quot;negative churn&quot;) reframed growth for me: a business can grow from its existing base alone.</p>
+        </section>
+
+        <section id="sources">
+          <h2>Sources</h2>
+          <ul><li>SaaS metrics lineage (David Skok; NRR / negative churn discourse) — to verify and</li></ul>
+<p>deepen on revisit.</p>
+<ul><li>See also <a href="./retention.html">retention</a>, <a href="./ltv.html">ltv</a>, <a href="./pmf.html">pmf</a>.</li></ul>
+        </section>
+
+        <section>
+          <h2>Links</h2>
+          <nav class="footer-nav" aria-label="Page links">
+            <a class="pill" href="./churn-fa.html">Persian version</a>
+            <a class="pill" href="./churn.md">Markdown source</a>
+          </nav>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

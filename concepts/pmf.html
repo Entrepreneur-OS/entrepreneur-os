@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PMF — Product-Market Fit | Entrepreneur-OS</title>
+  <meta name="description" content="A polished Entrepreneur-OS concept page for product-market fit: what it is, why it matters, how experts reason with it, and how to use it with an LLM.">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f8f6;
+      --paper: #ffffff;
+      --ink: #17201b;
+      --muted: #5d6b63;
+      --line: #dce4dd;
+      --accent: #0f7b5f;
+      --accent-strong: #075f49;
+      --accent-soft: #e4f4ef;
+      --warning-soft: #fff2cc;
+      --warning: #8b6508;
+      --shadow: 0 22px 70px rgba(23, 32, 27, 0.10);
+      --radius: 8px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background:
+        linear-gradient(120deg, rgba(15, 123, 95, 0.09), transparent 34rem),
+        var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--accent-strong);
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    a:hover {
+      color: var(--accent);
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: minmax(13rem, 17rem) minmax(0, 1fr);
+      gap: 2.5rem;
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 4rem;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 1rem;
+      align-self: start;
+      padding: 1rem 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--ink);
+      font-weight: 750;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 2rem;
+      height: 2rem;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      box-shadow: 0 8px 24px rgba(23, 32, 27, 0.08);
+      font-size: 0.78rem;
+      letter-spacing: 0.03em;
+    }
+
+    .toc {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .toc-title {
+      margin: 0 0 0.7rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .toc a {
+      display: block;
+      padding: 0.36rem 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      text-decoration: none;
+    }
+
+    .toc a:hover {
+      color: var(--accent-strong);
+    }
+
+    main {
+      min-width: 0;
+    }
+
+    .hero {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 16rem;
+      gap: 2rem;
+      padding: clamp(1.4rem, 4vw, 3rem);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 0.75rem;
+      color: var(--accent-strong);
+      font-size: 0.78rem;
+      font-weight: 850;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 13ch;
+      font-size: clamp(2.4rem, 7vw, 5.7rem);
+      line-height: 0.94;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 44rem;
+      margin: 1.2rem 0 0;
+      color: var(--muted);
+      font-size: clamp(1.04rem, 1.6vw, 1.28rem);
+    }
+
+    .fit-meter {
+      align-self: stretch;
+      display: grid;
+      gap: 1rem;
+      align-content: center;
+      padding: 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, #ffffff, #f3faf7);
+    }
+
+    .meter-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .meter-track {
+      height: 0.8rem;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e3eae5;
+    }
+
+    .meter-fill {
+      width: 72%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #b7e4d2, var(--accent));
+    }
+
+    .meter-note {
+      margin: 0;
+      color: var(--ink);
+      font-size: 0.98rem;
+    }
+
+    .metadata {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .meta-item {
+      min-width: 0;
+      padding: 1rem;
+      background: #fbfcfb;
+    }
+
+    .meta-label {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .meta-value {
+      display: block;
+      color: var(--ink);
+      font-weight: 680;
+    }
+
+    .content {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    section {
+      padding: clamp(1.25rem, 3vw, 2rem);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.88);
+    }
+
+    section h2 {
+      margin: 0 0 0.9rem;
+      font-size: clamp(1.35rem, 2.2vw, 2rem);
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    section p {
+      margin: 0.75rem 0 0;
+    }
+
+    section p:first-of-type {
+      margin-top: 0;
+    }
+
+    strong {
+      font-weight: 800;
+    }
+
+    ul,
+    ol {
+      margin: 0.8rem 0 0;
+      padding-left: 1.25rem;
+    }
+
+    li + li {
+      margin-top: 0.55rem;
+    }
+
+    .pullquote {
+      margin: 0;
+      padding: 1.1rem 1.2rem;
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      background: var(--accent-soft);
+      color: var(--ink);
+      font-size: 1.08rem;
+      font-weight: 650;
+    }
+
+    .callout {
+      padding: 1rem;
+      border: 1px solid rgba(139, 101, 8, 0.22);
+      border-radius: var(--radius);
+      background: var(--warning-soft);
+      color: #4b3a09;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .metric {
+      padding: 1rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fbfcfb;
+    }
+
+    .metric h3,
+    .prompt h3 {
+      margin: 0 0 0.45rem;
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+
+    .metric p,
+    .prompt p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.97rem;
+    }
+
+    .prompt-stack {
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .prompt {
+      padding: 1rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fbfcfb;
+    }
+
+    .prompt.expert {
+      border-color: rgba(15, 123, 95, 0.32);
+      background: var(--accent-soft);
+    }
+
+    .sources {
+      color: var(--muted);
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.2rem;
+      padding: 0.4rem 0.75rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      font-weight: 720;
+      text-decoration: none;
+    }
+
+    @media (max-width: 860px) {
+      .shell {
+        display: block;
+        width: min(100% - 1rem, 46rem);
+        padding-top: 0.75rem;
+      }
+
+      .sidebar {
+        position: static;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.75rem 0 1rem;
+      }
+
+      .toc {
+        display: none;
+      }
+
+      .hero-top {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        max-width: 9ch;
+      }
+
+      .metadata {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .metrics-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .metadata {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Concept navigation">
+      <a class="brand" href="../README.md" aria-label="Entrepreneur-OS home">
+        <span class="brand-mark">EOS</span>
+        <span>Entrepreneur-OS</span>
+      </a>
+      <nav class="toc" aria-label="Page sections">
+        <p class="toc-title">Concept Map</p>
+        <a href="#what-it-is">What it is</a>
+        <a href="#why-it-exists">Why it exists</a>
+        <a href="#expert-reasoning">Expert reasoning</a>
+        <a href="#when-to-use">When to use</a>
+        <a href="#metrics">Metrics</a>
+        <a href="#misconceptions">Misconceptions</a>
+        <a href="#examples">Examples</a>
+        <a href="#llm">LLM prompts</a>
+        <a href="#understanding">Understanding</a>
+        <a href="#sources">Sources</a>
+      </nav>
+    </aside>
+
+    <main>
+      <header class="hero">
+        <div class="hero-top">
+          <div>
+            <p class="eyebrow">Strategy concept</p>
+            <h1>Product-Market Fit</h1>
+            <p class="subtitle">
+              The moment your product so clearly solves a real problem for a real group
+              of people that they pull it out of your hands.
+            </p>
+          </div>
+
+          <aside class="fit-meter" aria-label="Product-market fit signal">
+            <div class="meter-label">
+              <span>Push</span>
+              <span>Pull</span>
+            </div>
+            <div class="meter-track" aria-hidden="true">
+              <div class="meter-fill"></div>
+            </div>
+            <p class="meter-note">
+              Before PMF you manufacture motion. After PMF, demand starts to outrun your ability to serve it.
+            </p>
+          </aside>
+        </div>
+
+        <div class="metadata" aria-label="Concept metadata">
+          <div class="meta-item">
+            <span class="meta-label">Domain</span>
+            <span class="meta-value">Strategy</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Stage</span>
+            <span class="meta-value">Validation</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Prerequisites</span>
+            <span class="meta-value"><a href="./icp.md">ICP</a>, <a href="./mvp.md">MVP</a>, real users</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Related</span>
+            <span class="meta-value"><a href="./retention.md">Retention</a>, <a href="./churn.md">Churn</a>, <a href="./cac.md">CAC</a></span>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        <section id="what-it-is">
+          <h2>What It Is</h2>
+          <p>
+            Product-market fit is the transition from <em>pushing</em> to <em>being pulled</em>.
+            Before PMF, you chase customers, beg for meetings, and growth only happens when
+            you shove it forward. After PMF, customers find you, use the product hard, refuse
+            to give it up, and tell others.
+          </p>
+          <p>
+            Marc Andreessen's classic framing: <em>"you can always feel when product-market
+            fit isn't happening"</em>, and, just as unmistakably, when it is. It is less a
+            metric than a <strong>state of the business</strong> you can feel in the demand.
+          </p>
+        </section>
+
+        <section id="why-it-exists">
+          <h2>Why It Exists</h2>
+          <p>
+            Founders waste years, and money, optimizing things that do not matter yet:
+            scaling ad spend, hiring salespeople, polishing onboarding, raising funding,
+            all on top of a product nobody deeply wants.
+          </p>
+          <p class="pullquote">
+            PMF is the concept that says: this is the one thing that must be true before
+            scaling pays off.
+          </p>
+          <p>
+            It tells you what game you are playing: still searching for fit, or scaling a
+            fit you have found.
+          </p>
+        </section>
+
+        <section id="expert-reasoning">
+          <h2>How Experts Reason With It</h2>
+          <p>
+            The insight a beginner misses: <strong>PMF is a prerequisite for scaling, not a
+            result of it.</strong> Almost every expensive startup mistake is scaling
+            something before PMF, buying growth for a product that does not retain, so you
+            pour customers into a leaky bucket.
+          </p>
+          <ol>
+            <li><strong>Retention is the truest signal.</strong> Anyone can get a spike of signups. PMF shows up as a retention curve that flattens: a stable core of users who keep coming back instead of a curve that decays to zero.</li>
+            <li><strong>The pull test beats any survey.</strong> Are users hacking around limitations to use it more? Complaining when it is down? Referring others unprompted? That desperation for the product is fit.</li>
+            <li><strong>PMF is not permanent.</strong> Markets shift, competitors arrive, your ICP evolves. You can lose fit. It is a state to maintain, not a trophy to shelve.</li>
+            <li><strong>Before PMF, do things that do not scale.</strong> Manual onboarding, hand-holding, talking to every user: this is how you find fit, and it is the opposite of the efficiency instinct an engineer brings.</li>
+          </ol>
+          <p class="callout">
+            Founder takeaway: before PMF, your job is learning, not growing. Spending on
+            <a href="./cac.md">CAC</a> or hiring before PMF converts runway into noise.
+          </p>
+        </section>
+
+        <section id="when-to-use">
+          <h2>When You Use It</h2>
+          <ul>
+            <li>As the gate before scaling anything: spend, hiring, fundraising.</li>
+            <li>To diagnose "we launched but it is quiet": usually a fit problem, not a marketing one.</li>
+            <li>To decide whether to persevere or pivot: no fit after honest effort means changing the problem, ICP, or product rather than pushing harder on the same thing.</li>
+          </ul>
+        </section>
+
+        <section id="metrics">
+          <h2>Metrics and Measurement</h2>
+          <p>There is no single number, but these proxies make PMF concrete enough to track.</p>
+          <div class="metrics-grid">
+            <article class="metric">
+              <h3>Sean Ellis Test</h3>
+              <p>Ask users how they would feel if they could no longer use the product. At or above 40% "very disappointed" is a widely cited signal.</p>
+            </article>
+            <article class="metric">
+              <h3>Retention Curves</h3>
+              <p>Look for cohort usage that flattens at a healthy level instead of decaying toward zero.</p>
+            </article>
+            <article class="metric">
+              <h3>Organic Pull</h3>
+              <p>Unprompted referrals, word-of-mouth growth, inbound demand, and users pulling the product into more workflows.</p>
+            </article>
+            <article class="metric">
+              <h3>Usage Intensity</h3>
+              <p>Frequency and depth of use relative to the job the product does for its target customer.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="misconceptions">
+          <h2>Common Misconceptions</h2>
+          <ul>
+            <li><strong>"Launch = PMF."</strong> Launching is an event; PMF is sustained pull. Silence after launch means you do not have it yet.</li>
+            <li><strong>"More features -> PMF."</strong> Usually the opposite. Fit comes from solving one problem deeply for a specific <a href="./icp.md">ICP</a>, not from breadth.</li>
+            <li><strong>"Once you have it, you are safe."</strong> Fit can erode; it must be maintained.</li>
+            <li><strong>"It is a vibe, not measurable."</strong> It is partly felt, but retention curves and the Sean Ellis test make it concrete enough to track.</li>
+          </ul>
+        </section>
+
+        <section id="examples">
+          <h2>Examples</h2>
+          <ul>
+            <li><strong>Superhuman</strong> famously engineered its way to PMF by driving the Sean Ellis "very disappointed" score above 40% through a tight feedback loop with its most engaged users.</li>
+            <li><strong>Slack</strong> began as an internal tool that users pulled into every team unprompted; the pull was obvious long before any growth spend.</li>
+          </ul>
+        </section>
+
+        <section id="llm">
+          <h2>Talking To An LLM About It</h2>
+          <div class="prompt-stack">
+            <article class="prompt">
+              <h3>Weak prompt</h3>
+              <p>"How do I know if my product is good?"</p>
+            </article>
+            <article class="prompt">
+              <h3>Better prompt</h3>
+              <p>"How do I know if my SaaS has product-market fit?"</p>
+            </article>
+            <article class="prompt expert">
+              <h3>Expert prompt</h3>
+              <p>"For a bootstrapped B2B SaaS targeting recruiting agencies, help me design a lightweight PMF measurement plan: which retention/cohort metric to track, how to run the Sean Ellis 40% test with my first ~30 users, what 'good' looks like, and clear signals that would tell me to pivot rather than keep pushing."</p>
+            </article>
+          </div>
+          <p>
+            The expert version names the ICP and asks for measurement and decision criteria,
+            so the model gives an operating plan instead of a definition.
+          </p>
+        </section>
+
+        <section id="understanding">
+          <h2>My Evolving Understanding</h2>
+          <p>
+            <strong>v1 (2026-07-01):</strong> First pass. The reframe that landed: I
+            thought of PMF as "people like the product." The sharper model is
+            <strong>pull vs. push</strong>. Before PMF you are shoving, after PMF the
+            market pulls, and the truest evidence is a flattening retention curve, not
+            signups or praise.
+          </p>
+          <p>
+            Biggest behavioral implication: PMF is a gate, and the engineer's instinct to
+            optimize, scale, and automate is exactly the wrong instinct to indulge before
+            you are through it.
+          </p>
+        </section>
+
+        <section id="sources">
+          <h2>Sources</h2>
+          <ul class="sources">
+            <li>Marc Andreessen, "The Only Thing That Matters" (2007): the canonical PMF essay.</li>
+            <li>Sean Ellis: the 40% "very disappointed" survey.</li>
+            <li>Rahul Vohra / Superhuman: engineering toward PMF via that survey, to verify and deepen on revisit.</li>
+          </ul>
+          <nav class="footer-nav" aria-label="Related concepts">
+            <a class="pill" href="./icp.md">ICP</a>
+            <a class="pill" href="./retention.md">Retention</a>
+            <a class="pill" href="./churn.md">Churn</a>
+            <a class="pill" href="./cac.md">CAC</a>
+            <a class="pill" href="./pmf.md">Markdown source</a>
+          </nav>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

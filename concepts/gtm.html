@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GTM — Go-To-Market Strategy | Entrepreneur-OS</title>
+  <meta name="description" content="Plain English: the concrete plan for *how* your product reaches, wins, and keeps its first customers — who you target, through which channel, with what message, at what price, sold in what way. Expert phrasing: the coordinated choice of **segment, motion, channel, pricing, and messaging** that turns a product into repeatable revenue — deliberately narrowed to a **beachhead** you can actually win. The economics of the deal decide who can afford to be in the loop. A **sales rep costs money on every deal**, so the deal must be big enough to pay for that human. **Self-serve costs almost nothing per deal**, so it must scale on volume.">
+  
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f8f6;
+      --paper: #ffffff;
+      --ink: #17201b;
+      --muted: #5d6b63;
+      --line: #dce4dd;
+      --accent: #0f7b5f;
+      --accent-strong: #075f49;
+      --accent-soft: #e4f4ef;
+      --warning-soft: #fff2cc;
+      --shadow: 0 22px 70px rgba(23, 32, 27, 0.10);
+      --radius: 8px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(120deg, rgba(15, 123, 95, 0.09), transparent 34rem), var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--accent-strong);
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: minmax(13rem, 17rem) minmax(0, 1fr);
+      gap: 2.5rem;
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 4rem;
+      
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 1rem;
+      align-self: start;
+      padding: 1rem 0;
+      
+    }
+
+    main {
+      min-width: 0;
+      
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--ink);
+      font-weight: 850;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 2rem;
+      height: 2rem;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      box-shadow: 0 8px 24px rgba(23, 32, 27, 0.08);
+      font-size: 0.78rem;
+    }
+
+    .toc {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .toc-title {
+      margin: 0 0 0.7rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.09em; text-transform: uppercase;
+    }
+
+    .toc a {
+      display: block;
+      padding: 0.36rem 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .hero, section {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero {
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 14rem;
+      gap: 2rem;
+      padding: clamp(1.4rem, 4vw, 3rem);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 0.75rem;
+      color: var(--accent-strong);
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 13ch;
+      font-size: clamp(2.2rem, 6.5vw, 5.2rem);
+      line-height: 0.96;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 45rem;
+      margin: 1.2rem 0 0;
+      color: var(--muted);
+      font-size: clamp(1.04rem, 1.6vw, 1.28rem);
+    }
+
+    .signal {
+      align-self: stretch;
+      display: grid;
+      align-content: center;
+      gap: 1rem;
+      padding: 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, #ffffff, #f3faf7);
+    }
+
+    .signal-line {
+      height: 0.8rem;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e3eae5;
+    }
+
+    .signal-line::before {
+      content: "";
+      display: block;
+      width: 72%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #b7e4d2, var(--accent));
+    }
+
+    .signal p {
+      margin: 0;
+      color: var(--ink);
+      font-size: 0.98rem;
+      font-weight: 650;
+    }
+
+    .metadata {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .meta-item {
+      min-width: 0;
+      padding: 1rem;
+      background: #fbfcfb;
+    }
+
+    .meta-label {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--muted);
+      font-size: 0.74rem;
+      font-weight: 900;
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+
+    .meta-value {
+      display: block;
+      color: var(--ink);
+      font-weight: 720;
+    }
+
+    .content {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    section {
+      padding: clamp(1.25rem, 3vw, 2rem);
+    }
+
+    section h2 {
+      margin: 0 0 0.9rem;
+      font-size: clamp(1.35rem, 2.2vw, 2rem);
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    section p { margin: 0.75rem 0 0; }
+    section p:first-of-type { margin-top: 0; }
+    strong { font-weight: 900; }
+    code {
+      padding: 0.08rem 0.28rem;
+      border-radius: 5px;
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+
+    ul, ol {
+      margin: 0.8rem 0 0;
+      padding-left: 1.25rem;
+      padding-right: 0;
+    }
+
+    li + li { margin-top: 0.55rem; }
+
+    blockquote, .note {
+      margin: 0;
+      padding: 1rem 1.1rem;
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius);
+      background: var(--accent-soft);
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.2rem;
+      padding: 0.4rem 0.75rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      font-weight: 760;
+      text-decoration: none;
+    }
+
+    @media (max-width: 860px) {
+      .shell {
+        display: block;
+        width: min(100% - 1rem, 46rem);
+        padding-top: 0.75rem;
+      }
+
+      .sidebar {
+        position: static;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.75rem 0 1rem;
+      }
+
+      .toc { display: none; }
+      .hero-top { grid-template-columns: 1fr; }
+      .metadata { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 520px) {
+      .metadata { grid-template-columns: 1fr; }
+      section { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Concept navigation">
+      <a class="brand" href="../README.md" aria-label="Entrepreneur-OS">
+        <span>Entrepreneur-OS</span>
+        <span class="brand-mark" dir="ltr">EOS</span>
+      </a>
+      <nav class="toc" aria-label="Page sections">
+        <p class="toc-title">Concept Map</p>
+        <a href="#what-it-is">What it is</a>
+        <a href="#why-it-exists-the-problem-it-solves">Why it exists / the problem it solves</a>
+        <a href="#how-experts-reason-with-it">How experts reason with it</a>
+        <a href="#when-you-use-it">When you use it</a>
+        <a href="#metrics-how-it-s-measured">Metrics / how it's measured</a>
+        <a href="#common-misconceptions">Common misconceptions</a>
+        <a href="#examples">Examples</a>
+        <a href="#talking-to-an-llm-about-it">Talking to an LLM about it</a>
+        <a href="#my-evolving-understanding">My evolving understanding</a>
+        <a href="#sources">Sources</a>
+      </nav>
+    </aside>
+
+    <main>
+      <header class="hero">
+        <div class="hero-top">
+          <div>
+            <p class="eyebrow">Entrepreneurship concept</p>
+            <h1>GTM — Go-To-Market Strategy</h1>
+            <p class="subtitle">Plain English: the concrete plan for <em>how</em> your product reaches, wins, and keeps its first customers — who you target, through which channel, with what message, at what price, sold in what way. Expert phrasing: the coordinated choice of <strong>segment, motion, channel, pricing, and messaging</strong> that turns a product into repeatable revenue — deliberately narrowed to a <strong>beachhead</strong> you can actually win. The economics of the deal decide who can afford to be in the loop. A <strong>sales rep costs money on every deal</strong>, so the deal must be big enough to pay for that human. <strong>Self-serve costs almost nothing per deal</strong>, so it must scale on volume.</p>
+          </div>
+          <aside class="signal" aria-label="Concept signal">
+            <div class="signal-line" aria-hidden="true"></div>
+            <p>Move past the definition: use this concept to reason, decide, and prompt AI more precisely.</p>
+          </aside>
+        </div>
+        <div class="metadata" aria-label="Concept metadata">
+          <div class="meta-item">
+            <span class="meta-label">Domain</span>
+            <span class="meta-value">marketing</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Stage</span>
+            <span class="meta-value">launch</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Prerequisites</span>
+            <span class="meta-value"><a href="./positioning.html">positioning</a> (you can't route a message you haven't framed), <a href="./icp.html">icp</a> (you must know who you're for before you choose how to reach them)</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Related</span>
+            <span class="meta-value"><a href="./cac.html">cac</a>, <a href="./pmf.html">pmf</a>, <a href="./ltv.html">ltv</a> · <strong>Contrast with:</strong> &quot;build it and they will come&quot; (product with no distribution plan)</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        
+        <section id="what-it-is">
+          <h2>What it is</h2>
+          <p>A GTM strategy is the <strong>distribution half of a business</strong> — the answer to &quot;we have something worth buying; now <em>how</em> does it actually get into customers' hands, at a price that works, faster than we run out of money?&quot; A product is only half a company; GTM is the other half. Building something good and having no plan to reach anyone is one of the most common ways a technically-strong founder stalls.</p>
+<p>A complete GTM strategy pins down five decisions, and they must be <strong>mutually consistent</strong>:</p>
+<ol><li><strong>Target segment / beachhead</strong> — the narrow slice of your <a href="./icp.html">ICP</a> you attack</li></ol>
+<p><em>first</em> (not the whole market — the first foothold you can dominate).</p>
+<ol><li><strong>Motion</strong> — the dominant <em>way</em> you sell: product-led, sales-led, or</li></ol>
+<p>marketing/community-led (defined below). This is the load-bearing choice.</p>
+<ol><li><strong>Channel</strong> — the specific route to that segment (SEO/content, paid ads, cold</li></ol>
+<p>outbound, partnerships, app marketplaces, communities, events).</p>
+<ol><li><strong>Pricing</strong> — the model and price point (self-serve monthly, annual contract,</li></ol>
+<p>usage-based, freemium). Price and motion are locked together — see below.</p>
+<ol><li><strong>Messaging</strong> — the words that make the target feel &quot;this is for me,&quot; which come</li></ol>
+<p>straight out of your <a href="./positioning.html">positioning</a>.</p>
+        </section>
+
+        <section id="why-it-exists-the-problem-it-solves">
+          <h2>Why it exists / the problem it solves</h2>
+          <p>The problem GTM solves is that <strong>a great product does not distribute itself.</strong> Markets are noisy, attention is scarce, and buyers don't magically find you. Worse, most founders default to <em>spray-and-pray</em> — a bit of everything, a landing page, some ads, a few cold emails, an occasional post — and end up doing five things at 10% intensity each, none well enough to learn whether it works.</p>
+<p>GTM exists to force a <strong>single coherent bet</strong>: one segment, one motion, one or two channels, executed hard enough to get a real signal. It is the discipline that converts &quot;we could sell to anyone, somehow&quot; into &quot;we win <em>these</em> customers, <em>this</em> way, at <em>this</em> price&quot; — repeatably, which is what makes revenue predictable instead of accidental.</p>
+        </section>
+
+        <section id="how-experts-reason-with-it">
+          <h2>How experts reason with it</h2>
+          <p>The insight a beginner misses: *<em>GTM is not &quot;marketing.&quot; It is the choice of a </em>motion<em>, and the motion is dictated by your price point and sales cycle — not by personal taste.<strong> Founders love the motion that matches their own personality (engineers love PLG because it feels like building; extroverts love sales). The expert lets the </strong>economics choose the motion</em>*, then builds the org around it.</p>
+<p><strong>The three motions, and when each fits:</strong></p>
+<p>| Motion | How it sells | Fits when… | Anti-pattern | |---|---|---|---| | <strong>Product-Led (PLG)</strong> | The product sells itself — free trial / freemium, self-serve signup, value felt before you ever talk to a human. | Low price / low ACV, short time-to-value, individual can adopt without approval, huge top-of-funnel. | Forcing self-serve onto a complex $50k enterprise deal nobody buys without a human. | | <strong>Sales-Led</strong> | Humans sell — inbound (leads request a demo) or outbound (reps prospect cold). Demos, negotiation, contracts. | High ACV, multiple stakeholders/approval, long consideration, product needs explaining or configuring. | Hiring expensive reps to sell a $15/month tool — the CAC can never pay back. | | <strong>Marketing / Community / Content-Led</strong> | Trust and demand are built at scale — SEO, content, a community, a category — that then <em>feeds</em> PLG or sales. | You can out-teach or out-community competitors; the buyer researches before buying; word-of-mouth compounds. | Producing content forever with no motion underneath to <em>convert</em> the audience into revenue. |</p>
+<p><strong>The single most important selection heuristic — price picks the motion:</strong></p>
+<p>A rough, widely-cited mental model (a <em>heuristic</em>, not a law):</p>
+<ul><li><strong>ACV (annual contract value) under ~$1–2k</strong> → you generally <em>cannot afford</em> human</li></ul>
+<p>sales. The math forces <strong>PLG / self-serve</strong>. A rep's fully-loaded cost divided across tiny deals blows up <a href="./cac.html">CAC</a>.</p>
+<ul><li><strong>ACV ~$1k–$25k</strong> → a <strong>hybrid / inside-sales</strong> zone. Often PLG to <em>acquire</em> + light</li></ul>
+<p>human touch to <em>expand</em> (&quot;product-led sales&quot;).</p>
+<ul><li><strong>ACV above ~$25k+</strong> → the deal is big and complex enough to <em>fund</em> human</li></ul>
+<p><strong>sales-led</strong> motion, and usually <em>requires</em> it (multiple approvers, procurement).</p>
+<p>The chain experts hold in their head: <strong><a href="./icp.html">ICP</a> → price point → ACV &amp; sales cycle → motion → channel → CAC.</strong> Get the front of the chain wrong and everything downstream misfires — which is why GTM is <strong>downstream of positioning and ICP.</strong> You cannot route a message you haven't framed, and you cannot choose a channel for a customer you haven't defined.</p>
+<p>Second expert reflex: *<em>GTM choice </em>drives<em> <a href="./cac.html">CAC</a>, channel by channel.</em>* Each channel has its own CAC curve, and the cheapest customers come first. The motion sets the floor: a healthy PLG funnel can have near-zero marginal CAC; an outbound-sales motion carries rep salaries in every acquisition. So &quot;which motion?&quot; is partly &quot;which CAC can my price point sustain?&quot; — the same unit-economics question CAC asks, seen from the distribution side.</p>
+<p>Third reflex — <strong>the beachhead.</strong> Geoffrey Moore's <em>Crossing the Chasm</em> argument: don't attack the whole market at once. Win a <strong>single narrow segment</strong> so completely that you become the obvious default there, generate word-of-mouth <em>inside</em> it, then expand to adjacent segments. A GTM aimed at &quot;everyone&quot; is a GTM aimed at no one — it dilutes the message and inflates CAC.</p>
+        </section>
+
+        <section id="when-you-use-it">
+          <h2>When you use it</h2>
+          <ul><li><strong>At launch</strong> — before writing a single ad or hiring a single rep, decide the motion.</li></ul>
+<p>The motion determines what you even build (self-serve onboarding vs. a demo flow).</p>
+<ul><li><strong>When acquisition feels random</strong> — leads trickle from everywhere and nothing</li></ul>
+<p>compounds. Usually a symptom of no chosen motion (spray-and-pray).</p>
+<ul><li><strong>When CAC won't pay back</strong> — often the motion doesn't match the price point (human</li></ul>
+<p>sales on a cheap product, or self-serve on a deal that needs hand-holding).</p>
+<ul><li><strong>When you're ready to scale a channel</strong> — but only after <a href="./pmf.html">PMF</a>. Scaling GTM</li></ul>
+<p>spend before product–market fit just buys churn faster.</p>
+<ul><li><strong>When choosing what to build next</strong> — a PLG motion forces investment in onboarding</li></ul>
+<p>and time-to-value; a sales-led motion forces investment in demos, security reviews, and integrations.</p>
+        </section>
+
+        <section id="metrics-how-it-s-measured">
+          <h2>Metrics / how it's measured</h2>
+          <p>GTM itself is a strategy, not a single number, but you judge it by the metrics of the motion you chose:</p>
+<ul><li><strong>Cross-cutting:</strong> <a href="./cac.html">CAC</a> by channel, CAC payback period, and the LTV:CAC</li></ul>
+<p>ratio (see <a href="./ltv.html">ltv</a>) — the ultimate test of whether the motion's economics work.</p>
+<ul><li><strong>PLG:</strong> signup → activation rate, time-to-value, free→paid conversion, viral/</li></ul>
+<p>referral coefficient, net revenue retention (expansion).</p>
+<ul><li><strong>Sales-led:</strong> pipeline coverage, win rate, sales-cycle length, average deal size</li></ul>
+<p>(ACV), quota attainment per rep.</p>
+<ul><li><strong>Content/community-led:</strong> organic traffic → signup, share of voice, community</li></ul>
+<p>growth and engagement, attributed pipeline.</p>
+<p>The meta-metric: is acquisition becoming <strong>more repeatable and cheaper per dollar of revenue over time</strong>, or more erratic and expensive? A working GTM compounds.</p>
+        </section>
+
+        <section id="common-misconceptions">
+          <h2>Common misconceptions</h2>
+          <ul><li><strong>&quot;GTM = marketing.&quot;</strong> Marketing is one channel <em>inside</em> a GTM. GTM is the whole</li></ul>
+<p>distribution strategy — segment, motion, channel, pricing, message — and the <em>motion</em> choice is the heart of it.</p>
+<ul><li><strong>&quot;PLG is the modern/best motion, so use it.&quot;</strong> PLG is a *fit for low-ACV,</li></ul>
+<p>self-serve-able products*, not a universally superior default. Forcing PLG onto a complex, high-ACV enterprise product is a classic trap — the reverse trap (hiring reps to sell a $50/month tool) is just as fatal.</p>
+<ul><li><strong>&quot;Pick lots of channels so you don't miss one.&quot;</strong> The opposite of the winning move.</li></ul>
+<p>Spray-and-pray guarantees no channel gets enough intensity to produce a clean signal. Concentrate, learn, <em>then</em> add channels.</p>
+<ul><li><strong>&quot;Nail GTM once and you're done.&quot;</strong> The motion is stable, but channels saturate and</li></ul>
+<p>CAC drifts (competition bids up ad prices, a channel maxes out). GTM is monitored and re-tuned, not set-and-forget.</p>
+<ul><li><strong>&quot;GTM comes first.&quot;</strong> It's <em>downstream</em> of <a href="./positioning.html">positioning</a> and</li></ul>
+<p><a href="./icp.html">ICP</a>. Choose the motion before framing who you're for, and you'll build the wrong funnel for the wrong buyer.</p>
+        </section>
+
+        <section id="examples">
+          <h2>Examples</h2>
+          <ul><li><strong>Slack (PLG):</strong> a free, individually-adoptable product with near-instant value; teams</li></ul>
+<p>pulled it in bottom-up, and sales came <em>later</em> to close the big accounts that self-serve had already seeded. Low friction, high volume — motion matched to a product anyone could try in minutes.</p>
+<ul><li><strong>Salesforce (sales-led):</strong> high-ACV, multi-stakeholder enterprise contracts that need</li></ul>
+<p>demos, procurement, and negotiation — a motion built on a real sales org because the deal size funds (and demands) it.</p>
+<ul><li><strong>HubSpot (content/marketing-led):</strong> essentially <em>invented</em> &quot;inbound marketing&quot; as a</li></ul>
+<p>category, out-taught everyone with free content and tools, and used that demand engine to feed its sales motion — content-led acquisition feeding a hybrid close.</p>
+<ul><li><strong>The mismatch trap:</strong> a startup with a genuinely complex $40k/year product tries pure</li></ul>
+<p>self-serve PLG. Prospects sign up, don't understand it, never talk to a human, and churn — the deal needed a human but the motion removed one. Same product with an inside-sales motion converts. <em>The product was fine; the motion was wrong.</em></p>
+        </section>
+
+        <section id="talking-to-an-llm-about-it">
+          <h2>Talking to an LLM about it</h2>
+          <p>The same intent, framed three ways — this is how vocabulary becomes leverage:</p>
+<ul><li><strong>Weak prompt:</strong> &quot;How do I get customers for my product?&quot;</li><li><strong>Better prompt:</strong> &quot;Help me plan a go-to-market strategy for my B2B SaaS as a solo</li></ul>
+<p>founder — what channels should I use?&quot;</p>
+<ul><li><strong>Expert prompt:</strong> &quot;Help me design a go-to-market strategy for a bootstrapped B2B SaaS</li></ul>
+<p>that automates candidate screening, ICP = recruiting agencies of 10–50 staff, priced at ~$300/month (ACV ≈ $3.6k). Recommend a <strong>motion</strong> (PLG vs. sales-led vs. content-led) justified by that ACV and sales cycle, define the <strong>beachhead segment</strong> to attack first, rank 2–3 <strong>channels</strong> by likely <a href="./cac.html">CAC</a> for this ICP with a target LTV:CAC of 3:1 and payback under 6 months, and flag where the motion and price point might be mismatched.&quot;</p>
+<p>The expert version supplies the ICP, the price point / ACV, and explicit ratio and payback targets — so the model reasons about <strong>motion selection and unit economics</strong> instead of handing back a generic &quot;do content marketing and run some ads&quot; list.</p>
+        </section>
+
+        <section id="my-evolving-understanding">
+          <h2>My evolving understanding</h2>
+          <ul><li><strong>v1 (2026-07-02):</strong> First pass while bootstrapping Entrepreneur-OS. The reframe that</li></ul>
+<p>landed: I used to think of GTM as &quot;marketing + picking some channels.&quot; The expert mental model is that GTM is fundamentally a choice of <strong>motion</strong>, and the motion is <em>dictated by price point and sales cycle</em>, not by preference — a rep costs money on every deal, so the deal has to be big enough to pay for the rep; self-serve scales on volume because it costs almost nothing per deal. The two symmetric traps (PLG on a high-ACV enterprise product; human sales on a cheap self-serve product) are both about a motion that doesn't match the economics. And GTM sits <em>downstream</em> of positioning and ICP — you can't route a message you haven't framed, to a customer you haven't defined. The beachhead idea (win one narrow segment totally, then expand) is the antidote to my instinct to address &quot;the whole market.&quot;</p>
+        </section>
+
+        <section id="sources">
+          <h2>Sources</h2>
+          <ul><li>Geoffrey Moore, <em>Crossing the Chasm</em> — beachhead strategy: win one narrow segment</li></ul>
+<p>completely before expanding; don't sell to the whole market at once.</p>
+<ul><li>Wes Bush, <em>Product-Led Growth</em> (and OpenView Partners' PLG research) — the PLG motion,</li></ul>
+<p>when self-serve/freemium fits, and product-led sales as a hybrid.</p>
+<ul><li>Bowery Capital, <em>The Go-To-Market Playbook</em> — motion selection and the segment →</li></ul>
+<p>channel → pricing → messaging structure of a GTM.</p>
+<ul><li>Widely-cited ACV → motion heuristic (sub-$1–2k ACV forces self-serve; $25k+ funds</li></ul>
+<p>sales-led) — standard SaaS GTM practice, to verify and deepen on revisit.</p>
+<ul><li>See also <a href="./positioning.html">positioning</a>, <a href="./icp.html">icp</a>, <a href="./cac.html">cac</a>, <a href="./pmf.html">pmf</a>.</li></ul>
+        </section>
+
+        <section>
+          <h2>Links</h2>
+          <nav class="footer-nav" aria-label="Page links">
+            <a class="pill" href="./gtm-fa.html">Persian version</a>
+            <a class="pill" href="./gtm.md">Markdown source</a>
+          </nav>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

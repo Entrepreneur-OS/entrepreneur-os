@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>فلای‌ویل | Entrepreneur-OS</title>
+  <meta name="description" content="Plain English: a flywheel is a growth loop where each turn makes the *next* turn easier — the output of one cycle becomes fuel for the next, so momentum compounds instead of needing constant fresh push. Expert phrasing: a **self-reinforcing (virtuous) loop** — Jim Collins's **flywheel** from *Good to Great*, or Amazon's **virtuous cycle** — where each step causally drives the next and the loop deposits a durable asset that spins the wheel faster over time.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f8f6;
+      --paper: #ffffff;
+      --ink: #17201b;
+      --muted: #5d6b63;
+      --line: #dce4dd;
+      --accent: #0f7b5f;
+      --accent-strong: #075f49;
+      --accent-soft: #e4f4ef;
+      --warning-soft: #fff2cc;
+      --shadow: 0 22px 70px rgba(23, 32, 27, 0.10);
+      --radius: 8px;
+      font-family: "Vazirmatn", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(240deg, rgba(15, 123, 95, 0.09), transparent 34rem), var(--bg);
+      color: var(--ink);
+      line-height: 1.9;
+    }
+
+    a {
+      color: var(--accent-strong);
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(13rem, 17rem);
+      gap: 2.5rem;
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 4rem;
+      direction: ltr;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 1rem;
+      align-self: start;
+      padding: 1rem 0;
+      grid-column: 2; direction: rtl;
+    }
+
+    main {
+      min-width: 0;
+      grid-column: 1; grid-row: 1; direction: rtl;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--ink);
+      font-weight: 850;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 2rem;
+      height: 2rem;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      box-shadow: 0 8px 24px rgba(23, 32, 27, 0.08);
+      font-size: 0.78rem;
+    }
+
+    .toc {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .toc-title {
+      margin: 0 0 0.7rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 900;
+      
+    }
+
+    .toc a {
+      display: block;
+      padding: 0.36rem 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .hero, section {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero {
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 14rem;
+      gap: 2rem;
+      padding: clamp(1.4rem, 4vw, 3rem);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 0.75rem;
+      color: var(--accent-strong);
+      font-size: 0.82rem;
+      font-weight: 900;
+      
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 14ch;
+      font-size: clamp(2.2rem, 6.5vw, 5.2rem);
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 45rem;
+      margin: 1.2rem 0 0;
+      color: var(--muted);
+      font-size: clamp(1.04rem, 1.6vw, 1.28rem);
+    }
+
+    .signal {
+      align-self: stretch;
+      display: grid;
+      align-content: center;
+      gap: 1rem;
+      padding: 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, #ffffff, #f3faf7);
+    }
+
+    .signal-line {
+      height: 0.8rem;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e3eae5;
+    }
+
+    .signal-line::before {
+      content: "";
+      display: block;
+      width: 72%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #b7e4d2, var(--accent));
+    }
+
+    .signal p {
+      margin: 0;
+      color: var(--ink);
+      font-size: 0.98rem;
+      font-weight: 650;
+    }
+
+    .metadata {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .meta-item {
+      min-width: 0;
+      padding: 1rem;
+      background: #fbfcfb;
+    }
+
+    .meta-label {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--muted);
+      font-size: 0.74rem;
+      font-weight: 900;
+      
+    }
+
+    .meta-value {
+      display: block;
+      color: var(--ink);
+      font-weight: 720;
+    }
+
+    .content {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    section {
+      padding: clamp(1.25rem, 3vw, 2rem);
+    }
+
+    section h2 {
+      margin: 0 0 0.9rem;
+      font-size: clamp(1.35rem, 2.2vw, 2rem);
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    section p { margin: 0.75rem 0 0; }
+    section p:first-of-type { margin-top: 0; }
+    strong { font-weight: 900; }
+    code {
+      padding: 0.08rem 0.28rem;
+      border-radius: 5px;
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+
+    ul, ol {
+      margin: 0.8rem 0 0;
+      padding-right: 1.25rem;
+      padding-left: 0;
+    }
+
+    li + li { margin-top: 0.55rem; }
+
+    blockquote, .note {
+      margin: 0;
+      padding: 1rem 1.1rem;
+      border-right: 4px solid var(--accent);
+      border-radius: var(--radius);
+      background: var(--accent-soft);
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.2rem;
+      padding: 0.4rem 0.75rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      font-weight: 760;
+      text-decoration: none;
+    }
+
+    @media (max-width: 860px) {
+      .shell {
+        display: block;
+        width: min(100% - 1rem, 46rem);
+        padding-top: 0.75rem;
+      }
+
+      .sidebar {
+        position: static;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.75rem 0 1rem;
+      }
+
+      .toc { display: none; }
+      .hero-top { grid-template-columns: 1fr; }
+      .metadata { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 520px) {
+      .metadata { grid-template-columns: 1fr; }
+      section { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="ناوبری مفهوم">
+      <a class="brand" href="../README.md" aria-label="Entrepreneur-OS">
+        <span>Entrepreneur-OS</span>
+        <span class="brand-mark" dir="ltr">EOS</span>
+      </a>
+      <nav class="toc" aria-label="بخش‌های صفحه">
+        <p class="toc-title">نقشه مفهوم</p>
+        <a href="#what-it-is">چیست؟</a>
+        <a href="#why-it-exists-the-problem-it-solves">چرا وجود دارد؟</a>
+        <a href="#how-experts-reason-with-it">استدلال متخصص‌ها</a>
+        <a href="#when-you-use-it">زمان استفاده</a>
+        <a href="#metrics-how-it-s-measured">سنجه‌ها و اندازه‌گیری</a>
+        <a href="#common-misconceptions">برداشت‌های غلط رایج</a>
+        <a href="#examples">مثال‌ها</a>
+        <a href="#talking-to-an-llm-about-it">حرف زدن با LLM درباره آن</a>
+        <a href="#my-evolving-understanding">فهم در حال تکامل من</a>
+        <a href="#sources">منابع</a>
+      </nav>
+    </aside>
+
+    <main>
+      <header class="hero">
+        <div class="hero-top">
+          <div>
+            <p class="eyebrow">مفهوم کارآفرینی</p>
+            <h1>فلای‌ویل</h1>
+            <p class="subtitle">یادداشت: این صفحه نسخه راست‌به‌چپ طراحی‌شده از منبع Markdown است. عنوان‌ها و قاب صفحه فارسی شده‌اند؛ متن تخصصی بدنه از منبع اصلی حفظ شده تا ترجمه مفهومی هر یادداشت جداگانه بازبینی شود.</p>
+          </div>
+          <aside class="signal" aria-label="سیگنال مفهومی">
+            <div class="signal-line" aria-hidden="true"></div>
+            <p>از تعریف عبور کن؛ این صفحه برای فهم عملی، تصمیم‌گیری، و گفتگو با AI ساخته شده است.</p>
+          </aside>
+        </div>
+        <div class="metadata" aria-label="فراداده مفهوم">
+          <div class="meta-item">
+            <span class="meta-label">دامنه</span>
+            <span class="meta-value">strategy</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">مرحله</span>
+            <span class="meta-value">growth</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">پیش‌نیازها</span>
+            <span class="meta-value"><a href="./pmf-fa.html">pmf</a> (a flywheel <em>amplifies</em> a loop that already delivers value — spinning a product nobody keeps just burns money faster), <a href="./retention-fa.html">retention</a> (the loop needs customers to stay in it to feed the next turn)</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">مرتبط</span>
+            <span class="meta-value"><a href="./network-effects-fa.html">network-effects</a>, <a href="./moat-fa.html">moat</a>, <a href="./retention-fa.html">retention</a> · <strong>Contrast with:</strong> <a href="./aarrr-funnel-fa.html">aarrr-funnel</a> (a one-way pipe, not a loop)</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        
+        <section id="what-it-is">
+          <h2>چیست؟</h2>
+          <p>A flywheel is a heavy wheel that's brutally hard to start turning. You push and it barely moves; you push again and it inches forward. But <strong>each push adds to the last</strong> — momentum accumulates in the mass — and after enough consistent pushes in the same direction, the wheel is spinning so fast that the same effort keeps it going. Eventually it spins itself. Jim Collins's point in <em>Good to Great</em>: there was never a single push that &quot;did it.&quot; Ask a great company for the one decisive move and there isn't one — it's the <strong>cumulative effect of thousands of turns in one consistent direction</strong>.</p>
+<p>Applied to a business, a flywheel is a <strong>loop where every step causes the next, and the last step feeds back into the first</strong>:</p>
+<ul><li>A happy customer refers a friend → more customers.</li><li>More customers → more usage data → a better product → happier customers.</li><li>More volume → lower unit costs → lower prices → more customers.</li></ul>
+<p>The defining feature is the <strong>feedback edge</strong>: the output of a turn (a customer, a review, a data point, a dollar of scale) comes back as <em>input</em> that lowers the cost or raises the yield of the next turn. That's why a working flywheel produces <strong>compounding</strong> growth — accelerating, not merely steady — while requiring <em>less</em> marginal push over time, not more.</p>
+        </section>
+
+        <section id="why-it-exists-the-problem-it-solves">
+          <h2>چرا وجود دارد؟</h2>
+          <p>Most growth is linear and effortful: you spend to acquire a customer, they exit the system, and to grow again next month you must spend again — the machine forgets everyone who left. That's a <strong>funnel</strong> (see <a href="./aarrr-funnel-fa.html">aarrr-funnel</a>): a one-way pipe where the customer is the <em>end</em>. It works, but it never gets <em>easier</em> — growth is permanently pegged to how hard you push the top.</p>
+<p>The flywheel concept exists to name the alternative: *<em>a loop where the customer is the </em>engine<em>, not the exit.<strong> The question it forces a founder to ask is not &quot;how do I get more customers?&quot; but &quot;</strong>how does getting a customer make the next customer cheaper?</em>*&quot; If you can build a system where each turn deposits something durable — selection, data, network density, brand, a retained base — then growth stops being a boulder you shove uphill forever and becomes a wheel that, past a threshold, carries its own momentum. That shift, from linear push to compounding loop, is the whole reason the concept earns its place in strategy.</p>
+        </section>
+
+        <section id="how-experts-reason-with-it">
+          <h2>استدلال متخصص‌ها</h2>
+          <p>The insight a beginner misses: <strong>a flywheel is not a diagram — it's a compounding claim about a durable asset.</strong> The test is not &quot;can I draw a circle of arrows?&quot; It's &quot;does each turn leave behind an asset that makes the next turn cheaper?&quot; Everything below is how you tell a real flywheel from a drawn one.</p>
+<ol><li><strong>Every arrow must be a genuine cause → effect — not a hopeful &quot;and then.&quot;</strong> A real</li></ol>
+<p>flywheel is a chain of <em>mechanisms</em>: step A must actually make step B cheaper, faster, or better. Test each arrow individually — &quot;does A <em>mechanically</em> drive B?&quot; If any arrow is aspirational (&quot;...and then they'll tell their friends&quot;), the loop leaks there and won't compound. A circle where the arrows are wishes is a funnel with its ends taped together.</p>
+<ol><li>*<em>The loop must compound a durable </em>asset<em>, not just activity.</em>* Each turn has to</li></ol>
+<p>deposit into a persistent <strong>stock</strong> — Amazon's selection, Google's data, a marketplace's liquidity, a brand's trust, a <a href="./retention-fa.html">retained</a> user base. If a turn only generates transient activity (a spike of signups that churn), nothing accumulates and the wheel coasts to a stop the moment you stop pushing. <strong>The asset the flywheel deposits is what makes the next turn easier — and it is literally the <a href="./moat-fa.html">moat</a>.</strong></p>
+<ol><li><strong>The flywheel is only as fast as its weakest step.</strong> Momentum runs through the steps</li></ol>
+<p>in <em>series</em>, so the slowest or leakiest step throttles the entire loop — the same logic as fixing a funnel's <a href="./aarrr-funnel-fa.html">narrowest point</a>. And a step that's fully broken doesn't slow the wheel; it <strong>stalls</strong> it. A killer acquisition engine feeding a leaky <a href="./retention-fa.html">retention</a> step spins nothing. Find the weak link and pour effort <em>there</em>, not into the step that's already strong.</p>
+<ol><li><strong>You must push it hard, by hand, before it spins itself.</strong> Early on the wheel is dead</li></ol>
+<p>weight and the loop is weak — the compounding hasn't kicked in yet. This is the <strong>&quot;do things that don't scale&quot;</strong> window (Paul Graham): manually recruit the first users, hand-hold onboarding, personally ask for every referral. Founders who assume the flywheel is self-turning from day one quit during the <em>exact</em> phase where all the pushing happens. The payoff is later, and it's <strong>nonlinear</strong> — which is precisely why it's easy to give up right before it arrives.</p>
+<ol><li><strong>Direction beats heroics — consistency compounds, lurching resets.</strong> Collins's core</li></ol>
+<p>finding: there's no miracle move, just thousands of turns in <strong>one consistent direction</strong>. Every pivot — a new &quot;growth strategy&quot; each quarter, a different loop each month — dumps the accumulated momentum and starts the heavy wheel from zero. Collins's mirror-image failure is the <strong>&quot;doom loop&quot;</strong>: companies that lurch from initiative to initiative and never build enough momentum to self-sustain. Boring consistency is the mechanism, not a personality trait.</p>
+<ol><li><strong>A flywheel and a <a href="./moat-fa.html">moat</a> are the same object seen twice.</strong> The flywheel is</li></ol>
+<p>the <strong>dynamic</strong> view — how the advantage compounds turn by turn. The moat is the <strong>static</strong> view — why a competitor can't copy the resulting asset. <a href="./network-effects-fa.html">Network effects</a> are the purest case: each new user makes the product more valuable (a flywheel turn), and the resulting network density is the barrier (a moat). Rule of thumb: if you can name a genuine flywheel, you can name the moat it builds — and if you can't name the moat, the &quot;flywheel&quot; probably isn't one.</p>
+<p>The founder's takeaway: <strong>design the loop, test every arrow for real causality, make sure each turn deposits a durable asset, then push the weakest step by hand until it spins.</strong></p>
+        </section>
+
+        <section id="when-you-use-it">
+          <h2>زمان استفاده</h2>
+          <ul><li><strong>Designing a growth strategy that compounds</strong> instead of one pegged to ever-rising</li></ul>
+<p>spend — before you scale, map the loop and its feedback edge.</p>
+<ul><li><strong>Diagnosing why growth feels like shoving a boulder uphill</strong> — usually it means there's</li></ul>
+<p>no loop (a pure funnel) or a broken/weak step in the loop.</p>
+<ul><li><strong>Prioritizing investments</strong> — prefer work that <em>deepens the loop</em> (deposits into the</li></ul>
+<p>durable asset) over one-shot pushes that evaporate. What doesn't feed the loop is a distraction, however shiny.</p>
+<ul><li><strong>Deciding what NOT to do</strong> — initiatives that don't turn the wheel are noise, and each</li></ul>
+<p>new <em>direction</em> costs you accumulated momentum.</p>
+<ul><li><strong>Telling the strategy / fundraising narrative</strong> — &quot;here's our flywheel&quot; is the</li></ul>
+<p>compounding-growth story investors want — <em>but only if the arrows are real mechanisms, not decoration.</em></p>
+        </section>
+
+        <section id="metrics-how-it-s-measured">
+          <h2>سنجه‌ها و اندازه‌گیری</h2>
+          <p>A flywheel is structural, so — like a <a href="./moat-fa.html">moat</a> — it shows up as <strong>persistence and acceleration</strong> over time rather than a single number:</p>
+<ul><li><strong>Falling effective <a href="./cac-fa.html">CAC</a> as you scale.</strong> If the loop works, referrals,</li></ul>
+<p>word-of-mouth, and brand should make each new customer <em>cheaper</em> to acquire over time. CAC that <em>rises</em> at scale is the fingerprint of a funnel, not a flywheel.</p>
+<ul><li><strong>Unit economics improving with volume.</strong> Scale-economy loops (Amazon's cost cycle) show</li></ul>
+<p>up as gross margin <em>expanding</em> as volume grows, not compressing.</p>
+<ul><li><strong>Super-linear, compounding growth.</strong> Genuine flywheels produce an <em>accelerating</em> growth</li></ul>
+<p>curve once momentum crosses the threshold — for a while the growth <em>rate</em> itself trends up, not just the total.</p>
+<ul><li><strong>A leading metric per arrow.</strong> Instrument each step so you can watch the weakest one:</li></ul>
+<p>viral coefficient <em>k</em> for a referral loop (see <a href="./aarrr-funnel-fa.html">aarrr-funnel</a>), data-volume / model-accuracy for a data loop, liquidity / match-time for a marketplace, <a href="./retention-fa.html">retention</a>-curve shape for the feedback-into-usage step.</p>
+<p>No single snapshot proves a flywheel — you read these together, over time. The claim is about the <em>future</em>, so it's validated by persistence and acceleration, not a one-month chart.</p>
+        </section>
+
+        <section id="common-misconceptions">
+          <h2>برداشت‌های غلط رایج</h2>
+          <ul><li><strong>&quot;A circle of arrows is a flywheel.&quot;</strong> The single most common trap: draw a funnel, bend</li></ul>
+<p>the arrows into a circle, declare victory. If the loop doesn't feed output back as <em>input that lowers the next turn's cost</em>, it's a one-way pipe with a decorative curve. Test every arrow for a real cause → effect.</p>
+<ul><li><strong>&quot;The flywheel spins itself.&quot;</strong> Not at the start — early, it's dead weight you push by</li></ul>
+<p>hand (&quot;do things that don't scale&quot;). Assuming autonomous momentum before you've built it is why founders quit in the heavy-pushing phase, right before the nonlinear payoff.</p>
+<ul><li><strong>&quot;One strong step carries the loop.&quot;</strong> A flywheel is a <em>series</em> circuit: the <strong>weakest</strong></li></ul>
+<p>step sets the speed and a broken step <strong>stalls</strong> the whole thing. A world-class acquisition engine feeding a leaky <a href="./retention-fa.html">retention</a> step compounds nothing.</p>
+<ul><li><strong>&quot;Any loop compounds.&quot;</strong> A <strong>vanity flywheel</strong> loops <em>activity</em> that never deposits a</li></ul>
+<p>durable asset — e.g., paid-ad signups that churn. The wheel turns while the money lasts, then stops dead. Real flywheels compound a <em>stock</em> (selection, data, network density, brand, a retained base).</p>
+<ul><li><strong>&quot;More force, in any direction.&quot;</strong> Lurching between strategies <strong>resets</strong> momentum;</li></ul>
+<p>consistency in <em>one</em> direction is the mechanism (Collins's &quot;doom loop&quot; is the failure mode). A heavy wheel punished by constant pivots never gets fast enough to self-sustain.</p>
+<ul><li><strong>&quot;A flywheel is just a funnel, upgraded.&quot;</strong> Different objects. A <a href="./aarrr-funnel-fa.html">funnel</a></li></ul>
+<p><em>measures</em> a one-way conversion (a diagnosis tool); a flywheel <em>designs</em> a self-reinforcing loop (a growth architecture). They connect — Referral → Acquisition is exactly where a funnel bends into a loop — but one is not a fancier version of the other.</p>
+        </section>
+
+        <section id="examples">
+          <h2>مثال‌ها</h2>
+          <ul><li><strong>Amazon — the canonical flywheel.</strong> Bezos's napkin sketch: lower prices → more customers</li></ul>
+<p>→ more traffic → more third-party sellers → wider selection → better customer experience → more customers. Coupled to a second loop: growth → scale economies → lower cost structure → lower prices (back to the start). Every arrow is a real mechanism, and the loop deposits two durable assets — unmatched <strong>selection</strong> and a structural <strong>cost advantage</strong> — which are precisely Amazon's <a href="./moat-fa.html">moat</a>.</p>
+<ul><li><strong>Uber / marketplaces — the liquidity flywheel.</strong> More drivers → shorter wait times and</li></ul>
+<p>lower prices → more riders → more earnings per driver-hour → more drivers. A two-sided <a href="./network-effects-fa.html">network effect</a> expressed as a loop; the deposited asset is <strong>liquidity</strong> (density on both sides), which a new entrant can't conjure from a standing start.</p>
+<ul><li><strong>A data / ML flywheel.</strong> More users → more data → a better model / product → more users</li></ul>
+<p>(Google Search, recommendation engines). The deposited asset is <strong>proprietary data + model quality</strong> — a compounding <a href="./moat-fa.html">moat</a> a competitor can't backfill by spending.</p>
+<ul><li><strong>A content / SEO flywheel.</strong> Publish → rank → traffic → signups; revenue funds more and</li></ul>
+<p>better content, and users contribute pages that add ranking surface → more traffic. The deposited asset is a <strong>durable library of ranking pages</strong>.</p>
+<ul><li>*<em>A </em>broken<em> flywheel (the anti-example).</em>* A startup buys signups with paid ads, but users</li></ul>
+<p>don't activate or refer — so nothing feeds back. The &quot;loop&quot; is really a funnel, and growth stops the instant ad spend stops. The arrow &quot;customer → more customers&quot; was <em>drawn</em> but never <em>existed</em>.</p>
+        </section>
+
+        <section id="talking-to-an-llm-about-it">
+          <h2>حرف زدن با LLM درباره آن</h2>
+          <p>The same intent, framed three ways — this is how vocabulary becomes leverage:</p>
+<ul><li><strong>Weak prompt:</strong> &quot;How do I get my startup to grow faster?&quot;</li><li><strong>Better prompt:</strong> &quot;How do I build a flywheel / growth loop for my SaaS?&quot;</li><li><strong>Expert prompt:</strong> &quot;Act as a growth strategist using Jim Collins's flywheel concept and</li></ul>
+<p>Amazon's virtuous-cycle framing. My business is a bootstrapped B2B SaaS for recruiting agencies, post-PMF, ~$40k MRR. Map a candidate flywheel as an explicit chain of cause → effect steps, and for each arrow tell me: (a) whether it's a real mechanism or a hopeful 'and then'; (b) which durable asset the loop deposits (data, network density, brand, retained base) so it doubles as a moat; and (c) which step is the weakest link throttling the loop. Then tell me where I should push manually <em>now</em> ('do things that don't scale') before the loop can self-sustain, and the one leading metric per arrow I should instrument (viral coefficient, CAC trend, retention-curve shape). Be skeptical — if what I've described is really a funnel with the ends taped together, say so and tell me why.&quot;</p>
+<p>The expert version names the frameworks (Collins, Amazon, Graham), supplies stage and metrics, and <em>demands</em> the arrow-by-arrow causality test plus the weakest-link and durable-asset checks — so the model does genuine loop <strong>design and critique</strong>, not a generic &quot;do content marketing&quot; list.</p>
+        </section>
+
+        <section id="my-evolving-understanding">
+          <h2>فهم در حال تکامل من</h2>
+          <ul><li><strong>v1 (2026-07-06):</strong> First pass while building Entrepreneur-OS. The reframe that landed: I</li></ul>
+<p>used to picture a flywheel as &quot;a <a href="./aarrr-funnel-fa.html">funnel</a>, but circular&quot; — draw the customer journey, bend it into a loop, done. The sharper model is that a flywheel is a <strong>compounding claim about a durable asset</strong>, and two tests separate a real one from a drawn one: (1) every arrow must be a genuine cause → effect (&quot;does turn A <em>mechanically</em> make turn B cheaper?&quot;), and (2) each turn must deposit into a persistent <em>stock</em> — selection, data, network density, brand, a <a href="./retention-fa.html">retained</a> base — because that deposited asset is what makes the next turn easier <em>and is literally the <a href="./moat-fa.html">moat</a></em>. That's the second shift: <strong>flywheel and moat are the same object seen twice</strong> — the flywheel is the dynamic view of how an advantage compounds, the moat the static view of why it can't be copied (<a href="./network-effects-fa.html">network effects</a> are the purest case of both at once). And the humbling part, from Collins and Graham: the wheel is dead weight at the start — you push it by hand through the exact phase where it feels like nothing is working, and it only spins itself <em>later</em>, and only if you keep pushing in <strong>one consistent direction</strong>. The weakest step sets the speed; lurching between strategies resets it to zero.</p>
+        </section>
+
+        <section id="sources">
+          <h2>منابع</h2>
+          <ul><li>Jim Collins, <em>Good to Great</em> (2001) and <em>Turning the Flywheel</em> (monograph) — the flywheel</li></ul>
+<p>vs. the <strong>&quot;doom loop&quot;</strong>; the finding that there's no single defining push, only the cumulative effect of consistent turns in one direction.</p>
+<ul><li>Jeff Bezos / Amazon — the <strong>&quot;virtuous cycle&quot;</strong> napkin sketch: the coupled</li></ul>
+<p>selection-and-experience loop and the growth-and-cost loop (via Brad Stone, <em>The Everything Store</em> — to verify and deepen on revisit).</p>
+<ul><li>Paul Graham, <em>Do Things That Don't Scale</em> (2013 essay) — the manual, unscalable pushing</li></ul>
+<p>phase <em>before</em> the loop can self-sustain.</p>
+<ul><li>Dave McClure's AARRR (see <a href="./aarrr-funnel-fa.html">aarrr-funnel</a>) — the Referral → Acquisition</li></ul>
+<p>edge, which is exactly where a one-way funnel bends into a compounding loop.</p>
+<ul><li>See also <a href="./network-effects-fa.html">network-effects</a>, <a href="./retention-fa.html">retention</a>,</li></ul>
+<p><a href="./aarrr-funnel-fa.html">aarrr-funnel</a>, <a href="./moat-fa.html">moat</a>.</p>
+        </section>
+
+        <section>
+          <h2>پیوندها</h2>
+          <nav class="footer-nav" aria-label="پیوندهای صفحه">
+            <a class="pill" href="./flywheel.html">نسخه انگلیسی</a>
+            <a class="pill" href="./flywheel.md">منبع Markdown</a>
+          </nav>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

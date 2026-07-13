@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ویروسی‌شدن و ضریب K | Entrepreneur-OS</title>
+  <meta name="description" content="Plain English: virality is when your product grows by getting its *own users* to bring in *new users* — and the K-factor is the one number that tells you whether that loop feeds itself or fizzles out. Expert phrasing: the **viral coefficient K** = the average number of new users each existing user converts (invites sent × conversion rate); **K &gt; 1** means each cohort more than replaces itself and growth compounds on its own; **K &lt; 1** means the loop *amplifies* other channels but decays without them. The loop's *speed* — **viral cycle time** — matters as much as K itself. Rough model: with viral coefficient K per cycle and cycle time `ct`, users after time `t` grow like `Users(t) ≈ Users(0) × K^(t / ct)`. The exponent has `ct` in the *denominator* — shrinking cycle time is a direct multiplier on the growth rate.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f8f6;
+      --paper: #ffffff;
+      --ink: #17201b;
+      --muted: #5d6b63;
+      --line: #dce4dd;
+      --accent: #0f7b5f;
+      --accent-strong: #075f49;
+      --accent-soft: #e4f4ef;
+      --warning-soft: #fff2cc;
+      --shadow: 0 22px 70px rgba(23, 32, 27, 0.10);
+      --radius: 8px;
+      font-family: "Vazirmatn", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(240deg, rgba(15, 123, 95, 0.09), transparent 34rem), var(--bg);
+      color: var(--ink);
+      line-height: 1.9;
+    }
+
+    a {
+      color: var(--accent-strong);
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(13rem, 17rem);
+      gap: 2.5rem;
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 4rem;
+      direction: ltr;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 1rem;
+      align-self: start;
+      padding: 1rem 0;
+      grid-column: 2; direction: rtl;
+    }
+
+    main {
+      min-width: 0;
+      grid-column: 1; grid-row: 1; direction: rtl;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--ink);
+      font-weight: 850;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 2rem;
+      height: 2rem;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      box-shadow: 0 8px 24px rgba(23, 32, 27, 0.08);
+      font-size: 0.78rem;
+    }
+
+    .toc {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .toc-title {
+      margin: 0 0 0.7rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 900;
+      
+    }
+
+    .toc a {
+      display: block;
+      padding: 0.36rem 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .hero, section {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero {
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 14rem;
+      gap: 2rem;
+      padding: clamp(1.4rem, 4vw, 3rem);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 0.75rem;
+      color: var(--accent-strong);
+      font-size: 0.82rem;
+      font-weight: 900;
+      
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 14ch;
+      font-size: clamp(2.2rem, 6.5vw, 5.2rem);
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 45rem;
+      margin: 1.2rem 0 0;
+      color: var(--muted);
+      font-size: clamp(1.04rem, 1.6vw, 1.28rem);
+    }
+
+    .signal {
+      align-self: stretch;
+      display: grid;
+      align-content: center;
+      gap: 1rem;
+      padding: 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, #ffffff, #f3faf7);
+    }
+
+    .signal-line {
+      height: 0.8rem;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e3eae5;
+    }
+
+    .signal-line::before {
+      content: "";
+      display: block;
+      width: 72%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #b7e4d2, var(--accent));
+    }
+
+    .signal p {
+      margin: 0;
+      color: var(--ink);
+      font-size: 0.98rem;
+      font-weight: 650;
+    }
+
+    .metadata {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .meta-item {
+      min-width: 0;
+      padding: 1rem;
+      background: #fbfcfb;
+    }
+
+    .meta-label {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--muted);
+      font-size: 0.74rem;
+      font-weight: 900;
+      
+    }
+
+    .meta-value {
+      display: block;
+      color: var(--ink);
+      font-weight: 720;
+    }
+
+    .content {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    section {
+      padding: clamp(1.25rem, 3vw, 2rem);
+    }
+
+    section h2 {
+      margin: 0 0 0.9rem;
+      font-size: clamp(1.35rem, 2.2vw, 2rem);
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    section p { margin: 0.75rem 0 0; }
+    section p:first-of-type { margin-top: 0; }
+    strong { font-weight: 900; }
+    code {
+      padding: 0.08rem 0.28rem;
+      border-radius: 5px;
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+
+    ul, ol {
+      margin: 0.8rem 0 0;
+      padding-right: 1.25rem;
+      padding-left: 0;
+    }
+
+    li + li { margin-top: 0.55rem; }
+
+    blockquote, .note {
+      margin: 0;
+      padding: 1rem 1.1rem;
+      border-right: 4px solid var(--accent);
+      border-radius: var(--radius);
+      background: var(--accent-soft);
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.2rem;
+      padding: 0.4rem 0.75rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      font-weight: 760;
+      text-decoration: none;
+    }
+
+    @media (max-width: 860px) {
+      .shell {
+        display: block;
+        width: min(100% - 1rem, 46rem);
+        padding-top: 0.75rem;
+      }
+
+      .sidebar {
+        position: static;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.75rem 0 1rem;
+      }
+
+      .toc { display: none; }
+      .hero-top { grid-template-columns: 1fr; }
+      .metadata { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 520px) {
+      .metadata { grid-template-columns: 1fr; }
+      section { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="ناوبری مفهوم">
+      <a class="brand" href="../README.md" aria-label="Entrepreneur-OS">
+        <span>Entrepreneur-OS</span>
+        <span class="brand-mark" dir="ltr">EOS</span>
+      </a>
+      <nav class="toc" aria-label="بخش‌های صفحه">
+        <p class="toc-title">نقشه مفهوم</p>
+        <a href="#what-it-is">چیست؟</a>
+        <a href="#why-it-exists-the-problem-it-solves">چرا وجود دارد؟</a>
+        <a href="#how-experts-reason-with-it">استدلال متخصص‌ها</a>
+        <a href="#when-you-use-it">زمان استفاده</a>
+        <a href="#metrics-how-it-s-measured">سنجه‌ها و اندازه‌گیری</a>
+        <a href="#common-misconceptions">برداشت‌های غلط رایج</a>
+        <a href="#examples">مثال‌ها</a>
+        <a href="#talking-to-an-llm-about-it">حرف زدن با LLM درباره آن</a>
+        <a href="#my-evolving-understanding">فهم در حال تکامل من</a>
+        <a href="#sources">منابع</a>
+      </nav>
+    </aside>
+
+    <main>
+      <header class="hero">
+        <div class="hero-top">
+          <div>
+            <p class="eyebrow">مفهوم کارآفرینی</p>
+            <h1>ویروسی‌شدن و ضریب K</h1>
+            <p class="subtitle">یادداشت: این صفحه نسخه راست‌به‌چپ طراحی‌شده از منبع Markdown است. عنوان‌ها و قاب صفحه فارسی شده‌اند؛ متن تخصصی بدنه از منبع اصلی حفظ شده تا ترجمه مفهومی هر یادداشت جداگانه بازبینی شود.</p>
+          </div>
+          <aside class="signal" aria-label="سیگنال مفهومی">
+            <div class="signal-line" aria-hidden="true"></div>
+            <p>از تعریف عبور کن؛ این صفحه برای فهم عملی، تصمیم‌گیری، و گفتگو با AI ساخته شده است.</p>
+          </aside>
+        </div>
+        <div class="metadata" aria-label="فراداده مفهوم">
+          <div class="meta-item">
+            <span class="meta-label">دامنه</span>
+            <span class="meta-value">marketing</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">مرحله</span>
+            <span class="meta-value">growth</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">پیش‌نیازها</span>
+            <span class="meta-value"><a href="./aarrr-funnel-fa.html">aarrr-funnel</a> (virality is the Referral stage looping back into Acquisition), <a href="./retention-fa.html">retention</a> (you can't build a loop on users who leave)</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">مرتبط</span>
+            <span class="meta-value"><a href="./cac-fa.html">cac</a>, <a href="./distribution-fa.html">distribution</a> · <strong>Contrast with:</strong> <a href="./network-effects-fa.html">network-effects</a> (a <em>value</em> property, not a growth loop)</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        
+        <section id="what-it-is">
+          <h2>چیست؟</h2>
+          <p>Virality is a <strong>growth loop</strong>: a new user joins, the product prompts (or motivates) them to pull in <em>other</em> people, some of those accept and become new users, and <em>they</em> repeat the loop. When the loop's output (new users) feeds back into its own input (existing users who invite), growth stops being something you <em>buy</em> and becomes something the product <em>produces</em> — acquisition without a proportional rise in <a href="./cac-fa.html">CAC</a>.</p>
+<p>The <strong>K-factor</strong> (viral coefficient) is the single number that says whether the loop is self-sustaining. It's a simple product of two rates:</p>
+<p>``<code> K = i × c i = average number of invites each user sends c = conversion rate of those invites (fraction who become new active users) </code>``</p>
+<p>Example: each user invites 5 friends (i = 5), and 20% sign up (c = 0.2) → <strong>K = 1.0</strong>. Every user brings exactly one new user; the population sustains itself from within.</p>
+<p>The interpretation is the whole point:</p>
+<p>| K value | What it means | Real-world reality | |---|---|---| | <strong>K &gt; 1</strong> | Each user brings <em>more than one</em> new user → exponential, self-sustaining growth with <strong>no</strong> external spend | <strong>Rare and usually temporary.</strong> Almost always decays as the addressable network saturates. | | <strong>K = 1</strong> | Each user replaces themselves → the base holds but doesn't compound on its own | A knife-edge; drifts below 1 in practice. | | <strong>K &lt; 1</strong> | Each user brings a <em>fraction</em> of a new user → the loop <strong>amplifies</strong> paid/organic acquisition but can't run alone | <strong>The normal, useful case.</strong> Most good &quot;viral&quot; products live here. |</p>
+<p>The counter-intuitive part is the last row: <strong>K &lt; 1 is not failure.</strong> A K of 0.5 acts as a <em>multiplier</em> on every other channel. If you acquire 1,000 users through ads, a K of 0.5 turns them into 1,000 + 500 + 250 + 125 + … ≈ <strong>2,000</strong> — a viral multiplier of <code>1 / (1 − K)</code>. So sub-1 virality effectively <em>halves</em> your <a href="./cac-fa.html">CAC</a> without ever being self-sustaining. Chasing K &gt; 1 is chasing a unicorn; engineering K from 0.2 to 0.6 is where the real money is.</p>
+        </section>
+
+        <section id="why-it-exists-the-problem-it-solves">
+          <h2>چرا وجود دارد؟</h2>
+          <p>The problem virality names is the <strong>cost and ceiling of paid acquisition.</strong> Every bought channel (<a href="./distribution-fa.html">distribution</a>'s paid family) has the same two enemies: <a href="./cac-fa.html">CAC</a> that <em>rises</em> as you scale (you exhaust the cheap audience and bid against competitors), and growth that <em>stops the day you stop paying</em>. You're renting your growth.</p>
+<p>Virality is the attempt to make growth an <strong>owned, compounding asset</strong> instead of a rented, linear expense. A referral loop, once engineered into the product, keeps producing users after the engineering is done — the marginal cost of the next user trends toward zero. That's why founders romanticize it: it's the one channel whose unit economics <em>improve</em> with scale instead of degrading.</p>
+<p>The K-factor exists to make that loop <strong>measurable and honest.</strong> &quot;Going viral&quot; is a vibe; K is a number you can instrument, and it forces the uncomfortable question every &quot;viral&quot; pitch dodges: <em>does each user actually bring back more than a fraction of another user, and how fast?</em> Most products that <em>feel</em> viral have a K of 0.1 and a cycle time measured in weeks — which is fine, but it's a multiplier, not a rocket, and naming K keeps you from lying to yourself about which one you have.</p>
+        </section>
+
+        <section id="how-experts-reason-with-it">
+          <h2>استدلال متخصص‌ها</h2>
+          <p>The insight a beginner misses: <strong>K is not the whole story — speed is the other half, and both sit on top of <a href="./retention-fa.html">retention</a>. A high K on a slow loop with a leaky bucket is a mirage.</strong></p>
+<p><strong>1. Viral cycle time is a co-equal lever — often the bigger one.</strong> K tells you <em>how many</em> new users each user brings; <strong>viral cycle time (<code>ct</code>)</strong> tells you <em>how long</em> that takes — the time from a user joining to them successfully converting a new user. Two products with the <em>same</em> K but different cycle times grow at wildly different rates, because the loop compounds <em>per cycle</em>. Halving the cycle time is roughly as powerful as a large jump in K. The intuition: a product where the invite is <em>part of core use</em> (you send a payment, you share a doc) loops in hours; one that relies on a user <em>remembering</em> to refer loops in weeks. <strong>Design the invite into the moment of value, not into a settings page</strong> — that's the single highest-leverage move on cycle time.</p>
+<p>*<em>2. K &gt; 1 is rare and </em>decays<em> — plan for it, don't bank on it.<strong> Even genuinely viral products don't hold K &gt; 1 forever, because the loop </strong>saturates its addressable network</em><em>: early users invite fresh contacts, but as penetration rises, more invites land on people who already use the product (or already declined). Conversion <code>c</code> falls, so K falls. The famous hyper-growth loops (Hotmail, early PayPal, Dropbox referrals) ran K &gt; 1 for a </em>window*, then settled below 1 and were topped up by other channels. The expert move is to treat K &gt; 1 as a temporary accelerant, not a business model — and to have the next channel ready for when it decays.</p>
+<p>*<em>3. Virality is a loop </em>stacked on<em> <a href="./retention-fa.html">retention</a> — the leaky-bucket trap.</em><em> The K formula quietly assumes the users you acquire </em>stay long enough to invite others*. If <a href="./retention-fa.html">retention</a> is bad, you're pouring users into a bucket with a hole: they arrive, maybe send one invite, then churn — so the loop never compounds and the &quot;growth&quot; is just fast turnover. Worse, <strong>gaming invites can actively hurt retention</strong>: aggressive invite prompts, contact-list spam, and forced-share walls annoy users into leaving and burn your reputation with the very network you're trying to penetrate. A high K bought at the cost of retention is negative-sum. <strong>Retention is the foundation the loop stands on — fix the bucket before you widen the tap.</strong></p>
+<p><strong>4. The four types of virality — know which one you actually have.</strong> &quot;Viral&quot; is not one thing; the mechanism determines how much you can engineer it:</p>
+<p>| Type | How the loop works | Example | Can you engineer it? | |---|---|---|---| | <strong>Inherent / product virality</strong> | Using the product <em>requires</em> pulling in others — the invite <em>is</em> the core action | Video call, shared doc, a payment app (you must invite the other party) | <strong>Strongly</strong> — it's baked into the product's job | | <strong>Word-of-mouth</strong> | Users spontaneously tell others because the product is remarkable | People rave about a genuinely great tool | <strong>Indirectly</strong> — via product quality, not a loop you control | | <strong>Incentivized / referral</strong> | You <em>reward</em> users (and often the invitee) for referring | Dropbox &quot;give space, get space&quot;; PayPal cash bonuses | <strong>Directly</strong> — but costs money and attracts gamers | | <strong>Casual-contact virality</strong> | The product spreads by <em>exposure</em> to non-users, no explicit invite | Email signatures (&quot;Sent from my iPhone&quot; / &quot;Get your free Hotmail&quot;), public share links | <strong>Yes</strong> — engineer the passive touchpoints |</p>
+<p>The most durable virality is <strong>inherent</strong> (the loop can't be turned off without breaking the product); the most <em>abused</em> is <strong>incentivized</strong> (it works, but it's rented — turn off the reward and the loop often stops, and you attract people gaming the bonus rather than loving the product).</p>
+<p>*<em>5. Virality lowers </em>effective<em> <a href="./cac-fa.html">CAC</a> and feeds the funnel.<strong> In the <a href="./aarrr-funnel-fa.html">AARRR funnel</a>, virality is the </strong>Referral stage looping back into Acquisition.</em><em> Every user the loop brings is one you didn't pay for, so your </em>blended<em> CAC = (paid spend) ÷ (paid users + viral users) falls as K rises. A paid channel with CAC of \$40 and a K of 0.5 has an </em>effective* CAC near \$27, because each paid user drags in half a free one. This is why <a href="./distribution-fa.html">distribution</a> lists viral/referral as the channel whose CAC &quot;can approach zero&quot; — the loop is doing acquisition work for free.</p>
+<p><strong>The founder's takeaway:</strong> measure K <em>and</em> cycle time, build the invite into the moment of value (not a settings page), never trade <a href="./retention-fa.html">retention</a> for invites, and treat K &gt; 1 as a temporary gift — not a plan.</p>
+        </section>
+
+        <section id="when-you-use-it">
+          <h2>زمان استفاده</h2>
+          <ul><li><strong>Deciding whether &quot;viral growth&quot; is even a realistic channel</strong> for your product —</li></ul>
+<p>inherent-virality products (collaboration, communication, payments) can bet on it; a solo-use tool usually can't, and should lean on other <a href="./distribution-fa.html">distribution</a> channels.</p>
+<ul><li><strong>Diagnosing the Referral stage</strong> of your <a href="./aarrr-funnel-fa.html">AARRR funnel</a> — measure</li></ul>
+<p>actual K and cycle time before claiming the product &quot;spreads on its own.&quot;</p>
+<ul><li><strong>Justifying a referral program's ROI</strong> — model how much a K bump lowers effective</li></ul>
+<p><a href="./cac-fa.html">CAC</a> versus the cost (and retention risk) of the incentive.</p>
+<ul><li><strong>Sanity-checking a &quot;we'll grow virally&quot; pitch</strong> — your own or someone else's. If the</li></ul>
+<p>plan needs K &gt; 1 to work, it's almost certainly wrong.</p>
+<ul><li><strong>Prioritizing loop improvements</strong> — is the bottleneck invites sent (i), conversion of</li></ul>
+<p>invites (c), or cycle time? Each has a different fix.</p>
+        </section>
+
+        <section id="metrics-how-it-s-measured">
+          <h2>سنجه‌ها و اندازه‌گیری</h2>
+          <ul><li><strong>K-factor (viral coefficient):</strong> <code>K = i × c</code> = (avg invites per user) × (invite</li></ul>
+<p>conversion rate). Measure per cohort, over a defined window, and watch the <em>trend</em> — K almost always decays as the network saturates.</p>
+<ul><li><strong>Viral cycle time (<code>ct</code>):</strong> median time from a user joining to them converting their</li></ul>
+<p>first new user. Shorter = faster compounding. Instrument the timestamps of join → invite-sent → invite-accepted.</p>
+<ul><li><strong>Viral multiplier (for K &lt; 1):</strong> <code>1 / (1 − K)</code> — the factor by which virality</li></ul>
+<p>inflates every <em>other</em> channel's output. K = 0.5 → 2× multiplier.</p>
+<ul><li><strong>Effective / blended <a href="./cac-fa.html">CAC</a>:</strong> paid spend ÷ (paid + viral users). The number</li></ul>
+<p>that proves virality is paying its way.</p>
+<ul><li><strong>Invite funnel breakdown:</strong> invites <em>sent</em> per user → <em>delivered</em> → <em>clicked</em> →</li></ul>
+<p><em>converted</em>. Isolates whether the loop leaks at motivation (few invites) or conversion (invites ignored).</p>
+<ul><li>*<em>Retention of </em>invited<em> users vs. paid users:</em>* are viral users as sticky, or is the</li></ul>
+<p>loop importing low-quality, quick-to-<a href="./churn-fa.html">churn</a> users? (See the leaky-bucket trap.)</p>
+        </section>
+
+        <section id="common-misconceptions">
+          <h2>برداشت‌های غلط رایج</h2>
+          <ul><li><strong>&quot;K &gt; 1 is normal / the goal.&quot;</strong> It's <strong>rare and usually temporary.</strong> Almost every</li></ul>
+<p>genuinely viral product ran K &gt; 1 for a <em>window</em>, then decayed below 1 as the network saturated. Betting the business on sustained K &gt; 1 is betting on a unicorn. The real, durable win is engineering K <em>upward</em> (0.2 → 0.6) as a multiplier on other channels.</p>
+<ul><li><strong>&quot;Virality is the same as <a href="./network-effects-fa.html">network effects</a>.&quot;</strong> The single most</li></ul>
+<p>common conflation, and they're <strong>different kinds of thing.</strong> Virality is a <strong>growth loop</strong> — a mechanism that acquires <em>users</em>. A network effect is a <strong>value property</strong> — the product gets <em>more valuable to each user</em> as more people join. A referral program is viral but has no network effect (your Dropbox isn't better because a stranger joined via referral); a telephone network has a network effect even with zero viral loop. They <em>can</em> reinforce each other, but one is about <em>how you grow</em> and the other about <em>why the product is worth more at scale</em>.</p>
+<ul><li><strong>&quot;A high K means we're winning.&quot;</strong> Not if the loop is <strong>slow</strong>. A high K with a long</li></ul>
+<p>viral cycle time still grows slowly — the population only compounds once per cycle, and a cycle measured in weeks throttles even a strong K. Speed is the co-equal lever people forget.</p>
+<ul><li><strong>&quot;More invites = more growth.&quot;</strong> Only if you don't wreck <a href="./retention-fa.html">retention</a></li></ul>
+<p>doing it. Aggressive invite walls, contact-list spam, and forced shares can lift K on paper while <strong>driving users out the back door</strong> (leaky bucket) and torching your reputation. Invites bought at the cost of retention are negative-sum.</p>
+<ul><li><strong>&quot;Viral growth is free and automatic.&quot;</strong> Virality is <strong>engineered</strong>, not wished into</li></ul>
+<p>being — a real loop with measured i, c, and cycle time, usually built into the core product action. Most products labeled &quot;viral&quot; simply have a low K and a slow loop.</p>
+<ul><li><strong>&quot;Word-of-mouth counts as a viral loop I control.&quot;</strong> Word-of-mouth is real virality</li></ul>
+<p>but you engineer it only <em>indirectly</em>, through product quality — it's not a lever you can turn like an incentivized referral. Don't confuse &quot;people like us&quot; with &quot;we have an instrumented loop.&quot;</p>
+        </section>
+
+        <section id="examples">
+          <h2>مثال‌ها</h2>
+          <ul><li><strong>Inherent virality — Hotmail (the textbook case).</strong> A single line auto-appended to</li></ul>
+<p>every email: <em>&quot;PS: I love you. Get your free email at Hotmail.&quot;</em> Every message a user sent was a casual-contact invite to every recipient. The loop was <em>inside the core action</em> (sending mail), so cycle time was near-instant and K ran well above 1 — Hotmail hit ~12 million users in 18 months on a tiny ad budget. The lesson: the invite was the product's own output, not a separate ask.</p>
+<ul><li><strong>Incentivized virality — Dropbox.</strong> &quot;Give space, get space&quot;: both referrer and</li></ul>
+<p>invitee got free storage. A deliberately <em>engineered</em> referral loop (not inherent — you don't <em>need</em> others to use Dropbox) that reportedly lifted signups ~60% and drove effective <a href="./cac-fa.html">CAC</a> toward zero. It compounded <em>toward</em> a mild network effect (shared folders) but the growth itself was the referral loop, not the network effect.</p>
+<ul><li><strong>The decay curve — PayPal.</strong> Early PayPal literally <em>paid</em> users \$10 to sign up and</li></ul>
+<p>\$10 per referral, buying a K &gt; 1 loop to bootstrap the network. It worked — until it got expensive and the network saturated, at which point K fell below 1 and they leaned on other channels. A clean illustration that K &gt; 1 is a <em>phase</em>, bought and temporary.</p>
+<ul><li><strong>The leaky-bucket failure.</strong> A social app juices K with an aggressive &quot;invite 5</li></ul>
+<p>friends to unlock&quot; wall. Invites spike, K looks great — but the coerced new users never activate, <a href="./retention-fa.html">retention</a> craters, and the invite spam gets the app a reputation for being pushy. Fast turnover masquerading as growth; the bucket had a hole the whole time.</p>
+        </section>
+
+        <section id="talking-to-an-llm-about-it">
+          <h2>حرف زدن با LLM درباره آن</h2>
+          <p>The same intent, framed three ways — this is how vocabulary becomes leverage:</p>
+<ul><li><strong>Weak prompt:</strong> &quot;How do I make my app go viral?&quot;</li><li><strong>Better prompt:</strong> &quot;How do I use the K-factor and viral loops to grow my app, and</li></ul>
+<p>what's a good K to aim for?&quot;</p>
+<ul><li><strong>Expert prompt:</strong> &quot;Act as a growth engineer. My product is a bootstrapped B2B</li></ul>
+<p>collaboration tool (shared workspaces) at \$15/user/month; ICP = small marketing teams; current blended <a href="./cac-fa.html">CAC</a> ≈ \$60 from paid + content. I want to engineer a viral loop. First, classify which <em>type</em> of virality is realistic for this product (inherent vs. incentivized vs. casual-contact) and why — the product has a natural invite-a-teammate action. Then help me model the loop: given a plausible invites-per-user and invite-conversion rate, compute K, the viral multiplier <code>1/(1−K)</code>, and the effect on effective CAC — and be explicit that I should <em>not</em> expect sustained K &gt; 1. Identify whether my leverage is invites-sent, invite-conversion, or <strong>viral cycle time</strong>, and propose where in the product flow to place the invite so it sits <em>in the moment of value</em> (shortening cycle time) rather than in settings. Finally, flag the retention risks of each tactic so I don't buy K by wrecking the <a href="./retention-fa.html">retention</a> my loop depends on. Assume K &lt; 1 and treat virality as a multiplier on my paid channel, not a standalone engine.&quot;</p>
+<p>The expert version supplies the business model, ICP, price, current CAC, and — crucially — the <em>right mental model</em> (K &lt; 1 as a multiplier, cycle time as a lever, retention as the dependency). So the model does <strong>loop engineering</strong> (which type, where to place the invite, what to measure) instead of returning a generic &quot;add a share button and offer a referral bonus&quot; list.</p>
+        </section>
+
+        <section id="my-evolving-understanding">
+          <h2>فهم در حال تکامل من</h2>
+          <ul><li><strong>v1 (2026-07-06):</strong> First pass. The reframes that landed hardest: (1) **K &lt; 1 is the</li></ul>
+<p>normal and useful case, not failure*<em> — I'd assumed &quot;viral&quot; meant K &gt; 1, but sub-1 virality is a </em>multiplier<em> (<code>1/(1−K)</code>) on every other channel that quietly halves <a href="./cac-fa.html">CAC</a>, while sustained K &gt; 1 is rare and </em>decays<em> as the network saturates. Chasing K &gt; 1 is chasing a unicorn; moving K from 0.2 to 0.6 is the real game. (2) <strong>Viral cycle time is a co-equal lever</strong> — a high K on a slow loop still grows slowly, and the highest-leverage move is designing the invite </em>into the moment of value<em> (Hotmail's email footer, a shared doc) rather than a settings page, because that collapses cycle time. (3) The trap I'd have walked straight into: </em><em>confusing virality (a growth </em>loop<em>, a mechanism to acquire users) with <a href="./network-effects-fa.html">network effects</a> (a </em>value property<em> — the product gets more valuable as more join).</em><em> They're different categories; a referral program is viral with no network effect. (4) Virality sits </em>on top of<em> <a href="./retention-fa.html">retention</a> — gaming invites at the cost of retention is a leaky bucket that turns growth into fast turnover. It's the <a href="./aarrr-funnel-fa.html">AARRR</a> Referral stage looping back into Acquisition, and it's one of <a href="./distribution-fa.html">distribution</a>'s channels — the one whose CAC can approach zero, </em>if* you engineer the loop honestly.</p>
+        </section>
+
+        <section id="sources">
+          <h2>منابع</h2>
+          <ul><li>Adam Penenberg, <em>Viral Loop</em> — the origin and anatomy of viral growth loops (Hotmail,</li></ul>
+<p>PayPal, and the &quot;each user brings more users&quot; mechanic).</p>
+<ul><li>David Skok (For Entrepreneurs), <em>Lessons Learned — Viral Marketing</em> — the rigorous</li></ul>
+<p>treatment of the <strong>viral coefficient K</strong> <em>and</em> <strong>viral cycle time</strong>, and why cycle time matters as much as K (to verify and deepen on revisit).</p>
+<ul><li>Andrew Chen, essays on <strong>why viral loops decay</strong> and the &quot;law of shitty clickthroughs&quot;</li></ul>
+<p>— the saturation dynamics behind K falling over time.</p>
+<ul><li>Sean Ellis / Reforge growth writing on <strong>loops vs. funnels</strong> and the retention</li></ul>
+<p>foundation under any growth loop.</p>
+<ul><li>See also <a href="./aarrr-funnel-fa.html">aarrr-funnel</a>, <a href="./retention-fa.html">retention</a>,</li></ul>
+<p><a href="./cac-fa.html">cac</a>, <a href="./distribution-fa.html">distribution</a>, <a href="./network-effects-fa.html">network-effects</a>.</p>
+        </section>
+
+        <section>
+          <h2>پیوندها</h2>
+          <nav class="footer-nav" aria-label="پیوندهای صفحه">
+            <a class="pill" href="./virality-k-factor.html">نسخه انگلیسی</a>
+            <a class="pill" href="./virality-k-factor.md">منبع Markdown</a>
+          </nav>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

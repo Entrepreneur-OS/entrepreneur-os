@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cohort Analysis — reading customers by the date they joined | Entrepreneur-OS</title>
+  <meta name="description" content="Plain English: instead of one blended number for &quot;all customers,&quot; you split them into groups by *when they started* and watch each group age. Expert phrasing: grouping users by a shared start event (their **vintage**) and tracking a metric — usually [retention](./retention.md) — over each group's own lifetime, so the *shape and trend* of behaviour becomes visible where an aggregate would hide it.">
+  
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f8f6;
+      --paper: #ffffff;
+      --ink: #17201b;
+      --muted: #5d6b63;
+      --line: #dce4dd;
+      --accent: #0f7b5f;
+      --accent-strong: #075f49;
+      --accent-soft: #e4f4ef;
+      --warning-soft: #fff2cc;
+      --shadow: 0 22px 70px rgba(23, 32, 27, 0.10);
+      --radius: 8px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(120deg, rgba(15, 123, 95, 0.09), transparent 34rem), var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--accent-strong);
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: minmax(13rem, 17rem) minmax(0, 1fr);
+      gap: 2.5rem;
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 4rem;
+      
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 1rem;
+      align-self: start;
+      padding: 1rem 0;
+      
+    }
+
+    main {
+      min-width: 0;
+      
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--ink);
+      font-weight: 850;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 2rem;
+      height: 2rem;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      box-shadow: 0 8px 24px rgba(23, 32, 27, 0.08);
+      font-size: 0.78rem;
+    }
+
+    .toc {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .toc-title {
+      margin: 0 0 0.7rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.09em; text-transform: uppercase;
+    }
+
+    .toc a {
+      display: block;
+      padding: 0.36rem 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .hero, section {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero {
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 14rem;
+      gap: 2rem;
+      padding: clamp(1.4rem, 4vw, 3rem);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 0.75rem;
+      color: var(--accent-strong);
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 13ch;
+      font-size: clamp(2.2rem, 6.5vw, 5.2rem);
+      line-height: 0.96;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 45rem;
+      margin: 1.2rem 0 0;
+      color: var(--muted);
+      font-size: clamp(1.04rem, 1.6vw, 1.28rem);
+    }
+
+    .signal {
+      align-self: stretch;
+      display: grid;
+      align-content: center;
+      gap: 1rem;
+      padding: 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, #ffffff, #f3faf7);
+    }
+
+    .signal-line {
+      height: 0.8rem;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e3eae5;
+    }
+
+    .signal-line::before {
+      content: "";
+      display: block;
+      width: 72%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #b7e4d2, var(--accent));
+    }
+
+    .signal p {
+      margin: 0;
+      color: var(--ink);
+      font-size: 0.98rem;
+      font-weight: 650;
+    }
+
+    .metadata {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .meta-item {
+      min-width: 0;
+      padding: 1rem;
+      background: #fbfcfb;
+    }
+
+    .meta-label {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--muted);
+      font-size: 0.74rem;
+      font-weight: 900;
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+
+    .meta-value {
+      display: block;
+      color: var(--ink);
+      font-weight: 720;
+    }
+
+    .content {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    section {
+      padding: clamp(1.25rem, 3vw, 2rem);
+    }
+
+    section h2 {
+      margin: 0 0 0.9rem;
+      font-size: clamp(1.35rem, 2.2vw, 2rem);
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    section p { margin: 0.75rem 0 0; }
+    section p:first-of-type { margin-top: 0; }
+    strong { font-weight: 900; }
+    code {
+      padding: 0.08rem 0.28rem;
+      border-radius: 5px;
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+
+    ul, ol {
+      margin: 0.8rem 0 0;
+      padding-left: 1.25rem;
+      padding-right: 0;
+    }
+
+    li + li { margin-top: 0.55rem; }
+
+    blockquote, .note {
+      margin: 0;
+      padding: 1rem 1.1rem;
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius);
+      background: var(--accent-soft);
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.2rem;
+      padding: 0.4rem 0.75rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      font-weight: 760;
+      text-decoration: none;
+    }
+
+    @media (max-width: 860px) {
+      .shell {
+        display: block;
+        width: min(100% - 1rem, 46rem);
+        padding-top: 0.75rem;
+      }
+
+      .sidebar {
+        position: static;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.75rem 0 1rem;
+      }
+
+      .toc { display: none; }
+      .hero-top { grid-template-columns: 1fr; }
+      .metadata { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 520px) {
+      .metadata { grid-template-columns: 1fr; }
+      section { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Concept navigation">
+      <a class="brand" href="../README.md" aria-label="Entrepreneur-OS">
+        <span>Entrepreneur-OS</span>
+        <span class="brand-mark" dir="ltr">EOS</span>
+      </a>
+      <nav class="toc" aria-label="Page sections">
+        <p class="toc-title">Concept Map</p>
+        <a href="#what-it-is">What it is</a>
+        <a href="#why-it-exists-the-problem-it-solves">Why it exists / the problem it solves</a>
+        <a href="#how-experts-reason-with-it">How experts reason with it</a>
+        <a href="#when-you-use-it">When you use it</a>
+        <a href="#metrics-how-it-s-measured">Metrics / how it's measured</a>
+        <a href="#common-misconceptions">Common misconceptions</a>
+        <a href="#examples">Examples</a>
+        <a href="#talking-to-an-llm-about-it">Talking to an LLM about it</a>
+        <a href="#my-evolving-understanding">My evolving understanding</a>
+        <a href="#sources">Sources</a>
+      </nav>
+    </aside>
+
+    <main>
+      <header class="hero">
+        <div class="hero-top">
+          <div>
+            <p class="eyebrow">Entrepreneurship concept</p>
+            <h1>Cohort Analysis — reading customers by the date they joined</h1>
+            <p class="subtitle">Plain English: instead of one blended number for &quot;all customers,&quot; you split them into groups by <em>when they started</em> and watch each group age. Expert phrasing: grouping users by a shared start event (their <strong>vintage</strong>) and tracking a metric — usually <a href="./retention.html">retention</a> — over each group's own lifetime, so the <em>shape and trend</em> of behaviour becomes visible where an aggregate would hide it.</p>
+          </div>
+          <aside class="signal" aria-label="Concept signal">
+            <div class="signal-line" aria-hidden="true"></div>
+            <p>Move past the definition: use this concept to reason, decide, and prompt AI more precisely.</p>
+          </aside>
+        </div>
+        <div class="metadata" aria-label="Concept metadata">
+          <div class="meta-item">
+            <span class="meta-label">Domain</span>
+            <span class="meta-value">product</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Stage</span>
+            <span class="meta-value">growth</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Prerequisites</span>
+            <span class="meta-value"><a href="./retention.html">retention</a> (the metric a cohort curve usually plots)</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Related</span>
+            <span class="meta-value"><a href="./churn.html">churn</a>, <a href="./ltv.html">ltv</a>, <a href="./aarrr-funnel.html">aarrr-funnel</a> · <strong>Contrast with:</strong> blended/aggregate metrics (a single number across all customers, which averages away the truth)</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        
+        <section id="what-it-is">
+          <h2>What it is</h2>
+          <p>A <strong>cohort</strong> is a set of customers who share a starting moment — everyone who signed up in January, everyone who first paid in Q2, everyone acquired from a given campaign. Once you've grouped them, you follow each group <em>on its own clock</em> (month 1, month 2, month 3 after <em>their</em> start) rather than on the calendar.</p>
+<p>The payoff is comparison. Line the January, February, and March cohorts up side by side and you can see whether the product is getting <strong>better or worse at keeping people</strong> — because each cohort ages through the same &quot;month 3&quot; independently. A single blended &quot;we retain 40% of users&quot; number can't tell you that; it smears every vintage together.</p>
+        </section>
+
+        <section id="why-it-exists-the-problem-it-solves">
+          <h2>Why it exists / the problem it solves</h2>
+          <p>Aggregates lie by construction. Suppose your business is growing fast: a flood of <em>new</em> signups (who are all still early in their lifecycle and haven't had a chance to churn) mathematically props up your blended retention number, even if your product is quietly getting <em>worse</em> at holding onto people. The average looks healthy while the underlying trend rots. This is <strong>Simpson's paradox</strong> (= an aggregate trend that reverses or vanishes once you split the data into its real groups) showing up in your dashboard.</p>
+<p>Cohort analysis exists to break that spell. By slicing customers into vintages and never mixing them, it answers the question the blended number physically cannot: <em>&quot;Holding age constant, is each new class of customers better or worse than the last?&quot;</em> That is the only honest way to read whether product and onboarding changes are actually working.</p>
+        </section>
+
+        <section id="how-experts-reason-with-it">
+          <h2>How experts reason with it</h2>
+          <p>The insight a beginner misses: *<em>the blended number is the enemy; the truth lives in the shape of a single cohort's curve and in the trend </em>across<em> cohorts.</em>*</p>
+<ol><li><strong>Read the curve's shape, not its height.</strong> Plot one cohort's activity over its</li></ol>
+<p>lifetime and one of two things happens. It <strong>decays toward zero</strong> — nobody forms a lasting habit, there is no durable value, you have no <a href="./pmf.html">PMF</a>. Or it <strong>flattens into a plateau</strong> — a core of users for whom the product became a habit that sticks. That plateau is Andrew Chen's retention <strong>&quot;smile&quot;</strong> (curves that dip, then curl back up as the sticky core re-engages). <em>The flattening point — the level the curve settles at — is the single most important number on the chart.</em> A curve that starts high but never flattens still ends at zero.</p>
+<ol><li><strong>Trend across vintages is the report card.</strong> One cohort tells you <em>whether</em> you have</li></ol>
+<p>a sticky core. Stacking successive cohorts tells you whether you're <strong>improving</strong>. If March's month-2 retention beats January's month-2 retention, your product/ onboarding work is landing. If it's sliding, you're growing on borrowed time — the blended number will catch up to the truth eventually.</p>
+<ol><li><strong>Logo cohorts vs. revenue cohorts are different stories.</strong> A <em>logo</em> (customer-count)</li></ol>
+<p>cohort can be decaying while the <em>revenue</em> cohort of the same group is <em>growing</em>, because the survivors expand (upsells, seats). That gap is <strong>net revenue retention (NRR)</strong> — track both, because &quot;we're losing customers&quot; and &quot;this vintage is worth more every month&quot; can be true at once.</p>
+<ol><li><strong>Cohorts are how you compute an honest <a href="./ltv.html">LTV</a>.</strong> A blended lifetime-value</li></ol>
+<p>number averages your best and worst vintages into a fiction. LTV <em>by cohort</em> — sum the revenue each vintage actually delivers as it ages — tells you whether the customers you're acquiring <em>today</em> (often more expensive, sometimes lower-intent) still pay back their <a href="./cac.html">CAC</a>.</p>
+<ol><li><strong>The start event is a modelling choice, and it matters.</strong> &quot;Signed up,&quot; &quot;activated,&quot;</li></ol>
+<p>and &quot;first paid&quot; produce completely different curves. Pick the event that marks <em>real value received</em>, or you'll cohort on a vanity milestone and mis-read everything downstream.</p>
+<p>The founder's takeaway: never trust a blended retention or LTV number. Cut it into cohorts, read the <em>shape</em> of each and the <em>trend</em> across them — that's where the business tells you the truth about itself.</p>
+        </section>
+
+        <section id="when-you-use-it">
+          <h2>When you use it</h2>
+          <ul><li>Diagnosing whether product/onboarding changes actually improved retention (compare</li></ul>
+<p>post-change cohorts to pre-change ones on the same lifecycle month).</p>
+<ul><li>Establishing real <a href="./pmf.html">PMF</a> evidence — a flattening cohort curve for a defined</li></ul>
+<p><a href="./icp.html">ICP</a> beats any survey.</p>
+<ul><li>Computing trustworthy <a href="./ltv.html">LTV</a> and checking it against <a href="./cac.html">CAC</a> by</li></ul>
+<p>vintage before scaling spend.</p>
+<ul><li>Reading the <strong>Retention</strong> stage of the <a href="./aarrr-funnel.html">AARRR funnel</a> — that stage's</li></ul>
+<p>&quot;one metric that matters&quot; <em>is</em> a cohort curve, not a blended percentage.</p>
+<ul><li>Spotting a channel or campaign that acquires users who never stick (cohort by</li></ul>
+<p>acquisition source).</p>
+        </section>
+
+        <section id="metrics-how-it-s-measured">
+          <h2>Metrics / how it's measured</h2>
+          <ul><li><strong>The cohort retention table/curve:</strong> rows = vintages (Jan, Feb, Mar…), columns =</li></ul>
+<p>lifecycle age (month 0, 1, 2…), cells = % of that cohort still active. Read <em>down</em> a column to compare vintages at the same age; read <em>across</em> a row to see one cohort's curve.</p>
+<ul><li><strong>How to read the shape:</strong></li><li><strong>Decay to ~0</strong> → no durable value, no PMF. A leaky bucket — more acquisition just</li></ul>
+<p>leaks faster.</p>
+<ul><li><strong>Flatten / &quot;smile&quot; plateau</strong> → a sticky core exists; the <em>plateau level</em> is your</li></ul>
+<p>real retained base and the truest PMF signal.</p>
+<ul><li>The <strong>flattening point</strong> (which lifecycle month the curve stops falling) tells you</li></ul>
+<p>how long it takes a cohort to settle into its durable core.</p>
+<ul><li><strong>Logo retention</strong> (customers still active) vs. <strong>revenue / net retention (NRR)</strong></li></ul>
+<p>(dollars retained + expanded) — NRR can exceed 100% while logo retention falls.</p>
+<ul><li><strong>LTV by cohort:</strong> cumulative revenue per vintage as it ages, checked against that</li></ul>
+<p>vintage's <a href="./cac.html">CAC</a>.</p>
+<ul><li><strong>Benchmarks are directional, not universal.</strong> Good retention plateaus vary wildly by</li></ul>
+<p>category (consumer social vs. B2B SaaS vs. e-commerce) — Lenny Rachitsky's benchmark write-ups are a starting reference, but compare a cohort to <em>your own earlier cohorts</em> first.</p>
+        </section>
+
+        <section id="common-misconceptions">
+          <h2>Common misconceptions</h2>
+          <ul><li><strong>&quot;Our retention is 40%.&quot;</strong> A single blended number is almost always the wrong unit.</li></ul>
+<p>It hides whether newer vintages are better or worse and is inflated by recent signups who simply haven't had time to churn yet.</p>
+<ul><li><strong>&quot;Higher starting retention is better.&quot;</strong> Height at month 1 barely matters; whether</li></ul>
+<p>the curve <strong>flattens</strong> does. A high-but-still-decaying curve still trends to zero.</p>
+<ul><li><strong>&quot;Cohort by signup date, always.&quot;</strong> The <em>start event</em> is a choice. Cohorting on</li></ul>
+<p>signup when value only lands at activation will make a fine product look broken (or vice-versa). Cohort on the event that marks real value.</p>
+<ul><li><strong>&quot;Small cohorts are fine.&quot;</strong> A cohort of 15 users produces noise, not signal — one</li></ul>
+<p>person leaving swings the curve 7 points. Too-small cohorts read as random.</p>
+<ul><li><strong>&quot;Logo cohort down = business shrinking.&quot;</strong> Not if revenue cohorts (NRR) are</li></ul>
+<p>expanding. Losing small accounts while growing big ones can be <em>healthy</em>.</p>
+        </section>
+
+        <section id="examples">
+          <h2>Examples</h2>
+          <ul><li><strong>Two SaaS apps, same blended number.</strong> Both report &quot;40% retained.&quot; Split into</li></ul>
+<p>cohorts: App A's every vintage decays toward 5% by month 6 — the 40% is an illusion propped up by fast new signups. App B's cohorts flatten at ~45% by month 3 and each new vintage flattens a little higher — real PMF, improving. Same headline number, opposite businesses.</p>
+<ul><li><strong>The onboarding fix that &quot;did nothing.&quot;</strong> A team ships a better onboarding flow;</li></ul>
+<p>blended retention is flat, so it looks like a dud. Cohorting reveals post-launch vintages retain 8 points higher at month 2 — the blended number was masked by a seasonal signup surge. The fix worked; only the cohort view could see it.</p>
+<ul><li><strong>Superhuman / consumer apps and the &quot;smile.&quot;</strong> Well-fit products often show a</li></ul>
+<p>retention curve that dips early (casual users leave) then curls back up as the sticky core re-engages — the visual &quot;smile&quot; Andrew Chen popularised as the signature of a product people genuinely need.</p>
+        </section>
+
+        <section id="talking-to-an-llm-about-it">
+          <h2>Talking to an LLM about it</h2>
+          <ul><li><strong>Weak prompt:</strong> &quot;How do I know if users are sticking around?&quot;</li><li><strong>Better prompt:</strong> &quot;How do I run a cohort retention analysis for my SaaS and tell if</li></ul>
+<p>I have product-market fit?&quot;</p>
+<ul><li><strong>Expert prompt:</strong> &quot;For a B2B SaaS at ~$50/mo targeting recruiting agencies, help me</li></ul>
+<p>design a cohort retention analysis: which start event to use ('signed up' vs. 'completed first placement') and why, how to build the vintage-by-lifecycle-month retention table, how to read whether my curves flatten (PMF) or decay, how to compare successive monthly cohorts to judge if my onboarding changes are working, and when to track net revenue retention (NRR) instead of logo retention given expansion revenue.&quot;</p>
+<p>The expert version fixes the business model, pricing, and segment, forces a <em>choice of start event</em>, and asks for the <em>diagnostic read</em> (flatten vs. decay, trend across vintages, logo vs. revenue) — so the model returns an analysis plan, not a definition.</p>
+        </section>
+
+        <section id="my-evolving-understanding">
+          <h2>My evolving understanding</h2>
+          <ul><li><strong>v1 (2026-07-04):</strong> First pass. The reframe that landed: I thought &quot;cohort analysis&quot;</li></ul>
+<p>was just a fancier way to chart retention. The sharper model is that its whole reason to exist is that <strong>blended aggregates lie</strong> — a single retention or <a href="./ltv.html">LTV</a> number is inflated by recent signups and averages good and bad vintages into a fiction. Grouping by <em>join vintage</em> is the only way to hold age constant and see two truths: the <strong>shape</strong> of one cohort's curve (flatten = sticky core / PMF; decay = leaky bucket) and the <strong>trend across cohorts</strong> (are newer classes better or worse?). &quot;Read the shape and the trend, never the blended number&quot; is the whole concept.</p>
+        </section>
+
+        <section id="sources">
+          <h2>Sources</h2>
+          <ul><li>Andrew Chen — writing on retention curves and the retention <strong>&quot;smile&quot;</strong> (Reforge /</li></ul>
+<p>andrewchen.com) — the flattening-plateau-as-PMF framing (to verify and deepen on revisit).</p>
+<ul><li>Lenny Rachitsky — cohort retention <strong>benchmarks</strong> by category (Lenny's Newsletter) —</li></ul>
+<p>for directional &quot;what's good&quot; comparisons.</p>
+<ul><li>Cohort / Simpson's-paradox reasoning on why blended metrics mislead — general</li></ul>
+<p>analytics practice.</p>
+<ul><li>See also <a href="./retention.html">retention</a>, <a href="./churn.html">churn</a>, <a href="./ltv.html">ltv</a>,</li></ul>
+<p><a href="./aarrr-funnel.html">aarrr-funnel</a>.</p>
+        </section>
+
+        <section>
+          <h2>Links</h2>
+          <nav class="footer-nav" aria-label="Page links">
+            <a class="pill" href="./cohort-analysis-fa.html">Persian version</a>
+            <a class="pill" href="./cohort-analysis.md">Markdown source</a>
+          </nav>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

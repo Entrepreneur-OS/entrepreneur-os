@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>چرخه فروش | Entrepreneur-OS</title>
+  <meta name="description" content="Plain English: the sequence of steps a stranger passes through on the way from &quot;never heard of you&quot; to &quot;signed customer,&quot; and the board that tracks every live deal along that path. Expert phrasing: the **pipeline** is a set of **stages defined by buyer commitments**, each with explicit **exit criteria**; the **sales cycle** is how long one deal takes to traverse them — and both must be engineered so revenue becomes *forecastable* rather than lucky.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f8f6;
+      --paper: #ffffff;
+      --ink: #17201b;
+      --muted: #5d6b63;
+      --line: #dce4dd;
+      --accent: #0f7b5f;
+      --accent-strong: #075f49;
+      --accent-soft: #e4f4ef;
+      --warning-soft: #fff2cc;
+      --shadow: 0 22px 70px rgba(23, 32, 27, 0.10);
+      --radius: 8px;
+      font-family: "Vazirmatn", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(240deg, rgba(15, 123, 95, 0.09), transparent 34rem), var(--bg);
+      color: var(--ink);
+      line-height: 1.9;
+    }
+
+    a {
+      color: var(--accent-strong);
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(13rem, 17rem);
+      gap: 2.5rem;
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 4rem;
+      direction: ltr;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 1rem;
+      align-self: start;
+      padding: 1rem 0;
+      grid-column: 2; direction: rtl;
+    }
+
+    main {
+      min-width: 0;
+      grid-column: 1; grid-row: 1; direction: rtl;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--ink);
+      font-weight: 850;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 2rem;
+      height: 2rem;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      box-shadow: 0 8px 24px rgba(23, 32, 27, 0.08);
+      font-size: 0.78rem;
+    }
+
+    .toc {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .toc-title {
+      margin: 0 0 0.7rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 900;
+      
+    }
+
+    .toc a {
+      display: block;
+      padding: 0.36rem 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .hero, section {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero {
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 14rem;
+      gap: 2rem;
+      padding: clamp(1.4rem, 4vw, 3rem);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 0.75rem;
+      color: var(--accent-strong);
+      font-size: 0.82rem;
+      font-weight: 900;
+      
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 14ch;
+      font-size: clamp(2.2rem, 6.5vw, 5.2rem);
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 45rem;
+      margin: 1.2rem 0 0;
+      color: var(--muted);
+      font-size: clamp(1.04rem, 1.6vw, 1.28rem);
+    }
+
+    .signal {
+      align-self: stretch;
+      display: grid;
+      align-content: center;
+      gap: 1rem;
+      padding: 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, #ffffff, #f3faf7);
+    }
+
+    .signal-line {
+      height: 0.8rem;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e3eae5;
+    }
+
+    .signal-line::before {
+      content: "";
+      display: block;
+      width: 72%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #b7e4d2, var(--accent));
+    }
+
+    .signal p {
+      margin: 0;
+      color: var(--ink);
+      font-size: 0.98rem;
+      font-weight: 650;
+    }
+
+    .metadata {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .meta-item {
+      min-width: 0;
+      padding: 1rem;
+      background: #fbfcfb;
+    }
+
+    .meta-label {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--muted);
+      font-size: 0.74rem;
+      font-weight: 900;
+      
+    }
+
+    .meta-value {
+      display: block;
+      color: var(--ink);
+      font-weight: 720;
+    }
+
+    .content {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    section {
+      padding: clamp(1.25rem, 3vw, 2rem);
+    }
+
+    section h2 {
+      margin: 0 0 0.9rem;
+      font-size: clamp(1.35rem, 2.2vw, 2rem);
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    section p { margin: 0.75rem 0 0; }
+    section p:first-of-type { margin-top: 0; }
+    strong { font-weight: 900; }
+    code {
+      padding: 0.08rem 0.28rem;
+      border-radius: 5px;
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+
+    ul, ol {
+      margin: 0.8rem 0 0;
+      padding-right: 1.25rem;
+      padding-left: 0;
+    }
+
+    li + li { margin-top: 0.55rem; }
+
+    blockquote, .note {
+      margin: 0;
+      padding: 1rem 1.1rem;
+      border-right: 4px solid var(--accent);
+      border-radius: var(--radius);
+      background: var(--accent-soft);
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.2rem;
+      padding: 0.4rem 0.75rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      font-weight: 760;
+      text-decoration: none;
+    }
+
+    @media (max-width: 860px) {
+      .shell {
+        display: block;
+        width: min(100% - 1rem, 46rem);
+        padding-top: 0.75rem;
+      }
+
+      .sidebar {
+        position: static;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.75rem 0 1rem;
+      }
+
+      .toc { display: none; }
+      .hero-top { grid-template-columns: 1fr; }
+      .metadata { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 520px) {
+      .metadata { grid-template-columns: 1fr; }
+      section { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="ناوبری مفهوم">
+      <a class="brand" href="../README.md" aria-label="Entrepreneur-OS">
+        <span>Entrepreneur-OS</span>
+        <span class="brand-mark" dir="ltr">EOS</span>
+      </a>
+      <nav class="toc" aria-label="بخش‌های صفحه">
+        <p class="toc-title">نقشه مفهوم</p>
+        <a href="#what-it-is">چیست؟</a>
+        <a href="#why-it-exists-the-problem-it-solves">چرا وجود دارد؟</a>
+        <a href="#how-experts-reason-with-it">استدلال متخصص‌ها</a>
+        <a href="#when-you-use-it">زمان استفاده</a>
+        <a href="#metrics-how-it-s-measured">سنجه‌ها و اندازه‌گیری</a>
+        <a href="#common-misconceptions">برداشت‌های غلط رایج</a>
+        <a href="#examples">مثال‌ها</a>
+        <a href="#talking-to-an-llm-about-it">حرف زدن با LLM درباره آن</a>
+        <a href="#my-evolving-understanding">فهم در حال تکامل من</a>
+        <a href="#sources">منابع</a>
+      </nav>
+    </aside>
+
+    <main>
+      <header class="hero">
+        <div class="hero-top">
+          <div>
+            <p class="eyebrow">مفهوم کارآفرینی</p>
+            <h1>چرخه فروش</h1>
+            <p class="subtitle">یادداشت: این صفحه نسخه راست‌به‌چپ طراحی‌شده از منبع Markdown است. عنوان‌ها و قاب صفحه فارسی شده‌اند؛ متن تخصصی بدنه از منبع اصلی حفظ شده تا ترجمه مفهومی هر یادداشت جداگانه بازبینی شود.</p>
+          </div>
+          <aside class="signal" aria-label="سیگنال مفهومی">
+            <div class="signal-line" aria-hidden="true"></div>
+            <p>از تعریف عبور کن؛ این صفحه برای فهم عملی، تصمیم‌گیری، و گفتگو با AI ساخته شده است.</p>
+          </aside>
+        </div>
+        <div class="metadata" aria-label="فراداده مفهوم">
+          <div class="meta-item">
+            <span class="meta-label">دامنه</span>
+            <span class="meta-value">sales</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">مرحله</span>
+            <span class="meta-value">growth</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">پیش‌نیازها</span>
+            <span class="meta-value"><a href="./icp-fa.html">icp</a> (you can't build a pipeline for a buyer you can't define), <a href="./gtm-fa.html">gtm</a> (the motion dictates the cycle)</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">مرتبط</span>
+            <span class="meta-value"><a href="./cac-fa.html">cac</a>, <a href="./aarrr-funnel-fa.html">aarrr-funnel</a>, <a href="./pricing-fa.html">pricing</a>, <a href="./distribution-fa.html">distribution</a> · <strong>Contrast with:</strong> pure self-serve / product-led growth (the &quot;sales cycle&quot; collapses into onboarding — no human deal to track)</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        
+        <section id="what-it-is">
+          <h2>چیست؟</h2>
+          <p>A <strong>pipeline</strong> is a visual board of every deal currently in flight, sorted into stages that run left to right:</p>
+<p>| Stage | The seller's lazy label (an activity) | What the stage <em>really</em> is (a buyer commitment) | Exit criterion (what must be true to advance) | |---|---|---|---| | <strong>Lead</strong> | &quot;I added them to the CRM&quot; | a name that fits the <a href="./icp-fa.html">ICP</a> — no commitment yet | matches ICP; contactable | | <strong>MQL</strong> (Marketing Qualified Lead) | &quot;they downloaded a whitepaper&quot; | the buyer <em>raised a hand</em> — showed intent, not just eyeballs | took an intent action (demo request, pricing page, repeated visits) | | <strong>SQL</strong> (Sales Qualified Lead) | &quot;I sent them an email&quot; | the buyer <em>agreed to a real conversation</em> and has a problem worth solving | discovery call held; a genuine pain confirmed | | <strong>Opportunity</strong> | &quot;I ran a demo&quot; | the buyer confirmed there is a <strong>deal to pursue</strong> — budget, authority, need, timeline all real | qualified (BANT / MEDDIC); a mutually-agreed next step on the calendar | | <strong>Closed-won / Closed-lost</strong> | — | the buyer <strong>signed</strong>, or explicitly <strong>walked</strong> | contract signed <em>or</em> a clear &quot;no&quot; (never a limbo &quot;maybe&quot;) |</p>
+<p>The <strong>sales cycle</strong> is the <em>time</em> one deal spends crossing that whole board — days for a $20/mo self-serve tool, 6–18 months for a six-figure enterprise contract.</p>
+<p>The single most important idea, stated up front: <strong>a stage is a state of the buyer's mind, not a task on the seller's to-do list.</strong> &quot;I gave a demo&quot; is something <em>you</em> did; it tells you nothing about whether the <em>buyer</em> moved. The deal only advances when the <em>buyer</em> commits to the next step.</p>
+        </section>
+
+        <section id="why-it-exists-the-problem-it-solves">
+          <h2>چرا وجود دارد؟</h2>
+          <p>Left to instinct, selling is a black box: some deals close, some vanish, and the founder has no idea <em>why</em> or <em>when</em> the next dollar arrives. Revenue feels like weather — something that happens <em>to</em> you.</p>
+<p>The pipeline exists to make that black box <strong>legible and forecastable</strong>. If you know that historically 100 leads yield 25 SQLs yield 8 opportunities yield 2 closed deals, then revenue stops being luck: to close 10 deals next quarter you need ~50 opportunities, which means ~1,250 leads in the top — a number you can actually go manufacture. Aaron Ross's <em>Predictable Revenue</em> is named for exactly this promise: turn sales from a hope into a <strong>machine with known inputs and outputs</strong>. The pipeline is the instrument that lets you run the machine backward from a revenue target to the activity required today.</p>
+        </section>
+
+        <section id="how-experts-reason-with-it">
+          <h2>استدلال متخصص‌ها</h2>
+          <p>The insight a beginner misses: <strong>stages are buyer commitments, and the only honest pipeline is one where every stage change is triggered by the buyer, not the seller.</strong></p>
+<ol><li><strong>Every stage is a buyer commitment.</strong> The reframe that changes everything: rewrite</li></ol>
+<p>each stage from &quot;what I did&quot; to &quot;what the buyer did.&quot; Not &quot;I demoed&quot; but &quot;the buyer agreed the demo solved a real pain and looped in their boss.&quot; Activity-based stages are the original sin of pipeline management — they let a rep <em>feel</em> progress (busy! emails sent! demos given!) while no buyer has actually moved an inch. A stage with no buyer commitment behind it is a lie you tell your own forecast.</p>
+<ol><li><strong>Exit criteria per stage, or the pipeline rots.</strong> Each stage needs a hard,</li></ol>
+<p><em>objective</em> gate a deal must clear to advance — &quot;budget confirmed,&quot; &quot;champion identified,&quot; &quot;next meeting booked.&quot; Without exit criteria, reps advance deals on optimism, the pipeline inflates, and the forecast becomes fiction. This is where qualification frameworks earn their keep: <strong>BANT</strong> (Budget, Authority, Need, Timeline) is the simple version; <strong>MEDDIC</strong> (Metrics, Economic buyer, Decision criteria, Decision process, Identify pain, Champion) is the rigorous one built for complex B2B deals — it forces you to prove you've reached the person who controls the money and mapped how they actually decide.</p>
+<ol><li><strong>Cycle length must match the <a href="./gtm-fa.html">GTM</a> motion and the price.</strong> You do not get</li></ol>
+<p>to <em>choose</em> your cycle length — the price point and motion impose it. A $30/mo product <strong>cannot</strong> carry a six-month, human-heavy cycle: the <a href="./cac-fa.html">CAC</a> would dwarf the revenue. Low price → self-serve / product-led, cycle measured in minutes. Mid price → sales-assisted, cycle in weeks. High price (five/six figures) → enterprise, cycle in quarters, with committees and procurement. Mismatch here is fatal: a self-serve price with an enterprise cycle bleeds money on every deal.</p>
+<p>| Motion | Price band | Typical cycle | Who does the &quot;selling&quot; | |---|---|---|---| | Self-serve / PLG | &lt; ~$50/mo | minutes–days | the product (<a href="./aarrr-funnel-fa.html">aarrr-funnel</a> <em>is</em> the pipeline) | | Sales-assisted | ~$100s–low $1,000s/mo | weeks | a rep + the product together | | Enterprise | $10k–$1M+/yr | months–quarters | a rep, an SE, execs, procurement |</p>
+<ol><li><strong>Pipeline coverage: carry 3–4× your target.</strong> Because deals leak at every stage, you</li></ol>
+<p>must hold <strong>3–4× your revenue target in open pipeline</strong> to hit it. Want $100k this quarter and deals close at ~30%? You need ~$300k+ of qualified opportunity today. &quot;Coverage&quot; is the early-warning system: thin coverage this month = a miss you can see coming two months out and still fix.</p>
+<ol><li>*<em>Conversion math </em>is<em> <a href="./cac-fa.html">CAC</a>.</em>* The pipeline is a funnel of conversion</li></ol>
+<p>rates, and those rates set your acquisition cost. If it takes 1,250 leads and one rep's quarter to produce 10 customers, the fully-loaded cost of those leads + that salary <em>is</em> your CAC. Improving a mid-funnel conversion rate (better qualification, tighter <a href="./icp-fa.html">ICP</a>) lowers CAC without spending a cent more on top-of-funnel — the same leverage the <a href="./aarrr-funnel-fa.html">AARRR funnel</a> teaches: fix the leak, don't just pour in more.</p>
+<ol><li>*<em>Specialize the roles (the </em>Predictable Revenue<em> move).</em>* Ross's core lesson at</li></ol>
+<p>Salesforce: stop asking one person to prospect, close, <em>and</em> farm. Split the pipeline into specialized roles — <strong>SDRs</strong> (prospect and qualify: lead → SQL), <strong>AEs</strong> (close: opportunity → won), <strong>CSMs</strong> (retain and expand post-sale). Each stage of the pipeline gets an owner who is expert at <em>that</em> transition. This is the sales-org version of &quot;one owner per funnel stage.&quot;</p>
+<p>The founder's takeaway: <strong>the pipeline is a forecasting instrument, and it only tells the truth if stages are buyer commitments with hard exit criteria.</strong> Everything else — coverage, conversion, CAC, role design — is downstream of that one discipline.</p>
+        </section>
+
+        <section id="when-you-use-it">
+          <h2>زمان استفاده</h2>
+          <ul><li><strong>Forecasting revenue</strong> — running a target <em>backward</em> through your conversion rates to</li></ul>
+<p>find how much pipeline you must build today.</p>
+<ul><li><strong>Diagnosing a stall</strong> — locating the stage with the steepest drop-off (e.g. lots of</li></ul>
+<p>demos, few opportunities → your qualification or your <a href="./icp-fa.html">ICP</a> is off).</p>
+<ul><li><strong>Sizing the cycle to the price</strong> — sanity-checking that your <a href="./gtm-fa.html">GTM</a> motion</li></ul>
+<p>and <a href="./pricing-fa.html">pricing</a> can actually <em>afford</em> the cycle the deal demands.</p>
+<ul><li><strong>Deciding when to hire sales</strong> — a repeatable pipeline with known conversion is the</li></ul>
+<p>prerequisite for handing selling to someone who isn't you.</p>
+<ul><li><strong>Cleaning the CRM</strong> — killing zombie deals that have no buyer commitment behind them,</li></ul>
+<p>so the forecast reflects reality.</p>
+        </section>
+
+        <section id="metrics-how-it-s-measured">
+          <h2>سنجه‌ها و اندازه‌گیری</h2>
+          <ul><li><strong>Sales cycle length:</strong> average days from first touch (or SQL) to closed-won. The</li></ul>
+<p>clock you're trying to shorten.</p>
+<ul><li><strong>Stage conversion rates:</strong> the % that advance from each stage to the next; the</li></ul>
+<p><em>product</em> of them all = overall lead→customer conversion (the same multiply-don't-add math as <a href="./aarrr-funnel-fa.html">aarrr-funnel</a>).</p>
+<ul><li><strong>Win rate:</strong> closed-won ÷ (closed-won + closed-lost). Rising win rate often means</li></ul>
+<p><em>better qualification upstream</em>, not better closing.</p>
+<ul><li><strong>Pipeline coverage ratio:</strong> open qualified pipeline ÷ revenue target. Aim ~3–4×.</li><li><strong>Average deal size / ACV</strong> (Annual Contract Value): sets how many deals you need and,</li></ul>
+<p>with cycle length, how much runway a deal consumes.</p>
+<ul><li><strong>Pipeline velocity:</strong> <code>(# open opps × win rate × avg deal size) ÷ cycle length</code> — one</li></ul>
+<p>number for &quot;how fast is money moving through the machine.&quot; Pull any lever (more opps, higher win rate, bigger deals, shorter cycle) and velocity rises.</p>
+        </section>
+
+        <section id="common-misconceptions">
+          <h2>برداشت‌های غلط رایج</h2>
+          <ul><li><strong>&quot;If the product is good, it sells itself.&quot;</strong> The engineer's blind spot, and the most</li></ul>
+<p>expensive one. A great product lowers the cost of selling; it does not remove it. Buyers must <em>find</em> you, <em>trust</em> you, and <em>decide</em> — that's <a href="./distribution-fa.html">distribution</a> and a pipeline, not magic. Products don't sell themselves; they get <em>sold</em> (or distributed) or they die unknown.</p>
+<ul><li><strong>&quot;Stages are what the salesperson does.&quot;</strong> No — this is the activity-based-stage trap.</li></ul>
+<p>Stages are <strong>buyer commitments</strong>. &quot;I sent a proposal&quot; is not a stage; &quot;the buyer's economic buyer agreed to review the proposal by Friday&quot; is.</p>
+<ul><li><strong>&quot;A fuller pipeline is a healthier pipeline.&quot;</strong> Not if it's stuffed with deals that</li></ul>
+<p>fail their exit criteria. Inflated pipeline is <em>worse</em> than thin pipeline — it lies to your forecast. This is <strong>sandbagging</strong> in reverse; both distort the truth.</p>
+<ul><li><strong>&quot;Sandbagging is harmless.&quot;</strong> Sandbagging — a rep <em>hiding</em> deals or lowballing the</li></ul>
+<p>forecast to look like a hero later — corrupts the one thing the pipeline exists to give you: an honest number. So does its opposite, &quot;happy ears&quot; over-optimism. The pipeline is only worth having if it's <em>calibrated</em>.</p>
+<ul><li><strong>&quot;Longer cycle = bigger deal = better.&quot;</strong> A cycle longer than your <a href="./pricing-fa.html">pricing</a></li></ul>
+<p>and <a href="./cac-fa.html">CAC</a> can support is a slow bleed. Match the cycle to the economics.</p>
+<ul><li><strong>&quot;We just need more leads.&quot;</strong> Usually the leak is mid-funnel (qualification), not the</li></ul>
+<p>top. More leads into a leaky pipeline just raises <a href="./cac-fa.html">CAC</a>.</p>
+        </section>
+
+        <section id="examples">
+          <h2>مثال‌ها</h2>
+          <ul><li><strong>Working the machine backward.</strong> A B2B SaaS wants <strong>$120k in new ARR</strong> next quarter at</li></ul>
+<p>a <strong>$12k ACV</strong> → needs <strong>10 new customers</strong>. History: 30% of opportunities close, 25% of SQLs become opportunities, 20% of leads become SQLs. So 10 wins ⇒ ~33 opportunities ⇒ ~132 SQLs ⇒ ~660 leads. That 660 is now a manufacturable target, and at ~3× coverage the team should be carrying ~$360k of open pipeline <em>today</em> to trust the $120k. Revenue stops being weather.</p>
+<ul><li><strong>Price/cycle mismatch that kills.</strong> A team prices a product at <strong>$40/mo</strong> but runs a</li></ul>
+<p><strong>consultative, multi-call, three-month</strong> enterprise cycle on each deal. Even at a perfect close rate, one rep might land a handful of $40/mo accounts per quarter — <a href="./cac-fa.html">CAC</a> dwarfs revenue by orders of magnitude. The fix isn't &quot;sell harder&quot;; it's re-architecting to <strong>self-serve</strong> so the <em>product</em> runs the cycle (see <a href="./gtm-fa.html">gtm</a>, <a href="./aarrr-funnel-fa.html">aarrr-funnel</a>).</p>
+<ul><li><strong>Exit criteria save a forecast.</strong> A pipeline shows $500k &quot;committed.&quot; Applying MEDDIC</li></ul>
+<p>reveals half the deals have no identified <strong>economic buyer</strong> and no mapped <strong>decision process</strong> — they fail the Opportunity exit criteria. Honest pipeline: ~$250k. Painful, but now the forecast is real and the reps know exactly what to go get (reach the money, map the decision).</p>
+        </section>
+
+        <section id="talking-to-an-llm-about-it">
+          <h2>حرف زدن با LLM درباره آن</h2>
+          <ul><li><strong>Weak prompt:</strong> &quot;How do I sell my software?&quot;</li><li><strong>Better prompt:</strong> &quot;How do I build a sales pipeline for my B2B SaaS and define the</li></ul>
+<p>stages?&quot;</p>
+<ul><li><strong>Expert prompt:</strong> &quot;For a sales-assisted B2B SaaS at a <strong>$12k ACV</strong> targeting recruiting</li></ul>
+<p>agencies, design a pipeline where each stage is a <strong>buyer commitment</strong> with explicit <strong>exit criteria</strong> (use MEDDIC for the opportunity stage). Given a <strong>$120k new-ARR</strong> quarterly target and historical conversions of 20% lead→SQL, 25% SQL→opp, 30% opp→won, work backward to the leads and pipeline <strong>coverage</strong> I need, estimate the implied <a href="./cac-fa.html">CAC</a>, and flag whether my ~3-week cycle is consistent with this price and <a href="./gtm-fa.html">GTM</a> motion.&quot;</p>
+<p>The expert version supplies the motion, price, ICP, a revenue target, and real conversion rates — so the model does <em>pipeline engineering</em> (stage design, coverage math, CAC implication) instead of handing back a generic &quot;do outbound and follow up&quot; list. The magic word is <strong>&quot;buyer commitment with exit criteria&quot;</strong>: it pulls the model straight into the expert mental model instead of the activity-based-stage trap.</p>
+        </section>
+
+        <section id="my-evolving-understanding">
+          <h2>فهم در حال تکامل من</h2>
+          <ul><li><strong>v1 (2026-07-04):</strong> First pass. The reframe that landed hardest: I instinctively read</li></ul>
+<p>pipeline stages as <em>my</em> to-do list — lead, email, demo, proposal, close, all things <em>I</em> do. The expert mental model flips it entirely: <strong>a stage is a commitment the buyer made</strong>, and a deal only advances when the <em>buyer</em> moves, gated by objective <strong>exit criteria</strong>. That single shift is what turns a pipeline from theater into a forecasting instrument. Second landing: cycle length isn't a choice — the <strong>price and <a href="./gtm-fa.html">GTM</a> motion impose it</strong>, and mismatching them (self-serve price, enterprise cycle) quietly destroys unit economics via <a href="./cac-fa.html">CAC</a>. And the engineer's comforting lie — &quot;a good product sells itself&quot; — is exactly backwards: products get <em>sold</em> and <em>distributed</em>, or they die unknown (<a href="./distribution-fa.html">distribution</a>).</p>
+        </section>
+
+        <section id="sources">
+          <h2>منابع</h2>
+          <ul><li>*<em>Aaron Ross &amp; Marylou Tyler, </em>Predictable Revenue<em> (2011)</em>* — the &quot;$100M&quot; Salesforce</li></ul>
+<p>playbook: specialize sales roles (SDR / AE / CSM), separate prospecting from closing, and treat pipeline as a machine with known inputs → outputs. The origin of the &quot;predictable&quot; framing used throughout this note.</p>
+<ul><li><strong>MEDDIC</strong> (Metrics, Economic buyer, Decision criteria, Decision process, Identify</li></ul>
+<p>pain, Champion) — a B2B qualification framework developed at <strong>PTC</strong> in the 1990s (Dick Dunkel &amp; Jack Napoli); used here as the rigorous set of <em>exit criteria</em> for the Opportunity stage. <strong>BANT</strong> (Budget, Authority, Need, Timeline), originated by IBM, is the lighter-weight version.</p>
+<ul><li><strong>Consultative / solution selling</strong> (Mack Hanan, <em>Consultative Selling</em>; Rackham,</li></ul>
+<p><em>SPIN Selling</em>) — the lineage behind &quot;sell to the buyer's confirmed pain,&quot; reinforcing the buyer-commitment reframe (to verify and deepen on revisit).</p>
+<ul><li>See also <a href="./gtm-fa.html">gtm</a>, <a href="./cac-fa.html">cac</a>, <a href="./icp-fa.html">icp</a>, <a href="./aarrr-funnel-fa.html">aarrr-funnel</a>,</li></ul>
+<p><a href="./distribution-fa.html">distribution</a>.</p>
+        </section>
+
+        <section>
+          <h2>پیوندها</h2>
+          <nav class="footer-nav" aria-label="پیوندهای صفحه">
+            <a class="pill" href="./sales-cycle.html">نسخه انگلیسی</a>
+            <a class="pill" href="./sales-cycle.md">منبع Markdown</a>
+          </nav>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

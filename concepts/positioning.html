@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Positioning — Where Your Product Fits in the Customer's Mind | Entrepreneur-OS</title>
+  <meta name="description" content="Plain English: positioning is the *context* you set so the right customers instantly understand what your product is, who it's for, and why it's the obvious choice over the alternative. Expert phrasing: the deliberate act of defining the **frame of reference** (competitive alternative + market category) within which your unique value becomes obvious to the customers who care most.">
+  
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f8f6;
+      --paper: #ffffff;
+      --ink: #17201b;
+      --muted: #5d6b63;
+      --line: #dce4dd;
+      --accent: #0f7b5f;
+      --accent-strong: #075f49;
+      --accent-soft: #e4f4ef;
+      --warning-soft: #fff2cc;
+      --shadow: 0 22px 70px rgba(23, 32, 27, 0.10);
+      --radius: 8px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(120deg, rgba(15, 123, 95, 0.09), transparent 34rem), var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--accent-strong);
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: minmax(13rem, 17rem) minmax(0, 1fr);
+      gap: 2.5rem;
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 4rem;
+      
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 1rem;
+      align-self: start;
+      padding: 1rem 0;
+      
+    }
+
+    main {
+      min-width: 0;
+      
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--ink);
+      font-weight: 850;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 2rem;
+      height: 2rem;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      box-shadow: 0 8px 24px rgba(23, 32, 27, 0.08);
+      font-size: 0.78rem;
+    }
+
+    .toc {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .toc-title {
+      margin: 0 0 0.7rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.09em; text-transform: uppercase;
+    }
+
+    .toc a {
+      display: block;
+      padding: 0.36rem 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .hero, section {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero {
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 14rem;
+      gap: 2rem;
+      padding: clamp(1.4rem, 4vw, 3rem);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 0.75rem;
+      color: var(--accent-strong);
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 13ch;
+      font-size: clamp(2.2rem, 6.5vw, 5.2rem);
+      line-height: 0.96;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 45rem;
+      margin: 1.2rem 0 0;
+      color: var(--muted);
+      font-size: clamp(1.04rem, 1.6vw, 1.28rem);
+    }
+
+    .signal {
+      align-self: stretch;
+      display: grid;
+      align-content: center;
+      gap: 1rem;
+      padding: 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, #ffffff, #f3faf7);
+    }
+
+    .signal-line {
+      height: 0.8rem;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e3eae5;
+    }
+
+    .signal-line::before {
+      content: "";
+      display: block;
+      width: 72%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #b7e4d2, var(--accent));
+    }
+
+    .signal p {
+      margin: 0;
+      color: var(--ink);
+      font-size: 0.98rem;
+      font-weight: 650;
+    }
+
+    .metadata {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .meta-item {
+      min-width: 0;
+      padding: 1rem;
+      background: #fbfcfb;
+    }
+
+    .meta-label {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--muted);
+      font-size: 0.74rem;
+      font-weight: 900;
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+
+    .meta-value {
+      display: block;
+      color: var(--ink);
+      font-weight: 720;
+    }
+
+    .content {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    section {
+      padding: clamp(1.25rem, 3vw, 2rem);
+    }
+
+    section h2 {
+      margin: 0 0 0.9rem;
+      font-size: clamp(1.35rem, 2.2vw, 2rem);
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    section p { margin: 0.75rem 0 0; }
+    section p:first-of-type { margin-top: 0; }
+    strong { font-weight: 900; }
+    code {
+      padding: 0.08rem 0.28rem;
+      border-radius: 5px;
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+
+    ul, ol {
+      margin: 0.8rem 0 0;
+      padding-left: 1.25rem;
+      padding-right: 0;
+    }
+
+    li + li { margin-top: 0.55rem; }
+
+    blockquote, .note {
+      margin: 0;
+      padding: 1rem 1.1rem;
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius);
+      background: var(--accent-soft);
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.2rem;
+      padding: 0.4rem 0.75rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      font-weight: 760;
+      text-decoration: none;
+    }
+
+    @media (max-width: 860px) {
+      .shell {
+        display: block;
+        width: min(100% - 1rem, 46rem);
+        padding-top: 0.75rem;
+      }
+
+      .sidebar {
+        position: static;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.75rem 0 1rem;
+      }
+
+      .toc { display: none; }
+      .hero-top { grid-template-columns: 1fr; }
+      .metadata { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 520px) {
+      .metadata { grid-template-columns: 1fr; }
+      section { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Concept navigation">
+      <a class="brand" href="../README.md" aria-label="Entrepreneur-OS">
+        <span>Entrepreneur-OS</span>
+        <span class="brand-mark" dir="ltr">EOS</span>
+      </a>
+      <nav class="toc" aria-label="Page sections">
+        <p class="toc-title">Concept Map</p>
+        <a href="#what-it-is">What it is</a>
+        <a href="#why-it-exists-the-problem-it-solves">Why it exists / the problem it solves</a>
+        <a href="#how-experts-reason-with-it">How experts reason with it</a>
+        <a href="#when-you-use-it">When you use it</a>
+        <a href="#metrics-how-it-s-measured">Metrics / how it's measured</a>
+        <a href="#common-misconceptions">Common misconceptions</a>
+        <a href="#examples">Examples</a>
+        <a href="#talking-to-an-llm-about-it">Talking to an LLM about it</a>
+        <a href="#my-evolving-understanding">My evolving understanding</a>
+        <a href="#sources">Sources</a>
+      </nav>
+    </aside>
+
+    <main>
+      <header class="hero">
+        <div class="hero-top">
+          <div>
+            <p class="eyebrow">Entrepreneurship concept</p>
+            <h1>Positioning — Where Your Product Fits in the Customer's Mind</h1>
+            <p class="subtitle">Plain English: positioning is the <em>context</em> you set so the right customers instantly understand what your product is, who it's for, and why it's the obvious choice over the alternative. Expert phrasing: the deliberate act of defining the <strong>frame of reference</strong> (competitive alternative + market category) within which your unique value becomes obvious to the customers who care most.</p>
+          </div>
+          <aside class="signal" aria-label="Concept signal">
+            <div class="signal-line" aria-hidden="true"></div>
+            <p>Move past the definition: use this concept to reason, decide, and prompt AI more precisely.</p>
+          </aside>
+        </div>
+        <div class="metadata" aria-label="Concept metadata">
+          <div class="meta-item">
+            <span class="meta-label">Domain</span>
+            <span class="meta-value">marketing</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Stage</span>
+            <span class="meta-value">launch</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Prerequisites</span>
+            <span class="meta-value"><a href="./icp.html">icp</a>, a real product with at least one unique strength</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Related</span>
+            <span class="meta-value"><a href="./gtm.html">gtm</a>, <a href="./jtbd.html">jtbd</a>, messaging, branding · <strong>Contrast with:</strong> &quot;better/faster/cheaper&quot; with no frame</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        
+        <section id="what-it-is">
+          <h2>What it is</h2>
+          <p>Positioning is the answer to three questions asked together: <em>what is this, for whom, and compared to what?</em> The last part is the one beginners skip — and it's the one that does the work.</p>
+<p>Your product's value is not absolute; it is <strong>relative to whatever the customer mentally compares you against.</strong> Set that comparison well and your strengths look essential. Set it badly (or let the customer set it for you) and the exact same product looks confusing, overpriced, or pointless. Positioning is the <em>deliberate choice of that comparison</em> — the frame of reference — before the customer chooses it by accident.</p>
+<p>April Dunford breaks positioning into five interlocking pieces:</p>
+<ol><li><strong>Competitive alternatives</strong> — what the customer would use if you didn't exist</li></ol>
+<p>(often a spreadsheet, a manual process, or &quot;do nothing,&quot; not a named rival).</p>
+<ol><li><strong>Unique attributes</strong> — the capabilities you have that those alternatives lack.</li><li><strong>Value</strong> — the benefit those attributes unlock, stated in terms the customer cares about.</li><li><strong>Target customers who care most</strong> — the segment for whom that value is urgent, not nice-to-have.</li><li><strong>Market category</strong> — the context you place yourself in, which primes what buyers</li></ol>
+<p>expect, who they compare you to, and what &quot;good&quot; means.</p>
+        </section>
+
+        <section id="why-it-exists-the-problem-it-solves">
+          <h2>Why it exists / the problem it solves</h2>
+          <p>Buyers don't evaluate products in a vacuum — they slot every new thing into a mental category and judge it by that category's rules. If you don't choose the category, the customer chooses one for you, usually the most obvious and least flattering one. A novel product dropped into the wrong category gets measured against the wrong yardstick and loses on features that were never the point.</p>
+<p>Positioning exists to <strong>control that first act of interpretation.</strong> It's how you make sure the customer compares you against the alternative where you win, inside the category where your unique attributes read as valuable rather than weird. Get it right and selling feels easy — prospects &quot;get it&quot; in seconds and the wrong-fit ones self-select out. Get it wrong and you burn budget explaining yourself.</p>
+        </section>
+
+        <section id="how-experts-reason-with-it">
+          <h2>How experts reason with it</h2>
+          <p>The insight a beginner misses: <strong>you can change how good your product looks without changing the product at all — just by changing the frame of reference.</strong> April Dunford's canonical example: a database company that was drowning as a &quot;database&quot; (compared to giants, judged on features it didn't have) became &quot;obviously awesome&quot; the moment it repositioned as a <em>data warehouse</em> — same code, new frame, and suddenly its strengths were exactly what that category demanded.</p>
+<p>So experts don't start by listing features. They start by asking: <em>if we didn't exist, what would our best customers actually use?</em> That competitive alternative <strong>defines the frame</strong>, the frame determines which of your attributes matter, and only the attributes that matter become your positioning. Everything flows from the alternative, not from the feature list.</p>
+<p>They also treat positioning as <strong>a decision you make, not a description you write.</strong> &quot;Better/faster/cheaper&quot; is not positioning — it's a claim with no frame, and a claim with no frame is invisible. The pro move is to choose the context deliberately, then let the whole go-to-market machine inherit that choice.</p>
+<p>Three layers that beginners blur — they <strong>nest</strong>, and confusing them is a classic trap:</p>
+<ul><li><strong>Positioning</strong> is the strategic foundation: the frame, the who, the against-what. It's a <em>decision</em>.</li><li><strong>Messaging</strong> is the customer-facing language that <em>translates</em> positioning into headlines, value props, and copy.</li><li><strong>Branding</strong> is the identity and emotional layer — name, look, voice, the feeling you evoke.</li></ul>
+<p>Positioning is the <strong>input</strong>; messaging expresses it; branding wraps it. Skip positioning and you're writing messaging on top of nothing — polished words with no spine.</p>
+        </section>
+
+        <section id="when-you-use-it">
+          <h2>When you use it</h2>
+          <ul><li><strong>Before writing any landing page, pitch, or cold email</strong> — the words are downstream</li></ul>
+<p>of the frame. Fix the frame first or you're editing symptoms.</p>
+<ul><li><strong>When prospects &quot;don't get it&quot;</strong> or keep comparing you to the wrong thing — a</li></ul>
+<p>frame-of-reference problem, almost never a feature problem.</p>
+<ul><li><strong>At launch, and again after PMF</strong> — early positioning is a guess; once you see who</li></ul>
+<p>actually buys and loves it, you re-position around them (this is <em>why</em> positioning is the input to <a href="./gtm.html">gtm</a> and sharpens the <a href="./icp.html">icp</a>).</p>
+<ul><li><strong>When you add a capability that changes the category</strong> you could credibly play in.</li></ul>
+        </section>
+
+        <section id="metrics-how-it-s-measured">
+          <h2>Metrics / how it's measured</h2>
+          <p>Positioning is qualitative, but it leaves measurable fingerprints — you <em>test</em> it, you don't just assert it:</p>
+<ul><li><strong>Time-to-&quot;aha&quot;</strong> — how fast a prospect understands what you are. Shrinking = frame is landing.</li><li><strong>Sales-cycle length &amp; win rate</strong> — sharp positioning shortens cycles and lifts win rates.</li><li><strong>Win/loss reasons</strong> — <em>why</em> people chose you (or a rival) reveals the frame they're actually using.</li><li><strong>The comparison prospects volunteer</strong> — if they compare you to the alternative you</li></ul>
+<p><em>intended</em>, your frame is holding; if not, the market re-positioned you.</p>
+        </section>
+
+        <section id="common-misconceptions">
+          <h2>Common misconceptions</h2>
+          <ul><li><strong>&quot;Positioning = a tagline / slogan.&quot;</strong> No — that's messaging (or branding). Positioning</li></ul>
+<p>is the underlying strategic decision the slogan later expresses.</p>
+<ul><li><strong>&quot;Better/faster/cheaper is positioning.&quot;</strong> It's a claim with no frame of reference,</li></ul>
+<p>so the customer has nothing to anchor it to. Better <em>than what</em>, for <em>whom</em>, in <em>what category</em>? Without those, it's noise.</p>
+<ul><li><strong>&quot;Position against the biggest-name competitor.&quot;</strong> Often the real alternative is a</li></ul>
+<p>spreadsheet, a manual workaround, or inertia (&quot;do nothing&quot;). Position against what the customer would <em>actually</em> do instead — that's the honest frame.</p>
+<ul><li><strong>&quot;Set it once.&quot;</strong> Positioning is a live hypothesis. The market can re-frame you; you</li></ul>
+<p>revisit it as you learn who your product is truly for.</p>
+<ul><li><strong>&quot;Broad positioning reaches more people.&quot;</strong> Vague framing reaches <em>no one</em>, because it</li></ul>
+<p>feels made-for-nobody. A narrow, sharp frame is what makes the right customer feel &quot;this is for me.&quot;</p>
+        </section>
+
+        <section id="examples">
+          <h2>Examples</h2>
+          <ul><li><strong>Tesla's frame.</strong> Positioned not as &quot;an electric car&quot; (a category then meaning</li></ul>
+<p>compromise — slow, ugly, range-anxious) but as a <em>high-performance luxury sports car that happens to be electric.</em> Same electrons, radically better frame: now it's compared to Porsche, not to a golf cart.</p>
+<ul><li><strong>Dunford's data-warehouse repositioning.</strong> A product losing as a &quot;database&quot; won as a</li></ul>
+<p>&quot;data warehouse&quot; — the code never changed, only the frame of reference, and with it every downstream expectation.</p>
+<ul><li><strong>Do-nothing as the real alternative.</strong> Many B2B tools' true competitor is &quot;the</li></ul>
+<p>customer keeps using their spreadsheet.&quot; Positioning against <em>that</em> (setup effort, human error, hours lost) lands harder than positioning against a rival SaaS the buyer has never heard of.</p>
+        </section>
+
+        <section id="talking-to-an-llm-about-it">
+          <h2>Talking to an LLM about it</h2>
+          <p>The same intent, framed three ways — this is how vocabulary becomes leverage:</p>
+<ul><li><strong>Weak prompt:</strong> &quot;Write me a tagline for my product.&quot;</li><li><strong>Better prompt:</strong> &quot;Help me position my project-management tool for freelancers so it</li></ul>
+<p>stands out from the competition.&quot;</p>
+<ul><li><strong>Expert prompt:</strong> &quot;Act as a positioning strategist using April Dunford's framework.</li></ul>
+<p>My product is a bootstrapped project-management tool for solo freelancers who currently manage clients in spreadsheets + email. Walk the five components: (1) the true competitive alternative (I think it's 'spreadsheets + inbox', not other SaaS), (2) my unique attributes vs. that alternative, (3) the value those unlock for a time-poor freelancer, (4) the sub-segment who'd care most, (5) the market category that makes my value obvious. Then propose two alternative frames of reference and argue which makes my strengths land hardest — and flag where I'm at risk of a 'better/faster/cheaper' claim with no frame.&quot;</p>
+<p>The expert version names the framework, the real alternative, the segment, and the objective — so the model reasons about <em>frame of reference</em> instead of spitting out a generic slogan.</p>
+        </section>
+
+        <section id="my-evolving-understanding">
+          <h2>My evolving understanding</h2>
+          <ul><li><strong>v1 (2026-07-02):</strong> First pass while bootstrapping Entrepreneur-OS. The reframe that</li></ul>
+<p>landed: I used to think positioning was <em>wording</em> — a clever tagline you polish at the end. The shift — positioning is a <em>strategic decision made up front</em>: you choose the <strong>frame of reference</strong> (what the customer compares you against), and that single choice silently decides whether your strengths look essential or irrelevant. &quot;Better/faster/ cheaper&quot; isn't positioning because it has no frame. Positioning is the <em>input</em> to <a href="./gtm.html">gtm</a> and it sharpens the <a href="./icp.html">icp</a>; messaging and branding sit <em>downstream</em> of it, not beside it.</p>
+        </section>
+
+        <section id="sources">
+          <h2>Sources</h2>
+          <ul><li>April Dunford, <em>Obviously Awesome</em> — the five-component framework and the</li></ul>
+<p>frame-of-reference insight; positioning as a deliberate choice of context, driven by the customer's real competitive alternative.</p>
+<ul><li>Al Ries &amp; Jack Trout, <em>Positioning: The Battle for Your Mind</em> — positioning as an act</li></ul>
+<p>performed on the <em>mind of the prospect</em>: perception over product, owning a category, the &quot;ladder&quot; a buyer already holds in their head.</p>
+        </section>
+
+        <section>
+          <h2>Links</h2>
+          <nav class="footer-nav" aria-label="Page links">
+            <a class="pill" href="./positioning-fa.html">Persian version</a>
+            <a class="pill" href="./positioning.md">Markdown source</a>
+          </nav>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

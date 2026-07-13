@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>قیمت‌گذاری | Entrepreneur-OS</title>
+  <meta name="description" content="Plain English: pricing is deciding *what to charge* — and, more deeply, *how* you charge — so the number reflects the value the customer gets rather than what the product cost you to build. Expert phrasing: the deliberate design of price *level*, price *metric*, and price *structure* to capture a defensible share of the **willingness-to-pay** you create for a chosen segment — the single highest-leverage, most-neglected lever on profit a founder controls.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f8f6;
+      --paper: #ffffff;
+      --ink: #17201b;
+      --muted: #5d6b63;
+      --line: #dce4dd;
+      --accent: #0f7b5f;
+      --accent-strong: #075f49;
+      --accent-soft: #e4f4ef;
+      --warning-soft: #fff2cc;
+      --shadow: 0 22px 70px rgba(23, 32, 27, 0.10);
+      --radius: 8px;
+      font-family: "Vazirmatn", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(240deg, rgba(15, 123, 95, 0.09), transparent 34rem), var(--bg);
+      color: var(--ink);
+      line-height: 1.9;
+    }
+
+    a {
+      color: var(--accent-strong);
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(13rem, 17rem);
+      gap: 2.5rem;
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 4rem;
+      direction: ltr;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 1rem;
+      align-self: start;
+      padding: 1rem 0;
+      grid-column: 2; direction: rtl;
+    }
+
+    main {
+      min-width: 0;
+      grid-column: 1; grid-row: 1; direction: rtl;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--ink);
+      font-weight: 850;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 2rem;
+      height: 2rem;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      box-shadow: 0 8px 24px rgba(23, 32, 27, 0.08);
+      font-size: 0.78rem;
+    }
+
+    .toc {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .toc-title {
+      margin: 0 0 0.7rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 900;
+      
+    }
+
+    .toc a {
+      display: block;
+      padding: 0.36rem 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .hero, section {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero {
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 14rem;
+      gap: 2rem;
+      padding: clamp(1.4rem, 4vw, 3rem);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 0.75rem;
+      color: var(--accent-strong);
+      font-size: 0.82rem;
+      font-weight: 900;
+      
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 14ch;
+      font-size: clamp(2.2rem, 6.5vw, 5.2rem);
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 45rem;
+      margin: 1.2rem 0 0;
+      color: var(--muted);
+      font-size: clamp(1.04rem, 1.6vw, 1.28rem);
+    }
+
+    .signal {
+      align-self: stretch;
+      display: grid;
+      align-content: center;
+      gap: 1rem;
+      padding: 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, #ffffff, #f3faf7);
+    }
+
+    .signal-line {
+      height: 0.8rem;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e3eae5;
+    }
+
+    .signal-line::before {
+      content: "";
+      display: block;
+      width: 72%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #b7e4d2, var(--accent));
+    }
+
+    .signal p {
+      margin: 0;
+      color: var(--ink);
+      font-size: 0.98rem;
+      font-weight: 650;
+    }
+
+    .metadata {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .meta-item {
+      min-width: 0;
+      padding: 1rem;
+      background: #fbfcfb;
+    }
+
+    .meta-label {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--muted);
+      font-size: 0.74rem;
+      font-weight: 900;
+      
+    }
+
+    .meta-value {
+      display: block;
+      color: var(--ink);
+      font-weight: 720;
+    }
+
+    .content {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    section {
+      padding: clamp(1.25rem, 3vw, 2rem);
+    }
+
+    section h2 {
+      margin: 0 0 0.9rem;
+      font-size: clamp(1.35rem, 2.2vw, 2rem);
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    section p { margin: 0.75rem 0 0; }
+    section p:first-of-type { margin-top: 0; }
+    strong { font-weight: 900; }
+    code {
+      padding: 0.08rem 0.28rem;
+      border-radius: 5px;
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+
+    ul, ol {
+      margin: 0.8rem 0 0;
+      padding-right: 1.25rem;
+      padding-left: 0;
+    }
+
+    li + li { margin-top: 0.55rem; }
+
+    blockquote, .note {
+      margin: 0;
+      padding: 1rem 1.1rem;
+      border-right: 4px solid var(--accent);
+      border-radius: var(--radius);
+      background: var(--accent-soft);
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.2rem;
+      padding: 0.4rem 0.75rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      font-weight: 760;
+      text-decoration: none;
+    }
+
+    @media (max-width: 860px) {
+      .shell {
+        display: block;
+        width: min(100% - 1rem, 46rem);
+        padding-top: 0.75rem;
+      }
+
+      .sidebar {
+        position: static;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.75rem 0 1rem;
+      }
+
+      .toc { display: none; }
+      .hero-top { grid-template-columns: 1fr; }
+      .metadata { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 520px) {
+      .metadata { grid-template-columns: 1fr; }
+      section { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="ناوبری مفهوم">
+      <a class="brand" href="../README.md" aria-label="Entrepreneur-OS">
+        <span>Entrepreneur-OS</span>
+        <span class="brand-mark" dir="ltr">EOS</span>
+      </a>
+      <nav class="toc" aria-label="بخش‌های صفحه">
+        <p class="toc-title">نقشه مفهوم</p>
+        <a href="#what-it-is">چیست؟</a>
+        <a href="#why-it-exists-the-problem-it-solves">چرا وجود دارد؟</a>
+        <a href="#how-experts-reason-with-it">استدلال متخصص‌ها</a>
+        <a href="#when-you-use-it">زمان استفاده</a>
+        <a href="#metrics-how-it-s-measured">سنجه‌ها و اندازه‌گیری</a>
+        <a href="#common-misconceptions">برداشت‌های غلط رایج</a>
+        <a href="#examples">مثال‌ها</a>
+        <a href="#talking-to-an-llm-about-it">حرف زدن با LLM درباره آن</a>
+        <a href="#my-evolving-understanding">فهم در حال تکامل من</a>
+        <a href="#sources">منابع</a>
+      </nav>
+    </aside>
+
+    <main>
+      <header class="hero">
+        <div class="hero-top">
+          <div>
+            <p class="eyebrow">مفهوم کارآفرینی</p>
+            <h1>قیمت‌گذاری</h1>
+            <p class="subtitle">یادداشت: این صفحه نسخه راست‌به‌چپ طراحی‌شده از منبع Markdown است. عنوان‌ها و قاب صفحه فارسی شده‌اند؛ متن تخصصی بدنه از منبع اصلی حفظ شده تا ترجمه مفهومی هر یادداشت جداگانه بازبینی شود.</p>
+          </div>
+          <aside class="signal" aria-label="سیگنال مفهومی">
+            <div class="signal-line" aria-hidden="true"></div>
+            <p>از تعریف عبور کن؛ این صفحه برای فهم عملی، تصمیم‌گیری، و گفتگو با AI ساخته شده است.</p>
+          </aside>
+        </div>
+        <div class="metadata" aria-label="فراداده مفهوم">
+          <div class="meta-item">
+            <span class="meta-label">دامنه</span>
+            <span class="meta-value">finance</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">مرحله</span>
+            <span class="meta-value">growth</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">پیش‌نیازها</span>
+            <span class="meta-value"><a href="./positioning-fa.html">positioning</a> (value is relative to the frame of reference), a real product customers already want</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">مرتبط</span>
+            <span class="meta-value"><a href="./ltv-fa.html">ltv</a>, <a href="./cac-fa.html">cac</a>, <a href="./mrr-arr-fa.html">mrr-arr</a>, willingness-to-pay, packaging · <strong>Contrast with:</strong> cost-plus pricing</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        
+        <section id="what-it-is">
+          <h2>چیست؟</h2>
+          <p>Pricing is the decision of what a customer pays you. Beginners treat it as <em>one number</em>; experts treat it as <em>three linked decisions</em>:</p>
+<ol><li><strong>The price level</strong> — the actual dollar figure ($29, $2,900).</li><li><strong>The price metric</strong> (a.k.a. the <em>value metric</em>) — the <em>unit</em> you charge per: per</li></ol>
+<p>seat, per GB, per API call, per invoice processed, per outcome delivered. This is what the meter counts.</p>
+<ol><li><strong>The structure / packaging</strong> — tiers, add-ons, the good/better/best ladder that</li></ol>
+<p>sorts customers by how much value they get.</p>
+<p>There are three canonical ways to arrive at the level, and they are not equal:</p>
+<ul><li><strong>Cost-plus</strong> — take what it cost you to make, add a markup. Simple, &quot;fair-feeling,&quot;</li></ul>
+<p>and almost always <em>wrong</em>: it anchors price to your costs, which the customer does not care about at all.</p>
+<ul><li><strong>Competitor-based</strong> — price relative to rivals (match, undercut, or premium). A</li></ul>
+<p>useful sanity check, but it outsources your most important number to companies whose costs, segment, and strategy you don't actually know.</p>
+<ul><li><strong>Value-based</strong> — price against the <em>economic value the customer receives</em> and their</li></ul>
+<p><strong>willingness-to-pay</strong> (WTP) for it. This is the expert default, because it's the only method anchored to the one thing that determines whether a price sticks: what the outcome is worth to the buyer.</p>
+        </section>
+
+        <section id="why-it-exists-the-problem-it-solves">
+          <h2>چرا وجود دارد؟</h2>
+          <p>Every business has to answer &quot;what do we charge?&quot; — and that single number moves profit more than almost anything else a founder can touch. A classic result (often attributed to McKinsey / Marn &amp; Rosiello) is that, for a typical company, a <strong>1% improvement in price</strong> drives a far larger profit gain than a 1% cut in costs or a 1% rise in volume, because price flows almost entirely to the bottom line. Yet founders — engineers especially — pour months into the product and spend an afternoon on price, usually by guessing a round number and adding a discount.</p>
+<p>Pricing as a discipline exists to stop that leak: to convert the value you actually create into revenue you actually capture, deliberately, instead of leaving money on the table by default. It's the bridge between <em>how good the product is</em> and <em>whether the business works</em> — it sets the ceiling on <a href="./ltv-fa.html">ltv</a>, determines whether <a href="./cac-fa.html">cac</a> payback is fast or fatal, and is the raw input to <a href="./mrr-arr-fa.html">mrr-arr</a>.</p>
+        </section>
+
+        <section id="how-experts-reason-with-it">
+          <h2>استدلال متخصص‌ها</h2>
+          <p>The insight a beginner misses — the &quot;so what&quot; — is twofold:</p>
+<p><strong>1. Price the value, not the cost.</strong> Your cost is your floor, not your target. The customer's willingness-to-pay is set by the <em>value they receive</em> (time saved, revenue gained, risk removed), not by your AWS bill. A tool that saves a law firm $200k/year can rationally charge tens of thousands, whether it cost you $50/month or $5,000/month to run. Cost-plus systematically <em>underprices</em> your best products (where value far exceeds cost) and <em>overprices</em> your worst — it's anchored to the wrong number entirely. Engineers default to cost-plus because it feels precise, fair, and controllable; it is precisely, fairly, and controllably wrong.</p>
+<p>*<em>2. The price </em>metric<em> often matters more than the price </em>number<em>.</em><em> This is the pro move most founders never make. The value metric is </em>what you charge per<em>, and getting it right means your revenue <strong>scales with the value the customer gets</strong> — so as they succeed with you, they naturally pay more, and it never </em>feels* like a price hike. A great value metric has three properties: it aligns with value (customers who get more, pay more), it's easy for the customer to understand and predict, and it grows as the account grows.</p>
+<ul><li>Slack charges <strong>per active user</strong> — you pay for people actually getting value, not</li></ul>
+<p>for empty seats. It aligns billing with realized value and expands as teams adopt it.</p>
+<ul><li>AWS charges <strong>per unit of compute/storage</strong> — you pay in proportion to what you</li></ul>
+<p>consume, which is a proxy for the value you're extracting.</p>
+<ul><li>Stripe charges <strong>a % of payment volume</strong> — it earns more precisely when its customers</li></ul>
+<p>earn more. The metric <em>is</em> the alignment.</p>
+<p>Choosing &quot;per seat&quot; vs. &quot;per outcome&quot; vs. &quot;flat fee&quot; can matter more than whether the number is $40 or $50, because the metric determines your <strong>expansion revenue</strong> — the compounding engine behind healthy <a href="./mrr-arr-fa.html">mrr-arr</a> and net revenue retention.</p>
+<p><strong>3. Willingness-to-pay is researchable, not mystical.</strong> Experts don't guess WTP — they <em>measure</em> it before building, then again after. The <strong>Van Westendorp Price Sensitivity Meter</strong> asks four questions:</p>
+<ul><li>At what price is this <em>so expensive</em> you wouldn't consider it? (too expensive)</li><li>At what price is it <em>getting expensive</em> but you'd still consider it? (expensive)</li><li>At what price is it <em>a good deal</em>? (cheap)</li><li>At what price is it <em>so cheap</em> you'd doubt its quality? (too cheap)</li></ul>
+<p>Plotting the answers reveals an acceptable price band and an optimal point. Even lighter than that: structured customer interviews (<em>&quot;walk me through the last time you paid to solve this — what did it cost, what would make it a no-brainer, at what price would you walk away?&quot;</em>) surface WTP and the value metric together. The rule Ramanujam &amp; Tacke press in <em>Monetizing Innovation</em>: <strong>have the pricing conversation before you build the product, not after</strong> — design the thing around what people have told you they'll pay for and how they want to be charged.</p>
+<p><strong>4. Price is a positioning signal.</strong> Price is never just a number to the buyer — it's information. A premium price says &quot;this is serious/for professionals&quot;; a rock-bottom price says &quot;this is cheap, possibly risky.&quot; So price must be <em>coherent with</em> <a href="./positioning-fa.html">positioning</a>: if you've framed yourself as the premium, outcome-grade option, a bargain price actively undermines the frame and confuses the buyer.</p>
+        </section>
+
+        <section id="when-you-use-it">
+          <h2>زمان استفاده</h2>
+          <ul><li><strong>Before building</strong> — run WTP research so you design a product people will pay for,</li></ul>
+<p>charged on a metric they'll accept (the <em>Monetizing Innovation</em> discipline).</p>
+<ul><li><strong>At launch and on a schedule after</strong> — pricing is a hypothesis; revisit it as you</li></ul>
+<p>learn who buys and what they value. Most founders set it once and never touch it — leaving compounding money on the table.</p>
+<ul><li><strong>When designing packaging/tiers</strong> — sorting customers into good/better/best so each</li></ul>
+<p>self-selects into paying near their own WTP.</p>
+<ul><li><strong>When unit economics are off</strong> — if <a href="./ltv-fa.html">ltv</a>:<a href="./cac-fa.html">cac</a> is thin, a price</li></ul>
+<p>or value-metric change is often faster and cheaper than chasing volume.</p>
+<ul><li><strong>When you add capability that raises the value delivered</strong> — the price (or the meter)</li></ul>
+<p>should move with it.</p>
+        </section>
+
+        <section id="metrics-how-it-s-measured">
+          <h2>سنجه‌ها و اندازه‌گیری</h2>
+          <p>Pricing is a design decision, but it leaves quantitative fingerprints — you <em>test</em> it:</p>
+<ul><li><strong>Willingness-to-pay band</strong> — from Van Westendorp or interviews: the acceptable range</li></ul>
+<p>and an optimal point, per segment.</p>
+<ul><li><strong>Price elasticity</strong> — how much demand moves when price moves. B2B value-based</li></ul>
+<p>products are often <em>less</em> elastic than founders fear (raising price loses few, gains much margin).</p>
+<ul><li><strong>Effect on <a href="./ltv-fa.html">ltv</a>, <a href="./cac-fa.html">cac</a> payback, and <a href="./mrr-arr-fa.html">mrr-arr</a></strong> —</li></ul>
+<p>price sets the ARPU that flows into every one of these. A price increase drops straight to margin and shortens CAC payback.</p>
+<ul><li><strong>Expansion / net revenue retention</strong> — reveals whether your <em>value metric</em> is</li></ul>
+<p>working: a good metric makes accounts grow their spend over time without a formal price hike.</p>
+<ul><li><strong>Win rate &amp; discount depth</strong> — chronic heavy discounting is a signal your list price</li></ul>
+<p>or packaging is wrong, not that your salespeople are weak.</p>
+        </section>
+
+        <section id="common-misconceptions">
+          <h2>برداشت‌های غلط رایج</h2>
+          <ul><li><strong>&quot;Add up my costs and mark it up — that's the fair price.&quot;</strong> Cost-plus is anchored to</li></ul>
+<p>the wrong number. Cost is your <em>floor</em>; value is your target. This is the single most common — and most expensive — founder pricing mistake.</p>
+<ul><li><strong>&quot;The number is the whole decision.&quot;</strong> The <em>metric</em> (what you charge per) and the</li></ul>
+<p><em>packaging</em> often matter more than the figure. Get the meter right and revenue scales with value on its own.</p>
+<ul><li><strong>&quot;Underpricing wins deals and market share.&quot;</strong> A low price wins the <em>wrong</em></li></ul>
+<p>customers (price-shoppers who churn), starves you of the margin to fund <a href="./cac-fa.html">cac</a> and support, and signals low quality — undercutting your <a href="./positioning-fa.html">positioning</a>. It's usually easier to lower a high price than to raise a low one.</p>
+<ul><li><strong>&quot;One price for everyone is simplest and fairest.&quot;</strong> Customers get wildly different</li></ul>
+<p>value from the same product; a single price overcharges the low-value segment (who leave) and undercharges the high-value one (leaving money behind). Tiers exist to fix this.</p>
+<ul><li><strong>&quot;Set it once.&quot;</strong> Pricing is a live hypothesis. Never testing it is the quiet</li></ul>
+<p>default that caps a business's profit for years.</p>
+<ul><li><strong>&quot;Just copy a competitor.&quot;</strong> Their price encodes <em>their</em> costs, segment, and</li></ul>
+<p>strategy — none of which you can see. Use it as a reference point, not an anchor.</p>
+        </section>
+
+        <section id="examples">
+          <h2>مثال‌ها</h2>
+          <ul><li><strong>Value-based, priced on outcome — Stripe.</strong> Charges ~2.9% + 30¢ <em>per transaction</em>.</li></ul>
+<p>The value metric is payment volume, so Stripe earns more exactly when its customers do — perfect value alignment, and expansion is automatic as the customer grows.</p>
+<ul><li><strong>The value-metric swing — Slack vs. a flat &quot;per company&quot; fee.</strong> By charging per</li></ul>
+<p><em>active</em> user, Slack ties revenue to realized adoption; a flat company-wide fee would have either scared off small teams or badly undercharged big ones. Same product, the metric decides the economics.</p>
+<ul><li><strong>Cost-plus underpricing a high-value product.</strong> A solo founder builds an AI tool that</li></ul>
+<p>saves agencies ~$3,000/month in labor. Costing it at &quot;$40/mo hosting + markup = $99/mo&quot; leaves nearly all the created value on the table; a value-based read (a fraction of the $3,000 saved) supports 5–10× that — and the agencies would happily pay it, because it's cheap relative to what they <em>get</em>.</p>
+<ul><li><strong>Van Westendorp in practice.</strong> Before launch, surveying 50 target users with the four</li></ul>
+<p>price-sensitivity questions reveals an acceptable band of $80–$150 and an optimal near $120 — replacing a founder's nervous &quot;$49 feels safe&quot; guess with evidence.</p>
+        </section>
+
+        <section id="talking-to-an-llm-about-it">
+          <h2>حرف زدن با LLM درباره آن</h2>
+          <p>The same intent, framed three ways — this is how vocabulary becomes leverage:</p>
+<ul><li><strong>Weak prompt:</strong> &quot;How much should I charge for my app?&quot;</li><li><strong>Better prompt:</strong> &quot;Help me price my SaaS tool for small marketing agencies. What's a</li></ul>
+<p>good monthly price and should I have tiers?&quot;</p>
+<ul><li><strong>Expert prompt:</strong> &quot;Act as a monetization strategist in the tradition of Ramanujam &amp;</li></ul>
+<p>Tacke's <em>Monetizing Innovation</em>. My product is a bootstrapped B2B SaaS for small marketing agencies (5–20 people) that automates client reporting and saves each agency ~20 hours/month. Assume a target <a href="./ltv-fa.html">ltv</a>:<a href="./cac-fa.html">cac</a> of 3:1 and a premium <a href="./positioning-fa.html">positioning</a>. (1) Propose a <strong>value metric</strong> and argue why it beats a flat per-company fee for expansion revenue. (2) Design a good/better/best packaging ladder that sorts agencies by value received. (3) Recommend a value-based price <em>band</em> and how I'd validate it with a Van Westendorp survey or 10 customer interviews before committing. (4) Flag where I'm at risk of underpricing and how it would hurt my unit economics and <a href="./mrr-arr-fa.html">mrr-arr</a>.&quot;</p>
+<p>The expert version names the framework, the business model, the segment, the value delivered, and the objective — so the model reasons about value capture and price <em>architecture</em> instead of blurting out a round number.</p>
+        </section>
+
+        <section id="my-evolving-understanding">
+          <h2>فهم در حال تکامل من</h2>
+          <ul><li><strong>v1 (2026-07-03):</strong> First pass while bootstrapping Entrepreneur-OS. The reframe that</li></ul>
+<p>landed hardest: as an engineer I instinctively reach for <strong>cost-plus</strong> — tally what it costs to run, add a markup, done. That's precisely the worst method, because it anchors price to <em>my</em> costs, which the customer could not care less about. The expert move is to price against the customer's <strong>willingness-to-pay</strong> for the <em>value</em> they receive — and, bigger still, to realize the <strong>price metric</strong> (what I charge <em>per</em>) often matters more than the number: a metric that scales with the customer's value turns growth into expansion revenue with no &quot;price hike&quot; friction. Pricing isn't a number I set at the end; it's a value-capture system I should design <em>before</em> building — and it has to stay coherent with <a href="./positioning-fa.html">positioning</a>, because price is itself a signal.</p>
+        </section>
+
+        <section id="sources">
+          <h2>منابع</h2>
+          <ul><li>Madhavan Ramanujam &amp; Georg Tacke, <em>Monetizing Innovation</em> — design the product around</li></ul>
+<p>price and willingness-to-pay <em>before</em> building; the primacy of the value metric and packaging; segment-based pricing over one-size-fits-all.</p>
+<ul><li>Patrick Campbell / ProfitWell (Paddle) writing on SaaS pricing — value metrics as the</li></ul>
+<p>core of scalable pricing, WTP research, and why most companies badly under-invest in pricing relative to acquisition.</p>
+<ul><li>Van Westendorp Price Sensitivity Meter — the four-question method for estimating an</li></ul>
+<p>acceptable price band and optimal point (to verify/deepen on revisit).</p>
+<ul><li>Marn &amp; Rosiello (McKinsey), &quot;Managing Price, Gaining Profit&quot; — the outsized leverage of</li></ul>
+<p>a 1% price change on operating profit (to verify exact figures on revisit).</p>
+<ul><li>See also <a href="./positioning-fa.html">positioning</a>, <a href="./ltv-fa.html">ltv</a>, <a href="./cac-fa.html">cac</a>,</li></ul>
+<p><a href="./mrr-arr-fa.html">mrr-arr</a>.</p>
+        </section>
+
+        <section>
+          <h2>پیوندها</h2>
+          <nav class="footer-nav" aria-label="پیوندهای صفحه">
+            <a class="pill" href="./pricing.html">نسخه انگلیسی</a>
+            <a class="pill" href="./pricing.md">منبع Markdown</a>
+          </nav>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

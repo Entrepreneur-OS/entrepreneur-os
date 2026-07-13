@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Distribution — How You Reach Customers (Channels) | Entrepreneur-OS</title>
+  <meta name="description" content="Plain English: distribution is *how your product actually gets in front of the people who'll buy it* — the routes (channels) you use to reach, win, and keep customers. Expert phrasing: your **channel strategy** — the deliberate choice of the one (or few) **acquisition channels** whose economics, scale, and fit match your product, price, and [ICP](./icp.md); the working assumption is that *a superior product loses to a superior distribution*, so distribution is a first-class design problem, not an afterthought.">
+  
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f8f6;
+      --paper: #ffffff;
+      --ink: #17201b;
+      --muted: #5d6b63;
+      --line: #dce4dd;
+      --accent: #0f7b5f;
+      --accent-strong: #075f49;
+      --accent-soft: #e4f4ef;
+      --warning-soft: #fff2cc;
+      --shadow: 0 22px 70px rgba(23, 32, 27, 0.10);
+      --radius: 8px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(120deg, rgba(15, 123, 95, 0.09), transparent 34rem), var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--accent-strong);
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: minmax(13rem, 17rem) minmax(0, 1fr);
+      gap: 2.5rem;
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 4rem;
+      
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 1rem;
+      align-self: start;
+      padding: 1rem 0;
+      
+    }
+
+    main {
+      min-width: 0;
+      
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--ink);
+      font-weight: 850;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 2rem;
+      height: 2rem;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      box-shadow: 0 8px 24px rgba(23, 32, 27, 0.08);
+      font-size: 0.78rem;
+    }
+
+    .toc {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .toc-title {
+      margin: 0 0 0.7rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.09em; text-transform: uppercase;
+    }
+
+    .toc a {
+      display: block;
+      padding: 0.36rem 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .hero, section {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero {
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 14rem;
+      gap: 2rem;
+      padding: clamp(1.4rem, 4vw, 3rem);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 0.75rem;
+      color: var(--accent-strong);
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 13ch;
+      font-size: clamp(2.2rem, 6.5vw, 5.2rem);
+      line-height: 0.96;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 45rem;
+      margin: 1.2rem 0 0;
+      color: var(--muted);
+      font-size: clamp(1.04rem, 1.6vw, 1.28rem);
+    }
+
+    .signal {
+      align-self: stretch;
+      display: grid;
+      align-content: center;
+      gap: 1rem;
+      padding: 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, #ffffff, #f3faf7);
+    }
+
+    .signal-line {
+      height: 0.8rem;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e3eae5;
+    }
+
+    .signal-line::before {
+      content: "";
+      display: block;
+      width: 72%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #b7e4d2, var(--accent));
+    }
+
+    .signal p {
+      margin: 0;
+      color: var(--ink);
+      font-size: 0.98rem;
+      font-weight: 650;
+    }
+
+    .metadata {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .meta-item {
+      min-width: 0;
+      padding: 1rem;
+      background: #fbfcfb;
+    }
+
+    .meta-label {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--muted);
+      font-size: 0.74rem;
+      font-weight: 900;
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+
+    .meta-value {
+      display: block;
+      color: var(--ink);
+      font-weight: 720;
+    }
+
+    .content {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    section {
+      padding: clamp(1.25rem, 3vw, 2rem);
+    }
+
+    section h2 {
+      margin: 0 0 0.9rem;
+      font-size: clamp(1.35rem, 2.2vw, 2rem);
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    section p { margin: 0.75rem 0 0; }
+    section p:first-of-type { margin-top: 0; }
+    strong { font-weight: 900; }
+    code {
+      padding: 0.08rem 0.28rem;
+      border-radius: 5px;
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+
+    ul, ol {
+      margin: 0.8rem 0 0;
+      padding-left: 1.25rem;
+      padding-right: 0;
+    }
+
+    li + li { margin-top: 0.55rem; }
+
+    blockquote, .note {
+      margin: 0;
+      padding: 1rem 1.1rem;
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius);
+      background: var(--accent-soft);
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.2rem;
+      padding: 0.4rem 0.75rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      font-weight: 760;
+      text-decoration: none;
+    }
+
+    @media (max-width: 860px) {
+      .shell {
+        display: block;
+        width: min(100% - 1rem, 46rem);
+        padding-top: 0.75rem;
+      }
+
+      .sidebar {
+        position: static;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.75rem 0 1rem;
+      }
+
+      .toc { display: none; }
+      .hero-top { grid-template-columns: 1fr; }
+      .metadata { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 520px) {
+      .metadata { grid-template-columns: 1fr; }
+      section { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Concept navigation">
+      <a class="brand" href="../README.md" aria-label="Entrepreneur-OS">
+        <span>Entrepreneur-OS</span>
+        <span class="brand-mark" dir="ltr">EOS</span>
+      </a>
+      <nav class="toc" aria-label="Page sections">
+        <p class="toc-title">Concept Map</p>
+        <a href="#what-it-is">What it is</a>
+        <a href="#why-it-exists-the-problem-it-solves">Why it exists / the problem it solves</a>
+        <a href="#how-experts-reason-with-it">How experts reason with it</a>
+        <a href="#when-you-use-it">When you use it</a>
+        <a href="#metrics-how-it-s-measured">Metrics / how it's measured</a>
+        <a href="#common-misconceptions">Common misconceptions</a>
+        <a href="#examples">Examples</a>
+        <a href="#talking-to-an-llm-about-it">Talking to an LLM about it</a>
+        <a href="#my-evolving-understanding">My evolving understanding</a>
+        <a href="#sources">Sources</a>
+      </nav>
+    </aside>
+
+    <main>
+      <header class="hero">
+        <div class="hero-top">
+          <div>
+            <p class="eyebrow">Entrepreneurship concept</p>
+            <h1>Distribution — How You Reach Customers (Channels)</h1>
+            <p class="subtitle">Plain English: distribution is <em>how your product actually gets in front of the people who'll buy it</em> — the routes (channels) you use to reach, win, and keep customers. Expert phrasing: your <strong>channel strategy</strong> — the deliberate choice of the one (or few) <strong>acquisition channels</strong> whose economics, scale, and fit match your product, price, and <a href="./icp.html">ICP</a>; the working assumption is that <em>a superior product loses to a superior distribution</em>, so distribution is a first-class design problem, not an afterthought.</p>
+          </div>
+          <aside class="signal" aria-label="Concept signal">
+            <div class="signal-line" aria-hidden="true"></div>
+            <p>Move past the definition: use this concept to reason, decide, and prompt AI more precisely.</p>
+          </aside>
+        </div>
+        <div class="metadata" aria-label="Concept metadata">
+          <div class="meta-item">
+            <span class="meta-label">Domain</span>
+            <span class="meta-value">marketing</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Stage</span>
+            <span class="meta-value">launch</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Prerequisites</span>
+            <span class="meta-value"><a href="./icp.html">icp</a> (you can't pick a channel for a customer you can't define), <a href="./gtm.html">gtm</a> (distribution is the channel decision <em>inside</em> the go-to-market plan)</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Related</span>
+            <span class="meta-value"><a href="./cac.html">cac</a>, <a href="./aarrr-funnel.html">aarrr-funnel</a>, <a href="./moat.html">moat</a> · <strong>Contrast with:</strong> &quot;build it and they will come&quot; (a great product with no channel)</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        
+        <section id="what-it-is">
+          <h2>What it is</h2>
+          <p>Distribution is the <strong>reach half of a business.</strong> You've built something worth buying — now, through what <em>route</em> does a stranger ever encounter it, try it, and pay? That route is a <strong>channel</strong>: SEO/content, paid ads, viral/referral, a sales team, partnerships, or a marketplace. Distribution is the discipline of choosing and mastering that route.</p>
+<p>The uncomfortable claim at the heart of the concept — Peter Thiel's, in <em>Zero to One</em> — is that <strong>a superior product is not enough, and often not even the deciding factor.</strong> Thiel's line: <em>&quot;Superior sales and distribution by itself can create a monopoly, even with no product differentiation. The converse is not true.&quot;</em> Poor distribution — not a bad product — is the number-one reason a genuinely good company fails silently. The product works, someone would love it, and nobody ever finds out it exists.</p>
+<p>Zoom in and distribution is one specific decision inside your <a href="./gtm.html">GTM</a>: once GTM has fixed <em>who</em> you sell to (segment) and <em>how</em> you sell (motion), the channel is <em>the specific pipe</em> through which that motion runs. GTM says &quot;product-led, self-serve, aimed at indie developers&quot;; distribution answers &quot;…reached through developer-focused SEO and a referral loop.&quot; The channel is where strategy touches the actual customer.</p>
+        </section>
+
+        <section id="why-it-exists-the-problem-it-solves">
+          <h2>Why it exists / the problem it solves</h2>
+          <p>The problem distribution names is brutal and non-obvious: <strong>markets are not meritocracies of product quality — they are contests of attention.</strong> Attention is scarce, buyers are busy, and no product distributes itself. A better mousetrap that nobody hears about loses, every time, to a worse mousetrap with a great channel.</p>
+<p>There's a <em>systematic</em> blind spot here, and it's aimed squarely at builders. Engineers and technical founders are trained to believe <strong>the best product wins</strong> — it's the meritocratic story that makes engineering feel just. So they pour 95% of effort into the product and treat distribution as something grubby, or something that &quot;happens later,&quot; or beneath them. Thiel's warning is precisely for this person: <em>nerds who under-invest in distribution because they wish it didn't matter.</em> It matters more than the code.</p>
+<p>Distribution exists as a concept to force the question builders skip: <strong>&quot;granted the product is good — through exactly what channel does it reach a paying customer, at a cost the business can survive?&quot;</strong> Naming it as its own design problem is the whole point, because the default failure mode is to never ask it at all.</p>
+        </section>
+
+        <section id="how-experts-reason-with-it">
+          <h2>How experts reason with it</h2>
+          <p>The insight a beginner misses: *<em>the goal is not &quot;do lots of marketing&quot; — it's to find the </em>one<em> channel that fits, and dominate it, before you touch a second.</em>* Amateurs spread thin across ten channels at 10% intensity each and learn nothing. Experts run one channel to saturation, then add.</p>
+<p><strong>1. The channel landscape — and why one channel usually wins.</strong> There are only a handful of channel <em>families</em>, each with a totally different economic shape:</p>
+<p>| Channel family | How reach happens | Fits when… | Its economic signature | |---|---|---|---| | <strong>Paid</strong> (ads, sponsorships) | You buy attention | Predictable, fast, need volume now; unit economics can pay for a click | Instant but <em>rented</em> — <a href="./cac.html">CAC</a> rises as you scale and stops the day you stop paying | | <strong>Content / SEO</strong> | You earn attention over time | You can out-teach competitors; buyers research before buying | Slow to compound, then near-zero marginal CAC — an owned asset | | <strong>Viral / referral</strong> | Users bring users | The product is inherently shareable or better-with-friends | CAC can approach zero; compounds into a network effect | | <strong>Sales</strong> (inbound/outbound) | Humans persuade humans | High ACV, complex/multi-stakeholder deals that fund a rep | High CAC per deal, but deals are big enough to pay for it | | <strong>Partnerships / BD</strong> | You borrow someone's audience | A larger player already owns your customer's attention | Leverage without spend, but slow, relationship-gated, low-control | | <strong>Marketplaces</strong> (App Store, Amazon, plugin directories) | You fish where the buyers already are | The platform aggregates your exact buyer | Built-in demand, but you pay a tax and live by the platform's rules |</p>
+<p>Why concentrate on <strong>one</strong>? Because each channel has a <strong>steep learning curve and a saturation ceiling.</strong> Getting <em>any</em> channel to work profitably takes focused iteration — and a channel that's returning 20% of your effort returns far less than 20% of a mastered channel's result. Ten half-run channels produce ten noisy, unreadable signals; one fully-run channel produces a clean answer. As Thiel puts it, most businesses get <strong>zero</strong> distribution channels to work — <em>if you can get even one to work, you have a great business; if you try for several but don't nail one, you're finished.</em></p>
+<p><strong>2. Channel–product fit — the channel must match the product, price, and customer.</strong> Brian Balfour's (Reforge) core argument: there is no universally &quot;best&quot; channel. A channel only works when it <em>fits</em> four things at once — the <strong>product</strong>, the <strong>model / price point</strong>, the <strong>market / <a href="./icp.html">ICP</a></strong>, and where your customers already spend attention. High-price, complex products fit sales; cheap, self-serve, shareable products fit viral or content; a $50/month tool cannot afford a sales rep, and a $50k enterprise platform cannot be sold by a referral link. *<em>The channel is not chosen by taste — it is </em>implied<em> by the product and its price.</em><em> Copying a competitor's channel is a classic trap precisely because their product/price/ICP differ from yours, so their channel fits </em>them*, not you.</p>
+<p>*<em>3. The Bullseye method — how founders actually </em>find<em> the channel.</em><em> Gabriel Weinberg's </em>Traction* gives the mechanic: you can't reason your way to the right channel from an armchair; you <strong>test</strong> your way there. Weinberg lists <strong>19 channels</strong> and prescribes a three-ring &quot;Bullseye&quot;:</p>
+<ul><li><strong>Outer ring — brainstorm:</strong> for <em>every</em> one of the 19 channels, sketch a cheap,</li></ul>
+<p>realistic test. Force yourself past your two favorites — the winning channel is often one you'd have dismissed.</p>
+<ul><li><strong>Middle ring — promising:</strong> pick the ~3 most plausible and run **cheap, parallel</li></ul>
+<p>tests** — enough to get a real CAC/conversion read, not to scale.</p>
+<ul><li><strong>Inner ring — focus:</strong> the moment one channel is clearly working, **pour everything</li></ul>
+<p>into it** and drive it until it saturates. Then — and only then — repeat.</p>
+<p>The discipline: <strong>cheap tests in parallel, then ruthless focus on the winner.</strong> It answers the &quot;how do founders find a channel that fits?&quot; question directly — not by insight, by disciplined experiment.</p>
+<p><strong>4. Channel economics set <a href="./cac.html">CAC</a> and feed the <a href="./aarrr-funnel.html">funnel</a>.</strong> The channel <em>is</em> the top of the AARRR funnel — it <em>is</em> Acquisition. And the channel you pick largely determines your <a href="./cac.html">CAC</a>: paid channels carry a rising cost-per-click; content, once it ranks, delivers near-free traffic; a viral loop can push CAC toward zero. So &quot;which channel?&quot; is inseparable from &quot;which CAC can my price sustain?&quot; — the same unit-economics test <a href="./gtm.html">GTM</a> applies, seen from the distribution side. A channel that delivers customers above your sustainable CAC isn't a channel; it's a leak.</p>
+<p>*<em>5. A channel can </em>become<em> a <a href="./moat.html">moat</a>.<strong> Distribution isn't only how you acquire — done right, it's a barrier. A </strong>viral/referral loop matures into a network effect<strong>; a </strong>content/SEO library<strong> becomes an owned asset a competitor can't buy their way past overnight; </strong>exclusive partnerships</em>* or a locked marketplace position wall off the route to the customer. When you own the dominant channel to a market, competitors can have a better product and still never reach the buyer — the channel is the <a href="./moat.html">moat</a>.</p>
+        </section>
+
+        <section id="when-you-use-it">
+          <h2>When you use it</h2>
+          <ul><li><strong>At launch, alongside <a href="./gtm.html">GTM</a></strong> — before spending a dollar on ads or a day on</li></ul>
+<p>content, decide <em>which channel</em> you're testing first and why it fits your product/price.</p>
+<ul><li><strong>When acquisition feels random</strong> — leads trickle from everywhere and nothing</li></ul>
+<p>compounds. The tell of no chosen channel (spray-and-pray).</p>
+<ul><li><strong>When <a href="./cac.html">CAC</a> won't pay back</strong> — often the channel doesn't fit the price</li></ul>
+<p>point (paid ads on a low-LTV product; a sales team on a cheap one).</p>
+<ul><li><strong>When a channel saturates</strong> — CAC on your winning channel keeps climbing and volume</li></ul>
+<p>caps out. Time to run the Bullseye again for channel #2.</p>
+<ul><li><strong>When you want defensibility</strong> — choosing a channel that <em>compounds</em> (referral, SEO)</li></ul>
+<p>over one you <em>rent</em> (paid) is a bet on turning distribution into a <a href="./moat.html">moat</a>.</p>
+        </section>
+
+        <section id="metrics-how-it-s-measured">
+          <h2>Metrics / how it's measured</h2>
+          <p>Distribution is a strategy, judged by the numbers of the channel you chose:</p>
+<ul><li><strong><a href="./cac.html">CAC</a> by channel</strong> and <strong>CAC payback period</strong> — the first test of whether a</li></ul>
+<p>channel's economics work at all; each channel gets its own CAC.</p>
+<ul><li><strong>LTV:CAC by channel</strong> — a channel is only &quot;working&quot; if the customers it brings are</li></ul>
+<p>worth more than it costs to bring them (target ≈ 3:1).</p>
+<ul><li><strong>Channel saturation curve</strong> — is CAC <em>stable</em> as you scale spend, or climbing? Rising</li></ul>
+<p>CAC at higher volume marks the channel's ceiling.</p>
+<ul><li><strong>Viral coefficient (k)</strong> and <strong>cycle time</strong> — for referral/viral channels: does each</li></ul>
+<p>user bring &gt;1 new user, and how fast? k &gt; 1 is self-sustaining growth.</p>
+<ul><li><strong>Contribution to the <a href="./aarrr-funnel.html">funnel</a></strong> — volume <em>and quality</em> at the</li></ul>
+<p>Acquisition stage: a channel that floods the top with users who never activate is worse than a smaller channel of fitting buyers.</p>
+<ul><li><strong>Channel concentration</strong> — honestly, *what share of growth comes from your top</li></ul>
+<p>channel?* Early on, high concentration (one channel doing the work) is a sign of focus, not fragility.</p>
+        </section>
+
+        <section id="common-misconceptions">
+          <h2>Common misconceptions</h2>
+          <ul><li><strong>&quot;The best product wins.&quot;</strong> The single most expensive belief a builder holds. A</li></ul>
+<p>superior product with poor distribution loses to an inferior product with great distribution — Thiel's whole point. Product quality is necessary, not sufficient.</p>
+<ul><li><strong>&quot;Distribution is something we'll figure out after we build.&quot;</strong> Treating the channel</li></ul>
+<p>as an afterthought <em>is</em> the failure mode. It's a design problem you plan <em>with</em> the product, not after it.</p>
+<ul><li><strong>&quot;More channels = more growth.&quot;</strong> The opposite. Spreading across many channels</li></ul>
+<p>guarantees none gets the intensity needed to work or even to read a clean signal. <strong>Focus beats breadth</strong> until one channel is mastered.</p>
+<ul><li><strong>&quot;Our competitor grew on channel X, so we should too.&quot;</strong> Their channel fits <em>their</em></li></ul>
+<p>product, price, and ICP. Copying it ignores channel–product fit and usually fails quietly. Find the channel that fits <em>you</em>.</p>
+<ul><li><strong>&quot;Marketing = distribution.&quot;</strong> Marketing (content, ads) is <em>some</em> of the channels;</li></ul>
+<p>sales, partnerships, viral loops, and marketplaces are equally distribution. Distribution is the whole set of routes to the customer, not just the ad budget.</p>
+<ul><li><strong>&quot;A working channel keeps working.&quot;</strong> Channels <strong>saturate</strong> and CAC drifts up as</li></ul>
+<p>competition bids the same channel and you exhaust the cheap audience. A channel is monitored and eventually <em>replaced or supplemented</em>, not banked forever.</p>
+<ul><li><strong>&quot;Viral growth is free and automatic.&quot;</strong> Virality is engineered (a real loop with k &gt; 1),</li></ul>
+<p>not wished into being. Most products labeled &quot;viral&quot; simply aren't.</p>
+        </section>
+
+        <section id="examples">
+          <h2>Examples</h2>
+          <ul><li><strong>Superior distribution beats product parity — Thiel's own claim.</strong> Grocery, plastics,</li></ul>
+<p>and industrial products are often undifferentiated; the winners won on <strong>sales and distribution</strong>, not a better molecule. Distribution alone created the edge.</p>
+<ul><li><strong>Viral / referral — Dropbox &amp; PayPal.</strong> Dropbox's &quot;get free space for referring a</li></ul>
+<p>friend&quot; turned every user into a channel — a built-in loop that drove <a href="./cac.html">CAC</a> toward zero and compounded toward a network effect. PayPal literally <em>paid</em> early users to refer, buying a viral loop until it self-sustained.</p>
+<ul><li><strong>Content / SEO — HubSpot.</strong> Out-taught the category with free content, ranked for the</li></ul>
+<p>terms buyers searched, and turned an owned content library into a near-zero-marginal-CAC engine that fed everything downstream. Slow to build, then a compounding <a href="./moat.html">moat</a>.</p>
+<ul><li><strong>Marketplace — indie iOS apps &amp; the App Store.</strong> The platform aggregates the exact</li></ul>
+<p>buyer; distribution is &quot;be discoverable where the buyers already are,&quot; at the cost of a 30% tax and the platform's rules. Built-in demand, borrowed control.</p>
+<ul><li><strong>The spread-thin trap.</strong> A solo founder runs a little SEO, a few ads, some cold</li></ul>
+<p>emails, an occasional post, and a half-hearted referral link — five channels at 10% each. Nothing compounds; every signal is too weak to read. The same effort poured into <em>one</em> channel to saturation would have produced a clear, scalable answer. <em>The effort wasn't too little; it was too divided.</em></p>
+        </section>
+
+        <section id="talking-to-an-llm-about-it">
+          <h2>Talking to an LLM about it</h2>
+          <p>The same intent, framed three ways — this is how vocabulary becomes leverage:</p>
+<ul><li><strong>Weak prompt:</strong> &quot;How do I market my product?&quot;</li><li><strong>Better prompt:</strong> &quot;What are the best marketing channels for a B2B SaaS, and how do I</li></ul>
+<p>choose between them?&quot;</p>
+<ul><li><strong>Expert prompt:</strong> &quot;Act as a growth strategist using Brian Balfour's channel–product-fit</li></ul>
+<p>framework and Gabriel Weinberg's Bullseye method from <em>Traction</em>. My product is a bootstrapped B2B SaaS that automates candidate screening; ICP = recruiting agencies of 10–50 staff; price ≈ $300/month (ACV ≈ $3.6k); I'm a solo technical founder with limited time and cash. Don't hand me a list of ten channels. First, reason about <strong>channel–product fit</strong> — which channels are even <em>viable</em> given this price point, sales cycle, and where this ICP already spends attention (and which to rule out, e.g. why an expensive sales team or broad paid ads likely won't pay back at this ACV). Then run a Bullseye: propose the <strong>3 most promising channels</strong> to test cheaply in parallel, with a concrete, low-cost test and a target <a href="./cac.html">CAC</a> for each against a 3:1 LTV:CAC and sub-6-month payback. Finally, recommend the <strong>single channel to concentrate on first</strong>, how I'll know it's saturating, and whether it can compound into a <a href="./moat.html">moat</a> (referral loop / owned SEO). Be skeptical of channels that merely <em>feel</em> modern.&quot;</p>
+<p>The expert version supplies the product, ICP, price/ACV, and constraints, and demands the <em>fit-then-focus</em> logic — so the model reasons about <strong>which one channel fits and why</strong> instead of returning a generic &quot;do content, run ads, post on LinkedIn&quot; list.</p>
+        </section>
+
+        <section id="my-evolving-understanding">
+          <h2>My evolving understanding</h2>
+          <ul><li><strong>v1 (2026-07-04):</strong> First pass while bootstrapping Entrepreneur-OS. The reframe that</li></ul>
+<p>landed hardest is Thiel's: as an engineer I've carried the <em>best-product-wins</em> belief my whole career, and it's exactly the blind spot that kills technical founders — a superior product with poor distribution loses to an inferior product with a great channel, and poor distribution is the #1 <em>silent</em> startup killer (the product works; nobody ever hears about it). The second shift: distribution isn't &quot;do more marketing,&quot; it's <strong>find the one channel that fits and dominate it before touching a second</strong> — Balfour's channel–product fit (the channel is <em>implied</em> by product + price + <a href="./icp.html">ICP</a>, not chosen by taste, which is why copying a competitor's channel backfires) plus Weinberg's Bullseye (cheap parallel tests → ruthless focus on the winner) turn &quot;how do I get customers?&quot; into a disciplined experiment. Third: the channel <em>is</em> the top of the <a href="./aarrr-funnel.html">AARRR funnel</a> and it sets <a href="./cac.html">CAC</a> — so channel choice and unit economics are the same question from two sides — and the right channel (referral, owned SEO) can compound into a <a href="./moat.html">moat</a>. Distribution is the reach half of the business, and it's downstream of <a href="./gtm.html">GTM</a>'s motion decision but upstream of every acquisition dollar I'll ever spend.</p>
+        </section>
+
+        <section id="sources">
+          <h2>Sources</h2>
+          <ul><li>Peter Thiel, <em>Zero to One</em> (Ch. 11, &quot;If You Build It, Will They Come?&quot;) — the core</li></ul>
+<p>claim that distribution matters as much as product; <em>&quot;superior sales and distribution by itself can create a monopoly&quot;</em>; the engineer's systematic under-investment in distribution; and the point that getting even <em>one</em> channel to work is enough, while nailing <em>none</em> is fatal.</p>
+<ul><li>Brian Balfour (Reforge), essays on <strong>channel–product fit</strong> — no universally best channel;</li></ul>
+<p>a channel must fit the product, model/price, market/<a href="./icp.html">ICP</a>, and where customers already are; why copying a competitor's channel fails.</p>
+<ul><li>Gabriel Weinberg &amp; Justin Mares, <em>Traction</em> — the <strong>19 channels</strong> and the **Bullseye</li></ul>
+<p>framework** (brainstorm all → test ~3 cheaply in parallel → focus on the one that works); the empirical &quot;test, don't guess&quot; answer to finding channel fit.</p>
+<ul><li>See also <a href="./gtm.html">gtm</a>, <a href="./cac.html">cac</a>, <a href="./aarrr-funnel.html">aarrr-funnel</a>, <a href="./moat.html">moat</a>.</li></ul>
+        </section>
+
+        <section>
+          <h2>Links</h2>
+          <nav class="footer-nav" aria-label="Page links">
+            <a class="pill" href="./distribution-fa.html">Persian version</a>
+            <a class="pill" href="./distribution.md">Markdown source</a>
+          </nav>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

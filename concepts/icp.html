@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ICP — Ideal Customer Profile | Entrepreneur-OS</title>
+  <meta name="description" content="Plain English: a sharp description of the *specific kind of customer who gets the most value from your product and is easiest to win and keep.* Expert phrasing: the precisely-defined segment a company deliberately optimizes its product, message, and go-to-market around.">
+  
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f8f6;
+      --paper: #ffffff;
+      --ink: #17201b;
+      --muted: #5d6b63;
+      --line: #dce4dd;
+      --accent: #0f7b5f;
+      --accent-strong: #075f49;
+      --accent-soft: #e4f4ef;
+      --warning-soft: #fff2cc;
+      --shadow: 0 22px 70px rgba(23, 32, 27, 0.10);
+      --radius: 8px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(120deg, rgba(15, 123, 95, 0.09), transparent 34rem), var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--accent-strong);
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: minmax(13rem, 17rem) minmax(0, 1fr);
+      gap: 2.5rem;
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 4rem;
+      
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 1rem;
+      align-self: start;
+      padding: 1rem 0;
+      
+    }
+
+    main {
+      min-width: 0;
+      
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--ink);
+      font-weight: 850;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 2rem;
+      height: 2rem;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      box-shadow: 0 8px 24px rgba(23, 32, 27, 0.08);
+      font-size: 0.78rem;
+    }
+
+    .toc {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .toc-title {
+      margin: 0 0 0.7rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.09em; text-transform: uppercase;
+    }
+
+    .toc a {
+      display: block;
+      padding: 0.36rem 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .hero, section {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero {
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 14rem;
+      gap: 2rem;
+      padding: clamp(1.4rem, 4vw, 3rem);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 0.75rem;
+      color: var(--accent-strong);
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 13ch;
+      font-size: clamp(2.2rem, 6.5vw, 5.2rem);
+      line-height: 0.96;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 45rem;
+      margin: 1.2rem 0 0;
+      color: var(--muted);
+      font-size: clamp(1.04rem, 1.6vw, 1.28rem);
+    }
+
+    .signal {
+      align-self: stretch;
+      display: grid;
+      align-content: center;
+      gap: 1rem;
+      padding: 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, #ffffff, #f3faf7);
+    }
+
+    .signal-line {
+      height: 0.8rem;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e3eae5;
+    }
+
+    .signal-line::before {
+      content: "";
+      display: block;
+      width: 72%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #b7e4d2, var(--accent));
+    }
+
+    .signal p {
+      margin: 0;
+      color: var(--ink);
+      font-size: 0.98rem;
+      font-weight: 650;
+    }
+
+    .metadata {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .meta-item {
+      min-width: 0;
+      padding: 1rem;
+      background: #fbfcfb;
+    }
+
+    .meta-label {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--muted);
+      font-size: 0.74rem;
+      font-weight: 900;
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+
+    .meta-value {
+      display: block;
+      color: var(--ink);
+      font-weight: 720;
+    }
+
+    .content {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    section {
+      padding: clamp(1.25rem, 3vw, 2rem);
+    }
+
+    section h2 {
+      margin: 0 0 0.9rem;
+      font-size: clamp(1.35rem, 2.2vw, 2rem);
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    section p { margin: 0.75rem 0 0; }
+    section p:first-of-type { margin-top: 0; }
+    strong { font-weight: 900; }
+    code {
+      padding: 0.08rem 0.28rem;
+      border-radius: 5px;
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+
+    ul, ol {
+      margin: 0.8rem 0 0;
+      padding-left: 1.25rem;
+      padding-right: 0;
+    }
+
+    li + li { margin-top: 0.55rem; }
+
+    blockquote, .note {
+      margin: 0;
+      padding: 1rem 1.1rem;
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius);
+      background: var(--accent-soft);
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.2rem;
+      padding: 0.4rem 0.75rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      font-weight: 760;
+      text-decoration: none;
+    }
+
+    @media (max-width: 860px) {
+      .shell {
+        display: block;
+        width: min(100% - 1rem, 46rem);
+        padding-top: 0.75rem;
+      }
+
+      .sidebar {
+        position: static;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.75rem 0 1rem;
+      }
+
+      .toc { display: none; }
+      .hero-top { grid-template-columns: 1fr; }
+      .metadata { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 520px) {
+      .metadata { grid-template-columns: 1fr; }
+      section { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Concept navigation">
+      <a class="brand" href="../README.md" aria-label="Entrepreneur-OS">
+        <span>Entrepreneur-OS</span>
+        <span class="brand-mark" dir="ltr">EOS</span>
+      </a>
+      <nav class="toc" aria-label="Page sections">
+        <p class="toc-title">Concept Map</p>
+        <a href="#what-it-is">What it is</a>
+        <a href="#why-it-exists-the-problem-it-solves">Why it exists / the problem it solves</a>
+        <a href="#how-experts-reason-with-it">How experts reason with it</a>
+        <a href="#when-you-use-it">When you use it</a>
+        <a href="#metrics-how-it-s-measured">Metrics / how it's measured</a>
+        <a href="#common-misconceptions">Common misconceptions</a>
+        <a href="#examples">Examples</a>
+        <a href="#talking-to-an-llm-about-it">Talking to an LLM about it</a>
+        <a href="#my-evolving-understanding">My evolving understanding</a>
+        <a href="#sources">Sources</a>
+      </nav>
+    </aside>
+
+    <main>
+      <header class="hero">
+        <div class="hero-top">
+          <div>
+            <p class="eyebrow">Entrepreneurship concept</p>
+            <h1>ICP — Ideal Customer Profile</h1>
+            <p class="subtitle">Plain English: a sharp description of the <em>specific kind of customer who gets the most value from your product and is easiest to win and keep.</em> Expert phrasing: the precisely-defined segment a company deliberately optimizes its product, message, and go-to-market around.</p>
+          </div>
+          <aside class="signal" aria-label="Concept signal">
+            <div class="signal-line" aria-hidden="true"></div>
+            <p>Move past the definition: use this concept to reason, decide, and prompt AI more precisely.</p>
+          </aside>
+        </div>
+        <div class="metadata" aria-label="Concept metadata">
+          <div class="meta-item">
+            <span class="meta-label">Domain</span>
+            <span class="meta-value">marketing</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Stage</span>
+            <span class="meta-value">idea</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Prerequisites</span>
+            <span class="meta-value">a real problem worth solving, an early product idea (later: <a href="./mvp.html">mvp</a>)</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Related</span>
+            <span class="meta-value">jtbd, positioning, persona, segmentation · <strong>Contrast with:</strong> &quot;anyone could use it&quot;</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        
+        <section id="what-it-is">
+          <h2>What it is</h2>
+          <p>An ICP answers one question: <em>for whom is this product almost unfairly good?</em> It is a description of a <strong>customer type</strong> — usually, in B2B, a kind of <em>company</em> (industry, size, situation, the pain they feel) plus the <em>role</em> inside it that buys. In B2C it's a kind of <em>person</em> in a specific situation. It is a deliberate narrowing: you are choosing who you are <em>for</em>, which implicitly chooses who you are <em>not</em> for.</p>
+        </section>
+
+        <section id="why-it-exists-the-problem-it-solves">
+          <h2>Why it exists / the problem it solves</h2>
+          <p>Resources are finite, especially for a solo founder. You cannot build for, message to, or sell to &quot;everyone&quot; — try, and your product becomes generic, your marketing becomes vague, and your scarce time spreads thin. The ICP exists to <strong>concentrate finite effort on the customers most likely to pay, succeed, and refer you.</strong> It turns &quot;who do I talk to?&quot; from an infinite question into a finite one.</p>
+        </section>
+
+        <section id="how-experts-reason-with-it">
+          <h2>How experts reason with it</h2>
+          <p>The insight a beginner misses: <strong>a tight ICP is a multiplier on everything downstream.</strong> Once the ICP is sharp, positioning writes itself, the messaging stops being mushy, the right channels become obvious, sales calls get shorter, and even CAC tends to fall — because you stop paying to reach people who were never going to buy. Experienced founders treat a vague ICP as the <em>root cause</em> of &quot;our marketing isn't working.&quot; They also know the ICP is a <strong>hypothesis you sharpen with evidence</strong>, not a label you invent once and freeze. You start with a best guess, then let the customers who actually buy and stick around pull the definition into focus.</p>
+<p>A useful test: if your ICP is so broad that no message would feel &quot;made for me&quot; to anyone in it, it isn't an ICP yet — it's a market.</p>
+        </section>
+
+        <section id="when-you-use-it">
+          <h2>When you use it</h2>
+          <ul><li>Before building much: to decide <em>what</em> to build and what to leave out.</li><li>Before writing any landing page or cold message: it dictates the words.</li><li>When choosing channels: where does <em>this</em> customer already hang out?</li><li>When you feel pulled in ten directions: the ICP is the filter for saying no.</li></ul>
+        </section>
+
+        <section id="metrics-how-it-s-measured">
+          <h2>Metrics / how it's measured</h2>
+          <p>Mostly qualitative, but it sharpens via signals: which segment converts fastest, retains longest, has the lowest CAC, gives the most referrals, and complains the least about price. The segment that scores best across those <em>is</em> your ICP, empirically — often narrower than your original guess.</p>
+        </section>
+
+        <section id="common-misconceptions">
+          <h2>Common misconceptions</h2>
+          <ul><li><strong>ICP ≠ buyer persona.</strong> ICP (esp. B2B) describes the <em>organization/segment</em> that</li></ul>
+<p>should buy (&quot;recruiting agencies, 10–50 staff, drowning in manual candidate screening&quot;). A persona is the <em>individual human</em> you sell to within it (&quot;Sara, Head of Talent, time-poor, judged on time-to-hire&quot;). You need both; they're different layers.</p>
+<ul><li><strong>&quot;Narrow = small market.&quot;</strong> Narrowing the ICP doesn't shrink your eventual market;</li></ul>
+<p>it gives you a beachhead you can actually win, then expand from.</p>
+<ul><li><strong>&quot;Set it once.&quot;</strong> A first ICP written with zero customers is a guess. The job is to</li></ul>
+<p>refine it as real data arrives.</p>
+        </section>
+
+        <section id="examples">
+          <h2>Examples</h2>
+          <ul><li><strong>Facebook's first ICP:</strong> not &quot;everyone&quot; — <em>Harvard undergraduates.</em> A laughably</li></ul>
+<p>narrow beachhead that it expanded from.</p>
+<ul><li><strong>A B2B SaaS ICP:</strong> &quot;B2B recruiting agencies with 10–50 employees that bill hourly</li></ul>
+<p>and lose margin to manual candidate screening&quot; — specific enough that the messaging and channels almost pick themselves.</p>
+        </section>
+
+        <section id="talking-to-an-llm-about-it">
+          <h2>Talking to an LLM about it</h2>
+          <p>The same intent, framed three ways — this is how vocabulary becomes leverage:</p>
+<ul><li><strong>Weak prompt:</strong> &quot;Who should I sell my software to?&quot;</li><li><strong>Better prompt:</strong> &quot;Help me define the ideal customer for a recruiting-software tool</li></ul>
+<p>I'm building as a solo founder.&quot;</p>
+<ul><li><strong>Expert prompt:</strong> &quot;Help me draft and stress-test an ICP for a bootstrapped B2B SaaS</li></ul>
+<p>that automates candidate screening, targeting recruiting agencies. Define the firmographics (industry, size, business model), the trigger/pain that makes them buy, the buyer persona vs. the user, and 3 disqualifying signals that mean a lead is <em>not</em> in my ICP. Then list where this ICP already congregates so I can reach them.&quot;</p>
+<p>The expert version specifies business model, segment, the buyer/user split, and a concrete objective — so the model draws from its richest, most specific knowledge instead of giving generic advice.</p>
+        </section>
+
+        <section id="my-evolving-understanding">
+          <h2>My evolving understanding</h2>
+          <ul><li><strong>v1 (2026-06-30):</strong> First pass while bootstrapping Entrepreneur-OS. Key shift in my</li></ul>
+<p>own thinking: I used to treat &quot;target audience&quot; as a demographic box to tick. The reframe that landed — the ICP is a <em>strategic act of exclusion</em>, and its real payoff is that it makes positioning, messaging, channel choice, and CAC all easier downstream. It's a hypothesis to sharpen with evidence, not a label to freeze.</p>
+        </section>
+
+        <section id="sources">
+          <h2>Sources</h2>
+          <ul><li>April Dunford, <em>Obviously Awesome</em> — positioning starts from the customer who loves</li></ul>
+<p>what you do.</p>
+<ul><li>Common SaaS GTM practice on ICP vs. persona and beachhead strategy (to verify and</li></ul>
+<p>deepen as this concept is revisited).</p>
+        </section>
+
+        <section>
+          <h2>Links</h2>
+          <nav class="footer-nav" aria-label="Page links">
+            <a class="pill" href="./icp-fa.html">Persian version</a>
+            <a class="pill" href="./icp.md">Markdown source</a>
+          </nav>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

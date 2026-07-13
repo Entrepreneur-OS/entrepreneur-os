@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>رشد محصول‌محور | Entrepreneur-OS</title>
+  <meta name="description" content="Plain English: the product itself does the selling — people find it, try it, feel the value, and upgrade, mostly without ever talking to a human. Expert phrasing: **Product-Led Growth** is a go-to-market *strategy* in which the product is the primary engine of **acquisition, conversion, and expansion** — self-serve signup delivers value before the paywall, and usage (not a sales rep) is what converts and expands accounts.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f8f6;
+      --paper: #ffffff;
+      --ink: #17201b;
+      --muted: #5d6b63;
+      --line: #dce4dd;
+      --accent: #0f7b5f;
+      --accent-strong: #075f49;
+      --accent-soft: #e4f4ef;
+      --warning-soft: #fff2cc;
+      --shadow: 0 22px 70px rgba(23, 32, 27, 0.10);
+      --radius: 8px;
+      font-family: "Vazirmatn", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(240deg, rgba(15, 123, 95, 0.09), transparent 34rem), var(--bg);
+      color: var(--ink);
+      line-height: 1.9;
+    }
+
+    a {
+      color: var(--accent-strong);
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(13rem, 17rem);
+      gap: 2.5rem;
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 4rem;
+      direction: ltr;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 1rem;
+      align-self: start;
+      padding: 1rem 0;
+      grid-column: 2; direction: rtl;
+    }
+
+    main {
+      min-width: 0;
+      grid-column: 1; grid-row: 1; direction: rtl;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--ink);
+      font-weight: 850;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 2rem;
+      height: 2rem;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      box-shadow: 0 8px 24px rgba(23, 32, 27, 0.08);
+      font-size: 0.78rem;
+    }
+
+    .toc {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .toc-title {
+      margin: 0 0 0.7rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 900;
+      
+    }
+
+    .toc a {
+      display: block;
+      padding: 0.36rem 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .hero, section {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero {
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 14rem;
+      gap: 2rem;
+      padding: clamp(1.4rem, 4vw, 3rem);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 0.75rem;
+      color: var(--accent-strong);
+      font-size: 0.82rem;
+      font-weight: 900;
+      
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 14ch;
+      font-size: clamp(2.2rem, 6.5vw, 5.2rem);
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 45rem;
+      margin: 1.2rem 0 0;
+      color: var(--muted);
+      font-size: clamp(1.04rem, 1.6vw, 1.28rem);
+    }
+
+    .signal {
+      align-self: stretch;
+      display: grid;
+      align-content: center;
+      gap: 1rem;
+      padding: 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, #ffffff, #f3faf7);
+    }
+
+    .signal-line {
+      height: 0.8rem;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e3eae5;
+    }
+
+    .signal-line::before {
+      content: "";
+      display: block;
+      width: 72%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #b7e4d2, var(--accent));
+    }
+
+    .signal p {
+      margin: 0;
+      color: var(--ink);
+      font-size: 0.98rem;
+      font-weight: 650;
+    }
+
+    .metadata {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .meta-item {
+      min-width: 0;
+      padding: 1rem;
+      background: #fbfcfb;
+    }
+
+    .meta-label {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--muted);
+      font-size: 0.74rem;
+      font-weight: 900;
+      
+    }
+
+    .meta-value {
+      display: block;
+      color: var(--ink);
+      font-weight: 720;
+    }
+
+    .content {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    section {
+      padding: clamp(1.25rem, 3vw, 2rem);
+    }
+
+    section h2 {
+      margin: 0 0 0.9rem;
+      font-size: clamp(1.35rem, 2.2vw, 2rem);
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    section p { margin: 0.75rem 0 0; }
+    section p:first-of-type { margin-top: 0; }
+    strong { font-weight: 900; }
+    code {
+      padding: 0.08rem 0.28rem;
+      border-radius: 5px;
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+
+    ul, ol {
+      margin: 0.8rem 0 0;
+      padding-right: 1.25rem;
+      padding-left: 0;
+    }
+
+    li + li { margin-top: 0.55rem; }
+
+    blockquote, .note {
+      margin: 0;
+      padding: 1rem 1.1rem;
+      border-right: 4px solid var(--accent);
+      border-radius: var(--radius);
+      background: var(--accent-soft);
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.2rem;
+      padding: 0.4rem 0.75rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      font-weight: 760;
+      text-decoration: none;
+    }
+
+    @media (max-width: 860px) {
+      .shell {
+        display: block;
+        width: min(100% - 1rem, 46rem);
+        padding-top: 0.75rem;
+      }
+
+      .sidebar {
+        position: static;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.75rem 0 1rem;
+      }
+
+      .toc { display: none; }
+      .hero-top { grid-template-columns: 1fr; }
+      .metadata { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 520px) {
+      .metadata { grid-template-columns: 1fr; }
+      section { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="ناوبری مفهوم">
+      <a class="brand" href="../README.md" aria-label="Entrepreneur-OS">
+        <span>Entrepreneur-OS</span>
+        <span class="brand-mark" dir="ltr">EOS</span>
+      </a>
+      <nav class="toc" aria-label="بخش‌های صفحه">
+        <p class="toc-title">نقشه مفهوم</p>
+        <a href="#what-it-is">چیست؟</a>
+        <a href="#why-it-exists-the-problem-it-solves">چرا وجود دارد؟</a>
+        <a href="#how-experts-reason-with-it">استدلال متخصص‌ها</a>
+        <a href="#when-you-use-it">زمان استفاده</a>
+        <a href="#metrics-how-it-s-measured">سنجه‌ها و اندازه‌گیری</a>
+        <a href="#common-misconceptions">برداشت‌های غلط رایج</a>
+        <a href="#examples">مثال‌ها</a>
+        <a href="#talking-to-an-llm-about-it">حرف زدن با LLM درباره آن</a>
+        <a href="#my-evolving-understanding">فهم در حال تکامل من</a>
+        <a href="#sources">منابع</a>
+      </nav>
+    </aside>
+
+    <main>
+      <header class="hero">
+        <div class="hero-top">
+          <div>
+            <p class="eyebrow">مفهوم کارآفرینی</p>
+            <h1>رشد محصول‌محور</h1>
+            <p class="subtitle">یادداشت: این صفحه نسخه راست‌به‌چپ طراحی‌شده از منبع Markdown است. عنوان‌ها و قاب صفحه فارسی شده‌اند؛ متن تخصصی بدنه از منبع اصلی حفظ شده تا ترجمه مفهومی هر یادداشت جداگانه بازبینی شود.</p>
+          </div>
+          <aside class="signal" aria-label="سیگنال مفهومی">
+            <div class="signal-line" aria-hidden="true"></div>
+            <p>از تعریف عبور کن؛ این صفحه برای فهم عملی، تصمیم‌گیری، و گفتگو با AI ساخته شده است.</p>
+          </aside>
+        </div>
+        <div class="metadata" aria-label="فراداده مفهوم">
+          <div class="meta-item">
+            <span class="meta-label">دامنه</span>
+            <span class="meta-value">product</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">مرحله</span>
+            <span class="meta-value">growth</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">پیش‌نیازها</span>
+            <span class="meta-value"><a href="./gtm-fa.html">gtm</a> (PLG is one of the three GTM <em>motions</em> — you choose it, you don't default to it), <a href="./pmf-fa.html">pmf</a> (self-serve amplifies whatever fit you have — including <em>no</em> fit), <a href="./mvp-fa.html">mvp</a> (the product has to deliver value alone, unaided)</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">مرتبط</span>
+            <span class="meta-value"><a href="./aarrr-funnel-fa.html">aarrr-funnel</a>, <a href="./retention-fa.html">retention</a>, <a href="./nrr-expansion-fa.html">nrr-expansion</a>, <a href="./cac-fa.html">cac</a>, <a href="./pricing-fa.html">pricing</a> · <strong>Contrast with:</strong> sales-led and marketing-led motions (see <a href="./distribution-fa.html">distribution</a>)</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        
+        <section id="what-it-is">
+          <h2>چیست؟</h2>
+          <p><strong>Product-Led Growth</strong> is the answer to a specific question: <em>what if the product itself — not a marketing campaign and not a sales rep — were the thing that acquired, converted, and expanded customers?</em> In a PLG motion a prospect can <strong>sign up, onboard, and reach real value entirely on their own</strong>, and the moment they hit a limit or a premium need, they upgrade themselves. The product is simultaneously the demo, the salesperson, and the upsell path.</p>
+<p>The critical distinction — and the one the whole <a href="./gtm-fa.html">issue</a> turns on — is that PLG is a <strong>strategy</strong>, not a pricing tactic. It coordinates three loops around the product:</p>
+<ol><li><strong>Product-led acquisition</strong> — the product spreads itself. Free access, self-serve</li></ol>
+<p>signup, shareable artifacts, and word-of-mouth pull new users in (often <em>bottom-up</em>: an individual adopts it before their company ever &quot;buys&quot; it).</p>
+<ol><li><strong>Product-led conversion</strong> — usage, not a rep, is what turns free into paid. The user</li></ol>
+<p>has already <em>felt</em> the value; the upgrade removes a limit they now care about.</p>
+<ol><li><strong>Product-led expansion</strong> — accounts grow themselves as they use more (more seats, more</li></ol>
+<p>usage, more features), which is exactly the <a href="./nrr-expansion-fa.html">NRR/expansion</a> engine.</p>
+<p>Because a human is optional across all three loops, the marginal cost of the next customer can approach zero — which is the whole economic point (see <em>How experts reason with it</em>).</p>
+        </section>
+
+        <section id="why-it-exists-the-problem-it-solves">
+          <h2>چرا وجود دارد؟</h2>
+          <p>PLG exists because the <strong>traditional sales-and-marketing motion is expensive, slow, and gates value behind a conversation the buyer never asked for.</strong> In the old model you pay for ads to generate a lead, pay a rep to demo, negotiate, and <em>then</em> the customer finally touches the product. Every step costs money and time, and the buyer commits before experiencing anything. That works when deals are big enough to fund it — but it prices out low-ACV products and it fights the modern buyer, who wants to <em>try before they trust.</em></p>
+<p>PLG inverts the order: <strong>value first, payment later.</strong> Let people use the product, let it prove itself, and let the ones who get value pull out their credit card. The problem it solves is structural: it lets a product with a <strong>low price point and a huge potential top-of-funnel</strong> grow <em>without</em> a cost structure that only high-ACV deals can support. That inversion is why PLG became the default for developer tools, prosumer SaaS, and anything an individual can adopt without sign-off — and why it fits a solo/bootstrapped founder who has no sales team and can't afford one.</p>
+        </section>
+
+        <section id="how-experts-reason-with-it">
+          <h2>استدلال متخصص‌ها</h2>
+          <p>The insight a beginner misses: *<em>PLG is a strategy that makes the </em>product<em> your distribution — so &quot;growth&quot; becomes an engineering-and-design problem, not only a sales-and- marketing budget. That only works if the product delivers value fast, alone, and the free tier has a designed reason to convert.</em>* Three moves separate the expert from the beginner.</p>
+<p><strong>1. Freemium is a tactic; PLG is the strategy. Do not confuse the two.</strong> This is the headline trap. <em>Freemium</em> (a free tier) and <em>free trials</em> are <strong>pricing tactics</strong> you might use to execute PLG — but slapping a free tier on a product does <strong>not</strong> make it product-led. A product is PLG only if the whole <em>motion</em> runs through the product: self-serve acquisition, usage-based conversion, in-product expansion. Plenty of sales-led companies have a free tier that just feeds leads to reps — that's freemium <em>without</em> PLG. And plenty of PLG products (free trials, reverse trials, open-source-core) aren't &quot;freemium&quot; at all. <strong>The free tier is a lever; the strategy is the machine.</strong></p>
+<p><strong>2. Time-to-value is the load-bearing metric — because there's no human to bridge the gap.</strong> In a sales-led motion a rep hand-holds a confused prospect to the &quot;aha moment.&quot; PLG <em>removes that human</em>, so the product must get a stranger to real value <strong>fast and unaided</strong>, or they leave before they ever understand it. This is why PLG is unforgiving of a slow or confusing onboarding: self-serve users <strong>churn before the aha moment</strong> if time-to-value is long. The expert obsesses over the <a href="./aarrr-funnel-fa.html">activation</a> step — signup → first real value — because in PLG that single step is the difference between a growth engine and a leaky bucket. <strong>PLG doesn't tolerate friction that sales-led motions can paper over with a human.</strong></p>
+<p>*<em>3. A free tier only works if it has a designed </em>conversion trigger<em> — a value ceiling.<strong> The second fatal trap is a </strong>free tier that never converts</em><em>: generous enough that users are happy forever, with no natural moment where they </em>need<em> to pay. A working free tier is engineered with a <strong>value ceiling</strong> — a limit (seats, projects, usage, a premium feature) the user cheerfully bumps into </em>precisely because they're getting value*. The art is calibration: give away enough to reach the aha moment and spread word-of-mouth, but hold back the thing successful users will inevitably need. Give away too little → no activation, no virality. Give away too much → no reason to ever pay. <strong>The free tier is a monetization instrument, not a charity</strong> — see <a href="./pricing-fa.html">pricing</a>.</p>
+<p><strong>The economic logic (why PLG suits a solo/bootstrapped founder):</strong> PLG's marginal acquisition cost trends toward zero because the product, not a paid channel or a rep, does the acquiring — so <a href="./cac-fa.html">CAC</a> can be dramatically lower than a sales-led motion carrying rep salaries in every deal. That is <em>exactly</em> the profile a bootstrapped founder needs: <strong>no sales team to fund, growth that scales on volume and self-serve, and a motion one person can operate.</strong> It also composes with the other growth engines — PLG products frequently build in <strong>virality / a K-factor</strong> (users invite users, shared artifacts expose the product to non-users) and lean on high <a href="./retention-fa.html">retention</a> and <a href="./nrr-expansion-fa.html">NRR/expansion</a> so the installed base compounds. When those loops stack, growth becomes both cheap <em>and</em> self-reinforcing.</p>
+<p><strong>The nuance experts hold that beginners flatten: PLG does not mean &quot;no sales, ever.&quot;</strong> The mature pattern upmarket is <strong>product-led sales (PLS) / sales-assist</strong>: PLG <em>acquires</em> and qualifies (you can see which accounts are getting value from usage data), then a light human touch <em>closes and expands</em> the biggest accounts. Slack, Figma, and Datadog all run PLG at the bottom and a sales-assist motion on top for enterprise. The <a href="./gtm-fa.html">ACV→motion heuristic in gtm</a> still governs: PLG owns the low-ACV, self-serve base; humans enter only where the deal is big enough to fund them.</p>
+        </section>
+
+        <section id="when-you-use-it">
+          <h2>زمان استفاده</h2>
+          <ul><li><strong>You have a low price point / low ACV</strong> — sub-~$1–2k ACV generally <em>can't fund</em> human</li></ul>
+<p>sales (see <a href="./gtm-fa.html">gtm</a>); the economics force self-serve, which is PLG.</p>
+<ul><li><strong>An individual can adopt the product without approval</strong> — bottom-up adoption (a</li></ul>
+<p>developer, a designer, a single knowledge worker) is PLG's native terrain.</p>
+<ul><li><strong>You can deliver value fast and unaided</strong> — the product reaches a real aha moment in</li></ul>
+<p>minutes, not after a two-week implementation. If it <em>can't</em>, PLG will bleed users.</p>
+<ul><li><strong>You're solo / bootstrapped with no sales team</strong> — PLG is the motion one founder can</li></ul>
+<p>operate, with <a href="./cac-fa.html">CAC</a> low enough to survive without a funded sales org.</p>
+<ul><li><strong>The market top-of-funnel is huge</strong> — PLG scales on <em>volume</em> of self-serve signups, so</li></ul>
+<p>it wants a big addressable pool, not a handful of whale accounts.</p>
+<ul><li><strong>Not</strong> when the product needs configuration, procurement, or multi-stakeholder sign-off</li></ul>
+<p>to deliver <em>any</em> value — that deal needs a human, and pure self-serve will churn it out.</p>
+        </section>
+
+        <section id="metrics-how-it-s-measured">
+          <h2>سنجه‌ها و اندازه‌گیری</h2>
+          <p>PLG is a strategy, judged by the health of its three product-driven loops — most of them live on the <a href="./aarrr-funnel-fa.html">AARRR funnel</a>:</p>
+<ul><li><strong>Acquisition / virality:</strong> signups, and the <strong>viral / referral coefficient (K-factor)</strong> —</li></ul>
+<p>how many new users each user brings. K &gt; 0 means the product partly acquires itself.</p>
+<ul><li><strong>Activation (the make-or-break):</strong> <strong>time-to-value</strong> and <strong>activation rate</strong> (signup →</li></ul>
+<p>first real value). In PLG this is the single most predictive metric — a low activation rate means the free tier never gets its chance to convert.</p>
+<ul><li><strong>Conversion:</strong> <strong>free → paid conversion rate</strong> (typical freemium benchmarks are low —</li></ul>
+<p>often ~2–5% of free users — which is <em>why</em> top-of-funnel volume matters so much).</p>
+<ul><li><strong>Expansion / durability:</strong> <strong><a href="./nrr-expansion-fa.html">net revenue retention</a></strong> and</li></ul>
+<p><strong><a href="./retention-fa.html">retention</a></strong> curves — a PLG business lives or dies on whether the base compounds (NRR &gt; 100%) rather than leaking.</p>
+<ul><li><strong>Efficiency:</strong> <strong><a href="./cac-fa.html">CAC</a></strong> and the LTV:CAC ratio — the payoff of PLG is</li></ul>
+<p>acquisition cost far below a sales-led motion; if CAC isn't low, the motion isn't actually product-led.</p>
+<p>The meta-test: is the <em>product itself</em> moving these numbers (better onboarding lifts activation; a shareable artifact lifts K; a value-metric lifts NRR)? If growth only moves when you spend more on ads or reps, you're not actually running PLG.</p>
+        </section>
+
+        <section id="common-misconceptions">
+          <h2>برداشت‌های غلط رایج</h2>
+          <ul><li><strong>&quot;Freemium = PLG.&quot;</strong> No. Freemium is a <em>pricing tactic</em>; PLG is the *whole go-to-market</li></ul>
+<p>strategy<em>. A free tier that just hands leads to a sales team is freemium </em>without<em> PLG. You can also run PLG with a free </em>trial* or open-source core and no &quot;freemium&quot; at all.</p>
+<ul><li><strong>&quot;Add a free tier and growth happens.&quot;</strong> Only if the free tier has a designed</li></ul>
+<p><strong>conversion trigger</strong> (a value ceiling users hit <em>because</em> they're succeeding). A free tier with no upgrade reason is a permanent cost center — the <strong>free-tier-that-never- converts</strong> trap.</p>
+<ul><li><strong>&quot;PLG means never talk to a customer / no sales team, ever.&quot;</strong> Upmarket, PLG + **sales-</li></ul>
+<p>assist** (product-led sales) is the standard: the product acquires and qualifies; humans close and expand the biggest accounts. PLG owns the base, not the whole motion.</p>
+<ul><li><strong>&quot;PLG works for any product.&quot;</strong> It needs <strong>fast, unaided time-to-value</strong> and</li></ul>
+<p><strong>self-serve adoptability.</strong> Force it onto a complex, high-ACV, multi-stakeholder product and self-serve users churn before the aha moment — the mirror image of the gtm mismatch trap.</p>
+<ul><li><strong>&quot;PLG fixes weak product-market fit.&quot;</strong> It does the opposite — self-serve <em>amplifies</em></li></ul>
+<p>whatever <a href="./pmf-fa.html">PMF</a> you have. Weak fit + PLG = you just churn people faster and more cheaply. PLG is a lever on fit, not a substitute for it.</p>
+        </section>
+
+        <section id="examples">
+          <h2>مثال‌ها</h2>
+          <ul><li><strong>Slack (product-led + sales-assist):</strong> free, individually-adoptable, near-instant value;</li></ul>
+<p>teams pulled it in bottom-up, virality came from inviting teammates, and a sales team arrived <em>later</em> only to close the enterprise accounts self-serve had already seeded. PLG at the base, PLS on top.</p>
+<ul><li><strong>Figma (self-serve + built-in virality):</strong> a designer signs up in a browser, and the</li></ul>
+<p>moment they share a file the product is exposed to everyone they collaborate with — the <em>artifact itself</em> is the acquisition channel. Free to start, expands by seats as teams adopt (an <a href="./nrr-expansion-fa.html">NRR</a> engine).</p>
+<ul><li><strong>Dropbox (viral free tier with a designed ceiling):</strong> free storage delivered value</li></ul>
+<p>instantly; the referral program (extra space for inviting friends) made the free tier a <em>growth loop</em>, and the storage limit was the value ceiling that converted heavy users to paid. Free tier engineered as both acquisition and conversion.</p>
+<ul><li><strong>The mismatch trap:</strong> a genuinely complex $40k/year product with multi-stakeholder</li></ul>
+<p>setup tries pure self-serve PLG. Prospects sign up, can't reach value without help, never talk to a human, and churn. <em>The product was fine; the motion needed a human it removed.</em> (Same failure, seen from the <a href="./gtm-fa.html">gtm</a> side.)</p>
+        </section>
+
+        <section id="talking-to-an-llm-about-it">
+          <h2>حرف زدن با LLM درباره آن</h2>
+          <p>The same intent, framed three ways — this is how vocabulary becomes leverage:</p>
+<ul><li><strong>Weak prompt:</strong> &quot;How do I make my product grow by itself?&quot;</li><li><strong>Better prompt:</strong> &quot;How do I design a freemium model for my SaaS so free users convert to</li></ul>
+<p>paid?&quot;</p>
+<ul><li><strong>Expert prompt:</strong> &quot;I'm a solo bootstrapped founder building a self-serve SaaS that</li></ul>
+<p>cleans up messy CSV exports, ICP = individual data analysts, target price ~$15/month (ACV ≈ $180, so human sales is off the table). Design a <strong>product-led growth</strong> motion: recommend the free-tier structure (freemium vs. reverse trial) and the specific <strong>value ceiling / conversion trigger</strong> that converts without capping the aha moment; identify the <strong>activation event</strong> and how to minimize <strong>time-to-value</strong>; propose one <strong>virality loop</strong> to lift the K-factor; and give the two or three metrics (<a href="./aarrr-funnel-fa.html">activation</a> rate, free→paid, <a href="./nrr-expansion-fa.html">NRR</a>) I should watch, with realistic freemium benchmarks. Flag where this motion would break if my time-to-value is slow.&quot;</p>
+<p>The expert version supplies the business model, ICP, and price point, names the <em>strategy</em> (PLG) rather than just the <em>tactic</em> (freemium), and asks for the load-bearing pieces — value ceiling, activation, time-to-value, a virality loop, and the right metrics — so the model reasons about the <strong>whole product-led motion</strong> instead of returning a generic &quot;offer a free plan and some paid features&quot; answer.</p>
+        </section>
+
+        <section id="my-evolving-understanding">
+          <h2>فهم در حال تکامل من</h2>
+          <ul><li><strong>v1 (2026-07-06):</strong> First pass while building Entrepreneur-OS as a solo founder. The</li></ul>
+<p>reframe that landed hardest: *<em>freemium is a </em>tactic<em>; PLG is the </em>strategy<em>.</em><em> I used to treat &quot;add a free tier&quot; as the whole idea — the sharper model is that PLG is a coordinated </em>motion<em> where the product does acquisition, conversion, </em>and<em> expansion, and a free tier is just one lever inside it. Two traps clicked into place. First, the <strong>free-tier-that-never-converts</strong>: a free plan only works if it has a designed <strong>value ceiling</strong> — a limit users happily hit </em>because<em> they're getting value — otherwise it's a permanent cost with no upgrade path. Second, <strong>time-to-value is load-bearing</strong> precisely </em>because<em> PLG removes the human who would otherwise bridge a confused prospect to the aha moment; slow onboarding in a sales-led motion is survivable, in PLG it's fatal. I also stopped believing &quot;PLG = no sales ever&quot; — upmarket it becomes <strong>product-led sales</strong> (self-serve acquires and qualifies, a light human touch closes the whales). Why it fits </em>me<em>: near-zero marginal <a href="./cac-fa.html">CAC</a>, no sales team to fund, a motion one person can run — and it composes with virality and <a href="./nrr-expansion-fa.html">NRR</a> so the base compounds. The caution I'm holding: PLG </em>amplifies* <a href="./pmf-fa.html">PMF</a>, it doesn't create it — with weak fit, all product-led growth buys you is faster, cheaper churn.</p>
+        </section>
+
+        <section id="sources">
+          <h2>منابع</h2>
+          <ul><li>Wes Bush, <em>Product-Led Growth</em> — the canonical framing of PLG as a strategy, the</li></ul>
+<p>freemium-vs-PLG distinction, value ceilings, and time-to-value; core of this note — to verify and deepen on revisit.</p>
+<ul><li>OpenView Partners, <em>Product-Led Growth</em> research &amp; benchmarks — freemium conversion</li></ul>
+<p>benchmarks, the PLG motion, and product-led sales (sales-assist) upmarket — to verify and deepen on revisit.</p>
+<ul><li>Elena Verna's writing on growth loops and product-led sales — acquisition/monetization/</li></ul>
+<p>virality loops and how PLG stacks with a sales-assist motion — to verify and deepen on revisit.</p>
+<ul><li>See also <a href="./gtm-fa.html">gtm</a>, <a href="./distribution-fa.html">distribution</a>, <a href="./aarrr-funnel-fa.html">aarrr-funnel</a>,</li></ul>
+<p><a href="./mvp-fa.html">mvp</a>, <a href="./retention-fa.html">retention</a>, <a href="./nrr-expansion-fa.html">nrr-expansion</a>, <a href="./pricing-fa.html">pricing</a>, <a href="./cac-fa.html">cac</a>.</p>
+        </section>
+
+        <section>
+          <h2>پیوندها</h2>
+          <nav class="footer-nav" aria-label="پیوندهای صفحه">
+            <a class="pill" href="./plg.html">نسخه انگلیسی</a>
+            <a class="pill" href="./plg.md">منبع Markdown</a>
+          </nav>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

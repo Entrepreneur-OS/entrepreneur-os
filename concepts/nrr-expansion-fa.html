@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>نگهداشت درآمد خالص و توسعه | Entrepreneur-OS</title>
+  <meta name="description" content="Plain English: how much a group of *existing* customers is worth to you a year later — before you sign anyone new. Expert phrasing: **Net Revenue Retention (NRR**, a.k.a. Net Dollar Retention / NDR**)** — the revenue a cohort retains *plus* the revenue it expands into, minus contraction and churn, all measured on that cohort's starting base. When NRR &gt; 100%, the installed base compounds on its own; growth stops depending on the [CAC](./cac.md) treadmill.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f8f6;
+      --paper: #ffffff;
+      --ink: #17201b;
+      --muted: #5d6b63;
+      --line: #dce4dd;
+      --accent: #0f7b5f;
+      --accent-strong: #075f49;
+      --accent-soft: #e4f4ef;
+      --warning-soft: #fff2cc;
+      --shadow: 0 22px 70px rgba(23, 32, 27, 0.10);
+      --radius: 8px;
+      font-family: "Vazirmatn", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(240deg, rgba(15, 123, 95, 0.09), transparent 34rem), var(--bg);
+      color: var(--ink);
+      line-height: 1.9;
+    }
+
+    a {
+      color: var(--accent-strong);
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(13rem, 17rem);
+      gap: 2.5rem;
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 4rem;
+      direction: ltr;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 1rem;
+      align-self: start;
+      padding: 1rem 0;
+      grid-column: 2; direction: rtl;
+    }
+
+    main {
+      min-width: 0;
+      grid-column: 1; grid-row: 1; direction: rtl;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--ink);
+      font-weight: 850;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 2rem;
+      height: 2rem;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      box-shadow: 0 8px 24px rgba(23, 32, 27, 0.08);
+      font-size: 0.78rem;
+    }
+
+    .toc {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .toc-title {
+      margin: 0 0 0.7rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 900;
+      
+    }
+
+    .toc a {
+      display: block;
+      padding: 0.36rem 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .hero, section {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero {
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 14rem;
+      gap: 2rem;
+      padding: clamp(1.4rem, 4vw, 3rem);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 0.75rem;
+      color: var(--accent-strong);
+      font-size: 0.82rem;
+      font-weight: 900;
+      
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 14ch;
+      font-size: clamp(2.2rem, 6.5vw, 5.2rem);
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 45rem;
+      margin: 1.2rem 0 0;
+      color: var(--muted);
+      font-size: clamp(1.04rem, 1.6vw, 1.28rem);
+    }
+
+    .signal {
+      align-self: stretch;
+      display: grid;
+      align-content: center;
+      gap: 1rem;
+      padding: 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, #ffffff, #f3faf7);
+    }
+
+    .signal-line {
+      height: 0.8rem;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e3eae5;
+    }
+
+    .signal-line::before {
+      content: "";
+      display: block;
+      width: 72%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #b7e4d2, var(--accent));
+    }
+
+    .signal p {
+      margin: 0;
+      color: var(--ink);
+      font-size: 0.98rem;
+      font-weight: 650;
+    }
+
+    .metadata {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .meta-item {
+      min-width: 0;
+      padding: 1rem;
+      background: #fbfcfb;
+    }
+
+    .meta-label {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--muted);
+      font-size: 0.74rem;
+      font-weight: 900;
+      
+    }
+
+    .meta-value {
+      display: block;
+      color: var(--ink);
+      font-weight: 720;
+    }
+
+    .content {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    section {
+      padding: clamp(1.25rem, 3vw, 2rem);
+    }
+
+    section h2 {
+      margin: 0 0 0.9rem;
+      font-size: clamp(1.35rem, 2.2vw, 2rem);
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    section p { margin: 0.75rem 0 0; }
+    section p:first-of-type { margin-top: 0; }
+    strong { font-weight: 900; }
+    code {
+      padding: 0.08rem 0.28rem;
+      border-radius: 5px;
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+
+    ul, ol {
+      margin: 0.8rem 0 0;
+      padding-right: 1.25rem;
+      padding-left: 0;
+    }
+
+    li + li { margin-top: 0.55rem; }
+
+    blockquote, .note {
+      margin: 0;
+      padding: 1rem 1.1rem;
+      border-right: 4px solid var(--accent);
+      border-radius: var(--radius);
+      background: var(--accent-soft);
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.2rem;
+      padding: 0.4rem 0.75rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      font-weight: 760;
+      text-decoration: none;
+    }
+
+    @media (max-width: 860px) {
+      .shell {
+        display: block;
+        width: min(100% - 1rem, 46rem);
+        padding-top: 0.75rem;
+      }
+
+      .sidebar {
+        position: static;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.75rem 0 1rem;
+      }
+
+      .toc { display: none; }
+      .hero-top { grid-template-columns: 1fr; }
+      .metadata { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 520px) {
+      .metadata { grid-template-columns: 1fr; }
+      section { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="ناوبری مفهوم">
+      <a class="brand" href="../README.md" aria-label="Entrepreneur-OS">
+        <span>Entrepreneur-OS</span>
+        <span class="brand-mark" dir="ltr">EOS</span>
+      </a>
+      <nav class="toc" aria-label="بخش‌های صفحه">
+        <p class="toc-title">نقشه مفهوم</p>
+        <a href="#what-it-is">چیست؟</a>
+        <a href="#why-it-exists-the-problem-it-solves">چرا وجود دارد؟</a>
+        <a href="#how-experts-reason-with-it">استدلال متخصص‌ها</a>
+        <a href="#when-you-use-it">زمان استفاده</a>
+        <a href="#metrics-how-it-s-measured">سنجه‌ها و اندازه‌گیری</a>
+        <a href="#common-misconceptions">برداشت‌های غلط رایج</a>
+        <a href="#examples">مثال‌ها</a>
+        <a href="#talking-to-an-llm-about-it">حرف زدن با LLM درباره آن</a>
+        <a href="#my-evolving-understanding">فهم در حال تکامل من</a>
+        <a href="#sources">منابع</a>
+      </nav>
+    </aside>
+
+    <main>
+      <header class="hero">
+        <div class="hero-top">
+          <div>
+            <p class="eyebrow">مفهوم کارآفرینی</p>
+            <h1>نگهداشت درآمد خالص و توسعه</h1>
+            <p class="subtitle">یادداشت: این صفحه نسخه راست‌به‌چپ طراحی‌شده از منبع Markdown است. عنوان‌ها و قاب صفحه فارسی شده‌اند؛ متن تخصصی بدنه از منبع اصلی حفظ شده تا ترجمه مفهومی هر یادداشت جداگانه بازبینی شود.</p>
+          </div>
+          <aside class="signal" aria-label="سیگنال مفهومی">
+            <div class="signal-line" aria-hidden="true"></div>
+            <p>از تعریف عبور کن؛ این صفحه برای فهم عملی، تصمیم‌گیری، و گفتگو با AI ساخته شده است.</p>
+          </aside>
+        </div>
+        <div class="metadata" aria-label="فراداده مفهوم">
+          <div class="meta-item">
+            <span class="meta-label">دامنه</span>
+            <span class="meta-value">finance</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">مرحله</span>
+            <span class="meta-value">growth</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">پیش‌نیازها</span>
+            <span class="meta-value"><a href="./mrr-arr-fa.html">mrr-arr</a> (NRR is a movement of the MRR bridge), <a href="./churn-fa.html">churn</a>, <a href="./retention-fa.html">retention</a></span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">مرتبط</span>
+            <span class="meta-value"><a href="./pricing-fa.html">pricing</a> (the value-metric that makes expansion automatic), <a href="./ltv-fa.html">ltv</a> · <strong>Contrast with:</strong> Gross Revenue Retention (GRR), which caps at 100%</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        
+        <section id="what-it-is">
+          <h2>چیست؟</h2>
+          <p><strong>Net Revenue Retention</strong> answers one question: <em>if I stopped acquiring customers entirely, would the revenue from the customers I already have grow, hold flat, or shrink over the next year?</em> You take a cohort's revenue at the start of a period, then add every dollar of <strong>expansion</strong> (upgrades, more seats, more usage, cross-sell), and subtract every dollar of <strong>contraction</strong> (downgrades, fewer seats) and <strong>churn</strong> (customers who left entirely). Divide by the starting revenue. Crucially, <strong>new logos are excluded</strong> — NRR is a closed-cohort measure of the base you already won.</p>
+<p>``<code> NRR = (Starting MRR + Expansion − Contraction − Churn) / Starting MRR </code>``</p>
+<p>The number is usually quoted as a percentage over a trailing 12 months. <strong>NRR &gt; 100%</strong> is the magic threshold: it means expansion out-ran contraction <em>and</em> churn combined, so the base grew <strong>with zero new sales</strong>. That condition has a name — <strong>&quot;negative churn&quot;</strong> (a.k.a. negative net churn): the leak in the bucket is more than offset by the existing customers pouring in more water themselves.</p>
+<p><strong>Expansion revenue</strong> is the fuel. It comes in three flavours:</p>
+<ul><li><strong>Upsell</strong> — same product, bigger plan (Pro → Enterprise, higher tier).</li><li><strong>Seat / usage growth</strong> — the account simply <em>uses more</em> of what it bought (more</li></ul>
+<p>users, more API calls, more GB stored). This is the holy grail because it's automatic.</p>
+<ul><li><strong>Cross-sell</strong> — a <em>different</em> product added to the account (a second module, an add-on).</li></ul>
+        </section>
+
+        <section id="why-it-exists-the-problem-it-solves">
+          <h2>چرا وجود دارد؟</h2>
+          <p>Top-line growth hides a fatal ambiguity: a company growing revenue 40% could be a durable compounding machine, or a leaky bucket sprinting to stay level — filling the top with expensive new logos while the bottom drains through churn. Two companies with identical new-sales numbers can have wildly different <em>quality</em> of growth. Gross metrics can't tell them apart because they mix new acquisition in with the fate of the existing base.</p>
+<p>NRR exists to <strong>isolate the fate of the base.</strong> By deliberately excluding new logos, it exposes the truth the top line conceals: <em>is the business we already built getting more valuable or less valuable over time, on its own?</em> That's the question that predicts whether growth is cheap and compounding — or a treadmill you have to keep buying.</p>
+        </section>
+
+        <section id="how-experts-reason-with-it">
+          <h2>استدلال متخصص‌ها</h2>
+          <p>The insight a beginner misses: <strong>NRR &gt; 100% turns your customer base into a second growth engine that runs without sales-and-marketing spend — and that second engine is what the market actually pays a premium for.</strong></p>
+<ol><li><strong>Negative churn compounds.</strong> A business with <strong>120% NRR</strong> grows ~20%/year *even if it</li></ol>
+<p>never signs another customer.<em> Stack new logos on top of a base that's already compounding and growth becomes both fast </em>and* capital-efficient. This is why NRR is the headline SaaS metric: it decouples growth from the <a href="./cac-fa.html">CAC</a> treadmill.</p>
+<ol><li><strong>NRR ≠ GRR — and the gap is the whole story.</strong> <strong>Gross Revenue Retention (GRR)</strong></li></ol>
+<p>subtracts contraction and churn but gives <strong>no credit for expansion</strong>, so it's capped at 100% — it measures pure <em>leakage</em>. NRR can exceed 100% because expansion is added back. Read them <strong>together</strong>: <code>GRR = 88%, NRR = 125%</code> means the base leaks 12% a year but expands 37 points on top — a strong product with a healthy value-metric. <code>GRR = 70%, NRR = 102%</code> is a warning: heavy churn <em>masked</em> by a few whales expanding. Same NRR, opposite health. <strong>NRR alone can lie; GRR is the honesty check.</strong></p>
+<ol><li><strong>Expansion is a pricing-design decision, not a sales tactic.</strong> Whether the base</li></ol>
+<p>expands automatically is decided upstream, when you pick the <a href="./pricing-fa.html">pricing</a> <strong>value-metric.</strong> Price on a metric that <em>grows as the customer succeeds</em> — seats, API calls, GB, transactions — and expansion becomes the default, not a renegotiation. Snowflake (consumption) and Slack (active seats) expand as usage grows; a flat per-company license does not. <strong>You can't sell your way to great NRR if the pricing model doesn't let accounts grow.</strong></p>
+<ol><li><strong>NRR sits on top of the <a href="./mrr-arr-fa.html">MRR bridge</a>.</strong> It's the same four movements</li></ol>
+<p>(new / expansion / contraction / churn) — but NRR drops the <em>new</em> term to isolate the cohort. <a href="./retention-fa.html">Retention</a> and <a href="./churn-fa.html">churn</a> drive the leak side; expansion drives the compounding side. Improve the value-metric and you lift expansion <em>and</em> revenue retention at once.</p>
+<ol><li><strong>It lifts the valuation multiple.</strong> Predictable, compounding, low-CAC revenue is</li></ol>
+<p>worth more per dollar. Public-market and VC benchmarks tie high NRR directly to higher ARR multiples, because a &gt;100%-NRR base lets an investor underwrite next year's revenue before a single new deal closes.</p>
+<p>The founder's takeaway: <strong>chase expansion and kill contraction to push NRR past 100% — but always read GRR alongside it.</strong> NRR over 100% is the difference between a business that compounds and one that runs to stand still; GRR is what stops you from lying to yourself about how you got there.</p>
+        </section>
+
+        <section id="when-you-use-it">
+          <h2>زمان استفاده</h2>
+          <ul><li><strong>Fundraising / board reporting</strong> — NRR and ARR are the two headline numbers investors</li></ul>
+<p>ask for first; NRR is often the single strongest predictor they weight.</p>
+<ul><li><strong>Diagnosing growth quality</strong> — separate &quot;the base is compounding&quot; from &quot;we're</li></ul>
+<p>out-running churn with new sales.&quot; Pair NRR with GRR to catch churn hidden under whales.</p>
+<ul><li><strong>Pricing &amp; packaging decisions</strong> (<a href="./pricing-fa.html">pricing</a>) — choosing a value-metric,</li></ul>
+<p>tiers, and add-ons explicitly to make expansion automatic.</p>
+<ul><li><strong>Prioritizing product &amp; CS work</strong> — whether to invest in reducing gross churn (lift</li></ul>
+<p>GRR) or in expansion paths (lift the NRR-minus-GRR gap).</p>
+<ul><li><strong>Segmenting</strong> — enterprise and SMB have very different NRR profiles; compare like with</li></ul>
+<p>like, never blended.</p>
+        </section>
+
+        <section id="metrics-how-it-s-measured">
+          <h2>سنجه‌ها و اندازه‌گیری</h2>
+          <p>``<code> NRR = (Starting MRR + Expansion − Contraction − Churn) / Starting MRR      # can exceed 100% GRR = (Starting MRR            − Contraction − Churn) / Starting MRR        # capped at 100% NRR − GRR = Expansion / Starting MRR   # the &quot;expansion lift&quot; — how much upsell adds back </code>``</p>
+<p><strong>Worked &gt;100% example.</strong> Take a cohort that starts the year at <strong>$100k MRR</strong> — and sign <strong>zero</strong> new customers all year, on purpose, to isolate the base:</p>
+<p>| Movement | Amount | |---|---| | Starting MRR | <strong>$100,000</strong> | | + Expansion (upsell + seat/usage growth) | <strong>+ $30,000</strong> | | − Contraction (downgrades) | <strong>− $5,000</strong> | | − Churn (customers who left) | <strong>− $8,000</strong> | | <strong>Ending MRR (existing cohort)</strong> | <strong>$117,000</strong> |</p>
+<p>``<code> NRR = (100,000 + 30,000 − 5,000 − 8,000) / 100,000 = 117,000 / 100,000 = 117% GRR = (100,000            − 5,000 − 8,000) / 100,000 =  87,000 / 100,000 =  87% Expansion lift = NRR − GRR = 30,000 / 100,000 = 30 percentage points </code>``</p>
+<p><strong>Reading it:</strong> the base <em>lost</em> 13% to contraction + churn (GRR = 87%) yet <em>grew</em> 17% overall (NRR = 117%) — because $30k of expansion more than covered the $13k leak. That 17% is <strong>growth from customers you already had, at effectively zero CAC.</strong> This is &quot;negative churn&quot;: the existing book of business compounds on its own.</p>
+<p><strong>Benchmarks (compare like segments only):</strong> best-in-class SaaS runs <strong>NRR ≥ 120%</strong> (enterprise) and <strong>≥ 100%</strong> (SMB). <strong>GRR</strong> above ~90% (enterprise) / ~80% (SMB) is healthy. A large <strong>NRR − GRR</strong> gap on a <em>low</em> GRR is a flag, not a trophy: expansion is papering over churn.</p>
+        </section>
+
+        <section id="common-misconceptions">
+          <h2>برداشت‌های غلط رایج</h2>
+          <ul><li><strong>&quot;NRR and GRR are basically the same.&quot;</strong> No — GRR ignores expansion and is capped at</li></ul>
+<p>100% (pure leakage); NRR adds expansion back and can exceed 100%. Quoting only NRR hides how leaky the base is. <strong>Always report both.</strong></p>
+<ul><li><strong>&quot;High NRR = healthy retention.&quot;</strong> Not necessarily. A handful of whales expanding hard</li></ul>
+<p>can push blended NRR over 100% while most of the base quietly churns. High NRR with <em>low</em> GRR is a churn problem wearing a growth costume. The GRR (and per-segment NRR) reveals it.</p>
+<ul><li><strong>&quot;Expansion is the sales team's job.&quot;</strong> Expansion is mostly designed <em>upstream</em> in the</li></ul>
+<p><a href="./pricing-fa.html">pricing</a> value-metric. If accounts can't grow their spend as they succeed, no amount of upsell effort produces durable NRR.</p>
+<ul><li><strong>&quot;NRR includes new customers.&quot;</strong> It deliberately excludes new logos — it's a</li></ul>
+<p><em>closed-cohort</em> measure of the existing base. Mixing new sales in defeats its purpose.</p>
+<ul><li><strong>&quot;Contraction doesn't matter if they didn't cancel.&quot;</strong> A downgrade from $500 to $200</li></ul>
+<p>is $300 of lost revenue — silent churn. It drags NRR just like a cancellation.</p>
+<ul><li><strong>&quot;NRR is an annual snapshot.&quot;</strong> It's usually a <em>trailing-12-month</em> measure of a</li></ul>
+<p>cohort's movement, not a point-in-time balance.</p>
+        </section>
+
+        <section id="examples">
+          <h2>مثال‌ها</h2>
+          <ul><li><strong>Snowflake</strong> has posted NRR around <strong>~158%</strong> at peak — because it charges for</li></ul>
+<p><em>consumption</em>: as a customer's data workloads grow, spend grows automatically. The value-metric <em>is</em> the expansion engine; almost no renegotiation required.</p>
+<ul><li><strong>Slack</strong> expanded as companies added active users (seats). Land in one team, spread</li></ul>
+<p>org-wide, and revenue climbs with adoption — seat-based expansion driving NRR well above 100%.</p>
+<ul><li><strong>The masked-churn trap:</strong> a SaaS reports <strong>NRR = 104%</strong> and the founder celebrates.</li></ul>
+<p>But <strong>GRR = 74%</strong> — a quarter of the base leaves every year, hidden by two enterprise accounts that tripled. The &quot;growth&quot; is one renewal away from collapse. The blended NRR lied; the GRR and per-segment split told the truth.</p>
+        </section>
+
+        <section id="talking-to-an-llm-about-it">
+          <h2>حرف زدن با LLM درباره آن</h2>
+          <ul><li><strong>Weak prompt:</strong> &quot;How do I grow revenue without new customers?&quot;</li><li><strong>Better prompt:</strong> &quot;How do I calculate Net Revenue Retention for my SaaS, and what's a</li></ul>
+<p>good number?&quot;</p>
+<ul><li><strong>Expert prompt:</strong> &quot;For a B2B SaaS cohort starting the year at $100k MRR with $30k</li></ul>
+<p>expansion, $5k contraction, and $8k churned MRR and zero new logos, compute NRR and GRR, explain the gap between them, and tell me whether my growth is genuine base-compounding ('negative churn') or churn masked by a few expanding whales. Then recommend whether to prioritize lifting GRR (reduce gross churn) or widening the NRR−GRR gap (expansion), and what pricing value-metric would make expansion more automatic — and how each choice moves my valuation multiple.&quot;</p>
+<p>The expert version supplies the full cohort movements, asks for <strong>both</strong> NRR and GRR and the <em>gap</em> between them, demands a diagnosis (real compounding vs. masked churn), and asks for a pricing-and-priority <em>decision</em> — so the model reasons about the quality of growth, not just the definition.</p>
+        </section>
+
+        <section id="my-evolving-understanding">
+          <h2>فهم در حال تکامل من</h2>
+          <ul><li><strong>v1 (2026-07-04):</strong> First pass. The reframe that landed: I thought &quot;grow without new</li></ul>
+<p>customers&quot; meant <em>upselling harder.</em> The sharper model is that <strong>NRR turns the existing base into a second, near-zero-CAC growth engine</strong> — and whether that engine exists is decided <em>upstream</em> in the <a href="./pricing-fa.html">pricing</a> value-metric, not in the sales motion. The trap I now watch for: <strong>NRR alone can lie.</strong> A blended NRR &gt; 100% can sit on top of a badly leaking base (low GRR) propped up by a few whales — so GRR is the honesty check that has to be read alongside it. &quot;Negative churn&quot; stopped sounding like jargon once I saw it in the worked example: 87% GRR (a leaking base) <em>and</em> 117% NRR (net compounding) at the same time, because $30k of expansion swamped $13k of leak.</p>
+        </section>
+
+        <section id="sources">
+          <h2>منابع</h2>
+          <ul><li>Bessemer Venture Partners, <em>State of the Cloud</em> / &quot;Net Revenue Retention&quot; writing — why</li></ul>
+<p>NDR/NRR is the metric investors obsess over and how it maps to valuation multiples — to verify and deepen on revisit.</p>
+<ul><li>David Skok, <em>forEntrepreneurs</em> — &quot;negative churn,&quot; expansion revenue, and why NRR &gt; 100%</li></ul>
+<p>changes the growth math — to verify and deepen on revisit.</p>
+<ul><li>See also <a href="./mrr-arr-fa.html">mrr-arr</a>, <a href="./churn-fa.html">churn</a>, <a href="./retention-fa.html">retention</a>,</li></ul>
+<p><a href="./pricing-fa.html">pricing</a>.</p>
+        </section>
+
+        <section>
+          <h2>پیوندها</h2>
+          <nav class="footer-nav" aria-label="پیوندهای صفحه">
+            <a class="pill" href="./nrr-expansion.html">نسخه انگلیسی</a>
+            <a class="pill" href="./nrr-expansion.md">منبع Markdown</a>
+          </nav>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

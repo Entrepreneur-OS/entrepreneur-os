@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Switching Costs &amp; Lock-in — Why Leaving Is Expensive | Entrepreneur-OS</title>
+  <meta name="description" content="Plain English: switching costs are everything a customer has to *pay, learn, risk, or lose* to move from you to a competitor — even a better one. The higher they are, the more a customer stays put out of *cost*, not just love. Expert phrasing: **switching costs** (Klemperer) — one of Hamilton Helmer's **7 Powers** — are the disutility a customer incurs to change suppliers, which lets the incumbent hold customers (and price) that pure product quality alone couldn't. The families stack. The stickiest products (Salesforce, SAP, a bank) impose **all five at once** — data + workflow + integration + contract + relationship — which is why &quot;just switch&quot; is a sentence nobody in the customer's org wants to say out loud.">
+  
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f8f6;
+      --paper: #ffffff;
+      --ink: #17201b;
+      --muted: #5d6b63;
+      --line: #dce4dd;
+      --accent: #0f7b5f;
+      --accent-strong: #075f49;
+      --accent-soft: #e4f4ef;
+      --warning-soft: #fff2cc;
+      --shadow: 0 22px 70px rgba(23, 32, 27, 0.10);
+      --radius: 8px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(120deg, rgba(15, 123, 95, 0.09), transparent 34rem), var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--accent-strong);
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: minmax(13rem, 17rem) minmax(0, 1fr);
+      gap: 2.5rem;
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 4rem;
+      
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 1rem;
+      align-self: start;
+      padding: 1rem 0;
+      
+    }
+
+    main {
+      min-width: 0;
+      
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--ink);
+      font-weight: 850;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 2rem;
+      height: 2rem;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      box-shadow: 0 8px 24px rgba(23, 32, 27, 0.08);
+      font-size: 0.78rem;
+    }
+
+    .toc {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .toc-title {
+      margin: 0 0 0.7rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.09em; text-transform: uppercase;
+    }
+
+    .toc a {
+      display: block;
+      padding: 0.36rem 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .hero, section {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero {
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 14rem;
+      gap: 2rem;
+      padding: clamp(1.4rem, 4vw, 3rem);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 0.75rem;
+      color: var(--accent-strong);
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 13ch;
+      font-size: clamp(2.2rem, 6.5vw, 5.2rem);
+      line-height: 0.96;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 45rem;
+      margin: 1.2rem 0 0;
+      color: var(--muted);
+      font-size: clamp(1.04rem, 1.6vw, 1.28rem);
+    }
+
+    .signal {
+      align-self: stretch;
+      display: grid;
+      align-content: center;
+      gap: 1rem;
+      padding: 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, #ffffff, #f3faf7);
+    }
+
+    .signal-line {
+      height: 0.8rem;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e3eae5;
+    }
+
+    .signal-line::before {
+      content: "";
+      display: block;
+      width: 72%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #b7e4d2, var(--accent));
+    }
+
+    .signal p {
+      margin: 0;
+      color: var(--ink);
+      font-size: 0.98rem;
+      font-weight: 650;
+    }
+
+    .metadata {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .meta-item {
+      min-width: 0;
+      padding: 1rem;
+      background: #fbfcfb;
+    }
+
+    .meta-label {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--muted);
+      font-size: 0.74rem;
+      font-weight: 900;
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+
+    .meta-value {
+      display: block;
+      color: var(--ink);
+      font-weight: 720;
+    }
+
+    .content {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    section {
+      padding: clamp(1.25rem, 3vw, 2rem);
+    }
+
+    section h2 {
+      margin: 0 0 0.9rem;
+      font-size: clamp(1.35rem, 2.2vw, 2rem);
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    section p { margin: 0.75rem 0 0; }
+    section p:first-of-type { margin-top: 0; }
+    strong { font-weight: 900; }
+    code {
+      padding: 0.08rem 0.28rem;
+      border-radius: 5px;
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+
+    ul, ol {
+      margin: 0.8rem 0 0;
+      padding-left: 1.25rem;
+      padding-right: 0;
+    }
+
+    li + li { margin-top: 0.55rem; }
+
+    blockquote, .note {
+      margin: 0;
+      padding: 1rem 1.1rem;
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius);
+      background: var(--accent-soft);
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.2rem;
+      padding: 0.4rem 0.75rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      font-weight: 760;
+      text-decoration: none;
+    }
+
+    @media (max-width: 860px) {
+      .shell {
+        display: block;
+        width: min(100% - 1rem, 46rem);
+        padding-top: 0.75rem;
+      }
+
+      .sidebar {
+        position: static;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.75rem 0 1rem;
+      }
+
+      .toc { display: none; }
+      .hero-top { grid-template-columns: 1fr; }
+      .metadata { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 520px) {
+      .metadata { grid-template-columns: 1fr; }
+      section { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Concept navigation">
+      <a class="brand" href="../README.md" aria-label="Entrepreneur-OS">
+        <span>Entrepreneur-OS</span>
+        <span class="brand-mark" dir="ltr">EOS</span>
+      </a>
+      <nav class="toc" aria-label="Page sections">
+        <p class="toc-title">Concept Map</p>
+        <a href="#what-it-is">What it is</a>
+        <a href="#why-it-exists-the-problem-it-solves">Why it exists / the problem it solves</a>
+        <a href="#how-experts-reason-with-it">How experts reason with it</a>
+        <a href="#when-you-use-it">When you use it</a>
+        <a href="#metrics-how-it-s-measured">Metrics / how it's measured</a>
+        <a href="#common-misconceptions">Common misconceptions</a>
+        <a href="#examples">Examples</a>
+        <a href="#talking-to-an-llm-about-it">Talking to an LLM about it</a>
+        <a href="#my-evolving-understanding">My evolving understanding</a>
+        <a href="#sources">Sources</a>
+      </nav>
+    </aside>
+
+    <main>
+      <header class="hero">
+        <div class="hero-top">
+          <div>
+            <p class="eyebrow">Entrepreneurship concept</p>
+            <h1>Switching Costs &amp; Lock-in — Why Leaving Is Expensive</h1>
+            <p class="subtitle">Plain English: switching costs are everything a customer has to <em>pay, learn, risk, or lose</em> to move from you to a competitor — even a better one. The higher they are, the more a customer stays put out of <em>cost</em>, not just love. Expert phrasing: <strong>switching costs</strong> (Klemperer) — one of Hamilton Helmer's <strong>7 Powers</strong> — are the disutility a customer incurs to change suppliers, which lets the incumbent hold customers (and price) that pure product quality alone couldn't. The families stack. The stickiest products (Salesforce, SAP, a bank) impose <strong>all five at once</strong> — data + workflow + integration + contract + relationship — which is why &quot;just switch&quot; is a sentence nobody in the customer's org wants to say out loud.</p>
+          </div>
+          <aside class="signal" aria-label="Concept signal">
+            <div class="signal-line" aria-hidden="true"></div>
+            <p>Move past the definition: use this concept to reason, decide, and prompt AI more precisely.</p>
+          </aside>
+        </div>
+        <div class="metadata" aria-label="Concept metadata">
+          <div class="meta-item">
+            <span class="meta-label">Domain</span>
+            <span class="meta-value">strategy</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Stage</span>
+            <span class="meta-value">growth</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Prerequisites</span>
+            <span class="meta-value"><a href="./pmf.html">pmf</a> (you need something worth getting locked into first), <a href="./retention.html">retention</a></span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Related</span>
+            <span class="meta-value"><a href="./moat.html">moat</a>, <a href="./churn.html">churn</a>, <a href="./ltv.html">ltv</a>, <a href="./network-effects.html">network-effects</a> · <strong>Contrast with:</strong> <a href="./network-effects.html">network-effects</a> (staying is <em>valuable because of others</em>, not merely <em>costly to leave</em>)</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        
+        <section id="what-it-is">
+          <h2>What it is</h2>
+          <p>Switching costs are the friction of leaving. Two products can be equally good, but if walking away from yours means re-importing three years of data, retraining a team, rebuilding six integrations, and eating an early-termination fee, the customer stays — not because you're winning the feature race this quarter, but because <em>leaving is a project nobody wants to run.</em> The competitor has to be better by <em>more than the cost of the move</em> before switching is even rational.</p>
+<p>Economist Paul Klemperer formalized this: when consumers face switching costs, a market that looks competitive on the surface behaves like a series of small monopolies — each firm has some pricing power over its <em>own installed base</em> because those customers are partially locked in. Helmer folds the same idea into <strong>7 Powers</strong> as one of the seven durable barriers: <strong>Switching Costs</strong> are a Power because the Benefit (you can charge more / retain longer) comes paired with a Barrier (a rival <em>can see</em> your happy margins but can't profitably poach the customer, because they'd have to pay the customer's switching cost <em>for</em> them to win the deal).</p>
+<p>The academic taxonomy (Burnham, Frels &amp; Mahajan) sorts them into three families — <strong>procedural</strong> (time and effort), <strong>financial</strong> (money and sunk value), and <strong>relational</strong> (emotional and social ties). In founder-practical terms, that's this:</p>
+<p>| Type | What locks the customer in | Everyday example | |---|---|---| | <strong>Data</strong> | Their history, records, and content live in your system; exporting and re-importing is lossy and scary | Years of CRM records, accounting history, saved documents, message archives | | <strong>Workflow / learning</strong> | The team has internalized <em>your</em> way of working; a competitor means re-training and lost productivity during the dip | Photoshop shortcuts, Excel muscle memory, a bespoke internal process built around your UI | | <strong>Integration</strong> | You're wired into their other systems; ripping you out breaks a web of connections | ERP/CRM plumbed into billing, data warehouse, and 12 SaaS tools via API | | <strong>Contractual</strong> | Formal, financial penalties for leaving | Annual lock-ins, early-termination fees, minimum commits, volume discounts you'd forfeit | | <strong>Social / relational</strong> | Identity, reputation, and relationships tied to the product | A public profile/handle, a community, a vendor relationship, &quot;nobody got fired for buying IBM&quot; |</p>
+        </section>
+
+        <section id="why-it-exists-the-problem-it-solves">
+          <h2>Why it exists / the problem it solves</h2>
+          <p>Every recurring business has the same enemy: the customer can leave every renewal. Acquisition is expensive and one-time; the value is in <em>keeping</em> them (see <a href="./ltv.html">ltv</a>, where lifetime ≈ 1/<a href="./churn.html">churn</a>). But if staying is a pure quality contest re-run every month, you're on a treadmill — one better competitor, one cheaper price, and the customer walks with zero friction.</p>
+<p>Switching costs exist as a concept to name the thing that <em>breaks that treadmill</em>: they convert a repeated, winnable-by-anyone decision into a <strong>one-way door</strong>. Once a customer has poured their data, habits, and integrations into you, the renewal question stops being &quot;is this the best tool?&quot; and becomes &quot;is switching worth the pain?&quot; — a much higher bar that protects you <em>even on the days you're not the best product in the category.</em> That is precisely why Helmer counts it among the few structural barriers that let a business sustain superior returns instead of having them competed away.</p>
+        </section>
+
+        <section id="how-experts-reason-with-it">
+          <h2>How experts reason with it</h2>
+          <p>The insight a beginner misses: *<em>switching costs let you keep customers you couldn't win on merit alone — but only the </em>earned<em> kind is safe; the </em>imposed<em> kind is a loan against your brand.</em>*</p>
+<ol><li><strong>Switching costs are, mechanically, a <a href="./churn.html">churn</a>-suppression machine.</strong></li></ol>
+<p>This is the whole &quot;so what.&quot; High switching costs → fewer customers can be bothered to leave → lower churn → higher <a href="./retention.html">retention</a> → and because lifetime ≈ 1/churn, directly higher <a href="./ltv.html">ltv</a>. They also unlock <strong>pricing power</strong>: a locked-in base tolerates price increases up to (roughly) the cost of switching, which is how NRR climbs above 100%. This is the same causal chain that makes switching costs a <a href="./moat.html">moat</a> — a moat <em>is</em> a churn-suppression machine, and switching costs are one of its cleanest forms.</p>
+<ol><li>**Distinguish &quot;costly to leave&quot; from &quot;valuable to stay&quot; — switching costs ≠</li></ol>
+<p><a href="./network-effects.html">network effects</a>.*<em> This is the trap that catches everyone. </em>Switching costs<em> protect you from the <strong>inside</strong>: the friction lives in the individual customer's own data, habits, and contracts, and would exist even if they were your only customer. </em>Network effects<em> protect you from the <strong>outside</strong>: the product is more valuable </em>because other people use it<em>, and the value grows with every new user. A single-player note app can have huge switching costs (your whole life is in it) and zero network effect. A brand-new social app can have a strong network effect and near-zero switching cost (nothing to export). They're distinct — but when they <strong>compound</strong>, you get the strongest positions in business: leaving is both personally expensive </em>and<em> means abandoning everyone else (Slack, iMessage, a marketplace with your reviews and reputation). Network effects raise the </em>value of staying<em>; switching costs raise the </em>cost of leaving*; together they slam the door from both sides.</p>
+<ol><li>**There's a bright line between healthy stickiness and user-hostile lock-in — and</li></ol>
+<p>crossing it backfires.*<em> </em>Earned<em> stickiness comes from the customer accumulating genuine value in you (their data, their mastery, their integrations) — they </em>don't want<em> to leave. </em>Imposed<em> lock-in comes from friction you manufacture to trap someone who </em>does<em> want to leave: no data export, deliberately painful offboarding, punitive contracts, hostage-taking of the customer's own content. The test: <strong>would the customer thank you for it, or resent it?</strong> Earned stickiness deepens trust and brand; hostile lock-in is a short-term retention loan repaid with reputation — public &quot;how to escape $VENDOR&quot; guides, viral cancellation horror stories, and regulators writing data-portability law (GDPR's right to data portability exists </em>because* firms weaponized switching costs). The durable play is to make <strong>staying</strong> the obvious choice, not to make <strong>leaving</strong> impossible.</p>
+<ol><li>*<em>Switching costs are not permanent — they get </em>engineered away<em>.</em>* Assuming your</li></ol>
+<p>lock-in is forever is how incumbents get disrupted. Migration tooling is a business model precisely because a challenger's fastest path in is to <em>pay the customer's switching cost for them</em>: one-click importers, &quot;we'll migrate your data free,&quot; white-glove onboarding, &quot;we'll buy out your contract.&quot; Open standards, APIs, and commoditized data formats all erode the barrier over time. So switching costs must be <strong>deepened and defended</strong>, not banked — and you should assume a smart competitor is actively working to dissolve yours.</p>
+<ol><li><strong>Contracts are the weakest form; real product value is the strongest.</strong> A contract</li></ol>
+<p>locks a customer in until the renewal date — and the moment it expires, if the only thing keeping them was the contract, they're <em>gone</em>, often angry. Legal switching costs buy time; they don't buy loyalty. The strong, compounding switching costs are the ones the customer builds <em>themselves</em> by using you well — accumulated data, deep integration, ingrained workflow. Over-relying on contractual lock-in is a tell that the product isn't sticky on its own merits, and it's fragile exactly when you need it (a frustrated customer counting down to their escape date).</p>
+        </section>
+
+        <section id="when-you-use-it">
+          <h2>When you use it</h2>
+          <ul><li><strong>When designing onboarding and the product roadmap</strong> — deliberately build features</li></ul>
+<p>that let customers accumulate <em>their own</em> value in you (import their data, build workflows, connect integrations), because that's earned stickiness that compounds.</p>
+<ul><li><strong>When setting pricing and contract terms</strong> — a locked-in base tolerates price</li></ul>
+<p>increases up to the switching cost; but lean on <em>value</em> lock-in over <em>contractual</em> lock-in, or you inflate near-term retention while eroding trust.</p>
+<ul><li><strong>When attacking an incumbent</strong> — find the customers who <em>want</em> to leave a competitor</li></ul>
+<p>and can't, then <strong>pay their switching cost for them</strong> (free migration, contract buyouts, importers). Their lock-in is your wedge.</p>
+<ul><li><strong>When defending against a challenger doing exactly that to you</strong> — assume your</li></ul>
+<p>switching costs are being actively dissolved and deepen the <em>earned</em> kinds faster than a competitor can automate them away.</p>
+<ul><li><strong>When an investor asks &quot;what stops churn / what's your moat?&quot;</strong> — switching costs are</li></ul>
+<p>a legitimate, nameable answer <em>if</em> you can point to earned, structural ones (data, integration, workflow), not just an annual contract.</p>
+        </section>
+
+        <section id="metrics-how-it-s-measured">
+          <h2>Metrics / how it's measured</h2>
+          <p>Switching costs are structural, so — like a <a href="./moat.html">moat</a> — they show up as <em>persistence</em> rather than a single number:</p>
+<ul><li><strong>Retention / churn curves that flatten and hold</strong> — high, stable</li></ul>
+<p><a href="./retention.html">retention</a> (especially <em>logo</em> retention among large, deeply-integrated accounts) is the fingerprint of real switching costs.</p>
+<ul><li><strong>Net Revenue Retention (NRR) &gt; 100%</strong> — a locked-in base you can expand and re-price</li></ul>
+<p>without losing is the clearest financial signature of pricing power from switching costs.</p>
+<ul><li><strong>Retention rising with tenure, account size, and integration depth</strong> — if customers</li></ul>
+<p>who've been with you longer, bought more, or connected more integrations churn <em>less</em>, that's switching costs accumulating (a cohort/<a href="./retention.html">retention</a> read).</p>
+<ul><li><strong>Expansion / seat &amp; usage growth within accounts</strong> — customers deepening their</li></ul>
+<p>footprint are raising <em>their own</em> switching costs.</p>
+<ul><li><strong>The counter-signal — voluntary churn despite contracts</strong> — customers leaving the</li></ul>
+<p>instant a contract ends (or loudly trying to) means your &quot;switching costs&quot; are contractual, not real. Watch the renewal-date exit spike.</p>
+<p>There's no single &quot;switching cost score&quot;; you triangulate from these over time. Like a moat, it's a claim about the <em>future</em>, validated by persistence.</p>
+        </section>
+
+        <section id="common-misconceptions">
+          <h2>Common misconceptions</h2>
+          <ul><li><strong>&quot;Switching costs are the same as network effects.&quot;</strong> No — related but distinct.</li></ul>
+<p>Switching costs make <em>leaving</em> costly (friction inside the customer's own setup); network effects make <em>staying</em> valuable (worth grows with other users). One can exist without the other; the powerhouses have both. Confusing them leads you to build the wrong barrier.</p>
+<ul><li><strong>&quot;A contract is a moat.&quot;</strong> A contract is the <em>weakest</em> switching cost — it expires,</li></ul>
+<p>and if it was the only thing holding the customer, they leave the day it does. Real, compounding lock-in is the value the customer builds in you themselves (data, integration, workflow). Over-indexing on contractual lock-in usually means the product isn't sticky on its own.</p>
+<ul><li><strong>&quot;More lock-in is always better.&quot;</strong> Only <em>earned</em> stickiness is safe. Lock-in built</li></ul>
+<p>on friction the customer <strong>resents</strong> — no data export, hostile offboarding, holding their content hostage — backfires on brand and trust: bad reviews, viral cancellation stories, and portability regulation. The goal is to make staying the obvious choice, not leaving impossible.</p>
+<ul><li><strong>&quot;Our switching costs are permanent.&quot;</strong> They erode. Migration tools, free-migration</li></ul>
+<p>offers, contract buyouts, open standards, and APIs are all built to dissolve them — a competitor's fastest path in is to pay the customer's switching cost <em>for</em> them. Switching costs must be defended and deepened, not banked.</p>
+<ul><li><strong>&quot;High switching costs mean we can neglect the product.&quot;</strong> Lock-in buys tolerance, not</li></ul>
+<p>immunity. A neglected product with locked-in, resentful customers is a churn cliff the moment a challenger removes the friction — and a magnet for exactly the migration-tooling attack above. Stickiness is a reason to <em>keep earning it</em>, not to coast.</p>
+        </section>
+
+        <section id="examples">
+          <h2>Examples</h2>
+          <ul><li><strong>Data + integration — Salesforce / ERP (SAP, NetSuite).</strong> Once a company runs its</li></ul>
+<p>sales org, data, custom fields, reports, and dozens of integrations on the platform, ripping it out is a terrifying, multi-quarter migration project. Retention stays high not purely from love but from the <em>cost of leaving</em> — which directly protects <a href="./ltv.html">ltv</a> and lets the vendor raise prices. Textbook earned switching costs.</p>
+<ul><li><strong>Workflow / learning — Adobe Photoshop, Excel.</strong> The switching cost isn't the file —</li></ul>
+<p>it's the <em>years of muscle memory</em> and the team's internalized way of working. A rival can match the features and still lose, because the customer would eat a painful productivity dip to relearn everything.</p>
+<ul><li><strong>Compounded with a network effect — Slack / marketplaces.</strong> Leaving Slack means</li></ul>
+<p>exporting years of history (switching cost) <em>and</em> abandoning every colleague already there (network effect). A seller leaving a marketplace forfeits their reviews and ranking (switching cost) <em>and</em> the buyer traffic (network effect). Both doors slam at once — the strongest positions.</p>
+<ul><li><strong>Hostile lock-in that backfired — early data-hostage SaaS / carrier contracts.</strong></li></ul>
+<p>Products that made <em>export</em> deliberately impossible, or telecoms with punitive early-termination fees, bought short-term retention and paid in reputation: &quot;how to escape&quot; guides, regulatory intervention (number portability, GDPR data portability), and a brand known for trapping people. A cautionary case of crossing the healthy-lock-in line.</p>
+        </section>
+
+        <section id="talking-to-an-llm-about-it">
+          <h2>Talking to an LLM about it</h2>
+          <p>The same intent, framed three ways — this is how vocabulary becomes leverage:</p>
+<ul><li><strong>Weak prompt:</strong> &quot;How do I stop customers from leaving my product?&quot;</li><li><strong>Better prompt:</strong> &quot;What kinds of switching costs can a B2B SaaS build so customers</li></ul>
+<p>don't churn to competitors?&quot;</p>
+<ul><li><strong>Expert prompt:</strong> &quot;Act as a competitive strategist using Hamilton Helmer's <em>7 Powers</em></li></ul>
+<p>and the switching-cost literature. My business is a bootstrapped B2B SaaS for recruiting agencies, post-PMF, ~$40k MRR, ~3% monthly logo churn. Map the switching costs I could realistically build across the five types — data, workflow/learning, integration, contractual, social — and for each, name the specific product or onboarding move that creates it and how it would suppress churn and lift LTV. Be skeptical: flag anything that's <em>imposed</em> friction the customer would resent (hostile lock-in) versus <em>earned</em> stickiness they'd thank me for, since the former risks brand/trust and portability regulation. Separate switching costs from network effects for my case, and tell me which switching costs a challenger could dissolve with a free-migration offer — so I deepen the durable ones. Then recommend the single switching cost to concentrate on next quarter.&quot;</p>
+<p>The expert version names the frameworks, supplies stage/metrics, demands the earned-vs-imposed test, and forces the switching-cost-vs-network-effect distinction — so the model reasons about <em>durable, non-hostile defensibility</em> instead of listing generic &quot;improve retention&quot; tips.</p>
+        </section>
+
+        <section id="my-evolving-understanding">
+          <h2>My evolving understanding</h2>
+          <ul><li><strong>v1 (2026-07-06):</strong> First pass while building Entrepreneur-OS. Three reframes landed.</li></ul>
+<p>(1) Switching costs are the barrier that lets you <strong>keep customers you couldn't win on merit</strong> — a rival has to be better <em>by more than the cost of the move</em>, which is what breaks the every-renewal-is-a-fresh-fight treadmill. Mechanically it's the same churn-suppression → <a href="./retention.html">retention</a> → <a href="./ltv.html">ltv</a> engine as a <a href="./moat.html">moat</a>, plus pricing power over the locked-in base. (2) The distinction I kept blurring: switching costs (<em>costly to leave</em> — friction inside the customer's own setup) are <strong>not</strong> <a href="./network-effects.html">network effects</a> (<em>valuable to stay</em> — worth grows with other users). Either can exist alone; the strongest businesses stack both so the door slams from inside and outside. (3) The sharp, non-obvious line: only <em>earned</em> stickiness (data, workflow, integration the customer builds themselves) is durable and safe. <em>Imposed</em> lock-in — manufactured friction on someone who wants to leave — is a retention loan repaid in brand damage, bad reviews, and portability regulation. And none of it is permanent: contracts are the weakest form (they expire), and a smart challenger's whole play is to <strong>pay the customer's switching cost for them</strong>. So the durable move is to make <em>staying</em> the obvious choice, not <em>leaving</em> impossible.</p>
+        </section>
+
+        <section id="sources">
+          <h2>Sources</h2>
+          <ul><li>Hamilton Helmer, <em>7 Powers: The Foundations of Business Strategy</em> — <strong>Switching Costs</strong></li></ul>
+<p>as one of the seven durable Powers, and the Benefit + Barrier framing that makes it a moat (the barrier being that a rival must fund the customer's switch to win them).</p>
+<ul><li>Paul Klemperer, <em>&quot;Competition when Consumers have Switching Costs&quot;</em> (Review of Economic</li></ul>
+<p>Studies, 1995) — the formal result that switching costs give firms pricing power over their own installed base, turning a competitive market into a set of small monopolies.</p>
+<ul><li>Burnham, Frels &amp; Mahajan, *&quot;Consumer Switching Costs: A Typology, Antecedents, and</li></ul>
+<p>Consequences&quot;* (Journal of the Academy of Marketing Science, 2003) — the <strong>procedural / financial / relational</strong> taxonomy underlying the five practical types used above (to verify and deepen on revisit).</p>
+<ul><li>GDPR Art. 20 (right to data portability) — regulation that exists <em>because</em> firms</li></ul>
+<p>weaponized data switching costs; the clearest evidence that hostile lock-in invites a legal counter-force.</p>
+<ul><li>See also <a href="./moat.html">moat</a>, <a href="./retention.html">retention</a>, <a href="./churn.html">churn</a>,</li></ul>
+<p><a href="./network-effects.html">network-effects</a>.</p>
+        </section>
+
+        <section>
+          <h2>Links</h2>
+          <nav class="footer-nav" aria-label="Page links">
+            <a class="pill" href="./switching-costs-fa.html">Persian version</a>
+            <a class="pill" href="./switching-costs.md">Markdown source</a>
+          </nav>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

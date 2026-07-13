@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>کارهایی که باید انجام شوند | Entrepreneur-OS</title>
+  <meta name="description" content="Plain English: people don't really buy products — they *hire* something to make progress in a situation they're stuck in. Expert phrasing: a customer's purchase is best understood as a **&quot;job&quot; they're trying to get done**, along functional, emotional, and social dimensions — and the product is just the thing they hire to do that job.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f8f6;
+      --paper: #ffffff;
+      --ink: #17201b;
+      --muted: #5d6b63;
+      --line: #dce4dd;
+      --accent: #0f7b5f;
+      --accent-strong: #075f49;
+      --accent-soft: #e4f4ef;
+      --warning-soft: #fff2cc;
+      --shadow: 0 22px 70px rgba(23, 32, 27, 0.10);
+      --radius: 8px;
+      font-family: "Vazirmatn", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(240deg, rgba(15, 123, 95, 0.09), transparent 34rem), var(--bg);
+      color: var(--ink);
+      line-height: 1.9;
+    }
+
+    a {
+      color: var(--accent-strong);
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(13rem, 17rem);
+      gap: 2.5rem;
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 4rem;
+      direction: ltr;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 1rem;
+      align-self: start;
+      padding: 1rem 0;
+      grid-column: 2; direction: rtl;
+    }
+
+    main {
+      min-width: 0;
+      grid-column: 1; grid-row: 1; direction: rtl;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--ink);
+      font-weight: 850;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 2rem;
+      height: 2rem;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      box-shadow: 0 8px 24px rgba(23, 32, 27, 0.08);
+      font-size: 0.78rem;
+    }
+
+    .toc {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .toc-title {
+      margin: 0 0 0.7rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 900;
+      
+    }
+
+    .toc a {
+      display: block;
+      padding: 0.36rem 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .hero, section {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero {
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 14rem;
+      gap: 2rem;
+      padding: clamp(1.4rem, 4vw, 3rem);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 0.75rem;
+      color: var(--accent-strong);
+      font-size: 0.82rem;
+      font-weight: 900;
+      
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 14ch;
+      font-size: clamp(2.2rem, 6.5vw, 5.2rem);
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 45rem;
+      margin: 1.2rem 0 0;
+      color: var(--muted);
+      font-size: clamp(1.04rem, 1.6vw, 1.28rem);
+    }
+
+    .signal {
+      align-self: stretch;
+      display: grid;
+      align-content: center;
+      gap: 1rem;
+      padding: 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, #ffffff, #f3faf7);
+    }
+
+    .signal-line {
+      height: 0.8rem;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e3eae5;
+    }
+
+    .signal-line::before {
+      content: "";
+      display: block;
+      width: 72%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #b7e4d2, var(--accent));
+    }
+
+    .signal p {
+      margin: 0;
+      color: var(--ink);
+      font-size: 0.98rem;
+      font-weight: 650;
+    }
+
+    .metadata {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .meta-item {
+      min-width: 0;
+      padding: 1rem;
+      background: #fbfcfb;
+    }
+
+    .meta-label {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--muted);
+      font-size: 0.74rem;
+      font-weight: 900;
+      
+    }
+
+    .meta-value {
+      display: block;
+      color: var(--ink);
+      font-weight: 720;
+    }
+
+    .content {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    section {
+      padding: clamp(1.25rem, 3vw, 2rem);
+    }
+
+    section h2 {
+      margin: 0 0 0.9rem;
+      font-size: clamp(1.35rem, 2.2vw, 2rem);
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    section p { margin: 0.75rem 0 0; }
+    section p:first-of-type { margin-top: 0; }
+    strong { font-weight: 900; }
+    code {
+      padding: 0.08rem 0.28rem;
+      border-radius: 5px;
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+
+    ul, ol {
+      margin: 0.8rem 0 0;
+      padding-right: 1.25rem;
+      padding-left: 0;
+    }
+
+    li + li { margin-top: 0.55rem; }
+
+    blockquote, .note {
+      margin: 0;
+      padding: 1rem 1.1rem;
+      border-right: 4px solid var(--accent);
+      border-radius: var(--radius);
+      background: var(--accent-soft);
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.2rem;
+      padding: 0.4rem 0.75rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      font-weight: 760;
+      text-decoration: none;
+    }
+
+    @media (max-width: 860px) {
+      .shell {
+        display: block;
+        width: min(100% - 1rem, 46rem);
+        padding-top: 0.75rem;
+      }
+
+      .sidebar {
+        position: static;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.75rem 0 1rem;
+      }
+
+      .toc { display: none; }
+      .hero-top { grid-template-columns: 1fr; }
+      .metadata { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 520px) {
+      .metadata { grid-template-columns: 1fr; }
+      section { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="ناوبری مفهوم">
+      <a class="brand" href="../README.md" aria-label="Entrepreneur-OS">
+        <span>Entrepreneur-OS</span>
+        <span class="brand-mark" dir="ltr">EOS</span>
+      </a>
+      <nav class="toc" aria-label="بخش‌های صفحه">
+        <p class="toc-title">نقشه مفهوم</p>
+        <a href="#what-it-is">چیست؟</a>
+        <a href="#why-it-exists-the-problem-it-solves">چرا وجود دارد؟</a>
+        <a href="#how-experts-reason-with-it">استدلال متخصص‌ها</a>
+        <a href="#when-you-use-it">زمان استفاده</a>
+        <a href="#metrics-how-it-s-measured">سنجه‌ها و اندازه‌گیری</a>
+        <a href="#common-misconceptions">برداشت‌های غلط رایج</a>
+        <a href="#examples">مثال‌ها</a>
+        <a href="#talking-to-an-llm-about-it">حرف زدن با LLM درباره آن</a>
+        <a href="#my-evolving-understanding">فهم در حال تکامل من</a>
+        <a href="#sources">منابع</a>
+      </nav>
+    </aside>
+
+    <main>
+      <header class="hero">
+        <div class="hero-top">
+          <div>
+            <p class="eyebrow">مفهوم کارآفرینی</p>
+            <h1>کارهایی که باید انجام شوند</h1>
+            <p class="subtitle">یادداشت: این صفحه نسخه راست‌به‌چپ طراحی‌شده از منبع Markdown است. عنوان‌ها و قاب صفحه فارسی شده‌اند؛ متن تخصصی بدنه از منبع اصلی حفظ شده تا ترجمه مفهومی هر یادداشت جداگانه بازبینی شود.</p>
+          </div>
+          <aside class="signal" aria-label="سیگنال مفهومی">
+            <div class="signal-line" aria-hidden="true"></div>
+            <p>از تعریف عبور کن؛ این صفحه برای فهم عملی، تصمیم‌گیری، و گفتگو با AI ساخته شده است.</p>
+          </aside>
+        </div>
+        <div class="metadata" aria-label="فراداده مفهوم">
+          <div class="meta-item">
+            <span class="meta-label">دامنه</span>
+            <span class="meta-value">product</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">مرحله</span>
+            <span class="meta-value">validation</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">پیش‌نیازها</span>
+            <span class="meta-value">a real problem worth solving, early customer conversations (leads into <a href="./icp-fa.html">icp</a>)</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">مرتبط</span>
+            <span class="meta-value"><a href="./icp-fa.html">icp</a>, <a href="./pmf-fa.html">pmf</a>, <a href="./mvp-fa.html">mvp</a>, positioning · <strong>Contrast with:</strong> feature thinking, demographic segmentation</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        
+        <section id="what-it-is">
+          <h2>چیست؟</h2>
+          <p>Jobs To Be Done flips the unit of analysis. Instead of starting from <em>your product</em> and its features, or from <em>who the customer is</em> demographically, you start from the <strong>progress the customer is trying to make</strong> in a specific circumstance. Clayton Christensen's line: <em>&quot;people don't want a quarter-inch drill, they want a quarter-inch hole&quot;</em> — and, one step further, they want the <em>shelf on the wall</em> and the feeling of a tidy home that the hole enables. The &quot;job&quot; is that desired progress, not the tool.</p>
+<p>A well-formed job has three dimensions layered together:</p>
+<ul><li><strong>Functional</strong> — the practical task (&quot;get a filling breakfast I can eat one-handed on</li></ul>
+<p>a boring commute&quot;).</p>
+<ul><li><strong>Emotional</strong> — how the person wants to <em>feel</em> (&quot;not bored&quot;, &quot;competent&quot;, &quot;in</li></ul>
+<p>control&quot;).</p>
+<ul><li><strong>Social</strong> — how they want to be <em>perceived</em> by others (&quot;a responsible parent&quot;, &quot;a</li></ul>
+<p>serious professional&quot;).</p>
+<p>The product is the <em>candidate you hire</em> to do that job — and it competes with every other candidate the customer might hire instead, including non-obvious ones and &quot;doing nothing at all.&quot;</p>
+        </section>
+
+        <section id="why-it-exists-the-problem-it-solves">
+          <h2>چرا وجود دارد؟</h2>
+          <p>The concept was invented to answer a maddening question: <em>why do so many well-researched products fail?</em> Companies segment markets by attributes they can measure — age, income, company size — and by <em>product category</em>, then correlate the two and ship. But <strong>correlation isn't causation.</strong> Knowing that 35-year-old suburban dads buy your minivan tells you nothing about the <em>causal mechanism</em> that makes anyone reach for a product in a moment of need. JTBD exists to recover that causal story: the <em>circumstance</em> and the <em>progress being sought</em> are what actually cause a purchase, and they cut across the demographic boxes. It reframes needs as <strong>jobs</strong> so you design for the thing that actually drives the &quot;hire.&quot;</p>
+        </section>
+
+        <section id="how-experts-reason-with-it">
+          <h2>استدلال متخصص‌ها</h2>
+          <p>The insight a beginner misses: <strong>your real competition is defined by the job, not by your product category.</strong> If the job is &quot;help me stay awake and occupied on a boring morning drive,&quot; a morning milkshake competes with bananas, bagels, donuts, coffee, and podcasts — <em>not</em> with other milkshakes. Miss the job and you optimize against the wrong rivals (making the shake &quot;tastier&quot; when the customer actually wanted it <em>thicker so it lasts the whole commute</em>).</p>
+<p>Mental models experienced operators hold:</p>
+<ol><li><strong>Circumstance over customer.</strong> The same person hires different products for the same</li></ol>
+<p>category depending on the situation. Don't ask &quot;what kind of person buys this?&quot; ask &quot;what job are they in when they reach for it?&quot;</p>
+<ol><li><strong>Progress, not preferences.</strong> A job is a verb-shaped struggle for progress, not an</li></ol>
+<p>adjective describing a demographic. &quot;Help me feel like a good host when friends drop by unexpectedly&quot; is a job; &quot;millennials who like wine&quot; is not.</p>
+<ol><li><strong>Hiring implies firing.</strong> To hire your product, the customer fires something else —</li></ol>
+<p>an old habit, a rival, a workaround. Understanding what they're firing (and what <em>anxieties</em> hold them back from switching) is half the strategy. Bob Moesta's &quot;Forces of Progress&quot;: push of the situation + pull of the new solution, minus the anxiety of the new + the habit of the present.</p>
+<ol><li><strong>Jobs are stable; solutions churn.</strong> The job &quot;communicate a moment to friends&quot; has</li></ol>
+<p>existed forever; the solutions (letter → phone → SMS → Snapchat) keep getting fired and rehired. Anchoring on the durable job future-proofs your thinking.</p>
+<p>This is where JTBD earns its keep against the rest of the graph: a sharp job statement <strong>sharpens your <a href="./icp-fa.html">ICP</a></strong> (you target the people <em>in that circumstance</em>, not a demographic guess) and <strong>de-risks the leap to <a href="./pmf-fa.html">PMF</a></strong> (fit is far more likely when the <a href="./mvp-fa.html">MVP</a> is aimed at a real job people are already struggling to get done, rather than a feature you found clever).</p>
+        </section>
+
+        <section id="when-you-use-it">
+          <h2>زمان استفاده</h2>
+          <ul><li><strong>Before building:</strong> to decide what the <a href="./mvp-fa.html">MVP</a> must nail and what it can skip</li></ul>
+<p>— features that don't serve the core job are noise.</p>
+<ul><li><strong>In customer interviews:</strong> to dig for the <em>struggling moment</em> and the <em>forces</em> around</li></ul>
+<p>a switch, instead of asking people to rate features they can't yet imagine.</p>
+<ul><li><strong>When positioning:</strong> the job dictates the message (&quot;finally, a X that lets you Y&quot;)</li></ul>
+<p>and reveals the <em>real</em> competitive set you must beat.</p>
+<ul><li><strong>When growth stalls despite a &quot;good&quot; product:</strong> usually you built for a category, not</li></ul>
+<p>a job — or you're solving a functional job while the emotional/social one goes unmet.</p>
+        </section>
+
+        <section id="metrics-how-it-s-measured">
+          <h2>سنجه‌ها و اندازه‌گیری</h2>
+          <p>JTBD is mostly qualitative, but <strong>Tony Ulwick's Outcome-Driven Innovation (ODI)</strong> makes it quantitative. The pipeline:</p>
+<ol><li>Define the core <strong>functional job</strong> and break it into steps.</li><li>Elicit <strong>desired outcomes</strong> — measurable statements of the form</li></ol>
+<p><em>&quot;minimize the time it takes to \_\_\_&quot;</em> or <em>&quot;increase the likelihood that \_\_\_.&quot;</em></p>
+<ol><li>Survey customers on each outcome's <strong>importance</strong> and current <strong>satisfaction</strong>.</li><li>Score the <strong>opportunity</strong>: <code>Opportunity = Importance + max(Importance − Satisfaction, 0)</code>.</li></ol>
+<p>Outcomes that are <em>important but poorly satisfied</em> are the underserved openings worth building for; important-and-already-satisfied ones are table stakes; unimportant ones are traps. This turns &quot;listen to customers&quot; into a ranked, defensible innovation backlog.</p>
+        </section>
+
+        <section id="common-misconceptions">
+          <h2>برداشت‌های غلط رایج</h2>
+          <ul><li><strong>A job is not a feature.</strong> The single most common misuse is writing a &quot;job&quot; that is</li></ul>
+<p>really a feature in disguise: <em>&quot;the customer's job is to use our dashboard&quot;</em> — no, the dashboard is what you <em>hired</em> them to... it's backwards. A real job is solution-agnostic: <em>&quot;know whether my business is healthy without digging through spreadsheets.&quot;</em> If your job statement names your product, it isn't a job yet.</p>
+<ul><li><strong>JTBD ≠ demographics.</strong> &quot;Busy moms aged 30–45&quot; is a segment, not a job. Two people in</li></ul>
+<p>wildly different demographics can share the exact same job; one person hires different products for the same category in different circumstances.</p>
+<ul><li><strong>JTBD ≠ user persona.</strong> A persona describes <em>who</em>; a job describes the *progress</li></ul>
+<p>sought in a circumstance*. Useful together, but the job is the causal driver.</p>
+<ul><li><strong>&quot;Just ask people what they want.&quot;</strong> Customers report <em>preferences</em> and <em>solutions</em></li></ul>
+<p>(&quot;I want it faster&quot;), not jobs. You have to interrogate the struggling moment to recover the underlying job — hence the milkshake interviews below.</p>
+        </section>
+
+        <section id="examples">
+          <h2>مثال‌ها</h2>
+          <ul><li><strong>The milkshake study (Christensen / Moesta).</strong> A fast-food chain tried to boost</li></ul>
+<p>milkshake sales by making them tastier — segmentation by customer profile went nowhere. Studying <em>when</em> shakes were bought revealed a huge morning cohort buying one shake, alone, to go. The job: <em>&quot;make my long, boring commute more bearable and keep me full till lunch — one-handed, no mess.&quot;</em> The shake beat bananas (gone too fast), bagels (dry, two hands), and donuts (crumbly) precisely because it was <em>thick and slow to drink</em>. The improvement wasn't &quot;tastier&quot; — it was <em>thicker, with chunks to make the drive more interesting.</em> A rival &quot;afternoon-with-my-kid&quot; job wanted the opposite: a small, quick shake. Same product, two different jobs, opposite designs.</p>
+<ul><li><strong>Snapchat vs. the camera.</strong> The job &quot;share a fleeting moment casually without it</li></ul>
+<p>becoming a permanent record&quot; was under-served by permanent-feed social apps — ephemerality <em>was</em> the job, not a feature.</p>
+<ul><li><strong>QuickBooks.</strong> Intuit found small-business owners weren't hiring accounting software</li></ul>
+<p>to &quot;do accounting&quot; (an accountant's job) — they hired it to <em>&quot;know if my business is okay&quot;</em> without learning double-entry bookkeeping. The winning product stripped out accounting jargon rather than adding it.</p>
+        </section>
+
+        <section id="talking-to-an-llm-about-it">
+          <h2>حرف زدن با LLM درباره آن</h2>
+          <p>The same intent, framed three ways — this is how vocabulary becomes leverage:</p>
+<ul><li><strong>Weak prompt:</strong> &quot;What features should I add to my app?&quot;</li><li><strong>Better prompt:</strong> &quot;Help me figure out what job my note-taking app is really doing for</li></ul>
+<p>users so I can prioritize features.&quot;</p>
+<ul><li><strong>Expert prompt:</strong> &quot;Act as a JTBD strategist. For a bootstrapped note-taking app, help</li></ul>
+<p>me write a core job statement (functional + emotional + social dimensions) for the 'capture a fleeting idea before it's lost' circumstance. Then map the Forces of Progress (push, pull, anxiety, habit) around a user switching from paper, and use Ulwick's Outcome-Driven Innovation to draft 8 desired-outcome statements I could survey on importance vs. satisfaction to find the biggest opportunity. Flag any of my inputs that are features disguised as jobs.&quot;</p>
+<p>The expert version names the circumstance, the three dimensions, the Forces framework, and the ODI method with a concrete deliverable — so the model reasons from the actual JTBD literature instead of handing back generic &quot;talk to your users&quot; advice.</p>
+        </section>
+
+        <section id="my-evolving-understanding">
+          <h2>فهم در حال تکامل من</h2>
+          <ul><li><strong>v1 (2026-07-02):</strong> First pass while bootstrapping Entrepreneur-OS. The reframe that</li></ul>
+<p>landed hardest: I default to <em>feature thinking</em> (engineer brain — &quot;what should I build?&quot;) and JTBD forces the prior question — <em>&quot;what progress is someone hiring this to make, and who/what am I firing?&quot;</em> Two things clicked. First, <strong>the job defines the competitive set</strong>, so my real rivals are often outside my category (including &quot;do nothing&quot;). Second, JTBD is the missing front-end to the concepts I already wrote: it gives <a href="./icp-fa.html">ICP</a> its causal spine (target a circumstance, not a demographic) and makes <a href="./pmf-fa.html">PMF</a> less of a gamble because the <a href="./mvp-fa.html">MVP</a> is aimed at a job people are <em>already</em> struggling to complete. The discipline I'll hold myself to: if a &quot;job&quot; I write names my product or a feature, it's not a job yet — rewrite it solution-agnostically.</p>
+        </section>
+
+        <section id="sources">
+          <h2>منابع</h2>
+          <ul><li>Clayton M. Christensen, Taddy Hall, Karen Dillon &amp; David S. Duncan, *Competing Against</li></ul>
+<p>Luck: The Story of Innovation and Customer Choice* (2016) — the milkshake study and the &quot;hire/fire a product to make progress&quot; framing.</p>
+<ul><li>Tony Ulwick, <em>Jobs to Be Done: Theory to Practice</em> (2016) — Outcome-Driven Innovation:</li></ul>
+<p>jobs → desired outcomes → importance/satisfaction → opportunity scoring.</p>
+<ul><li>Bob Moesta &amp; Chris Spiek (Re-Wired Group) — the &quot;Forces of Progress&quot; switching model</li></ul>
+<p>(push/pull/anxiety/habit); to verify and deepen on revisit.</p>
+<ul><li>See also <a href="./icp-fa.html">icp</a>, <a href="./pmf-fa.html">pmf</a>, <a href="./mvp-fa.html">mvp</a>.</li></ul>
+        </section>
+
+        <section>
+          <h2>پیوندها</h2>
+          <nav class="footer-nav" aria-label="پیوندهای صفحه">
+            <a class="pill" href="./jtbd.html">نسخه انگلیسی</a>
+            <a class="pill" href="./jtbd.md">منبع Markdown</a>
+          </nav>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

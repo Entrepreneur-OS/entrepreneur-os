@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MVP — Minimum Viable Product | Entrepreneur-OS</title>
+  <meta name="description" content="Plain English: the smallest thing you can build to *learn* whether the business is real — not the cheapest version of the product you eventually want to sell. Expert phrasing (Eric Ries): the version of a new product that lets a team collect the **maximum amount of validated learning about customers with the least effort.**">
+  
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f8f6;
+      --paper: #ffffff;
+      --ink: #17201b;
+      --muted: #5d6b63;
+      --line: #dce4dd;
+      --accent: #0f7b5f;
+      --accent-strong: #075f49;
+      --accent-soft: #e4f4ef;
+      --warning-soft: #fff2cc;
+      --shadow: 0 22px 70px rgba(23, 32, 27, 0.10);
+      --radius: 8px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(120deg, rgba(15, 123, 95, 0.09), transparent 34rem), var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--accent-strong);
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: minmax(13rem, 17rem) minmax(0, 1fr);
+      gap: 2.5rem;
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 4rem;
+      
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 1rem;
+      align-self: start;
+      padding: 1rem 0;
+      
+    }
+
+    main {
+      min-width: 0;
+      
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--ink);
+      font-weight: 850;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 2rem;
+      height: 2rem;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      box-shadow: 0 8px 24px rgba(23, 32, 27, 0.08);
+      font-size: 0.78rem;
+    }
+
+    .toc {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .toc-title {
+      margin: 0 0 0.7rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.09em; text-transform: uppercase;
+    }
+
+    .toc a {
+      display: block;
+      padding: 0.36rem 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .hero, section {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero {
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 14rem;
+      gap: 2rem;
+      padding: clamp(1.4rem, 4vw, 3rem);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 0.75rem;
+      color: var(--accent-strong);
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 13ch;
+      font-size: clamp(2.2rem, 6.5vw, 5.2rem);
+      line-height: 0.96;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 45rem;
+      margin: 1.2rem 0 0;
+      color: var(--muted);
+      font-size: clamp(1.04rem, 1.6vw, 1.28rem);
+    }
+
+    .signal {
+      align-self: stretch;
+      display: grid;
+      align-content: center;
+      gap: 1rem;
+      padding: 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, #ffffff, #f3faf7);
+    }
+
+    .signal-line {
+      height: 0.8rem;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e3eae5;
+    }
+
+    .signal-line::before {
+      content: "";
+      display: block;
+      width: 72%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #b7e4d2, var(--accent));
+    }
+
+    .signal p {
+      margin: 0;
+      color: var(--ink);
+      font-size: 0.98rem;
+      font-weight: 650;
+    }
+
+    .metadata {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .meta-item {
+      min-width: 0;
+      padding: 1rem;
+      background: #fbfcfb;
+    }
+
+    .meta-label {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--muted);
+      font-size: 0.74rem;
+      font-weight: 900;
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+
+    .meta-value {
+      display: block;
+      color: var(--ink);
+      font-weight: 720;
+    }
+
+    .content {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    section {
+      padding: clamp(1.25rem, 3vw, 2rem);
+    }
+
+    section h2 {
+      margin: 0 0 0.9rem;
+      font-size: clamp(1.35rem, 2.2vw, 2rem);
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    section p { margin: 0.75rem 0 0; }
+    section p:first-of-type { margin-top: 0; }
+    strong { font-weight: 900; }
+    code {
+      padding: 0.08rem 0.28rem;
+      border-radius: 5px;
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+
+    ul, ol {
+      margin: 0.8rem 0 0;
+      padding-left: 1.25rem;
+      padding-right: 0;
+    }
+
+    li + li { margin-top: 0.55rem; }
+
+    blockquote, .note {
+      margin: 0;
+      padding: 1rem 1.1rem;
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius);
+      background: var(--accent-soft);
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.2rem;
+      padding: 0.4rem 0.75rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      font-weight: 760;
+      text-decoration: none;
+    }
+
+    @media (max-width: 860px) {
+      .shell {
+        display: block;
+        width: min(100% - 1rem, 46rem);
+        padding-top: 0.75rem;
+      }
+
+      .sidebar {
+        position: static;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.75rem 0 1rem;
+      }
+
+      .toc { display: none; }
+      .hero-top { grid-template-columns: 1fr; }
+      .metadata { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 520px) {
+      .metadata { grid-template-columns: 1fr; }
+      section { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Concept navigation">
+      <a class="brand" href="../README.md" aria-label="Entrepreneur-OS">
+        <span>Entrepreneur-OS</span>
+        <span class="brand-mark" dir="ltr">EOS</span>
+      </a>
+      <nav class="toc" aria-label="Page sections">
+        <p class="toc-title">Concept Map</p>
+        <a href="#what-it-is">What it is</a>
+        <a href="#why-it-exists-the-problem-it-solves">Why it exists / the problem it solves</a>
+        <a href="#how-experts-reason-with-it">How experts reason with it</a>
+        <a href="#when-you-use-it">When you use it</a>
+        <a href="#metrics-how-it-s-measured">Metrics / how it's measured</a>
+        <a href="#common-misconceptions">Common misconceptions</a>
+        <a href="#examples">Examples</a>
+        <a href="#talking-to-an-llm-about-it">Talking to an LLM about it</a>
+        <a href="#my-evolving-understanding">My evolving understanding</a>
+        <a href="#sources">Sources</a>
+      </nav>
+    </aside>
+
+    <main>
+      <header class="hero">
+        <div class="hero-top">
+          <div>
+            <p class="eyebrow">Entrepreneurship concept</p>
+            <h1>MVP — Minimum Viable Product</h1>
+            <p class="subtitle">Plain English: the smallest thing you can build to <em>learn</em> whether the business is real — not the cheapest version of the product you eventually want to sell. Expert phrasing (Eric Ries): the version of a new product that lets a team collect the <strong>maximum amount of validated learning about customers with the least effort.</strong></p>
+          </div>
+          <aside class="signal" aria-label="Concept signal">
+            <div class="signal-line" aria-hidden="true"></div>
+            <p>Move past the definition: use this concept to reason, decide, and prompt AI more precisely.</p>
+          </aside>
+        </div>
+        <div class="metadata" aria-label="Concept metadata">
+          <div class="meta-item">
+            <span class="meta-label">Domain</span>
+            <span class="meta-value">product</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Stage</span>
+            <span class="meta-value">validation → building</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Prerequisites</span>
+            <span class="meta-value"><a href="./icp.html">icp</a> (know <em>who</em> you're testing on), <a href="./jtbd.html">jtbd</a> (know <em>what job</em> you're testing), a falsifiable hypothesis</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Related</span>
+            <span class="meta-value"><a href="./pmf.html">pmf</a>, <a href="./retention.html">retention</a>, <a href="./churn.html">churn</a> · <strong>Contrast with:</strong> &quot;a cheap, half-broken v1&quot;</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        
+        <section id="what-it-is">
+          <h2>What it is</h2>
+          <p>An MVP is an <strong>experiment wearing the costume of a product.</strong> Its job is not to delight and not to ship features — it is to answer one dangerous question as fast and cheaply as possible: <em>is the thing I believe about my customers actually true?</em></p>
+<p>The word everyone fixates on is &quot;minimum,&quot; so they hear &quot;build less code.&quot; The word that actually carries the meaning is <strong>viable</strong> — viable <em>as an instrument for learning.</em> An MVP is viable when it can produce a real signal from real people putting real skin in the game (money, time, data, a signature). A landing page that captures 100 pre-orders can be a more viable MVP than six months of polished software that nobody has been asked to pay for, because the landing page <em>learned something</em> and the software only <em>assumed something.</em></p>
+        </section>
+
+        <section id="why-it-exists-the-problem-it-solves">
+          <h2>Why it exists / the problem it solves</h2>
+          <p>Founders — especially engineers — default to building the whole product before showing it to anyone. The MVP concept was invented to break that reflex. It answers the question: <strong>&quot;How do I avoid spending a year building something nobody wants?&quot;</strong></p>
+<p>The deeper problem is that startups operate under <strong>extreme uncertainty</strong>, yet the engineer's instinct is to reduce <em>technical</em> risk (does it work?) while ignoring the risk that actually kills startups — <strong>market risk</strong> (does anybody care?). Eric Ries's reframe: a startup is not a small company building a product; it is an <strong>organization designed to search for a repeatable business model under uncertainty</strong>, and the MVP is its primary search instrument. You are not building; you are <em>learning by building the least you can get away with.</em></p>
+        </section>
+
+        <section id="how-experts-reason-with-it">
+          <h2>How experts reason with it</h2>
+          <p>The insight a beginner misses: *<em>the unit of an MVP is not effort or features — it is validated learning </em>per unit of effort.<em> You are optimizing a rate, not a size.</em>*</p>
+<p>Reframe the whole thing as a fraction:</p>
+<p>``<code> learning you can trust (validated) MVP quality  =  ────────────────────────────────── effort / time / money spent </code>``</p>
+<p>A beginner tries to <em>minimize the denominator</em> (&quot;write less code&quot;). An expert tries to <em>maximize the whole ratio</em> — and often the fastest way to do that is to spend <strong>near- zero on the denominator by not building software at all</strong> (concierge, Wizard-of-Oz, landing page), so the numerator arrives in days instead of quarters. This is why &quot;which MVP is smaller?&quot; is the wrong question and &quot;which MVP <em>learns faster?</em>&quot; is the right one.</p>
+<p>Key mental models experienced founders hold:</p>
+<ol><li><strong>The MVP is one loop of Build–Measure–Learn, run backwards.</strong> You don't start with</li></ol>
+<p>&quot;what should I build?&quot; You start with *<em>what you need to </em>learn<em><strong> (Learn), decide the </strong>metric</em><em> that would prove or kill the belief (Measure), and only </em>then<em> build the smallest thing that generates that metric (Build). The build is the </em>last<em> and </em>smallest* decision, not the first and biggest.</p>
+<ol><li><strong>A leap-of-faith assumption comes first.</strong> Every startup rests on one or two beliefs</li></ol>
+<p>that, if false, sink everything (&quot;recruiters will pay to automate outreach&quot;). The MVP exists to test <em>that specific belief</em> — not to be a smaller product in general. No named hypothesis → it's not an MVP, it's just a small product built on hope.</p>
+<ol><li><strong>Validated ≠ people said they liked it.</strong> Praise is the cheapest, most misleading</li></ol>
+<p>signal there is. Validation means <strong>behavior with a cost</strong>: they paid, they returned (see <a href="./retention.html">retention</a>), they gave a credit card, they did the manual onboarding. Ries's rule: <em>the only way to win is to learn faster than anyone else,</em> and you only learn from behavior you can trust.</p>
+<ol><li><strong>Non-code MVPs are usually superior, not inferior.</strong> Doing things that don't scale —</li></ol>
+<p>by hand, faked behind a curtain — is often the <em>highest-learning</em> option, precisely the opposite of the engineer's efficiency instinct.</p>
+<ol><li>*<em>The MVP is how you </em>search<em> for <a href="./pmf.html">PMF</a>.</em>* PMF is the destination; the MVP</li></ol>
+<p>is the vehicle you take to look for it. Each MVP iteration is a probe: pull toward the fit, or a signal to pivot.</p>
+<p>The founder's takeaway: before you open your editor, write the sentence <em>&quot;I will have learned X when I observe Y.&quot;</em> If you can't, you are about to build a monument to an assumption, not an experiment.</p>
+        </section>
+
+        <section id="when-you-use-it">
+          <h2>When you use it</h2>
+          <ul><li><strong>At the start of any new product, feature, or market</strong> — whenever you hold a belief</li></ul>
+<p>about customers that is expensive to be wrong about.</p>
+<ul><li><strong>To choose the flavor of MVP</strong> by asking <em>what's the riskiest assumption right now?</em></li><li><strong>Concierge MVP</strong> — you deliver the service <em>manually</em>, in the open, to a few real</li></ul>
+<p>customers (no product yet). Best when you don't yet understand the job deeply.</p>
+<ul><li><strong>Wizard-of-Oz MVP</strong> — the customer sees a &quot;finished&quot; product; behind the curtain</li></ul>
+<p><em>you</em> are doing the work by hand. Best when the <em>demand</em> is the risk, not the tech.</p>
+<ul><li><strong>Landing-page / smoke test</strong> — a page describing the offer with a real call to</li></ul>
+<p>action (pre-order, waitlist, &quot;buy now&quot;). Best for testing demand and message before building anything.</p>
+<ul><li><strong>To decide persevere vs. pivot</strong> — the MVP's whole output is evidence for that one</li></ul>
+<p>decision. (See <a href="./pmf.html">pmf</a>.)</p>
+        </section>
+
+        <section id="metrics-how-it-s-measured">
+          <h2>Metrics / how it's measured</h2>
+          <p>There's no formula; the MVP is judged by <strong>the quality of the decision it lets you make.</strong> Useful yardsticks:</p>
+<ul><li><strong>Time-to-learning (cycle time):</strong> how long from hypothesis → trustworthy signal? The</li></ul>
+<p>metric an expert actually optimizes. Days good; quarters bad.</p>
+<ul><li><strong>A pre-committed success/kill threshold:</strong> <em>stated before launch</em> — e.g. &quot;≥ 20 of</li></ul>
+<p>100 visitors pre-order&quot; or &quot;3 of 5 concierge customers renew.&quot; Deciding the bar <em>after</em> seeing results is how founders fool themselves.</p>
+<ul><li><strong>Behavioral conversion, not vanity metrics:</strong> pre-orders, paid signups, repeat use,</li></ul>
+<p>credit cards entered — costly actions. Page views, likes, and &quot;great idea!&quot; are noise.</p>
+<ul><li><strong>Falsifiability:</strong> a good MVP can <em>fail.</em> If no realistic result would change your</li></ul>
+<p>mind, you built theater, not an experiment.</p>
+        </section>
+
+        <section id="common-misconceptions">
+          <h2>Common misconceptions</h2>
+          <ul><li><strong>&quot;MVP = version 1, but cheaper/uglier.&quot;</strong> No. A v1 is a small <em>product</em>; an MVP is an</li></ul>
+<p><em>experiment</em>. Same code, different intent — and the intent changes what you build.</p>
+<ul><li><strong>&quot;Minimum means the least code.&quot;</strong> Minimum means the least *effort to learn the one</li></ul>
+<p>thing.* Sometimes that's zero code (a landing page); the point is the learning rate.</p>
+<ul><li><strong>&quot;Ship junk and call it lean.&quot;</strong> Shipping a broken product that produces no clean</li></ul>
+<p>signal isn't lean — it's noise plus reputational damage. Viable = it can <em>teach</em> you.</p>
+<ul><li><strong>&quot;Gold-plate it so it makes a great first impression.&quot;</strong> Over-building the MVP</li></ul>
+<p>(gold-plating — polishing beyond what the experiment needs) is the classic trap: it slows the learning loop and gets you emotionally attached to an unvalidated bet.</p>
+<ul><li><strong>&quot;Users said they loved it → validated.&quot;</strong> Stated preference is not revealed</li></ul>
+<p>preference. Only behavior with a cost counts.</p>
+        </section>
+
+        <section id="examples">
+          <h2>Examples</h2>
+          <ul><li><strong>Zappos (concierge / Wizard-of-Oz):</strong> before building inventory or logistics, the</li></ul>
+<p>founder photographed shoes in local stores, posted them online, and when someone ordered, <em>bought the shoes at retail and shipped them himself.</em> The risky assumption wasn't &quot;can we build a store&quot; — it was &quot;<strong>will people buy shoes online without trying them on?</strong>&quot; He tested exactly that, for almost no money.</p>
+<ul><li><strong>Dropbox (smoke test):</strong> instead of building the full sync engine (technically hard),</li></ul>
+<p>the founder released a <strong>3-minute video</strong> demoing the intended experience to the right community. Beta waitlist jumped from ~5,000 to ~75,000 overnight — validating demand before the hardest engineering was done.</p>
+<ul><li><strong>Airbnb (concierge):</strong> the founders hosted guests in their own apartment and manually</li></ul>
+<p>ran the experience, learning the job before there was any platform.</p>
+        </section>
+
+        <section id="talking-to-an-llm-about-it">
+          <h2>Talking to an LLM about it</h2>
+          <ul><li><strong>Weak prompt:</strong> &quot;How do I build an MVP for my app idea?&quot;</li><li><strong>Better prompt:</strong> &quot;I have a SaaS idea for recruiters. What's a minimum viable product</li></ul>
+<p>I could build to test it, and what should I measure?&quot;</p>
+<ul><li><strong>Expert prompt:</strong> &quot;I'm a solo founder targeting boutique recruiting agencies (my</li></ul>
+<p><a href="./icp.html">ICP</a>). My riskiest leap-of-faith assumption is that recruiters will pay ~$100/mo to auto-draft candidate outreach. Design three MVP options — a landing-page smoke test, a Wizard-of-Oz, and a concierge — ranked by <strong>validated learning per week of effort.</strong> For each, give the exact hypothesis it tests, the single behavioral metric to watch, a pre-committed pass/fail threshold, and what result would tell me to pivot rather than persevere.&quot;</p>
+<p>The expert version names the ICP and the <em>specific</em> leap-of-faith assumption, asks for options ranked by <strong>learning rate</strong>, and demands pre-committed thresholds and a pivot/persevere signal — so the model returns an experiment design, not a feature list.</p>
+        </section>
+
+        <section id="my-evolving-understanding">
+          <h2>My evolving understanding</h2>
+          <ul><li><strong>v1 (2026-07-02):</strong> First pass. The reframe that landed: I read &quot;MVP&quot; as *&quot;the</li></ul>
+<p>cheapest first version of my product&quot;<em> — an engineering-scope word. The sharper model is that MVP measures a <strong>rate: validated learning per unit of effort</strong>, so the goal is to </em>learn fastest<em>, not build smallest — and the fastest option is frequently <strong>no code at all</strong> (landing page, Wizard-of-Oz, concierge). Biggest behavioral implication for me: before writing a line, I have to name the leap-of-faith assumption and a pre-committed metric that could </em>kill* it — otherwise my engineer's instinct will quietly rebuild the whole product and call it &quot;minimum.&quot;</p>
+        </section>
+
+        <section id="sources">
+          <h2>Sources</h2>
+          <ul><li>Eric Ries, <em>The Lean Startup</em> (2011) — MVP, Build–Measure–Learn, validated learning,</li></ul>
+<p>leap-of-faith assumptions, &quot;learn faster than anyone else.&quot;</p>
+<ul><li>Steve Blank, <em>The Four Steps to the Epiphany</em> — customer development; get out of the</li></ul>
+<p>building and test the model against real customers before scaling.</p>
+<ul><li>Concrete MVP lore: Zappos (concierge), Dropbox (smoke-test video), Airbnb (concierge)</li></ul>
+<p>— widely documented founder stories (to re-verify details on revisit).</p>
+<ul><li>See also <a href="./icp.html">icp</a>, <a href="./pmf.html">pmf</a>, <a href="./retention.html">retention</a>.</li></ul>
+        </section>
+
+        <section>
+          <h2>Links</h2>
+          <nav class="footer-nav" aria-label="Page links">
+            <a class="pill" href="./mvp-fa.html">Persian version</a>
+            <a class="pill" href="./mvp.md">Markdown source</a>
+          </nav>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

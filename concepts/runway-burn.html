@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Runway &amp; Burn Rate | Entrepreneur-OS</title>
+  <meta name="description" content="Plain English: **burn** is how much cash you lose each month; **runway** is how many months of cash you have left before you hit zero. Expert phrasing: net burn is the monthly rate at which the business consumes its cash reserves, and runway is `cash ÷ net monthly burn` — the clock that governs every other decision a founder makes.">
+  
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f8f6;
+      --paper: #ffffff;
+      --ink: #17201b;
+      --muted: #5d6b63;
+      --line: #dce4dd;
+      --accent: #0f7b5f;
+      --accent-strong: #075f49;
+      --accent-soft: #e4f4ef;
+      --warning-soft: #fff2cc;
+      --shadow: 0 22px 70px rgba(23, 32, 27, 0.10);
+      --radius: 8px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(120deg, rgba(15, 123, 95, 0.09), transparent 34rem), var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--accent-strong);
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: minmax(13rem, 17rem) minmax(0, 1fr);
+      gap: 2.5rem;
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 4rem;
+      
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 1rem;
+      align-self: start;
+      padding: 1rem 0;
+      
+    }
+
+    main {
+      min-width: 0;
+      
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--ink);
+      font-weight: 850;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 2rem;
+      height: 2rem;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      box-shadow: 0 8px 24px rgba(23, 32, 27, 0.08);
+      font-size: 0.78rem;
+    }
+
+    .toc {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .toc-title {
+      margin: 0 0 0.7rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.09em; text-transform: uppercase;
+    }
+
+    .toc a {
+      display: block;
+      padding: 0.36rem 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .hero, section {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero {
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 14rem;
+      gap: 2rem;
+      padding: clamp(1.4rem, 4vw, 3rem);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 0.75rem;
+      color: var(--accent-strong);
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 13ch;
+      font-size: clamp(2.2rem, 6.5vw, 5.2rem);
+      line-height: 0.96;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 45rem;
+      margin: 1.2rem 0 0;
+      color: var(--muted);
+      font-size: clamp(1.04rem, 1.6vw, 1.28rem);
+    }
+
+    .signal {
+      align-self: stretch;
+      display: grid;
+      align-content: center;
+      gap: 1rem;
+      padding: 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, #ffffff, #f3faf7);
+    }
+
+    .signal-line {
+      height: 0.8rem;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e3eae5;
+    }
+
+    .signal-line::before {
+      content: "";
+      display: block;
+      width: 72%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #b7e4d2, var(--accent));
+    }
+
+    .signal p {
+      margin: 0;
+      color: var(--ink);
+      font-size: 0.98rem;
+      font-weight: 650;
+    }
+
+    .metadata {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .meta-item {
+      min-width: 0;
+      padding: 1rem;
+      background: #fbfcfb;
+    }
+
+    .meta-label {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--muted);
+      font-size: 0.74rem;
+      font-weight: 900;
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+
+    .meta-value {
+      display: block;
+      color: var(--ink);
+      font-weight: 720;
+    }
+
+    .content {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    section {
+      padding: clamp(1.25rem, 3vw, 2rem);
+    }
+
+    section h2 {
+      margin: 0 0 0.9rem;
+      font-size: clamp(1.35rem, 2.2vw, 2rem);
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    section p { margin: 0.75rem 0 0; }
+    section p:first-of-type { margin-top: 0; }
+    strong { font-weight: 900; }
+    code {
+      padding: 0.08rem 0.28rem;
+      border-radius: 5px;
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+
+    ul, ol {
+      margin: 0.8rem 0 0;
+      padding-left: 1.25rem;
+      padding-right: 0;
+    }
+
+    li + li { margin-top: 0.55rem; }
+
+    blockquote, .note {
+      margin: 0;
+      padding: 1rem 1.1rem;
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius);
+      background: var(--accent-soft);
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.2rem;
+      padding: 0.4rem 0.75rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      font-weight: 760;
+      text-decoration: none;
+    }
+
+    @media (max-width: 860px) {
+      .shell {
+        display: block;
+        width: min(100% - 1rem, 46rem);
+        padding-top: 0.75rem;
+      }
+
+      .sidebar {
+        position: static;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.75rem 0 1rem;
+      }
+
+      .toc { display: none; }
+      .hero-top { grid-template-columns: 1fr; }
+      .metadata { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 520px) {
+      .metadata { grid-template-columns: 1fr; }
+      section { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Concept navigation">
+      <a class="brand" href="../README.md" aria-label="Entrepreneur-OS">
+        <span>Entrepreneur-OS</span>
+        <span class="brand-mark" dir="ltr">EOS</span>
+      </a>
+      <nav class="toc" aria-label="Page sections">
+        <p class="toc-title">Concept Map</p>
+        <a href="#what-it-is">What it is</a>
+        <a href="#why-it-exists-the-problem-it-solves">Why it exists / the problem it solves</a>
+        <a href="#how-experts-reason-with-it">How experts reason with it</a>
+        <a href="#when-you-use-it">When you use it</a>
+        <a href="#metrics-how-it-s-measured">Metrics / how it's measured</a>
+        <a href="#common-misconceptions">Common misconceptions</a>
+        <a href="#examples">Examples</a>
+        <a href="#talking-to-an-llm-about-it">Talking to an LLM about it</a>
+        <a href="#my-evolving-understanding">My evolving understanding</a>
+        <a href="#sources">Sources</a>
+      </nav>
+    </aside>
+
+    <main>
+      <header class="hero">
+        <div class="hero-top">
+          <div>
+            <p class="eyebrow">Entrepreneurship concept</p>
+            <h1>Runway &amp; Burn Rate</h1>
+            <p class="subtitle">Plain English: <strong>burn</strong> is how much cash you lose each month; <strong>runway</strong> is how many months of cash you have left before you hit zero. Expert phrasing: net burn is the monthly rate at which the business consumes its cash reserves, and runway is <code>cash ÷ net monthly burn</code> — the clock that governs every other decision a founder makes.</p>
+          </div>
+          <aside class="signal" aria-label="Concept signal">
+            <div class="signal-line" aria-hidden="true"></div>
+            <p>Move past the definition: use this concept to reason, decide, and prompt AI more precisely.</p>
+          </aside>
+        </div>
+        <div class="metadata" aria-label="Concept metadata">
+          <div class="meta-item">
+            <span class="meta-label">Domain</span>
+            <span class="meta-value">finance</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Stage</span>
+            <span class="meta-value">building</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Prerequisites</span>
+            <span class="meta-value"><a href="./mrr-arr.html">mrr-arr</a> (recurring revenue is what offsets burn), <a href="./cac.html">cac</a> (acquisition spend is a major burn line, and payback governs how fast cash returns)</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Related</span>
+            <span class="meta-value"><a href="./gtm.html">gtm</a> (runway sets the tempo of go-to-market bets), default-alive/dead, fundraising-timing · <strong>Contrast with:</strong> profitability (positive cash generation — the opposite of burn)</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        
+        <section id="what-it-is">
+          <h2>What it is</h2>
+          <p>Two numbers, tightly linked:</p>
+<ul><li><strong>Burn rate</strong> — how fast you spend cash. It comes in two flavors, and the difference is</li></ul>
+<p>the whole game:</p>
+<ul><li><strong>Gross burn</strong> = total cash going <em>out</em> the door each month (salaries, rent, ad spend,</li></ul>
+<p>tools, everything). It ignores revenue.</p>
+<ul><li><strong>Net burn</strong> = cash <em>out</em> − cash <em>in</em> = the amount your bank balance actually shrinks</li></ul>
+<p>each month. This is the number that kills companies.</p>
+<ul><li><strong>Runway</strong> — how many months you can survive at the current net burn before the cash</li></ul>
+<p>runs out.</p>
+<p>``<code> Net burn   = gross burn − monthly revenue (cash in) Runway (months) = cash in bank ÷ net monthly burn </code>``</p>
+<p>A company with <strong>$500k in the bank</strong> burning <strong>$50k net/month</strong> has <strong>10 months</strong> of runway. That &quot;10&quot; is not a finance-team trivia number — it is the master clock. Every bet about hiring, <a href="./gtm.html">GTM</a>, pricing, and fundraising is really a bet about whether it pays off <em>before the clock hits zero</em>.</p>
+        </section>
+
+        <section id="why-it-exists-the-problem-it-solves">
+          <h2>Why it exists / the problem it solves</h2>
+          <p>A startup is, financially, a machine that spends money now in the hope of making more money later. The existential risk isn't &quot;will this be profitable someday&quot; — it's &quot;will we still be <em>alive</em> when someday arrives.&quot; Burn and runway exist to make that risk <strong>countable</strong>: they convert a vague dread (&quot;are we going to make it?&quot;) into a hard number of months, which you can then manage, extend, or race against.</p>
+<p>Without this lens, founders confuse <em>activity</em> with <em>survival</em> — revenue is climbing, the team is shipping, momentum feels good — while the cash quietly drains toward a wall nobody put a date on. Runway puts the date on the wall.</p>
+        </section>
+
+        <section id="how-experts-reason-with-it">
+          <h2>How experts reason with it</h2>
+          <p>The insight a beginner misses: <strong>runway isn't a status number you check — it's the constraint that should shape every decision.</strong> Cash is the one resource you cannot get more of by trying harder; when it's gone, the company is over regardless of how good the product is. So experts reason <em>backward from the wall</em>.</p>
+<ol><li><strong>Default alive vs. default dead (Paul Graham).</strong> The single most important question a</li></ol>
+<p>founder can ask: <em>given current revenue, current growth rate, and current expenses — and assuming you never raise again — do you reach profitability before the money runs out?</em> If yes, you are <strong>default alive</strong>. If no, you are <strong>default dead</strong>, living on borrowed time that only more fundraising can extend. PG's point is that founders discover this far too late: they <em>feel</em> fine because a round is always &quot;coming,&quot; and they don't run the projection that would tell them they're actually default dead <em>today</em>. Run it early; run it often.</p>
+<ol><li><strong>Net burn is the number, not gross.</strong> Growing revenue <em>reduces</em> net burn even while</li></ol>
+<p>gross spending stays flat — because more cash is coming in to offset it. This is why <a href="./mrr-arr.html">MRR/ARR</a> growth is the cleanest way to extend runway without cutting anything: every dollar of new recurring revenue shrinks net burn dollar-for-dollar. Conversely, revenue that <em>hasn't materialized yet</em> must not be counted in runway (see traps). Runway is built on cash in the bank and cash actually arriving — not pipeline.</p>
+<ol><li><strong>Runway sets the tempo of every bet.</strong> With 18 months you can run a slow, deliberate</li></ol>
+<p><a href="./gtm.html">GTM</a> experiment, hire ahead of need, and let a channel prove itself. With 6 months you can only place bets that pay back <em>inside</em> the window — which is exactly why <a href="./cac.html">CAC</a> <strong>payback period</strong> matters more than the LTV:CAC ratio for anyone on a tight runway. A channel with a 4-month payback returns cash while you're still alive; a channel with an 18-month payback is, on a 6-month runway, just burning cash faster. Short runway forces short-payback bets.</p>
+<ol><li><strong>Growth changes burn — usually upward.</strong> A beginner models burn as flat. In reality,</li></ol>
+<p>scaling almost always <em>raises</em> burn: more hires, more ad spend, more infrastructure. So &quot;we have 12 months&quot; computed at today's burn can silently become 7 months once you step on the gas. Model runway against your <em>planned</em> burn, not last month's.</p>
+<ol><li><strong>Fundraising is a function of runway, not a rescue from it.</strong> Raising with **~6 months</li></ol>
+<p>of runway left is a weak position*<em> — the counterparty knows you're near the wall, so terms get worse and the risk of </em>not closing in time<em> becomes existential. The strong move is to raise from a position of strength (12+ months left, metrics trending up) or to engineer default-alive so you never </em>need* to raise. Fundraising takes 3–6 months; if you start when you have 6 months of cash, you're negotiating with a gun to your own head.</p>
+<p>The founder's takeaway: <strong>know your runway to the month, know whether you're default alive, and make every bet pay back before the wall.</strong> For a bootstrapped solo founder especially, extending runway (revenue up, burn down) <em>is</em> the strategy — it buys the one thing that compounds: more time to figure it out.</p>
+        </section>
+
+        <section id="when-you-use-it">
+          <h2>When you use it</h2>
+          <ul><li><strong>Every month, as a standing check:</strong> recompute cash ÷ net burn; watch the trend, not just</li></ul>
+<p>the level. Runway <em>shortening</em> faster than planned is the early warning.</p>
+<ul><li><strong>Before any hire or spend increase:</strong> re-run runway against the <em>new</em> burn. &quot;Can we</li></ul>
+<p>afford this person?&quot; is really &quot;how many months does this cost us?&quot;</p>
+<ul><li><strong>Before starting a fundraise:</strong> count backward. Start when you have 9–12+ months, not 6.</li><li><strong>When choosing <a href="./gtm.html">GTM</a> channels:</strong> filter by <a href="./cac.html">CAC</a> payback against your</li></ul>
+<p>runway window — short runway demands short-payback motions.</p>
+<ul><li><strong>When deciding whether to scale:</strong> are you default alive? If not, growth that raises burn</li></ul>
+<p>can shorten the very runway you need to reach profitability.</p>
+        </section>
+
+        <section id="metrics-how-it-s-measured">
+          <h2>Metrics / how it's measured</h2>
+          <p>``<code> Gross burn      = total monthly cash outflows Net burn        = gross burn − monthly cash revenue Runway (months) = cash in bank ÷ net monthly burn </code>``</p>
+<p>If net burn is <strong>zero or negative</strong> (revenue ≥ gross burn), runway is <strong>infinite</strong> — you are cash-flow positive and, by definition, <strong>default alive</strong>.</p>
+<p><strong>Default-alive vs. default-dead example.</strong> Two startups, each with <strong>$600k in the bank</strong>:</p>
+<p>| | Startup A (default <em>dead</em>) | Startup B (default <em>alive</em>) | |---|---|---| | Cash in bank | $600k | $600k | | Gross burn / mo | $100k | $100k | | Revenue / mo (now) | $20k | $20k | | <strong>Net burn / mo (now)</strong> | <strong>$80k</strong> | <strong>$80k</strong> | | <strong>Runway at today's burn</strong> | <strong>7.5 months</strong> | <strong>7.5 months</strong> | | Revenue growth | +5% / mo | +20% / mo |</p>
+<p>They look <em>identical</em> today — same cash, same burn, same 7.5-month runway. The difference is only in the growth rate, and it's decisive. Project revenue forward against roughly flat gross burn:</p>
+<ul><li><strong>Startup A</strong> (revenue +5%/mo): revenue crawls from $20k toward ~$32k over a year — it</li></ul>
+<p><strong>never catches</strong> $100k of gross burn before the cash is gone. <strong>Default dead.</strong> Its only futures are: raise more, or cut burn hard.</p>
+<ul><li><strong>Startup B</strong> (revenue +20%/mo): revenue compounds — ~$24k, $29k, $35k, $42k … crossing</li></ul>
+<p><strong>$100k in roughly 9 months</strong>, at which point net burn hits zero and burn <em>stops</em>. If the cash lasts until that crossover, it reaches <strong>profitability first</strong>. <strong>Default alive.</strong></p>
+<p>Same snapshot, opposite fate — because default-alive is about the <em>trajectory</em> (growth vs. burn), not the <em>balance</em> (cash today). That's exactly Paul Graham's point: the number that matters isn't your runway, it's whether your growth curve crosses your burn line before the runway ends.</p>
+<p><em>Rough benchmarks:</em> healthy early-stage startups target <strong>18–24 months</strong> of runway after a raise; <strong>under ~6 months</strong> is the danger zone where you should already be raising or cutting.</p>
+        </section>
+
+        <section id="common-misconceptions">
+          <h2>Common misconceptions</h2>
+          <ul><li><strong>&quot;Burn is just what we spend&quot; (confusing gross and net).</strong> The number that ends companies</li></ul>
+<p>is <strong>net</strong> burn — cash out <em>minus</em> cash in. Growing revenue can extend runway even with gross spending flat; tracking only gross hides that.</p>
+<ul><li><strong>&quot;We have 12 months of runway&quot; (computed at flat burn).</strong> Burn usually <em>rises</em> as you</li></ul>
+<p>scale (hires, ad spend, infra). Runway must be modeled against <em>planned</em> burn, or a hiring spree silently turns 12 months into 7.</p>
+<ul><li><strong>&quot;Runway includes the revenue in our pipeline.&quot;</strong> Runway counts **cash in the bank and</li></ul>
+<p>cash actually arriving*<em> — not deals you </em>expect* to close. Counting unmaterialized revenue is how founders think they have a year and discover they have four months.</p>
+<ul><li><strong>&quot;We're fine, revenue's growing&quot; (not checking default-alive).</strong> Growing revenue can</li></ul>
+<p>still be default <em>dead</em> if the growth rate is too slow to cross the burn line before cash runs out. Feeling busy and successful is not the same as being default alive — run the projection.</p>
+<ul><li><strong>&quot;We'll raise when we run low.&quot;</strong> Fundraising <em>takes</em> 3–6 months and is hardest from a</li></ul>
+<p>position of weakness. Waiting until ~6 months of runway remain is negotiating from the back foot; the counterparty prices in your desperation.</p>
+        </section>
+
+        <section id="examples">
+          <h2>Examples</h2>
+          <ul><li><strong>Bootstrapped solo SaaS.</strong> $40k saved, no salary drawn, ~$1.5k/mo in tools and ads →</li></ul>
+<p>gross burn ~$1.5k. Revenue at $2k MRR → <strong>net burn is negative</strong>: the business generates cash. Runway is effectively infinite, i.e. <strong>default alive</strong>. Here the whole job is to keep net burn ≤ 0 while <a href="./mrr-arr.html">MRR</a> climbs — time is on your side.</p>
+<ul><li><strong>Funded startup racing the clock.</strong> Raised $2M, burning $150k gross, $110k net → **~18</li></ul>
+<p>months<strong> runway. If it stays default dead, it must either cross into profitability or open the next raise by </strong>month ~9–12** (leaving 6+ months to close). Starting the raise at month 16 with 2 months of cash left is how good companies die on the doorstep of a term sheet.</p>
+<ul><li><strong>The growth-that-shortened-runway trap.</strong> A team with &quot;12 months&quot; doubles its ad spend to</li></ul>
+<p>chase <a href="./gtm.html">GTM</a> traction. Gross burn jumps, net burn jumps, and the 12 months quietly becomes 6 — and if the new <a href="./cac.html">CAC</a> channel has a payback longer than the remaining runway, they've spent themselves <em>closer</em> to the wall, not further from it.</p>
+        </section>
+
+        <section id="talking-to-an-llm-about-it">
+          <h2>Talking to an LLM about it</h2>
+          <ul><li><strong>Weak prompt:</strong> &quot;How much money do I need for my startup?&quot;</li><li><strong>Better prompt:</strong> &quot;How do I calculate my startup's runway and burn rate, and how much runway should I keep?&quot;</li><li><strong>Expert prompt:</strong> &quot;For a startup with $600k cash, $100k/mo gross burn, $20k/mo revenue</li></ul>
+<p>growing 20% month-over-month, model my net burn and runway month-by-month. Tell me whether I'm <em>default alive or default dead</em> in Paul Graham's sense — i.e. do I reach profitability before cash runs out at current growth and expenses? Then advise: should I raise now, cut burn, or push growth — and if I raise, at what month should I <em>start</em>, given fundraising takes ~4 months and I don't want to negotiate with under 6 months of runway left?&quot;</p>
+<p>The expert version supplies the full cash/burn/growth inputs and asks for the <em>default-alive diagnosis plus a decision</em> (raise vs. cut vs. grow, and fundraising <em>timing</em>) — so the model reasons about survival trajectory and strategy, not just the arithmetic of a formula.</p>
+        </section>
+
+        <section id="my-evolving-understanding">
+          <h2>My evolving understanding</h2>
+          <ul><li><strong>v1 (2026-07-03):</strong> First pass. The reframe that landed: I thought of runway as a</li></ul>
+<p><em>status number</em> you glance at — &quot;how much cash is left.&quot; The expert model is that runway is a <strong>constraint that shapes every decision</strong>, and that the number that actually matters is not the balance but the <strong>trajectory</strong> — Paul Graham's <em>default alive vs. default dead</em>: does your growth curve cross your burn line before the cash runs out? Two startups with identical cash and burn can have opposite fates purely from growth rate. Three things clicked as consequences: (1) <strong>net</strong> burn, not gross, is the killer, so growing <a href="./mrr-arr.html">MRR</a> extends runway as surely as cutting costs; (2) short runway forces short-<strong>payback</strong> bets, which is why <a href="./cac.html">CAC</a> payback period outranks the LTV:CAC ratio when cash is tight; and (3) fundraising is a <em>timing</em> problem — you raise from strength at 12+ months, never as a rescue at 6, because the raise itself takes months and weakness gets priced in.</p>
+        </section>
+
+        <section id="sources">
+          <h2>Sources</h2>
+          <ul><li>Paul Graham, <em>Default Alive or Default Dead?</em> (2015 essay) — the central framing: at</li></ul>
+<p>current growth and expenses, do you reach profitability before the money runs out, and why founders discover the answer too late.</p>
+<ul><li>Standard venture / YC framing on burn, runway, and fundraising timing (raise from strength</li></ul>
+<p>with 12+ months; treat ~6 months as the danger zone) — to verify and deepen on revisit.</p>
+<ul><li>See also <a href="./mrr-arr.html">mrr-arr</a> (recurring revenue offsets net burn), <a href="./cac.html">cac</a></li></ul>
+<p>(acquisition spend and payback vs. runway), <a href="./gtm.html">gtm</a> (runway sets go-to-market tempo). &lt;/content&gt; &lt;/invoke&gt;</p>
+        </section>
+
+        <section>
+          <h2>Links</h2>
+          <nav class="footer-nav" aria-label="Page links">
+            <a class="pill" href="./runway-burn-fa.html">Persian version</a>
+            <a class="pill" href="./runway-burn.md">Markdown source</a>
+          </nav>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

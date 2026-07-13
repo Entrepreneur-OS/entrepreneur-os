@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TAM، SAM و SOM | Entrepreneur-OS</title>
+  <meta name="description" content="Plain English: three nested circles that answer *&quot;how big is this opportunity, really?&quot;* — the **whole** market, the slice you could **serve**, and the slice you could realistically **win**. Expert phrasing: **TAM** (total addressable market), **SAM** (serviceable available market), and **SOM** (serviceable obtainable market) — a top-line demand estimate progressively narrowed by business model, reach, and competition into a number you can actually defend. SAM = 20,000 agencies × \$3,600/yr = **\$72M/yr.** TAM ≈ 300,000 × \$5,000 = **\$1.5B/yr.** *(Cross-check top-down: this should sit well under total global staffing-software spend — if it exceeded it, the estimate is broken.)* SOM = \$72M × 5% = **\$3.6M ARR** ≈ **1,000 customers.** &quot;Global staffing is a \$650B industry. If we capture just 1%, that's \$6.5B.&quot; — No ICP, no price, no channel, no win rate. The 1% is decoration. An investor discounts this to zero on sight.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f8f6;
+      --paper: #ffffff;
+      --ink: #17201b;
+      --muted: #5d6b63;
+      --line: #dce4dd;
+      --accent: #0f7b5f;
+      --accent-strong: #075f49;
+      --accent-soft: #e4f4ef;
+      --warning-soft: #fff2cc;
+      --shadow: 0 22px 70px rgba(23, 32, 27, 0.10);
+      --radius: 8px;
+      font-family: "Vazirmatn", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(240deg, rgba(15, 123, 95, 0.09), transparent 34rem), var(--bg);
+      color: var(--ink);
+      line-height: 1.9;
+    }
+
+    a {
+      color: var(--accent-strong);
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(13rem, 17rem);
+      gap: 2.5rem;
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 4rem;
+      direction: ltr;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 1rem;
+      align-self: start;
+      padding: 1rem 0;
+      grid-column: 2; direction: rtl;
+    }
+
+    main {
+      min-width: 0;
+      grid-column: 1; grid-row: 1; direction: rtl;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--ink);
+      font-weight: 850;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 2rem;
+      height: 2rem;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      box-shadow: 0 8px 24px rgba(23, 32, 27, 0.08);
+      font-size: 0.78rem;
+    }
+
+    .toc {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .toc-title {
+      margin: 0 0 0.7rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 900;
+      
+    }
+
+    .toc a {
+      display: block;
+      padding: 0.36rem 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .hero, section {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero {
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 14rem;
+      gap: 2rem;
+      padding: clamp(1.4rem, 4vw, 3rem);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 0.75rem;
+      color: var(--accent-strong);
+      font-size: 0.82rem;
+      font-weight: 900;
+      
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 14ch;
+      font-size: clamp(2.2rem, 6.5vw, 5.2rem);
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 45rem;
+      margin: 1.2rem 0 0;
+      color: var(--muted);
+      font-size: clamp(1.04rem, 1.6vw, 1.28rem);
+    }
+
+    .signal {
+      align-self: stretch;
+      display: grid;
+      align-content: center;
+      gap: 1rem;
+      padding: 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, #ffffff, #f3faf7);
+    }
+
+    .signal-line {
+      height: 0.8rem;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e3eae5;
+    }
+
+    .signal-line::before {
+      content: "";
+      display: block;
+      width: 72%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #b7e4d2, var(--accent));
+    }
+
+    .signal p {
+      margin: 0;
+      color: var(--ink);
+      font-size: 0.98rem;
+      font-weight: 650;
+    }
+
+    .metadata {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .meta-item {
+      min-width: 0;
+      padding: 1rem;
+      background: #fbfcfb;
+    }
+
+    .meta-label {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--muted);
+      font-size: 0.74rem;
+      font-weight: 900;
+      
+    }
+
+    .meta-value {
+      display: block;
+      color: var(--ink);
+      font-weight: 720;
+    }
+
+    .content {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    section {
+      padding: clamp(1.25rem, 3vw, 2rem);
+    }
+
+    section h2 {
+      margin: 0 0 0.9rem;
+      font-size: clamp(1.35rem, 2.2vw, 2rem);
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    section p { margin: 0.75rem 0 0; }
+    section p:first-of-type { margin-top: 0; }
+    strong { font-weight: 900; }
+    code {
+      padding: 0.08rem 0.28rem;
+      border-radius: 5px;
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+
+    ul, ol {
+      margin: 0.8rem 0 0;
+      padding-right: 1.25rem;
+      padding-left: 0;
+    }
+
+    li + li { margin-top: 0.55rem; }
+
+    blockquote, .note {
+      margin: 0;
+      padding: 1rem 1.1rem;
+      border-right: 4px solid var(--accent);
+      border-radius: var(--radius);
+      background: var(--accent-soft);
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.2rem;
+      padding: 0.4rem 0.75rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--accent-strong);
+      font-weight: 760;
+      text-decoration: none;
+    }
+
+    @media (max-width: 860px) {
+      .shell {
+        display: block;
+        width: min(100% - 1rem, 46rem);
+        padding-top: 0.75rem;
+      }
+
+      .sidebar {
+        position: static;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.75rem 0 1rem;
+      }
+
+      .toc { display: none; }
+      .hero-top { grid-template-columns: 1fr; }
+      .metadata { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 520px) {
+      .metadata { grid-template-columns: 1fr; }
+      section { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="ناوبری مفهوم">
+      <a class="brand" href="../README.md" aria-label="Entrepreneur-OS">
+        <span>Entrepreneur-OS</span>
+        <span class="brand-mark" dir="ltr">EOS</span>
+      </a>
+      <nav class="toc" aria-label="بخش‌های صفحه">
+        <p class="toc-title">نقشه مفهوم</p>
+        <a href="#what-it-is">چیست؟</a>
+        <a href="#why-it-exists-the-problem-it-solves">چرا وجود دارد؟</a>
+        <a href="#how-experts-reason-with-it">استدلال متخصص‌ها</a>
+        <a href="#when-you-use-it">زمان استفاده</a>
+        <a href="#metrics-how-it-s-measured">سنجه‌ها و اندازه‌گیری</a>
+        <a href="#common-misconceptions">برداشت‌های غلط رایج</a>
+        <a href="#examples">مثال‌ها</a>
+        <a href="#talking-to-an-llm-about-it">حرف زدن با LLM درباره آن</a>
+        <a href="#my-evolving-understanding">فهم در حال تکامل من</a>
+        <a href="#sources">منابع</a>
+      </nav>
+    </aside>
+
+    <main>
+      <header class="hero">
+        <div class="hero-top">
+          <div>
+            <p class="eyebrow">مفهوم کارآفرینی</p>
+            <h1>TAM، SAM و SOM</h1>
+            <p class="subtitle">یادداشت: این صفحه نسخه راست‌به‌چپ طراحی‌شده از منبع Markdown است. عنوان‌ها و قاب صفحه فارسی شده‌اند؛ متن تخصصی بدنه از منبع اصلی حفظ شده تا ترجمه مفهومی هر یادداشت جداگانه بازبینی شود.</p>
+          </div>
+          <aside class="signal" aria-label="سیگنال مفهومی">
+            <div class="signal-line" aria-hidden="true"></div>
+            <p>از تعریف عبور کن؛ این صفحه برای فهم عملی، تصمیم‌گیری، و گفتگو با AI ساخته شده است.</p>
+          </aside>
+        </div>
+        <div class="metadata" aria-label="فراداده مفهوم">
+          <div class="meta-item">
+            <span class="meta-label">دامنه</span>
+            <span class="meta-value">strategy</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">مرحله</span>
+            <span class="meta-value">validation</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">پیش‌نیازها</span>
+            <span class="meta-value"><a href="./icp-fa.html">icp</a> (you cannot size a market until you know <em>whose</em> market it is), a <a href="./pricing-fa.html">pricing</a> assumption (a market's dollar size = customers × price)</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">مرتبط</span>
+            <span class="meta-value"><a href="./gtm-fa.html">gtm</a>, <a href="./pmf-fa.html">pmf</a>, beachhead strategy · <strong>Contrast with:</strong> &quot;it's a huge market, we only need 1%&quot; (the top-down fallacy)</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        
+        <section id="what-it-is">
+          <h2>چیست؟</h2>
+          <p>Market sizing turns the hand-wavy question <em>&quot;is this big enough to be worth doing?&quot;</em> into three numbers, each a <strong>subset of the one above it</strong>:</p>
+<ul><li><strong>TAM — Total Addressable Market.</strong> The total annual revenue available *if you had</li></ul>
+<p>100% of every customer who could conceivably use a product like yours*, worldwide, ignoring competition and your own limits. The theoretical ceiling.</p>
+<ul><li><strong>SAM — Serviceable Available Market.</strong> The portion of TAM you can <em>actually serve</em></li></ul>
+<p>given your business model, product, geography, language, segment, and channel. You don't sell to &quot;everyone who could use software like this&quot; — you sell to the subset your <a href="./icp-fa.html">ICP</a> and <a href="./gtm-fa.html">GTM</a> can reach.</p>
+<ul><li><strong>SOM — Serviceable Obtainable Market.</strong> The slice of SAM you can *realistically</li></ul>
+<p>capture* in a defined window (say 1–3 years), given competition, your sales capacity, and your budget. This is your <strong>beachhead</strong>, expressed in dollars — the number your plan has to actually deliver.</p>
+<p>The relationship is strict containment: <strong>SOM ⊆ SAM ⊆ TAM.</strong> Each circle is smaller and more real than the last. TAM inspires; SOM is what you're held accountable to.</p>
+        </section>
+
+        <section id="why-it-exists-the-problem-it-solves">
+          <h2>چرا وجود دارد؟</h2>
+          <p>Two failures it exists to prevent, pulling in opposite directions:</p>
+<ol><li><strong>Fooling investors (and yourself) with a big number.</strong> &quot;The global staffing</li></ol>
+<p>industry is \$650B&quot; is true and meaningless — it's not <em>your</em> market, it's an industry. Market sizing forces you to narrow a headline number down to the demand <em>you</em> can serve and win, so the figure you present is one a skeptical investor — and your own future self staring at a sales forecast — will believe.</p>
+<ol><li>*<em>Killing a good idea because the </em>visible<em> market looks tiny.</em>* The opposite</li></ol>
+<p>error: sizing only the sliver you can see today and concluding &quot;too small,&quot; when the real opportunity is the adjacent expansion after the beachhead. Sizing <em>all three</em> circles keeps both the near-term target (SOM) and the long-term prize (TAM) in view at once.</p>
+<p>The deeper reason: a market size is really a <strong>claim about a business model</strong>. To compute it you're forced to state who the customer is, what they'd pay, and how you'd reach them — so the exercise smokes out fuzzy thinking in the ICP and pricing <em>before</em> you've burned a year building.</p>
+        </section>
+
+        <section id="how-experts-reason-with-it">
+          <h2>استدلال متخصص‌ها</h2>
+          <p>The insight a beginner misses: *<em>the number matters far less than the </em>method that produced it<em>.</em><em> Two founders can both write &quot;\$50M SAM.&quot; One multiplied an analyst report by a guessed percentage; the other counted real customers and multiplied by a real price. An experienced investor barely reads the number — they interrogate </em>how you got it*. So the master skill isn't estimating big, it's <strong>building the estimate bottom-up so every assumption is inspectable and defensible.</strong></p>
+<p><strong>The two ways to size a market — and why the direction matters:</strong></p>
+<p>| | <strong>Top-down</strong> | <strong>Bottom-up</strong> | |---|---|---| | <strong>Method</strong> | Start from a huge published figure (analyst/industry report), multiply by shrinking percentages. | Start from unit reality: <em>number of target customers × annual revenue per customer</em> (<a href="./gtm-fa.html">ACV</a>). | | <strong>Example shape</strong> | &quot;\$650B staffing market × 5% software spend × 10% our niche = \$3.25B SAM.&quot; | &quot;20,000 target agencies × \$3,600/yr = \$72M SAM.&quot; | | <strong>Feels</strong> | Impressive, fast, authoritative. | Modest, slower, grounded. | | <strong>Fails because</strong> | The percentages are invented; it invites the <strong>&quot;we just need 1%&quot;</strong> fantasy. | Requires you to actually know your customer count and price — which is the point. | | <strong>Investors trust</strong> | Rarely — it signals you haven't done the work. | Almost always — every input can be checked. |</p>
+<p><strong>Why bottom-up wins.</strong> A top-down estimate hides its assumptions inside a single percentage nobody can audit (&quot;why 5% and not 2%?&quot;). A bottom-up estimate exposes every lever — <em>how many customers exist</em> and <em>what each pays</em> — so a critic can push on each input independently. That auditability <em>is</em> the credibility. The famous tell of lazy sizing is the line <strong>&quot;the market is \$X billion; if we capture just 1% we're a \$X0M business.&quot;</strong> The 1% is arbitrary, disconnected from any channel or sales plan, and almost always wildly optimistic — nobody explains <em>how</em> you reach that 1%. Bottom-up makes that hand-wave impossible: to claim 1,000 customers you must name where they come from.</p>
+<p><strong>Best practice — build bottom-up, sanity-check top-down.</strong> Experts do the bottom-up number as the real estimate, then glance at the top-down figure as a <em>ceiling check</em>: if your bottom-up SAM exceeds the entire published industry, you've made an arithmetic error. The two should bracket each other; the bottom-up one is the one you defend.</p>
+<p><strong>Sizing is downstream of ICP and pricing.</strong> The chain in an expert's head: <strong><a href="./icp-fa.html">ICP</a> (who) → count of that ICP (how many) → <a href="./pricing-fa.html">pricing</a> (× what each pays) → SAM → realistic share → SOM.</strong> Sharpen the ICP and the customer count gets countable; guess the price and the whole tower is built on sand. This is why market sizing is a <em>validation-stage</em> act, not an idea-stage one — you need a defined customer and a price hypothesis first.</p>
+<p><strong>SOM is a GTM claim, not a wish.</strong> Your obtainable market is bounded by how many customers your <a href="./gtm-fa.html">GTM</a> motion and budget can actually touch and close in the window. SOM ≈ (customers your beachhead channel can realistically reach) × (a credible win rate) × price. If you can't trace SOM back to a channel and a conversion assumption, it's fiction. This is the direct bridge between market sizing and <strong>beachhead strategy</strong>: SOM <em>is</em> the beachhead, denominated in revenue.</p>
+        </section>
+
+        <section id="when-you-use-it">
+          <h2>زمان استفاده</h2>
+          <ul><li><strong>Validating whether an idea is worth your time</strong> — is the obtainable market big</li></ul>
+<p>enough to hit your income goal, or is even 100% of SOM too small?</p>
+<ul><li><strong>Fundraising</strong> — VCs need a plausible path to a large TAM (venture returns require</li></ul>
+<p>it); bootstrappers care far more that SOM clears their personal number.</p>
+<ul><li><strong>Prioritizing between ideas or segments</strong> — compare the SOM (not the TAM) of each;</li></ul>
+<p>the winnable near-term market is the honest basis for choosing.</p>
+<ul><li><strong>Choosing a beachhead</strong> — sizing candidate segments turns &quot;which niche first?&quot; into</li></ul>
+<p>a number-backed decision.</p>
+<ul><li><strong>Sanity-checking a forecast</strong> — if your revenue plan implies capturing 60% of SAM in</li></ul>
+<p>year two, the plan (or the SAM) is wrong.</p>
+        </section>
+
+        <section id="metrics-how-it-s-measured">
+          <h2>سنجه‌ها و اندازه‌گیری</h2>
+          <p>The core formulas:</p>
+<ul><li><strong>TAM</strong> = (total number of potential customers everywhere) × (annual revenue per</li></ul>
+<p>customer). Or, top-down: total industry spend on this category.</p>
+<ul><li><strong>SAM</strong> = (number of customers matching your <a href="./icp-fa.html">ICP</a>, in the geographies/</li></ul>
+<p>segments you can serve) × (<a href="./gtm-fa.html">ACV</a>).</p>
+<ul><li><strong>SOM</strong> = SAM × (realistic market share you can win in the window), where that share</li></ul>
+<p>is justified by your <a href="./gtm-fa.html">GTM</a> reach and win rate — <em>not</em> pulled from the air.</p>
+<p>### Worked bottom-up example</p>
+<p>Reusing the running ICP from <a href="./icp-fa.html">icp</a>/<a href="./gtm-fa.html">gtm</a>: a bootstrapped B2B SaaS that automates candidate screening, ICP = <strong>US recruiting agencies, 10–50 staff</strong>, priced at <strong>~\$300/month (ACV ≈ \$3,600/yr)</strong>. <em>(Every count below is illustrative — in a real memo you'd source each one; the method is the deliverable, not the digits.)</em></p>
+<p><strong>Step 1 — SAM (bottom-up, count × price).</strong> Suppose there are <strong>~20,000</strong> US recruiting agencies in the 10–50-staff band <em>(verify against BLS / SIA / an industry association — do not invent this)</em>.</p>
+<p><strong>Step 2 — TAM (widen the circle).</strong> Drop the geography and size filters: <em>all</em> staffing/recruiting agencies globally that could use screening software — say <strong>~300,000</strong> firms, at a blended ACV of ~\$5,000 (larger firms pay more).</p>
+<p><strong>Step 3 — SOM (what GTM can actually win, 3-year window).</strong> Your beachhead channel (say, content + outbound to one vertical of agencies) can credibly reach and close, optimistically, <strong>~5%</strong> of the SAM in three years:</p>
+<p>Now the numbers <em>say something</em>: 1,000 paying agencies over three years is ~330 net new per year — a target you can reverse-engineer into a channel plan and a <a href="./cac-fa.html">CAC</a> budget. That traceability is exactly what a scribbled &quot;\$650B market × 1% = \$6.5B&quot; can never give you.</p>
+<p><strong>Contrast — the same market, done top-down (the fallacy):</strong></p>
+<p><strong>Benchmarks / rules of thumb.</strong> Venture investors typically want a <strong>TAM in the billions</strong> (the fund's model needs the <em>possibility</em> of a huge outcome). A bootstrapper should instead test whether <strong>100% of SOM comfortably clears their target income</strong> — you never get 100%, so if the whole obtainable market barely covers your salary, the idea is too small regardless of a shiny TAM.</p>
+        </section>
+
+        <section id="common-misconceptions">
+          <h2>برداشت‌های غلط رایج</h2>
+          <ul><li><strong>Conflating the three circles.</strong> The most common founder error: quoting TAM when</li></ul>
+<p>asked &quot;how big is your market?&quot; TAM is the <em>ceiling</em>, SOM is the <em>plan</em>. Presenting TAM as if it were reachable revenue is the classic tell of an unsophisticated pitch.</p>
+<ul><li><strong>&quot;We only need 1% of a huge market.&quot;</strong> The signature amateur move. 1% of a giant</li></ul>
+<p>number is still arbitrary; markets aren't captured by decree. <em>How</em> do you reach that 1%? If there's no channel behind it, it's fantasy. Bottom-up sizing forbids this.</p>
+<ul><li><strong>Inflating TAM to look venture-scale.</strong> Founders stretch the definition (&quot;everyone</li></ul>
+<p>who hires, ever&quot;) to hit a billion-dollar headline. Sophisticated investors <em>penalize</em> an implausibly broad TAM — it signals you don't understand your actual customer. A credible \$300M is worth more than a fantasy \$50B.</p>
+<ul><li><strong>Treating TAM as static.</strong> Markets grow (or shrink). A market that's small today but</li></ul>
+<p>expanding 30%/yr can beat a large, flat one — sizing should include the <strong>growth rate</strong> and where the market is <em>heading</em>, not just a snapshot. (Uber's TAM wasn't &quot;existing taxi rides&quot;; cheaper, better supply <em>expanded</em> the market.)</p>
+<ul><li><strong>Top-down = doing the work.</strong> Multiplying an analyst report by a percentage <em>feels</em></li></ul>
+<p>rigorous but is the lazy path. The rigor is in the bottom-up count.</p>
+<ul><li><strong>Sizing before you have an ICP or price.</strong> With no defined customer and no price</li></ul>
+<p>hypothesis, there's nothing to multiply — the estimate is guesswork dressed as math.</p>
+        </section>
+
+        <section id="examples">
+          <h2>مثال‌ها</h2>
+          <ul><li><strong>Uber's expanding TAM.</strong> Sizing Uber against the <em>existing</em> taxi market</li></ul>
+<p>dramatically understated it — by making rides cheaper, more available, and more convenient, Uber <em>grew</em> the market it was addressing. Lesson: a static TAM built from today's spend can badly under- (or over-) count a market that your own product reshapes.</p>
+<ul><li><strong>The beachhead that looked too small.</strong> Facebook's initial SOM was &quot;Harvard</li></ul>
+<p>undergraduates&quot; — a trivial obtainable market that would fail a naive &quot;is the SAM big enough?&quot; test, yet its TAM was &quot;everyone online.&quot; Sizing all three circles keeps the tiny-but-winnable SOM and the enormous TAM legible at the same time (see the beachhead logic in <a href="./icp-fa.html">icp</a> and <a href="./gtm-fa.html">gtm</a>).</p>
+<ul><li><strong>The recruiting-SaaS memo above.</strong> \$1.5B TAM → \$72M SAM → \$3.6M/1,000-customer</li></ul>
+<p>SOM. The SOM is the number the plan is judged on; the TAM is the reason the plan is worth starting.</p>
+        </section>
+
+        <section id="talking-to-an-llm-about-it">
+          <h2>حرف زدن با LLM درباره آن</h2>
+          <p>The same intent, framed three ways — this is how vocabulary becomes leverage:</p>
+<ul><li><strong>Weak prompt:</strong> &quot;How big is the market for my recruiting software?&quot;</li><li><strong>Better prompt:</strong> &quot;Help me estimate the market size for a B2B SaaS that automates</li></ul>
+<p>candidate screening for recruiting agencies.&quot;</p>
+<ul><li><strong>Expert prompt:</strong> &quot;Build me a <strong>bottom-up</strong> TAM/SAM/SOM for a bootstrapped B2B SaaS</li></ul>
+<p>that automates candidate screening. ICP = US recruiting agencies of 10–50 staff, priced at ~\$300/month (ACV ≈ \$3,600). For <strong>SAM</strong>, estimate the count of US agencies in that band and name the data sources I should verify it against (BLS, SIA, industry associations). For <strong>TAM</strong>, widen to global agencies of all sizes with a blended ACV, and cross-check it against total staffing-software spend as a ceiling. For <strong>SOM</strong>, propose a realistic 3-year obtainable share <em>justified by a specific GTM channel and win rate</em> — not an arbitrary 1%. Flag every assumption I must validate, and call out where I'm at risk of inflating TAM or conflating the three circles.&quot;</p>
+<p>The expert version fixes the ICP and price, demands the <strong>bottom-up</strong> method, asks for <em>sources to verify</em> each input, forces the SOM to be tied to a channel and win rate, and requests an explicit trap-check — so the model reasons like an analyst instead of handing back an inflated top-down headline.</p>
+        </section>
+
+        <section id="my-evolving-understanding">
+          <h2>فهم در حال تکامل من</h2>
+          <ul><li><strong>v1 (2026-07-03):</strong> First pass while bootstrapping Entrepreneur-OS. The reframe that</li></ul>
+<p>landed: I used to think &quot;market size&quot; was one big impressive number you <em>find</em>. The expert model is that it's *<em>three nested circles you </em>build**<em> — and the credibility lives entirely in the </em>method<em>, not the magnitude. Bottom-up (customers × price) beats top-down (giant report × guessed %) because every input is auditable, which is exactly why &quot;we only need 1% of a \$X billion market&quot; reads as a red flag rather than a strength. The other shift: <strong>SOM is a GTM claim</strong> — it has to trace back to a real channel and win rate — and sizing is genuinely </em>downstream* of a sharp <a href="./icp-fa.html">ICP</a> and a <a href="./pricing-fa.html">pricing</a> assumption; without those there's nothing concrete to multiply. TAM inspires the investor and my future self; SOM is the number the plan is actually accountable to.</p>
+        </section>
+
+        <section id="sources">
+          <h2>منابع</h2>
+          <ul><li>Andreessen Horowitz (a16z), writing on market sizing — the case for <strong>bottom-up</strong> over</li></ul>
+<p>top-down and why &quot;% of a big market&quot; estimates signal weak thinking.</p>
+<ul><li>First Round Review — founder-facing guidance on sizing a market credibly and avoiding</li></ul>
+<p>the inflated-TAM trap.</p>
+<ul><li>Anu Hariharan (Y Combinator / YC Continuity), talks and essays on TAM and market</li></ul>
+<p>sizing for founders — the nested TAM/SAM/SOM framing and bottom-up discipline.</p>
+<ul><li>Bill Aulet, <em>Disciplined Entrepreneurship</em> — TAM for a <em>beachhead</em> market computed</li></ul>
+<p>bottom-up (customers × annual revenue per customer), and expanding from it.</p>
+<ul><li>See also <a href="./icp-fa.html">icp</a>, <a href="./gtm-fa.html">gtm</a>, <a href="./pricing-fa.html">pricing</a>, <a href="./cac-fa.html">cac</a>,</li></ul>
+<p><a href="./pmf-fa.html">pmf</a>. <em>(Specific customer counts in the worked example are illustrative placeholders — verify against BLS / SIA / industry-association data before use.)</em></p>
+        </section>
+
+        <section>
+          <h2>پیوندها</h2>
+          <nav class="footer-nav" aria-label="پیوندهای صفحه">
+            <a class="pill" href="./tam-sam-som.html">نسخه انگلیسی</a>
+            <a class="pill" href="./tam-sam-som.md">منبع Markdown</a>
+          </nav>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
